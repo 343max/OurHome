@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		503D1DBB27A14EAB00FC8355 /* Our_HomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* Our_HomeApp.swift */; };
+		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBD27A14EAB00FC8355 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ContentView.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		503D1DC227A14EAB00FC8355 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */; };
@@ -15,7 +15,7 @@
 
 /* Begin PBXFileReference section */
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		503D1DBA27A14EAB00FC8355 /* Our_HomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Our_HomeApp.swift; sourceTree = "<group>"; };
+		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -38,7 +38,9 @@
 				503D1DB927A14EAB00FC8355 /* Our Home */,
 				503D1DB827A14EAB00FC8355 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		503D1DB827A14EAB00FC8355 /* Products */ = {
 			isa = PBXGroup;
@@ -51,7 +53,7 @@
 		503D1DB927A14EAB00FC8355 /* Our Home */ = {
 			isa = PBXGroup;
 			children = (
-				503D1DBA27A14EAB00FC8355 /* Our_HomeApp.swift */,
+				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
 				503D1DBC27A14EAB00FC8355 /* ContentView.swift */,
 				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
 				503D1DC027A14EAB00FC8355 /* Preview Content */,
@@ -138,7 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503D1DBD27A14EAB00FC8355 /* ContentView.swift in Sources */,
-				503D1DBB27A14EAB00FC8355 /* Our_HomeApp.swift in Sources */,
+				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
