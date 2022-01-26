@@ -25,4 +25,14 @@ final class VerificationTests: XCTestCase {
       )
     )
   }
+  
+  func testGenerateTokenPayload() {
+    let payload = generateTokenPayload(secret: "secret", action: "action", date: 15)
+    let expected = TokenPayload(
+      token: "8b3329f16bcc4a45a44d244359e80468722230c71f96395b1f40d0eafe47e7dd",
+      action: "action",
+      date: "15"
+    )
+    XCTAssertEqual(payload, expected)
+  }
 }

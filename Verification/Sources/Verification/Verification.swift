@@ -1,3 +1,5 @@
+import Foundation
+
 public func generateSecret() -> String {
   let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".map { c in
     return String(c)
@@ -16,4 +18,18 @@ public func generateToken(secret: String, action: String, date: Int64) -> String
 
 public func verifyToken(_ token: String, secret: String, action: String, date: Int64) -> Bool {
   return token == generateToken(secret: secret, action: action, date: date)
+}
+
+public struct TokenPayload: Equatable {
+  let token: String
+  let action: String
+  let date: String
+}
+
+public func generateTokenPayload(secret: String, action: String, date: Int64 = Int64(Date().timeIntervalSince1970)) -> TokenPayload {
+  return TokenPayload(
+    token: generateToken(secret: secret, action: action, date: date),
+    action: action,
+    date: "\(date)"
+  )
 }
