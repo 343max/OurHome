@@ -2,13 +2,14 @@ import Foundation
 import Verification
 import Swifter
 
-func verifyAction(user: String, action: Action, secret: String, bodyData: Data) -> Bool {
+func verifiedAction(user: String, action: Action, secret: String, bodyData: Data) -> TokenPayload? {
   let payload: TokenPayload
   do {
     payload = try JSONDecoder().decode(TokenPayload.self, from: bodyData)
   } catch {
-    return false
+    return nil
   }
   
-  return verifyToken(payload.token, user: user, secret: secret, action: action.rawValue, date: payload.date)
+  let verified = verifyToken(payload.token, user: user, secret: secret, action: action.rawValue, date: payload.date)
+  return verified ? payload : nil
 }
