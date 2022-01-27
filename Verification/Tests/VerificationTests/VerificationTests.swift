@@ -7,32 +7,50 @@ final class VerificationTests: XCTestCase {
   }
 
   func testGenerateToken() {
-    let token = generateToken(secret: "secret", action: "action", date: 1643212929)
-    XCTAssertEqual(token, "3d743f8857834b37e290e43992cb99411e005a90597632cb620211143a3a0d4d")
+    let token = generateToken(user: "max", secret: "secret", action: "action", date: 1643212929)
+    XCTAssertEqual(token, "bb534a94729ec6ac8b60bb6817d482433ad33f2264646859d0d5be5a9b7d7ecd")
 
-    let otherToken = generateToken(secret: "secret1", action: "action2", date: 143212929)
+    let otherToken = generateToken(user: "max", secret: "secret1", action: "action2", date: 143212929)
     XCTAssertNotEqual(token, otherToken)
   }
 
   func testVerifyToken() {
-    XCTAssertFalse(verifyToken("invalid", secret: "secret", action: "action", date: 1643212929))
+    XCTAssertFalse(verifyToken("invalid", user: "max", secret: "secret", action: "action", date: 1643212929))
     XCTAssertTrue(
       verifyToken(
-        "3d743f8857834b37e290e43992cb99411e005a90597632cb620211143a3a0d4d",
+        "bb534a94729ec6ac8b60bb6817d482433ad33f2264646859d0d5be5a9b7d7ecd",
+        user: "max",
         secret: "secret",
         action: "action",
         date: 1643212929
       )
     )
   }
-  
+
   func testGenerateTokenPayload() {
-    let payload = generateTokenPayload(secret: "secret", action: "action", date: 15)
+    let payload = generateTokenPayload(user: "max", secret: "secret", action: "action", date: 15)
     let expected = TokenPayload(
-      token: "8b3329f16bcc4a45a44d244359e80468722230c71f96395b1f40d0eafe47e7dd",
-      action: "action",
-      date: "15"
+      token: "fdb42b844825c2475e4d9b41aa31c48ce4333ba42c29cdf48aa8c6c60ad8420b",
+      date: 15
     )
+    XCTAssertEqual(payload, expected)
+  }
+
+  func testEncodeTokenPayload() {
+    let payload = TokenPayload(token: "aaa", date: 42)
+    let json = String(decoding: try! JSONEncoder().encode(payload), as: UTF8.self)
+    let expected = """
+                   {"token":"aaa","date":42}
+                   """
+    XCTAssertEqual(json, expected)
+  }
+
+  func testDecodeTokenPayload() {
+    let json = """
+                   {"user":"max","token":"aaa","date":42}
+                   """
+    let payload = try! JSONDecoder().decode(TokenPayload.self, from: json.data(using: .utf8)!)
+    let expected = TokenPayload(token: "aaa", date: 42)
     XCTAssertEqual(payload, expected)
   }
 }

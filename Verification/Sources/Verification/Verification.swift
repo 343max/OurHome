@@ -11,25 +11,23 @@ public func generateSecret() -> String {
   }.joined()
 }
 
-public func generateToken(secret: String, action: String, date: Int64) -> String {
-  let payload = "\(secret)/\(action)/\(date)"
+public func generateToken(user: String, secret: String, action: String, date: UInt64) -> String {
+  let payload = "\(user)\(secret)/\(action)/\(date)"
   return payload.sha256()
 }
 
-public func verifyToken(_ token: String, secret: String, action: String, date: Int64) -> Bool {
-  return token == generateToken(secret: secret, action: action, date: date)
+public func verifyToken(_ token: String, user: String, secret: String, action: String, date: UInt64) -> Bool {
+  return token == generateToken(user: user, secret: secret, action: action, date: date)
 }
 
-public struct TokenPayload: Equatable {
-  let token: String
-  let action: String
-  let date: String
+public struct TokenPayload: Codable, Equatable {
+  public let token: String
+  public let date: UInt64
 }
 
-public func generateTokenPayload(secret: String, action: String, date: Int64 = Int64(Date().timeIntervalSince1970)) -> TokenPayload {
+public func generateTokenPayload(user: String, secret: String, action: String, date: UInt64 = UInt64(Date().timeIntervalSince1970)) -> TokenPayload {
   return TokenPayload(
-    token: generateToken(secret: secret, action: action, date: date),
-    action: action,
-    date: "\(date)"
+    token: generateToken(user: user, secret: secret, action: action, date: date),
+    date: date
   )
 }
