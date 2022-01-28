@@ -1,8 +1,21 @@
-//
-//  Spinner.swift
-//  Our Home
-//
-//  Created by Max von Webel on 28.01.22.
-//
+import SwiftUI
 
-import Foundation
+struct Spinner: UIViewRepresentable {
+  @Binding var spinning: Bool
+  
+  func makeUIView(context: Context) -> UIActivityIndicatorView {
+    let spinner = UIActivityIndicatorView()
+    if spinning {
+      spinner.startAnimating()
+    }
+    return spinner
+  }
+  
+  func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
+    if (spinning) {
+      uiView.startAnimating()
+    } else {
+      uiView.stopAnimating()
+    }
+  }
+}

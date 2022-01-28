@@ -2,21 +2,25 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var showDoorOpenerAlert = false
-  
+
   var body: some View {
     List() {
       Section("Haustür") {
         Button {
           print("was tapped")
         } label: {
-          Label("Haustür öffnen", systemImage: "figure.walk")
-        }
+          SpinnerWrapper(spinning: .constant(true)) {
+            Label("Haustür öffnen", systemImage: "figure.walk")
+          }
+        }.disabled(true)
       }
       Section("Wohnungstür") {
         Button {
           showDoorOpenerAlert = true
         } label: {
-          Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
+          SpinnerWrapper(spinning: .constant(false)) {
+            Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
+          }
         }.alert(isPresented: $showDoorOpenerAlert) {
           Alert(
             title: Text("Wohnungstür öffnen?"),
@@ -29,12 +33,16 @@ struct ContentView: View {
         Button {
           print("was tapped")
         } label: {
-          Label("Wohnungstür aufschließen", systemImage: "lock.open")
+          SpinnerWrapper(spinning: .constant(false)) {
+            Label("Wohnungstür aufschließen", systemImage: "lock.open")
+          }
         }
         Button {
           print("was tapped")
         } label: {
-          Label("Wohnungstür abschließen", systemImage: "lock")
+          SpinnerWrapper(spinning: .constant(false)) {
+            Label("Wohnungstür abschließen", systemImage: "lock")
+          }
         }
       }
     }
