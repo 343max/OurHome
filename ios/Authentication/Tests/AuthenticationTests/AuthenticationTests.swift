@@ -3,8 +3,8 @@ import XCTest
 
 final class AuthenticationTests: XCTestCase {
   func testGetAuthHeader() {
-    let authHeader = getAuthHeader(user: "max", secret: "abcdef", action: "knock", timestamp: 4223)
+    let authHeader = getAuthHeader(user: "max", secret: "abcdef", action: "lock", timestamp: 4223)
     // make sure it's identical to the one on the server side
-    XCTAssertEqual(authHeader, "max/iMai2Pyi17bnMR8yCmzi7Mwf+iHVioMysuBFjr3/QoQ=/4223")
+    XCTAssertEqual(authHeader, "max:n4CSFJIbs31PLthxBjdIGJE0pRMI0dAyIFOfhFr4804=:4223")
   }
 }
