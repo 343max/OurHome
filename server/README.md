@@ -1,3 +1,0 @@
-# server
-
-our home
