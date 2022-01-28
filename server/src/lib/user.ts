@@ -1,5 +1,5 @@
 import { allUsers } from '../users';
-type Access = 'full' | 'local' | 'none';
+export type Access = 'full' | 'local' | 'none';
 
 export type User = {
   name: string;

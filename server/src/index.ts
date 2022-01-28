@@ -2,8 +2,8 @@ import express from 'express';
 
 const app = express();
 
-app.post('/*/buzzer', (req, res) => {
-  res.send(`hello ${JSON.stringify(req.params)}`);
+app.post('/buzzer', (req, res) => {
+  res.send(`hello`);
 });
 
 const port = 4278;
