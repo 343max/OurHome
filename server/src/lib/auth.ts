@@ -1,6 +1,6 @@
 import { Action } from "./action.ts"
 import { createHash } from "https://deno.land/std@0.77.0/hash/mod.ts"
-import { Access } from "./user.ts"
+import { findUser, Permission, Permissions, User } from "./user.ts"
 
 export const getToken = (
   user: string,
@@ -22,14 +22,14 @@ export const getAuthHeader = (
   return [user, token, `${unixTimeSecs}`].join(":")
 }
 
-type ActionScope = "local" | "remote"
+type UserLocation = "local" | "remote"
 
 export const accessAllowed = (
-  userAccess: Access,
-  requestedAccess: ActionScope
+  userAccess: Permission,
+  userLocation: UserLocation
 ): boolean => {
   const allowedLevel = ["none", "local", "full"].indexOf(userAccess)
-  const requestedLevel = ["", "local", "remote"].indexOf(requestedAccess)
+  const requestedLevel = ["", "local", "remote"].indexOf(userLocation)
   return allowedLevel >= requestedLevel
 }
 
@@ -44,14 +44,60 @@ export const splitAuthHeader = (
   return { username, token, timestamp: parseInt(timestamp) }
 }
 
+export const verifyTimestamps = (
+  timestampA: number,
+  timestampB: number
+): boolean => Math.abs(timestampA - timestampB) < 5 * 60
+
+export const getPermissionsKey = (action: Action): null | keyof Permissions => {
+  const mapping: Record<Action, null | keyof Permissions> = {
+    auth: null,
+    state: null,
+    buzzer: "buzzer",
+    lock: "frontdoor",
+    unlock: "frontdoor",
+    unlatch: "unlatch",
+  }
+  return mapping[action]
+}
+
 export const verifyAuth = (
-  header: string,
+  header: string | null,
   action: Action,
-  local: boolean,
-  date: number = new Date().getTime() / 1000
+  userLocation: UserLocation,
+  now: number = new Date().getTime() / 1000,
+  users?: User[]
 ): boolean => {
-  // check date
-  // check user auth
-  // check permission level
-  return false
+  if (header === null) {
+    return false
+  }
+
+  const headerParts = splitAuthHeader(header)
+  if (headerParts === null) {
+    return false
+  }
+
+  const { username, token, timestamp } = headerParts
+
+  if (!verifyTimestamps(timestamp, now)) {
+    return false
+  }
+
+  const user = findUser(username, users)
+  if (user === null) {
+    return false
+  }
+
+  if (getToken(user.name, user.secret, action, timestamp) !== token) {
+    return false
+  }
+
+  const permissionsKey = getPermissionsKey(action)
+  if (permissionsKey !== null) {
+    if (!accessAllowed(user.permissions[permissionsKey], userLocation)) {
+      return false
+    }
+  }
+
+  return true
 }

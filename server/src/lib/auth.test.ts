@@ -7,6 +7,7 @@ import {
   getAuthHeader,
   getToken,
   splitAuthHeader,
+  verifyTimestamps,
 } from "./auth.ts"
 
 Deno.test("authHeader", () => {
@@ -44,4 +45,10 @@ Deno.test("split auth header", () => {
   assertEquals(timestamp, 4223)
 
   assertEquals(splitAuthHeader(""), null)
+})
+
+Deno.test("verify date", () => {
+  assertEquals(verifyTimestamps(500, 510), true)
+  assertEquals(verifyTimestamps(5000, 5500), false)
+  assertEquals(verifyTimestamps(5000, 4500), false)
 })
