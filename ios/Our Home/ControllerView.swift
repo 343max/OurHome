@@ -26,7 +26,7 @@ struct ControllerView: View {
             secondaryButton: .destructive(Text("Wohnungstür öffnen")) { showDoorOpenerAlert = false })
         }
       } header: {
-        DoorHeader(locked: .constant(false), batteryLevel: .constant(95), batteryCharging: .constant(true), batteryCritical: .constant(false))
+        DoorHeader(locked: .constant(false), batteryState: .constant(BatteryState(level: 95, charging: true, critical: false)))
       }
       Section() {
         SpinningButton(spinning: .constant(false)) {

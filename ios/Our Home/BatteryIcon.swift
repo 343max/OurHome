@@ -1,19 +1,25 @@
 import SwiftUI
 
+struct BatteryState: Identifiable {
+  var id: UUID = .init()
+  
+  var level: Int
+  var charging: Bool
+  var critical: Bool
+}
+
 struct BatteryIcon: View {
-  @Binding var level: Int
-  @Binding var charging: Bool
-  @Binding var criticial: Bool
+  @Binding var state: BatteryState
 
   var batteryImage: String {
     get {
-      if level < 20 {
+      if state.level < 20 {
         return "battery.0"
-      } else if level < 45 {
+      } else if state.level < 45 {
         return "battery.25"
-      } else if level < 70 {
+      } else if state.level < 70 {
         return "battery.50"
-      } else if level < 95 {
+      } else if state.level < 95 {
         return "battery.75"
       } else {
         return "battery.100"
@@ -23,10 +29,10 @@ struct BatteryIcon: View {
 
   var body: some View {
     HStack {
-      Text("\(level)%")
+      Text("\(state.level)%")
       ZStack {
-        Image(systemName: batteryImage).foregroundColor(criticial ? .red : (charging ? .gray : nil))
-        if charging {
+        Image(systemName: batteryImage).foregroundColor(state.critical ? .red : (state.charging ? .gray : nil))
+        if state.charging {
           Image(systemName: "bolt.fill").foregroundColor(.white)
           Image(systemName: "bolt")
         }
@@ -38,14 +44,14 @@ struct BatteryIcon: View {
 struct BatteryIcon_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      BatteryIcon(level: .constant(95), charging: .constant(false), criticial: .constant(false)).padding()
-      BatteryIcon(level: .constant(85), charging: .constant(false), criticial: .constant(false)).padding()
-      BatteryIcon(level: .constant(55), charging: .constant(false), criticial: .constant(false)).padding()
-      BatteryIcon(level: .constant(44), charging: .constant(false), criticial: .constant(false)).padding()
-      BatteryIcon(level: .constant(28), charging: .constant(false), criticial: .constant(false)).padding()
-      BatteryIcon(level: .constant(8), charging: .constant(false), criticial: .constant(true)).padding()
-      BatteryIcon(level: .constant(8), charging: .constant(true), criticial: .constant(true)).padding()
-      BatteryIcon(level: .constant(96), charging: .constant(true), criticial: .constant(false)).padding()
+      BatteryIcon(state: .constant(BatteryState(level: 95, charging: false, critical: false))).padding()
+      BatteryIcon(state: .constant(BatteryState(level: 85, charging:false, critical:false))).padding()
+      BatteryIcon(state: .constant(BatteryState(level: 55, charging:false, critical:false))).padding()
+      BatteryIcon(state: .constant(BatteryState(level: 44, charging:false, critical:false))).padding()
+      BatteryIcon(state: .constant(BatteryState(level: 28, charging:false, critical:false))).padding()
+      BatteryIcon(state: .constant(BatteryState(level: 8, charging:false, critical:true))).padding()
+      BatteryIcon(state: .constant(BatteryState(level: 8, charging:true, critical:true))).padding()
+      BatteryIcon(state: .constant(BatteryState(level: 96, charging:true, critical:false))).padding()
     }
   }
 }
