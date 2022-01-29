@@ -1,5 +1,10 @@
 import { findUser } from "./lib/user.ts"
-import { getNukiDeviceStatus } from "./lib/nuki.ts"
+import {
+  getNukiLockConfig,
+  nukiLock,
+  nukiUnlatch,
+  nukiUnlock,
+} from "./lib/nuki.ts"
 import { getRuntimeConfig } from "./lib/config.ts"
 import { configuration } from "./secrets.ts"
 import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
@@ -13,8 +18,11 @@ import {
 
 const app = new Application()
 
-const authorized =
-  (action: Action, handler: (c: Context) => Promise<any> | any): HandlerFunc =>
+const authorized = (
+  action: Action,
+  handler: (c: Context) => Promise<any> | any
+): [string, HandlerFunc] => [
+  `/${action}`,
   async (c) => {
     if (verifyAuth(c.request.headers.get("Authorization"), action, "remote")) {
       c.response.headers.append(
@@ -25,7 +33,8 @@ const authorized =
     } else {
       c.response.status = 403
     }
-  }
+  },
+]
 
 if (getRuntimeConfig().ignoreAuthentication) {
   console.log(
@@ -38,15 +47,20 @@ console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
 
 app
   .post(
-    "/buzzer",
-    authorized("buzzer", async () => {
+    ...authorized("buzzer", async () => {
       await fetch(configuration.buzzerUrl)
       return { success: true }
     })
   )
+  .post(...authorized("lock", async () => await nukiLock(configuration.nuki)))
+  .post(
+    ...authorized("unlock", async () => await nukiUnlock(configuration.nuki))
+  )
+  .post(
+    ...authorized("unlatch", async () => await nukiUnlatch(configuration.nuki))
+  )
   .get(
-    "/user",
-    authorized("user", ({ request }) => {
+    ...authorized("user", ({ request }) => {
       const authHeader = splitAuthHeader(request.headers.get("Authorization"))
       if (authHeader === null) {
         return { sucess: false }
@@ -57,9 +71,8 @@ app
     })
   )
   .get(
-    "/state",
-    authorized("state", async () => {
-      const nukiState = await getNukiDeviceStatus(configuration.nuki)
+    ...authorized("state", async () => {
+      const nukiState = await getNukiLockConfig(configuration.nuki)
       return { success: true, doorlock: nukiState }
     })
   )

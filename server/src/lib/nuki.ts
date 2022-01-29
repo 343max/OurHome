@@ -1,43 +1,48 @@
-import {
-  NukiDeviceState,
-  NukiSmartLockState,
-  SmartLockState,
-} from "./nukiDeviceState.ts"
 import { NukiConfiguration } from "./config.ts"
 
 export const getNukiUrl = (
   action: string,
-  { host, port, token }: Omit<NukiConfiguration, "deviceId">
-): string => `http://${host}:${port}/${action}?token=${token}`
-
-export const getNukiStatus = async (
-  config: Omit<NukiConfiguration, "deviceId">
-): Promise<NukiDeviceState[]> =>
-  await (await fetch(getNukiUrl("list", config))).json()
-
-export const getNukiDeviceStatus = async ({
-  deviceId,
-  ...config
-}: NukiConfiguration): Promise<{
-  state: SmartLockState
-  battery: { critical: boolean; charging: boolean; chargeState: number }
-  timestamp: string
-} | null> => {
-  const device = (await getNukiStatus(config)).find(
-    ({ nukiId, deviceType }) => nukiId === deviceId && deviceType === 4
-  ) as NukiSmartLockState | undefined
-
-  if (device === undefined) {
-    return null
-  } else {
-    return {
-      state: device.lastKnownState.state,
-      battery: {
-        critical: device.lastKnownState.batteryCritical,
-        charging: device.lastKnownState.batteryCharging,
-        chargeState: device.lastKnownState.batteryChargeState,
-      },
-      timestamp: device.lastKnownState.timestamp,
-    }
-  }
+  { host, port, token, deviceId }: NukiConfiguration,
+  params: { [key: string]: string | number } = {}
+): string => {
+  const allParams = Object.entries({ token, nukiId: deviceId, ...params })
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&")
+  return `http://${host}:${port}/${action}?${allParams}`
 }
+
+export const nukiLock = async (config: NukiConfiguration) =>
+  await (await fetch(getNukiUrl("lock", config))).json()
+
+export const nukiUnlock = async (config: NukiConfiguration) =>
+  await (await fetch(getNukiUrl("unlock", config))).json()
+
+export const nukiUnlatch = async (config: NukiConfiguration) =>
+  await (await fetch(getNukiUrl("lockAction", config, { action: 3 }))).json()
+
+export enum NukiSmartLockState {
+  Uncalibrated = 0,
+  Locked = 1,
+  Unlocking = 2,
+  Unlocked = 3,
+  Locking = 4,
+  Unlatched = 5,
+  UnlockedLockNGo = 6,
+  Unlatching = 7,
+  MotorBlocked = 254,
+  Undefined = 255,
+}
+
+type NukiSmartLockConfig = {
+  mode: number
+  state: NukiSmartLockState
+  batteryCritical: false
+  batteryCharging: false
+  batteryChargeState: 85
+  success: true
+}
+
+export const getNukiLockConfig = async (
+  config: NukiConfiguration
+): Promise<NukiSmartLockConfig> =>
+  await (await fetch(getNukiUrl("lockState", config))).json()
