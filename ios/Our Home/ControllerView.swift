@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ControllerView: View {
-  @State private var showDoorOpenerAlert = false
-  @State private var state: HomeState? = nil
+  @State private var frontDoorLocked: Bool? = nil
+  @State private var frontDoorBatteryState: BatteryState? = nil
 
   var body: some View {
     List() {
@@ -14,19 +14,13 @@ struct ControllerView: View {
         }.disabled(true)
       }
       Section() {
-        SpinningButton(spinning: .constant(true)) {
-          showDoorOpenerAlert = true
+        SpinningButton(spinning: .constant(false)) {
+          print("was tapped")
         } label: {
           Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
-        }.alert(isPresented: $showDoorOpenerAlert) {
-          Alert(
-            title: Text("Wohnungstür öffnen?"),
-            message: Text("Wenn die Wohnungstür geöffnet wurde, kann sie nicht automatisch wieder geschlossen werden."),
-            primaryButton: .default(Text("Abbrechen")) { showDoorOpenerAlert = false },
-            secondaryButton: .destructive(Text("Wohnungstür öffnen")) { showDoorOpenerAlert = false })
         }
       } header: {
-        DoorHeader(locked: .constant(false), batteryState: .constant(BatteryState(level: 95, charging: true, critical: false)))
+        DoorHeader(locked: $frontDoorLocked, batteryState: $frontDoorBatteryState)
       }
       Section() {
         SpinningButton(spinning: .constant(false)) {
@@ -40,7 +34,26 @@ struct ControllerView: View {
           Label("Wohnungstür abschließen", systemImage: "lock")
         }
       }
-    }.navigationTitle("Our Home")
+    }
+    .navigationTitle("Our Home")
+    .task {
+      let state = try! await Home(username: "max", secret: "03d768a9-30c7-44c4-8cbf-852ab24dea21").getState()
+      frontDoorLocked = {
+        switch state.doorlock.state {
+        case .Locked:
+          return true
+        case .Unlocked:
+          return false
+        default:
+          return nil
+        }
+      }()
+      frontDoorBatteryState = BatteryState(
+        level: state.doorlock.batteryChargeState,
+        charging: state.doorlock.batteryCharging,
+        critical: state.doorlock.batteryCritical
+      )
+    }
   }
 }
 

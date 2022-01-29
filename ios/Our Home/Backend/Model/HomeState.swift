@@ -6,9 +6,23 @@ struct HomeState: Codable {
   let doorlock: Doorlock
 }
 
+enum DoorlockState: Int, Codable {
+  case Uncalibrated = 0
+  case Locked = 1
+  case Unlocking = 2
+  case Unlocked = 3
+  case Locking = 4
+  case Unlatched = 5
+  case UnlockedLockNGo = 6
+  case Unlatching = 7
+  case MotorBlocked = 254
+  case Undefined = 255
+}
+
 // MARK: - Doorlock
 struct Doorlock: Codable {
-  let mode, state: Int
+  let mode: Int
+  let state: DoorlockState
   let stateName: String
   let batteryCritical: Bool
   let batteryCharging: Bool

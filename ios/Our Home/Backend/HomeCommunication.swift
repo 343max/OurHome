@@ -1,4 +1,5 @@
 import Foundation
+import Authentication
 
 enum Action: String {
   case lock = "lock"
@@ -19,6 +20,7 @@ struct Home {
   let secret: String
 
   let localNetworkHost = "http://plex-server.fritz.box:4278/"
+//  let localNetworkHost = "http://localhost:4278/"
 
   func url(action: Action) -> URL {
     return URL(string: "\(localNetworkHost)\(action.rawValue)")!
@@ -27,6 +29,10 @@ struct Home {
   func send<T>(_ type: T.Type, _ method: Method, action: Action) async throws -> T where T : Decodable {
     var request = URLRequest(url: url(action: action))
     request.httpMethod = method.rawValue
+    request.addValue(
+      getAuthHeader(user: username, secret: secret, action: action.rawValue, timestamp: Date().timeIntervalSince1970),
+      forHTTPHeaderField: "Authorization"
+    )
     let (data, _) = try await URLSession.shared.data(for: request)
     return try JSONDecoder().decode(type, from: data)
   }
