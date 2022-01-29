@@ -24,7 +24,6 @@ struct SpinnerWrapper_Previews: PreviewProvider {
       SpinnerWrapper(spinning: .constant(false)) {
         Label("Haustür öffnen", systemImage: "figure.walk")
       }
-
     }
   }
 }

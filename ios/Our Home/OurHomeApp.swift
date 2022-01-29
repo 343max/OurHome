@@ -4,7 +4,14 @@ import SwiftUI
 struct OurHomeApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      NavigationView {
+        ControllerView().toolbar {
+          NavigationLink(destination: { SettingsView() }) {
+            Label("Settings", systemImage: "slider.horizontal.3")
+          }
+        }
+      }
     }
   }
 }
+

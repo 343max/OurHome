@@ -12,10 +12,14 @@
 		502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
 		502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
 		502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
+		502C731027A5B658006D0132 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730F27A5B658006D0132 /* SettingsView.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
-		503D1DBD27A14EAB00FC8355 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ContentView.swift */; };
+		503D1DBD27A14EAB00FC8355 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		503D1DC227A14EAB00FC8355 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */; };
+		507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 507E8F9627A5B95900FDE508 /* KeychainAccess */; };
+		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
+		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,11 +28,14 @@
 		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
 		502C730D27A56FDF006D0132 /* DoorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorHeader.swift; sourceTree = "<group>"; };
+		502C730F27A5B658006D0132 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
-		503D1DBC27A14EAB00FC8355 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
+		50F4E98427A5BEF200ECD03F /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +71,9 @@
 		503D1DB927A14EAB00FC8355 /* Our Home */ = {
 			isa = PBXGroup;
 			children = (
+				50F4E98227A5BED100ECD03F /* Backend */,
 				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
-				503D1DBC27A14EAB00FC8355 /* ContentView.swift */,
+				503D1DBC27A14EAB00FC8355 /* ControllerView.swift */,
 				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
 				503D1DC027A14EAB00FC8355 /* Preview Content */,
 				502C730327A44E49006D0132 /* Spinner.swift */,
@@ -72,6 +81,7 @@
 				502C730927A47DBB006D0132 /* SpinningButton.swift */,
 				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
 				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
+				502C730F27A5B658006D0132 /* SettingsView.swift */,
 			);
 			path = "Our Home";
 			sourceTree = "<group>";
@@ -82,6 +92,23 @@
 				503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		50F4E98227A5BED100ECD03F /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				50F4E98327A5BEE300ECD03F /* Model */,
+				50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		50F4E98327A5BEE300ECD03F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				50F4E98427A5BEF200ECD03F /* HomeState.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,6 +127,9 @@
 			dependencies = (
 			);
 			name = "Our Home";
+			packageProductDependencies = (
+				507E8F9627A5B95900FDE508 /* KeychainAccess */,
+			);
 			productName = "Our Home";
 			productReference = 503D1DB727A14EAB00FC8355 /* Our Home.app */;
 			productType = "com.apple.product-type.application";
@@ -128,6 +158,9 @@
 				Base,
 			);
 			mainGroup = 503D1DAE27A14EAB00FC8355;
+			packageReferences = (
+				507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 503D1DB827A14EAB00FC8355 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,9 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503D1DBD27A14EAB00FC8355 /* ContentView.swift in Sources */,
+				503D1DBD27A14EAB00FC8355 /* ControllerView.swift in Sources */,
+				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
 				502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */,
+				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
 				502C730427A44E49006D0132 /* Spinner.swift in Sources */,
+				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
@@ -363,6 +399,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		507E8F9627A5B95900FDE508 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 503D1DAF27A14EAB00FC8355 /* Project object */;
 }

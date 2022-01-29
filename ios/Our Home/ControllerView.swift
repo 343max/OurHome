@@ -1,7 +1,8 @@
 import SwiftUI
 
-struct ContentView: View {
+struct ControllerView: View {
   @State private var showDoorOpenerAlert = false
+  @State private var state: HomeState? = nil
 
   var body: some View {
     List() {
@@ -39,12 +40,12 @@ struct ContentView: View {
           Label("Wohnungstür abschließen", systemImage: "lock")
         }
       }
-    }
+    }.navigationTitle("Our Home")
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ControllerView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    ControllerView()
   }
 }

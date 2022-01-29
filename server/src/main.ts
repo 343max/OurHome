@@ -20,6 +20,7 @@ const app = new Application()
 
 const authorized = (
   action: Action,
+  // deno-lint-ignore no-explicit-any
   handler: (c: Context) => Promise<any> | any
 ): [string, HandlerFunc] => [
   `/${action}`,

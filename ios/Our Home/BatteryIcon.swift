@@ -22,11 +22,14 @@ struct BatteryIcon: View {
   }
 
   var body: some View {
-    ZStack {
-      Image(systemName: batteryImage).foregroundColor(criticial ? .red : (charging ? .gray : nil))
-      if charging {
-        Image(systemName: "bolt.fill").foregroundColor(.white)
-        Image(systemName: "bolt")
+    HStack {
+      Text("\(level)%")
+      ZStack {
+        Image(systemName: batteryImage).foregroundColor(criticial ? .red : (charging ? .gray : nil))
+        if charging {
+          Image(systemName: "bolt.fill").foregroundColor(.white)
+          Image(systemName: "bolt")
+        }
       }
     }
   }
