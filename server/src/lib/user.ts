@@ -1,4 +1,4 @@
-import { allUsers } from "../users.ts"
+import { allUsers } from "../secrets.ts"
 
 export type Permission = "full" | "local" | "none"
 

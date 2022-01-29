@@ -1,3 +1,4 @@
+import { getRuntimeConfig } from "./config.ts"
 import { Action } from "./action.ts"
 import { createHash } from "https://deno.land/std@0.77.0/hash/mod.ts"
 import { findUser, Permission, Permissions, User } from "./user.ts"
@@ -34,9 +35,9 @@ export const accessAllowed = (
 }
 
 export const splitAuthHeader = (
-  authHeader: string
+  authHeader: string | null
 ): { username: string; token: string; timestamp: number } | null => {
-  const result = authHeader.split(":")
+  const result = authHeader === null ? [] : authHeader.split(":")
   if (result.length != 3) {
     return null
   }
@@ -51,7 +52,7 @@ export const verifyTimestamps = (
 
 export const getPermissionsKey = (action: Action): null | keyof Permissions => {
   const mapping: Record<Action, null | keyof Permissions> = {
-    auth: null,
+    user: null,
     state: null,
     buzzer: "buzzer",
     lock: "frontdoor",
@@ -68,6 +69,10 @@ export const verifyAuth = (
   now: number = new Date().getTime() / 1000,
   users?: User[]
 ): boolean => {
+  if (getRuntimeConfig().ignoreAuthentication) {
+    return true
+  }
+
   if (header === null) {
     return false
   }
