@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		502C730427A44E49006D0132 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730327A44E49006D0132 /* Spinner.swift */; };
 		502C730827A46C70006D0132 /* SpinnerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730727A46C70006D0132 /* SpinnerWrapper.swift */; };
+		502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
+		502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
+		502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBD27A14EAB00FC8355 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ContentView.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* Begin PBXFileReference section */
 		502C730327A44E49006D0132 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		502C730727A46C70006D0132 /* SpinnerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerWrapper.swift; sourceTree = "<group>"; };
+		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
+		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
+		502C730D27A56FDF006D0132 /* DoorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorHeader.swift; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +69,9 @@
 				503D1DC027A14EAB00FC8355 /* Preview Content */,
 				502C730327A44E49006D0132 /* Spinner.swift */,
 				502C730727A46C70006D0132 /* SpinnerWrapper.swift */,
+				502C730927A47DBB006D0132 /* SpinningButton.swift */,
+				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
+				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
 			);
 			path = "Our Home";
 			sourceTree = "<group>";
@@ -146,8 +155,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				503D1DBD27A14EAB00FC8355 /* ContentView.swift in Sources */,
+				502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */,
 				502C730427A44E49006D0132 /* Spinner.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
+				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
+				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
 				502C730827A46C70006D0132 /* SpinnerWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

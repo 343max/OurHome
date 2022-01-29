@@ -6,21 +6,17 @@ struct ContentView: View {
   var body: some View {
     List() {
       Section("Haustür") {
-        Button {
+        SpinningButton(spinning: .constant(false)) {
           print("was tapped")
         } label: {
-          SpinnerWrapper(spinning: .constant(true)) {
-            Label("Haustür öffnen", systemImage: "figure.walk")
-          }
+          Label("Haustür öffnen", systemImage: "figure.walk")
         }.disabled(true)
       }
-      Section("Wohnungstür") {
-        Button {
+      Section() {
+        SpinningButton(spinning: .constant(true)) {
           showDoorOpenerAlert = true
         } label: {
-          SpinnerWrapper(spinning: .constant(false)) {
-            Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
-          }
+          Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
         }.alert(isPresented: $showDoorOpenerAlert) {
           Alert(
             title: Text("Wohnungstür öffnen?"),
@@ -28,21 +24,19 @@ struct ContentView: View {
             primaryButton: .default(Text("Abbrechen")) { showDoorOpenerAlert = false },
             secondaryButton: .destructive(Text("Wohnungstür öffnen")) { showDoorOpenerAlert = false })
         }
+      } header: {
+        DoorHeader(locked: .constant(false), batteryLevel: .constant(95), batteryCharging: .constant(true), batteryCritical: .constant(false))
       }
       Section() {
-        Button {
+        SpinningButton(spinning: .constant(false)) {
           print("was tapped")
         } label: {
-          SpinnerWrapper(spinning: .constant(false)) {
-            Label("Wohnungstür aufschließen", systemImage: "lock.open")
-          }
+          Label("Wohnungstür aufschließen", systemImage: "lock.open")
         }
-        Button {
+        SpinningButton(spinning: .constant(false)) {
           print("was tapped")
         } label: {
-          SpinnerWrapper(spinning: .constant(false)) {
-            Label("Wohnungstür abschließen", systemImage: "lock")
-          }
+          Label("Wohnungstür abschließen", systemImage: "lock")
         }
       }
     }
