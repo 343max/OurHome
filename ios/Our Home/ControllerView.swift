@@ -3,24 +3,9 @@ import SwiftUI
 struct ControllerView: View {
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
-
-  var body: some View {
-    List() {
-      Section("Haustür") {
-        BuzzerButton()
-      }
-      Section() {
-        UnlatchDoorButton()
-      } header: {
-        DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
-      }
-      Section() {
-        UnlockDoorButton()
-        LockDoorButton()
-      }
-    }
-      .navigationTitle("Our Home")
-      .task {
+  
+  func loadState() {
+    Task {
       do {
         let state = try await sharedHome().getState()
         frontDoorLockState = {
@@ -43,6 +28,28 @@ struct ControllerView: View {
         frontDoorBatteryState = nil
       }
     }
+  }
+
+  var body: some View {
+    List() {
+      Section("Haustür") {
+        BuzzerButton()
+      }
+      Section() {
+        UnlatchDoorButton()
+      } header: {
+        DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
+      }
+      Section() {
+        UnlockDoorButton()
+        LockDoorButton()
+      }
+    }
+      .navigationTitle("Our Home")
+      .onAppear(perform: loadState)
+      .refreshable {
+        loadState()
+      }
   }
 }
 
