@@ -48,6 +48,10 @@ struct Home {
   func pressBuzzer() async throws -> HomeResponse {
     return try await send(HomeResponse.self, .post, action: .buzzer)
   }
+
+  func unlatchDoor() async throws -> HomeResponse {
+    return try await send(HomeResponse.self, .post, action: .unlatch)
+  }
   
   func lockDoor() async throws -> HomeResponse {
     return try await send(HomeResponse.self, .post, action: .lock)

@@ -10,7 +10,7 @@ struct UnlatchDoorButton: View {
         spinning = true
         do {
           exclamationMark = false
-          _ = try await sharedHome().pressBuzzer()
+          _ = try await sharedHome().unlatchDoor()
           try await Task.sleep(seconds: 0.2)
         } catch {
           exclamationMark = true
