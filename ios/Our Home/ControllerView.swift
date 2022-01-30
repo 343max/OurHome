@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ControllerView: View {
-  @State private var frontDoorLocked: Bool? = nil
+  @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
 
   var body: some View {
@@ -20,7 +20,7 @@ struct ControllerView: View {
           Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
         }
       } header: {
-        DoorHeader(locked: $frontDoorLocked, batteryState: $frontDoorBatteryState)
+        DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       Section() {
         SpinningButton(spinning: .constant(false)) {
@@ -35,24 +35,29 @@ struct ControllerView: View {
         }
       }
     }
-    .navigationTitle("Our Home")
-    .task {
-      let state = try! await Home(username: "max", secret: "03d768a9-30c7-44c4-8cbf-852ab24dea21").getState()
-      frontDoorLocked = {
-        switch state.doorlock.state {
-        case .Locked:
-          return true
-        case .Unlocked:
-          return false
-        default:
-          return nil
-        }
-      }()
-      frontDoorBatteryState = BatteryState(
-        level: state.doorlock.batteryChargeState,
-        charging: state.doorlock.batteryCharging,
-        critical: state.doorlock.batteryCritical
-      )
+      .navigationTitle("Our Home")
+      .task {
+      do {
+        let state = try await Home(username: "max", secret: "03d768a9-30c7-44c4-8cbf-852ab24dea21").getState()
+        frontDoorLockState = {
+          switch state.doorlock.state {
+          case .Locked:
+            return .locked
+          case .Unlocked:
+            return .unlocked
+          default:
+            return nil
+          }
+        }()
+        frontDoorBatteryState = BatteryState(
+          level: state.doorlock.batteryChargeState,
+          charging: state.doorlock.batteryCharging,
+          critical: state.doorlock.batteryCritical
+        )
+      } catch {
+        frontDoorLockState = .unreachable
+        frontDoorBatteryState = nil
+      }
     }
   }
 }
