@@ -1,5 +1,14 @@
 import SwiftUI
 
+#if os(watchOS)
+struct Spinner: View {
+  @Binding var spinning: Bool
+  
+  var body: some View {
+    Text("🕝")
+  }
+}
+#else
 struct Spinner: UIViewRepresentable {
   @Binding var spinning: Bool
   
@@ -19,3 +28,4 @@ struct Spinner: UIViewRepresentable {
     }
   }
 }
+#endif
