@@ -16,9 +16,9 @@ struct DoorHeader: View {
         return "hourglass"
       }
       switch lockState {
-      case .locked:
-        return "lock.open.fill"
       case .unlocked:
+        return "lock.open.fill"
+      case .locked:
         return "lock.fill"
       case .unreachable:
         return "lock.slash"
@@ -58,7 +58,7 @@ struct DoorHeader_Previews: PreviewProvider {
         )
       }
       Section {
-        Text("locked")
+        Text("unreachable")
       } header: {
         DoorHeader(
           lockState: .constant(.unreachable),
@@ -66,7 +66,7 @@ struct DoorHeader_Previews: PreviewProvider {
         )
       }
       Section {
-        Text("locked")
+        Text("waiting")
       } header: {
         DoorHeader(
           lockState: .constant(nil),
