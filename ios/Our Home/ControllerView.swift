@@ -41,8 +41,8 @@ struct ControllerView: View {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       Section() {
-        UnlockDoorButton()
-        LockDoorButton()
+        UnlockDoorButton(refresh: loadState)
+        LockDoorButton(refresh: loadState)
       }
     }
       .navigationTitle("Our Home")
