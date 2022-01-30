@@ -1,6 +1,9 @@
 import Foundation
 
-// MARK: - Welcome
+struct HomeResponse: Codable {
+  let success: Bool
+}
+
 struct HomeState: Codable {
   let success: Bool
   let doorlock: Doorlock
@@ -19,7 +22,6 @@ enum DoorlockState: Int, Codable {
   case Undefined = 255
 }
 
-// MARK: - Doorlock
 struct Doorlock: Codable {
   let mode: Int
   let state: DoorlockState

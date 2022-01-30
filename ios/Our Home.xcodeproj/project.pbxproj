@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		502C730427A44E49006D0132 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730327A44E49006D0132 /* Spinner.swift */; };
-		502C730827A46C70006D0132 /* SpinnerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730727A46C70006D0132 /* SpinnerWrapper.swift */; };
 		502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
 		502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
 		502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
 		502C731027A5B658006D0132 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730F27A5B658006D0132 /* SettingsView.swift */; };
 		5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 5037F22B27A5F19C007D1BBA /* Authentication */; };
+		5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23027A6B838007D1BBA /* BuzzerButton.swift */; };
+		5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23227A6BC57007D1BBA /* Task+Sleep.swift */; };
+		5037F23527A6C1AB007D1BBA /* UnlatchDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */; };
+		5037F23727A6C61E007D1BBA /* LockDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23627A6C61E007D1BBA /* LockDoorButton.swift */; };
+		5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23827A6C63D007D1BBA /* UnlockDoorButton.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBD27A14EAB00FC8355 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
@@ -25,12 +29,16 @@
 
 /* Begin PBXFileReference section */
 		502C730327A44E49006D0132 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
-		502C730727A46C70006D0132 /* SpinnerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerWrapper.swift; sourceTree = "<group>"; };
 		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
 		502C730D27A56FDF006D0132 /* DoorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorHeader.swift; sourceTree = "<group>"; };
 		502C730F27A5B658006D0132 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5037F22927A5F18D007D1BBA /* Authentication */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Authentication; path = Packages/Authentication; sourceTree = "<group>"; };
+		5037F23027A6B838007D1BBA /* BuzzerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzerButton.swift; sourceTree = "<group>"; };
+		5037F23227A6BC57007D1BBA /* Task+Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Sleep.swift"; sourceTree = "<group>"; };
+		5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlatchDoorButton.swift; sourceTree = "<group>"; };
+		5037F23627A6C61E007D1BBA /* LockDoorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockDoorButton.swift; sourceTree = "<group>"; };
+		5037F23827A6C63D007D1BBA /* UnlockDoorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockDoorButton.swift; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
@@ -69,6 +77,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5037F22D27A6B553007D1BBA /* ControlButtons */ = {
+			isa = PBXGroup;
+			children = (
+				5037F23027A6B838007D1BBA /* BuzzerButton.swift */,
+				5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */,
+				5037F23627A6C61E007D1BBA /* LockDoorButton.swift */,
+				5037F23827A6C63D007D1BBA /* UnlockDoorButton.swift */,
+			);
+			path = ControlButtons;
+			sourceTree = "<group>";
+		};
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +111,7 @@
 		503D1DB927A14EAB00FC8355 /* Our Home */ = {
 			isa = PBXGroup;
 			children = (
+				5037F22D27A6B553007D1BBA /* ControlButtons */,
 				50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */,
 				50F4E98227A5BED100ECD03F /* Backend */,
 				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
@@ -99,11 +119,11 @@
 				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
 				503D1DC027A14EAB00FC8355 /* Preview Content */,
 				502C730327A44E49006D0132 /* Spinner.swift */,
-				502C730727A46C70006D0132 /* SpinnerWrapper.swift */,
 				502C730927A47DBB006D0132 /* SpinningButton.swift */,
 				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
 				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
 				502C730F27A5B658006D0132 /* SettingsView.swift */,
+				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
 			);
 			path = "Our Home";
 			sourceTree = "<group>";
@@ -211,15 +231,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				503D1DBD27A14EAB00FC8355 /* ControllerView.swift in Sources */,
+				5037F23527A6C1AB007D1BBA /* UnlatchDoorButton.swift in Sources */,
+				5037F23727A6C61E007D1BBA /* LockDoorButton.swift in Sources */,
 				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
+				5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */,
 				502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */,
 				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
 				502C730427A44E49006D0132 /* Spinner.swift in Sources */,
+				5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
+				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
-				502C730827A46C70006D0132 /* SpinnerWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

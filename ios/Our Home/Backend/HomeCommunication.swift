@@ -15,6 +15,10 @@ enum Method: String {
   case post = "POST"
 }
 
+func sharedHome() -> Home {
+  return Home(username: "max", secret: "03d768a9-30c7-44c4-8cbf-852ab24dea21")
+}
+
 struct Home {
   let username: String
   let secret: String
@@ -40,4 +44,17 @@ struct Home {
   func getState() async throws -> HomeState {
     return try await send(HomeState.self, .get, action: .state)
   }
+  
+  func pressBuzzer() async throws -> HomeResponse {
+    return try await send(HomeResponse.self, .post, action: .buzzer)
+  }
+  
+  func lockDoor() async throws -> HomeResponse {
+    return try await send(HomeResponse.self, .post, action: .lock)
+  }
+
+  func unlockDoor() async throws -> HomeResponse {
+    return try await send(HomeResponse.self, .post, action: .unlock)
+  }
+
 }

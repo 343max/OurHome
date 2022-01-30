@@ -7,38 +7,22 @@ struct ControllerView: View {
   var body: some View {
     List() {
       Section("Haustür") {
-        SpinningButton(spinning: .constant(false)) {
-          print("was tapped")
-        } label: {
-          Label("Haustür öffnen", systemImage: "figure.walk")
-        }.disabled(true)
+        BuzzerButton()
       }
       Section() {
-        SpinningButton(spinning: .constant(false)) {
-          print("was tapped")
-        } label: {
-          Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
-        }
+        UnlatchDoorButton()
       } header: {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       Section() {
-        SpinningButton(spinning: .constant(false)) {
-          print("was tapped")
-        } label: {
-          Label("Wohnungstür aufschließen", systemImage: "lock.open")
-        }
-        SpinningButton(spinning: .constant(false)) {
-          print("was tapped")
-        } label: {
-          Label("Wohnungstür abschließen", systemImage: "lock")
-        }
+        UnlockDoorButton()
+        LockDoorButton()
       }
     }
       .navigationTitle("Our Home")
       .task {
       do {
-        let state = try await Home(username: "max", secret: "03d768a9-30c7-44c4-8cbf-852ab24dea21").getState()
+        let state = try await sharedHome().getState()
         frontDoorLockState = {
           switch state.doorlock.state {
           case .Locked:
