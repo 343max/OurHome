@@ -3,6 +3,7 @@ import SwiftUI
 struct UnlatchDoorButton: View {
   @State var spinning = false
   @State var exclamationMark = false
+  let refresh: (() -> Void)?
 
   var body: some View {
     SpinningButton(spinning: $spinning, exclamationMark: $exclamationMark) {
@@ -12,6 +13,7 @@ struct UnlatchDoorButton: View {
           exclamationMark = false
           _ = try await sharedHome().unlatchDoor()
           try await Task.sleep(seconds: 0.2)
+          refresh?()
         } catch {
           exclamationMark = true
         }
@@ -25,6 +27,6 @@ struct UnlatchDoorButton: View {
 
 struct UnlatchDoorButton_Previews: PreviewProvider {
   static var previews: some View {
-    UnlatchDoorButton()
+    UnlatchDoorButton(refresh: nil)
   }
 }

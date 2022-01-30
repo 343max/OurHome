@@ -36,7 +36,7 @@ struct ControllerView: View {
         BuzzerButton()
       }
       Section() {
-        UnlatchDoorButton()
+        UnlatchDoorButton(refresh: loadState)
       } header: {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
