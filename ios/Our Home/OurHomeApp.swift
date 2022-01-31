@@ -6,11 +6,11 @@ struct OurHomeApp: App {
     WindowGroup {
       NavigationView {
         ControllerView()
-//          .toolbar {
-//            NavigationLink(destination: { SettingsView() }) {
-//              Label("Settings", systemImage: "slider.horizontal.3")
-//            }
-//          }
+          .toolbar {
+            NavigationLink(destination: { SettingsView() }) {
+              Label("Einstellungen", systemImage: "slider.horizontal.3")
+            }
+          }
       }.navigationViewStyle(StackNavigationViewStyle())
     }
   }
