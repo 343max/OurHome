@@ -175,15 +175,15 @@
 			path = ControlButtons;
 			sourceTree = "<group>";
 		};
-		5037F24327A702B3007D1BBA /* Our Home Watch WatchKit App */ = {
+		5037F24327A702B3007D1BBA /* WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
 				5037F24427A702B3007D1BBA /* Assets.xcassets */,
 			);
-			path = "Our Home Watch WatchKit App";
+			path = "WatchKit App";
 			sourceTree = "<group>";
 		};
-		5037F24E27A702B4007D1BBA /* Our Home Watch WatchKit Extension */ = {
+		5037F24E27A702B4007D1BBA /* WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
 				5037F25127A702B4007D1BBA /* WatchApp.swift */,
@@ -192,7 +192,7 @@
 				5037F25A27A702B4007D1BBA /* Info.plist */,
 				5037F25727A702B4007D1BBA /* Preview Content */,
 			);
-			path = "Our Home Watch WatchKit Extension";
+			path = "WatchKit Extension";
 			sourceTree = "<group>";
 		};
 		5037F25727A702B4007D1BBA /* Preview Content */ = {
@@ -212,14 +212,22 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		5037F2B427AAA929007D1BBA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
+				5037F2B427AAA929007D1BBA /* Shared */,
 				5037F27627A7EE5A007D1BBA /* Config.xcconfig */,
 				5037F22827A5F18D007D1BBA /* Packages */,
-				503D1DB927A14EAB00FC8355 /* Our Home */,
-				5037F24327A702B3007D1BBA /* Our Home Watch WatchKit App */,
-				5037F24E27A702B4007D1BBA /* Our Home Watch WatchKit Extension */,
+				503D1DB927A14EAB00FC8355 /* iOS */,
+				5037F24327A702B3007D1BBA /* WatchKit App */,
+				5037F24E27A702B4007D1BBA /* WatchKit Extension */,
 				503D1DB827A14EAB00FC8355 /* Products */,
 				5037F22A27A5F19C007D1BBA /* Frameworks */,
 			);
@@ -238,7 +246,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		503D1DB927A14EAB00FC8355 /* Our Home */ = {
+		503D1DB927A14EAB00FC8355 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
@@ -257,7 +265,7 @@
 				502C730927A47DBB006D0132 /* SpinningButton.swift */,
 				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
 			);
-			path = "Our Home";
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		503D1DC027A14EAB00FC8355 /* Preview Content */ = {

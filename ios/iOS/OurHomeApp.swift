@@ -11,7 +11,8 @@ struct OurHomeApp: App {
               Label("Einstellungen", systemImage: "slider.horizontal.3")
             }
           }
-      }.navigationViewStyle(StackNavigationViewStyle())
+      }
+      .navigationViewStyle(StackNavigationViewStyle())
     }
   }
 }
