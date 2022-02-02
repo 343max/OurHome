@@ -24,7 +24,6 @@
 		5037F25227A702B4007D1BBA /* WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F25127A702B4007D1BBA /* WatchApp.swift */; };
 		5037F25427A702B4007D1BBA /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F25327A702B4007D1BBA /* ComplicationController.swift */; };
 		5037F25627A702B4007D1BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5037F25527A702B4007D1BBA /* Assets.xcassets */; };
-		5037F25927A702B4007D1BBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5037F25827A702B4007D1BBA /* Preview Assets.xcassets */; };
 		5037F26627A70387007D1BBA /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
 		5037F26727A7038C007D1BBA /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
 		5037F26827A703B6007D1BBA /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
@@ -43,9 +42,9 @@
 		5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AB27A80DA6007D1BBA /* Configuration.swift */; };
 		5037F2AD27A80DA9007D1BBA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AB27A80DA6007D1BBA /* Configuration.swift */; };
 		5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AF27A80E13007D1BBA /* AppVersion.swift */; };
+		5037F2B627AAAA5A007D1BBA /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AF27A80E13007D1BBA /* AppVersion.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
-		503D1DC227A14EAB00FC8355 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */; };
 		507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 507E8F9627A5B95900FDE508 /* KeychainAccess */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
@@ -112,7 +111,6 @@
 		5037F25127A702B4007D1BBA /* WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchApp.swift; sourceTree = "<group>"; };
 		5037F25327A702B4007D1BBA /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		5037F25527A702B4007D1BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5037F25827A702B4007D1BBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5037F25A27A702B4007D1BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5037F27627A7EE5A007D1BBA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5037F2AB27A80DA6007D1BBA /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
 		50F4E98427A5BEF200ECD03F /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Our-Home-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -190,17 +187,8 @@
 				5037F25327A702B4007D1BBA /* ComplicationController.swift */,
 				5037F25527A702B4007D1BBA /* Assets.xcassets */,
 				5037F25A27A702B4007D1BBA /* Info.plist */,
-				5037F25727A702B4007D1BBA /* Preview Content */,
 			);
 			path = "WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		5037F25727A702B4007D1BBA /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				5037F25827A702B4007D1BBA /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		5037F2AE27A80DEE007D1BBA /* Settings */ = {
@@ -215,8 +203,26 @@
 		5037F2B427AAA929007D1BBA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
+				5037F2AB27A80DA6007D1BBA /* Configuration.swift */,
+				50F4E98227A5BED100ECD03F /* Backend */,
+				5037F2B527AAA961007D1BBA /* Views */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		5037F2B527AAA961007D1BBA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
+				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
+				503D1DBC27A14EAB00FC8355 /* ControllerView.swift */,
+				502C730327A44E49006D0132 /* Spinner.swift */,
+				502C730927A47DBB006D0132 /* SpinningButton.swift */,
+				5037F2AE27A80DEE007D1BBA /* Settings */,
+				5037F22D27A6B553007D1BBA /* ControlButtons */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		503D1DAE27A14EAB00FC8355 = {
@@ -250,30 +256,11 @@
 			isa = PBXGroup;
 			children = (
 				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
-				50F4E98227A5BED100ECD03F /* Backend */,
-				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
-				5037F2AB27A80DA6007D1BBA /* Configuration.swift */,
-				5037F22D27A6B553007D1BBA /* ControlButtons */,
-				503D1DBC27A14EAB00FC8355 /* ControllerView.swift */,
-				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
 				5037F2B127A83C7D007D1BBA /* Our Home.entitlements */,
 				50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */,
 				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
-				503D1DC027A14EAB00FC8355 /* Preview Content */,
-				5037F2AE27A80DEE007D1BBA /* Settings */,
-				502C730327A44E49006D0132 /* Spinner.swift */,
-				502C730927A47DBB006D0132 /* SpinningButton.swift */,
-				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		503D1DC027A14EAB00FC8355 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		50F4E98227A5BED100ECD03F /* Backend */ = {
@@ -439,7 +426,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5037F25927A702B4007D1BBA /* Preview Assets.xcassets in Resources */,
 				5037F25627A702B4007D1BBA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,7 +434,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503D1DC227A14EAB00FC8355 /* Preview Assets.xcassets in Resources */,
 				503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5037F2B627AAAA5A007D1BBA /* AppVersion.swift in Sources */,
 				5037F26D27A703E0007D1BBA /* HomeState.swift in Sources */,
 				5037F27227A70407007D1BBA /* SpinningButton.swift in Sources */,
 				5037F26827A703B6007D1BBA /* DoorHeader.swift in Sources */,
@@ -523,11 +509,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Our Home Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = ATMW4AU45H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Our Home Watch WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home Watch WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = Our_Home_Watch_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -554,11 +539,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Our Home Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = ATMW4AU45H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Our Home Watch WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home Watch WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = Our_Home_Watch_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -776,9 +760,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Our Home/Our Home.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/Our Home.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Our Home/Preview Content\"";
 				DEVELOPMENT_TEAM = ATMW4AU45H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -805,9 +788,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Our Home/Our Home.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/Our Home.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Our Home/Preview Content\"";
 				DEVELOPMENT_TEAM = ATMW4AU45H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
