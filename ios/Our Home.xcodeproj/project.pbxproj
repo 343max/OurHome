@@ -117,6 +117,7 @@
 		5037F27627A7EE5A007D1BBA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5037F2AB27A80DA6007D1BBA /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		5037F2AF27A80E13007D1BBA /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
+		5037F2B127A83C7D007D1BBA /* Our Home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Our Home.entitlements"; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
@@ -240,19 +241,20 @@
 		503D1DB927A14EAB00FC8355 /* Our Home */ = {
 			isa = PBXGroup;
 			children = (
-				5037F2AE27A80DEE007D1BBA /* Settings */,
+				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
+				50F4E98227A5BED100ECD03F /* Backend */,
+				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
 				5037F2AB27A80DA6007D1BBA /* Configuration.swift */,
 				5037F22D27A6B553007D1BBA /* ControlButtons */,
-				50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */,
-				50F4E98227A5BED100ECD03F /* Backend */,
-				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
 				503D1DBC27A14EAB00FC8355 /* ControllerView.swift */,
-				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
+				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
+				5037F2B127A83C7D007D1BBA /* Our Home.entitlements */,
+				50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */,
+				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
 				503D1DC027A14EAB00FC8355 /* Preview Content */,
+				5037F2AE27A80DEE007D1BBA /* Settings */,
 				502C730327A44E49006D0132 /* Spinner.swift */,
 				502C730927A47DBB006D0132 /* SpinningButton.swift */,
-				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
-				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
 				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
 			);
 			path = "Our Home";
@@ -766,13 +768,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Our Home/Our Home.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Our Home/Preview Content\"";
 				DEVELOPMENT_TEAM = ATMW4AU45H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Our-Home-Info.plist";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -795,13 +797,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Our Home/Our Home.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Our Home/Preview Content\"";
 				DEVELOPMENT_TEAM = ATMW4AU45H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Our-Home-Info.plist";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
