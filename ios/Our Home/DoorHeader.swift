@@ -1,20 +1,28 @@
 import SwiftUI
 
-enum OptionalBatteryState {
-  case unknown
-  case known(state: BatteryState)
+enum LockState {
+  case locked
+  case unlocked
+  case unreachable
 }
 
 struct DoorHeader: View {
-  @Binding var locked: Bool?
+  @Binding var lockState: LockState?
   @Binding var batteryState: BatteryState?
-  
+
   var lockImage: String {
     get {
-      guard let locked = locked else {
+      guard let lockState = lockState else {
+        return "hourglass"
+      }
+      switch lockState {
+      case .unlocked:
+        return "lock.open.fill"
+      case .locked:
+        return "lock.fill"
+      case .unreachable:
         return "lock.slash"
       }
-      return locked ? "lock" : "lock.open"
     }
   }
 
@@ -37,7 +45,7 @@ struct DoorHeader_Previews: PreviewProvider {
         Text("unlocked")
       } header: {
         DoorHeader(
-          locked: .constant(false),
+          lockState: .constant(.unlocked),
           batteryState: .constant(BatteryState(level: 95, charging: true, critical: false))
         )
       }
@@ -45,23 +53,23 @@ struct DoorHeader_Previews: PreviewProvider {
         Text("locked")
       } header: {
         DoorHeader(
-          locked: .constant(true),
+          lockState: .constant(.locked),
           batteryState: .constant(BatteryState(level: 95, charging: true, critical: false))
         )
       }
       Section {
-        Text("locked")
+        Text("unreachable")
       } header: {
         DoorHeader(
-          locked: .constant(true),
+          lockState: .constant(.unreachable),
           batteryState: .constant(nil)
         )
       }
       Section {
-        Text("locked")
+        Text("waiting")
       } header: {
         DoorHeader(
-          locked: .constant(nil),
+          lockState: .constant(nil),
           batteryState: .constant(nil)
         )
       }

@@ -1,59 +1,55 @@
 import SwiftUI
 
 struct ControllerView: View {
-  @State private var frontDoorLocked: Bool? = nil
+  @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
+  
+  func loadState() {
+    Task {
+      do {
+        let state = try await sharedHome().getState()
+        frontDoorLockState = {
+          switch state.doorlock.state {
+          case .Locked:
+            return .locked
+          case .Unlocked:
+            return .unlocked
+          default:
+            return nil
+          }
+        }()
+        frontDoorBatteryState = BatteryState(
+          level: state.doorlock.batteryChargeState,
+          charging: state.doorlock.batteryCharging,
+          critical: state.doorlock.batteryCritical
+        )
+      } catch {
+        frontDoorLockState = .unreachable
+        frontDoorBatteryState = nil
+      }
+    }
+  }
 
   var body: some View {
     List() {
       Section("Haustür") {
-        SpinningButton(spinning: .constant(false)) {
-          print("was tapped")
-        } label: {
-          Label("Haustür öffnen", systemImage: "figure.walk")
-        }.disabled(true)
+        BuzzerButton()
       }
       Section() {
-        SpinningButton(spinning: .constant(false)) {
-          print("was tapped")
-        } label: {
-          Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
-        }
+        UnlatchDoorButton(refresh: loadState)
       } header: {
-        DoorHeader(locked: $frontDoorLocked, batteryState: $frontDoorBatteryState)
+        DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       Section() {
-        SpinningButton(spinning: .constant(false)) {
-          print("was tapped")
-        } label: {
-          Label("Wohnungstür aufschließen", systemImage: "lock.open")
-        }
-        SpinningButton(spinning: .constant(false)) {
-          print("was tapped")
-        } label: {
-          Label("Wohnungstür abschließen", systemImage: "lock")
-        }
+        UnlockDoorButton(refresh: loadState)
+        LockDoorButton(refresh: loadState)
       }
     }
-    .navigationTitle("Our Home")
-    .task {
-      let state = try! await Home(username: "max", secret: "03d768a9-30c7-44c4-8cbf-852ab24dea21").getState()
-      frontDoorLocked = {
-        switch state.doorlock.state {
-        case .Locked:
-          return true
-        case .Unlocked:
-          return false
-        default:
-          return nil
-        }
-      }()
-      frontDoorBatteryState = BatteryState(
-        level: state.doorlock.batteryChargeState,
-        charging: state.doorlock.batteryCharging,
-        critical: state.doorlock.batteryCritical
-      )
-    }
+      .navigationTitle("Our Home")
+      .onAppear(perform: loadState)
+      .refreshable {
+        loadState()
+      }
   }
 }
 

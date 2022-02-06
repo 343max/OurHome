@@ -8,14 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		502C730427A44E49006D0132 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730327A44E49006D0132 /* Spinner.swift */; };
-		502C730827A46C70006D0132 /* SpinnerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730727A46C70006D0132 /* SpinnerWrapper.swift */; };
 		502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
 		502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
 		502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
 		502C731027A5B658006D0132 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730F27A5B658006D0132 /* SettingsView.swift */; };
 		5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 5037F22B27A5F19C007D1BBA /* Authentication */; };
+		5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23027A6B838007D1BBA /* BuzzerButton.swift */; };
+		5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23227A6BC57007D1BBA /* Task+Sleep.swift */; };
+		5037F23527A6C1AB007D1BBA /* UnlatchDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */; };
+		5037F23727A6C61E007D1BBA /* LockDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23627A6C61E007D1BBA /* LockDoorButton.swift */; };
+		5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23827A6C63D007D1BBA /* UnlockDoorButton.swift */; };
+		5037F24027A702B3007D1BBA /* Our Home Watch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5037F23F27A702B3007D1BBA /* Our Home Watch WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5037F24527A702B3007D1BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5037F24427A702B3007D1BBA /* Assets.xcassets */; };
+		5037F24B27A702B4007D1BBA /* Our Home Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5037F24A27A702B4007D1BBA /* Our Home Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5037F25227A702B4007D1BBA /* WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F25127A702B4007D1BBA /* WatchApp.swift */; };
+		5037F25427A702B4007D1BBA /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F25327A702B4007D1BBA /* ComplicationController.swift */; };
+		5037F25627A702B4007D1BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5037F25527A702B4007D1BBA /* Assets.xcassets */; };
+		5037F25927A702B4007D1BBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5037F25827A702B4007D1BBA /* Preview Assets.xcassets */; };
+		5037F26627A70387007D1BBA /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
+		5037F26727A7038C007D1BBA /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
+		5037F26827A703B6007D1BBA /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
+		5037F26927A703C0007D1BBA /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
+		5037F26A27A703C9007D1BBA /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
+		5037F26C27A703D5007D1BBA /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 5037F26B27A703D5007D1BBA /* Authentication */; };
+		5037F26D27A703E0007D1BBA /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
+		5037F26E27A703EE007D1BBA /* BuzzerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23027A6B838007D1BBA /* BuzzerButton.swift */; };
+		5037F26F27A703F4007D1BBA /* LockDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23627A6C61E007D1BBA /* LockDoorButton.swift */; };
+		5037F27027A703F4007D1BBA /* UnlatchDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */; };
+		5037F27127A703F4007D1BBA /* UnlockDoorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23827A6C63D007D1BBA /* UnlockDoorButton.swift */; };
+		5037F27227A70407007D1BBA /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
+		5037F27327A70410007D1BBA /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23227A6BC57007D1BBA /* Task+Sleep.swift */; };
+		5037F27427A70413007D1BBA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730F27A5B658006D0132 /* SettingsView.swift */; };
+		5037F27527A7041A007D1BBA /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730327A44E49006D0132 /* Spinner.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
-		503D1DBD27A14EAB00FC8355 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		503D1DC227A14EAB00FC8355 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DC127A14EAB00FC8355 /* Preview Assets.xcassets */; };
 		507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 507E8F9627A5B95900FDE508 /* KeychainAccess */; };
@@ -23,14 +48,70 @@
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5037F24127A702B3007D1BBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503D1DAF27A14EAB00FC8355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5037F23E27A702B3007D1BBA;
+			remoteInfo = "Our Home Watch WatchKit App";
+		};
+		5037F24C27A702B4007D1BBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503D1DAF27A14EAB00FC8355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5037F24927A702B4007D1BBA;
+			remoteInfo = "Our Home Watch WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5037F25E27A702B4007D1BBA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5037F24B27A702B4007D1BBA /* Our Home Watch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5037F26227A702B4007D1BBA /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5037F24027A702B3007D1BBA /* Our Home Watch WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		502C730327A44E49006D0132 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
-		502C730727A46C70006D0132 /* SpinnerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerWrapper.swift; sourceTree = "<group>"; };
 		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
 		502C730D27A56FDF006D0132 /* DoorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorHeader.swift; sourceTree = "<group>"; };
 		502C730F27A5B658006D0132 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5037F22927A5F18D007D1BBA /* Authentication */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Authentication; path = Packages/Authentication; sourceTree = "<group>"; };
+		5037F23027A6B838007D1BBA /* BuzzerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzerButton.swift; sourceTree = "<group>"; };
+		5037F23227A6BC57007D1BBA /* Task+Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Sleep.swift"; sourceTree = "<group>"; };
+		5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlatchDoorButton.swift; sourceTree = "<group>"; };
+		5037F23627A6C61E007D1BBA /* LockDoorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockDoorButton.swift; sourceTree = "<group>"; };
+		5037F23827A6C63D007D1BBA /* UnlockDoorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockDoorButton.swift; sourceTree = "<group>"; };
+		5037F23C27A702B3007D1BBA /* Our Home Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5037F23F27A702B3007D1BBA /* Our Home Watch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5037F24427A702B3007D1BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5037F24A27A702B4007D1BBA /* Our Home Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Our Home Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5037F25127A702B4007D1BBA /* WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchApp.swift; sourceTree = "<group>"; };
+		5037F25327A702B4007D1BBA /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		5037F25527A702B4007D1BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5037F25827A702B4007D1BBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5037F25A27A702B4007D1BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5037F27627A7EE5A007D1BBA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
@@ -42,6 +123,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5037F24727A702B4007D1BBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5037F26C27A703D5007D1BBA /* Authentication in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503D1DB427A14EAB00FC8355 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,11 +158,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5037F22D27A6B553007D1BBA /* ControlButtons */ = {
+			isa = PBXGroup;
+			children = (
+				5037F23027A6B838007D1BBA /* BuzzerButton.swift */,
+				5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */,
+				5037F23627A6C61E007D1BBA /* LockDoorButton.swift */,
+				5037F23827A6C63D007D1BBA /* UnlockDoorButton.swift */,
+			);
+			path = ControlButtons;
+			sourceTree = "<group>";
+		};
+		5037F24327A702B3007D1BBA /* Our Home Watch WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				5037F24427A702B3007D1BBA /* Assets.xcassets */,
+			);
+			path = "Our Home Watch WatchKit App";
+			sourceTree = "<group>";
+		};
+		5037F24E27A702B4007D1BBA /* Our Home Watch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5037F25127A702B4007D1BBA /* WatchApp.swift */,
+				5037F25327A702B4007D1BBA /* ComplicationController.swift */,
+				5037F25527A702B4007D1BBA /* Assets.xcassets */,
+				5037F25A27A702B4007D1BBA /* Info.plist */,
+				5037F25727A702B4007D1BBA /* Preview Content */,
+			);
+			path = "Our Home Watch WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		5037F25727A702B4007D1BBA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5037F25827A702B4007D1BBA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
+				5037F27627A7EE5A007D1BBA /* Config.xcconfig */,
 				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* Our Home */,
+				5037F24327A702B3007D1BBA /* Our Home Watch WatchKit App */,
+				5037F24E27A702B4007D1BBA /* Our Home Watch WatchKit Extension */,
 				503D1DB827A14EAB00FC8355 /* Products */,
 				5037F22A27A5F19C007D1BBA /* Frameworks */,
 			);
@@ -85,6 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				503D1DB727A14EAB00FC8355 /* Our Home.app */,
+				5037F23C27A702B3007D1BBA /* Our Home Watch.app */,
+				5037F23F27A702B3007D1BBA /* Our Home Watch WatchKit App.app */,
+				5037F24A27A702B4007D1BBA /* Our Home Watch WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,6 +226,7 @@
 		503D1DB927A14EAB00FC8355 /* Our Home */ = {
 			isa = PBXGroup;
 			children = (
+				5037F22D27A6B553007D1BBA /* ControlButtons */,
 				50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */,
 				50F4E98227A5BED100ECD03F /* Backend */,
 				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
@@ -99,11 +234,11 @@
 				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
 				503D1DC027A14EAB00FC8355 /* Preview Content */,
 				502C730327A44E49006D0132 /* Spinner.swift */,
-				502C730727A46C70006D0132 /* SpinnerWrapper.swift */,
 				502C730927A47DBB006D0132 /* SpinningButton.swift */,
 				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
 				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
 				502C730F27A5B658006D0132 /* SettingsView.swift */,
+				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
 			);
 			path = "Our Home";
 			sourceTree = "<group>";
@@ -136,6 +271,60 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5037F23B27A702B3007D1BBA /* Our Home Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5037F26327A702B4007D1BBA /* Build configuration list for PBXNativeTarget "Our Home Watch" */;
+			buildPhases = (
+				5037F23A27A702B3007D1BBA /* Resources */,
+				5037F26227A702B4007D1BBA /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5037F24227A702B3007D1BBA /* PBXTargetDependency */,
+			);
+			name = "Our Home Watch";
+			productName = "Our Home Watch";
+			productReference = 5037F23C27A702B3007D1BBA /* Our Home Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		5037F23E27A702B3007D1BBA /* Our Home Watch WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5037F25F27A702B4007D1BBA /* Build configuration list for PBXNativeTarget "Our Home Watch WatchKit App" */;
+			buildPhases = (
+				5037F23D27A702B3007D1BBA /* Resources */,
+				5037F25E27A702B4007D1BBA /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5037F24D27A702B4007D1BBA /* PBXTargetDependency */,
+			);
+			name = "Our Home Watch WatchKit App";
+			productName = "Our Home Watch WatchKit App";
+			productReference = 5037F23F27A702B3007D1BBA /* Our Home Watch WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		5037F24927A702B4007D1BBA /* Our Home Watch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5037F25B27A702B4007D1BBA /* Build configuration list for PBXNativeTarget "Our Home Watch WatchKit Extension" */;
+			buildPhases = (
+				5037F24627A702B4007D1BBA /* Sources */,
+				5037F24727A702B4007D1BBA /* Frameworks */,
+				5037F24827A702B4007D1BBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Our Home Watch WatchKit Extension";
+			packageProductDependencies = (
+				5037F26B27A703D5007D1BBA /* Authentication */,
+			);
+			productName = "Our Home Watch WatchKit Extension";
+			productReference = 5037F24A27A702B4007D1BBA /* Our Home Watch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		503D1DB627A14EAB00FC8355 /* Our Home */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 503D1DC527A14EAB00FC8355 /* Build configuration list for PBXNativeTarget "Our Home" */;
@@ -164,9 +353,18 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					5037F23B27A702B3007D1BBA = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					5037F23E27A702B3007D1BBA = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					5037F24927A702B4007D1BBA = {
+						CreatedOnToolsVersion = 13.3;
+					};
 					503D1DB627A14EAB00FC8355 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -189,11 +387,38 @@
 			projectRoot = "";
 			targets = (
 				503D1DB627A14EAB00FC8355 /* Our Home */,
+				5037F23B27A702B3007D1BBA /* Our Home Watch */,
+				5037F23E27A702B3007D1BBA /* Our Home Watch WatchKit App */,
+				5037F24927A702B4007D1BBA /* Our Home Watch WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5037F23A27A702B3007D1BBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5037F23D27A702B3007D1BBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5037F24527A702B3007D1BBA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5037F24827A702B4007D1BBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5037F25927A702B4007D1BBA /* Preview Assets.xcassets in Resources */,
+				5037F25627A702B4007D1BBA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503D1DB527A14EAB00FC8355 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,26 +431,199 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5037F24627A702B4007D1BBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5037F26D27A703E0007D1BBA /* HomeState.swift in Sources */,
+				5037F27227A70407007D1BBA /* SpinningButton.swift in Sources */,
+				5037F26827A703B6007D1BBA /* DoorHeader.swift in Sources */,
+				5037F26F27A703F4007D1BBA /* LockDoorButton.swift in Sources */,
+				5037F27527A7041A007D1BBA /* Spinner.swift in Sources */,
+				5037F25227A702B4007D1BBA /* WatchApp.swift in Sources */,
+				5037F26E27A703EE007D1BBA /* BuzzerButton.swift in Sources */,
+				5037F26927A703C0007D1BBA /* BatteryIcon.swift in Sources */,
+				5037F27427A70413007D1BBA /* SettingsView.swift in Sources */,
+				5037F26A27A703C9007D1BBA /* HomeCommunication.swift in Sources */,
+				5037F27127A703F4007D1BBA /* UnlockDoorButton.swift in Sources */,
+				5037F25427A702B4007D1BBA /* ComplicationController.swift in Sources */,
+				5037F26727A7038C007D1BBA /* ControllerView.swift in Sources */,
+				5037F27027A703F4007D1BBA /* UnlatchDoorButton.swift in Sources */,
+				5037F27327A70410007D1BBA /* Task+Sleep.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503D1DB327A14EAB00FC8355 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503D1DBD27A14EAB00FC8355 /* ControllerView.swift in Sources */,
+				5037F26627A70387007D1BBA /* ControllerView.swift in Sources */,
+				5037F23527A6C1AB007D1BBA /* UnlatchDoorButton.swift in Sources */,
+				5037F23727A6C61E007D1BBA /* LockDoorButton.swift in Sources */,
 				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
+				5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */,
 				502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */,
 				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
 				502C730427A44E49006D0132 /* Spinner.swift in Sources */,
+				5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
+				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
-				502C730827A46C70006D0132 /* SpinnerWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5037F24227A702B3007D1BBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5037F23E27A702B3007D1BBA /* Our Home Watch WatchKit App */;
+			targetProxy = 5037F24127A702B3007D1BBA /* PBXContainerItemProxy */;
+		};
+		5037F24D27A702B4007D1BBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5037F24927A702B4007D1BBA /* Our Home Watch WatchKit Extension */;
+			targetProxy = 5037F24C27A702B4007D1BBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5037F25C27A702B4007D1BBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Our Home Watch WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Our Home Watch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Our Home Watch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Our_Home_Watch_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home-Watch.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		5037F25D27A702B4007D1BBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Our Home Watch WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Our Home Watch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Our Home Watch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Our_Home_Watch_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home-Watch.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		5037F26027A702B4007D1BBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Our_Home_Watch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Our Home Watch WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home-Watch.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		5037F26127A702B4007D1BBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Our_Home_Watch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Our Home Watch WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home-Watch.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		5037F26427A702B4007D1BBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home-Watch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5037F26527A702B4007D1BBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home-Watch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		503D1DC327A14EAB00FC8355 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -260,6 +658,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER:default=0)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -289,6 +688,7 @@
 		};
 		503D1DC427A14EAB00FC8355 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5037F27627A7EE5A007D1BBA /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -321,6 +721,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER:default=0)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -348,7 +749,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Our Home/Preview Content\"";
 				DEVELOPMENT_TEAM = ATMW4AU45H;
 				ENABLE_PREVIEWS = YES;
@@ -378,7 +778,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Our Home/Preview Content\"";
 				DEVELOPMENT_TEAM = ATMW4AU45H;
 				ENABLE_PREVIEWS = YES;
@@ -405,6 +804,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5037F25B27A702B4007D1BBA /* Build configuration list for PBXNativeTarget "Our Home Watch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5037F25C27A702B4007D1BBA /* Debug */,
+				5037F25D27A702B4007D1BBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5037F25F27A702B4007D1BBA /* Build configuration list for PBXNativeTarget "Our Home Watch WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5037F26027A702B4007D1BBA /* Debug */,
+				5037F26127A702B4007D1BBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5037F26327A702B4007D1BBA /* Build configuration list for PBXNativeTarget "Our Home Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5037F26427A702B4007D1BBA /* Debug */,
+				5037F26527A702B4007D1BBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		503D1DB227A14EAB00FC8355 /* Build configuration list for PBXProject "Our Home" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -438,6 +864,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Authentication;
+		};
+		5037F26B27A703D5007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
 		};
