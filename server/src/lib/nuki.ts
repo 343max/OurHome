@@ -11,14 +11,23 @@ export const getNukiUrl = (
   return `http://${host}:${port}/${action}?${allParams}`
 }
 
+// deno-lint-ignore no-explicit-any
+const parseJson = async (response: Response): Promise<any> => {
+  try {
+    return await response.json()
+  } catch (error) {
+    throw Error([error, `tried to parse: ${await response.text()}`].join("\n"))
+  }
+}
+
 export const nukiLock = async (config: NukiConfiguration) =>
-  await (await fetch(getNukiUrl("lock", config))).json()
+  await parseJson(await fetch(getNukiUrl("lock", config)))
 
 export const nukiUnlock = async (config: NukiConfiguration) =>
-  await (await fetch(getNukiUrl("unlock", config))).json()
+  await parseJson(await fetch(getNukiUrl("unlock", config)))
 
 export const nukiUnlatch = async (config: NukiConfiguration) =>
-  await (await fetch(getNukiUrl("lockAction", config, { action: 3 }))).json()
+  await parseJson(await fetch(getNukiUrl("lockAction", config, { action: 3 })))
 
 export enum NukiSmartLockState {
   Uncalibrated = 0,
