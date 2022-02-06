@@ -93,7 +93,7 @@ export const verifyAuth = (
     return false
   }
 
-  if (getToken(user.name, user.secret, action, timestamp) !== token) {
+  if (getToken(user.username, user.secret, action, timestamp) !== token) {
     return false
   }
 

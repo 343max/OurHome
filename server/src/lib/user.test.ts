@@ -4,22 +4,26 @@ import { assertEquals } from "https://deno.land/std@0.123.0/testing/asserts.ts"
 Deno.test("findUser", () => {
   const fakeUsers: User[] = [
     {
-      name: "ringo",
+      username: "ringo",
+      displayName: "Ringo Start",
       secret: "aaa",
       permissions: { frontdoor: "full", buzzer: "full", unlatch: "full" },
     },
     {
-      name: "george",
+      username: "george",
+      displayName: "George Harrison",
       secret: "bbbb",
       permissions: { frontdoor: "full", buzzer: "full", unlatch: "full" },
     },
     {
-      name: "john",
+      username: "john",
+      displayName: "John Lennon",
       secret: "dead",
       permissions: { frontdoor: "full", buzzer: "full", unlatch: "full" },
     },
     {
-      name: "paul",
+      username: "paul",
+      displayName: "Paul McCartney",
       secret: "deaf",
       permissions: { frontdoor: "full", buzzer: "full", unlatch: "full" },
     },
@@ -27,7 +31,7 @@ Deno.test("findUser", () => {
 
   const user = findUser("john", fakeUsers)!
   console.log(user)
-  assertEquals(user.name, "john")
+  assertEquals(user.username, "john")
 
   assertEquals(findUser("nobody", fakeUsers), null)
 })
