@@ -2,7 +2,9 @@ import SwiftUI
 
 struct SettingsView: View {
   var body: some View {
-    Text("Empty Settings").navigationTitle("Settings")
+    List {
+      Text("Version \(appVersion())")
+    }.navigationTitle("Einstellungen")
   }
 }
 
