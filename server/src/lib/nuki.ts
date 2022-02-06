@@ -54,4 +54,4 @@ type NukiSmartLockConfig = {
 export const getNukiLockConfig = async (
   config: NukiConfiguration
 ): Promise<NukiSmartLockConfig> =>
-  await (await fetch(getNukiUrl("lockState", config))).json()
+  await parseJson(await fetch(getNukiUrl("lockState", config)))
