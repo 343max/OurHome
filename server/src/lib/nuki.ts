@@ -13,10 +13,11 @@ export const getNukiUrl = (
 
 // deno-lint-ignore no-explicit-any
 const parseJson = async (response: Response): Promise<any> => {
+  const text = await response.text()
   try {
-    return await response.json()
+    return JSON.parse(text)
   } catch (error) {
-    throw Error([error, `tried to parse: ${await response.text()}`].join("\n"))
+    throw Error([error, `tried to parse: ${text}`].join("\n"))
   }
 }
 
