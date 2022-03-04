@@ -19,10 +19,11 @@ struct LoginHandlerView<Content: View>: View {
       .sheet(isPresented: showLoggedOutSheet)
     {
       LoggedOutView()
+        .interactiveDismissDisabled(true)
     }
       .sheet(isPresented: showLoggingInSheet)
     {
-      Text("logging in").interactiveDismissDisabled(true)
+      LoggingInView().interactiveDismissDisabled(true)
     }
       .onOpenURL
     { url in

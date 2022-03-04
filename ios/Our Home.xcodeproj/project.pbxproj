@@ -48,6 +48,7 @@
 		5037F2BC27ABF513007D1BBA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2BB27ABF513007D1BBA /* Session.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
+		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
 		507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 507E8F9627A5B95900FDE508 /* KeychainAccess */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
@@ -126,6 +127,7 @@
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		505C1B8F27B1630A00C1D268 /* LoggingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInView.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
 		50F4E98427A5BEF200ECD03F /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Our-Home-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -268,6 +270,7 @@
 				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
 				5037F2B727AAAB8A007D1BBA /* LoginHandlerView.swift */,
 				5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */,
+				505C1B8F27B1630A00C1D268 /* LoggingInView.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				5037F26627A70387007D1BBA /* ControllerView.swift in Sources */,
 				5037F23527A6C1AB007D1BBA /* UnlatchDoorButton.swift in Sources */,
 				5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */,
+				505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */,
 				5037F23727A6C61E007D1BBA /* LockDoorButton.swift in Sources */,
 				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
 				5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */,
