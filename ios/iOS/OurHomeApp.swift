@@ -8,14 +8,13 @@ struct OurHomeApp: App {
         NavigationView {
           ControllerView()
             .toolbar {
-            NavigationLink(destination: { SettingsView() }) {
-              Label("Einstellungen", systemImage: "slider.horizontal.3")
+              NavigationLink(destination: { SettingsView() }) {
+                Label("Einstellungen", systemImage: "slider.horizontal.3")
+              }
             }
-          }
         }
-          .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
       }
     }
   }
 }
-

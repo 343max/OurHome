@@ -1,13 +1,13 @@
-import Foundation
 import Authentication
+import Foundation
 
 enum Action: String {
-  case lock = "lock"
-  case unlock = "unlock"
-  case unlatch = "unlatch"
-  case buzzer = "buzzer"
-  case state = "state"
-  case user = "user"
+  case lock
+  case unlock
+  case unlatch
+  case buzzer
+  case state
+  case user
 }
 
 enum Method: String {
@@ -30,7 +30,7 @@ struct Home {
     return URL(string: "\(localNetworkHost)\(action.rawValue)")!
   }
 
-  func send<T>(_ type: T.Type, _ method: Method, action: Action) async throws -> T where T : Decodable {
+  func send<T>(_ type: T.Type, _ method: Method, action: Action) async throws -> T where T: Decodable {
     var request = URLRequest(url: url(action: action))
     request.httpMethod = method.rawValue
     request.addValue(
@@ -44,7 +44,7 @@ struct Home {
   func getState() async throws -> HomeState {
     return try await send(HomeState.self, .get, action: .state)
   }
-  
+
   func pressBuzzer() async throws -> HomeResponse {
     return try await send(HomeResponse.self, .post, action: .buzzer)
   }
@@ -52,7 +52,7 @@ struct Home {
   func unlatchDoor() async throws -> HomeResponse {
     return try await send(HomeResponse.self, .post, action: .unlatch)
   }
-  
+
   func lockDoor() async throws -> HomeResponse {
     return try await send(HomeResponse.self, .post, action: .lock)
   }
@@ -60,5 +60,4 @@ struct Home {
   func unlockDoor() async throws -> HomeResponse {
     return try await send(HomeResponse.self, .post, action: .unlock)
   }
-
 }

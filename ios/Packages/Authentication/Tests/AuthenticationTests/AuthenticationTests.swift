@@ -1,5 +1,5 @@
-import XCTest
 @testable import Authentication
+import XCTest
 
 final class AuthenticationTests: XCTestCase {
   func testGetAuthHeader() {

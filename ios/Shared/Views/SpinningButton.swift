@@ -11,10 +11,10 @@ struct SpinningButton<Content: View>: View {
       HStack {
         label()
         Spacer()
-        if (exclamationMark) {
+        if exclamationMark {
           Image(systemName: "exclamationmark.triangle").foregroundColor(.red)
         }
-        if (spinning) {
+        if spinning {
           Spinner(spinning: .constant(true))
         }
       }
