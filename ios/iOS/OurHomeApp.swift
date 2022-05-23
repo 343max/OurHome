@@ -13,7 +13,7 @@ struct OurHomeApp: App {
 //              }
 //            }
 //        }
-//        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
       }
     }
   }
