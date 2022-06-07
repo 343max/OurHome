@@ -20,11 +20,9 @@ const parseJson = async (response: Response): Promise<any> => {
     return JSON.parse(text)
   } catch (error) {
     throw Error(
-      [
-        error,
-        `tried to parse: ${await response.text()}`,
-        `status: ${response.status}`,
-      ].join("\n")
+      [error, `tried to parse: ${text}`, `status: ${response.status}`].join(
+        "\n"
+      )
     )
   }
 }
