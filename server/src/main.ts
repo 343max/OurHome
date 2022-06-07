@@ -53,8 +53,8 @@ console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
 
 Deno.run({
   cmd: ["autossh", "-R 4278:localhost:4278", "max@343max.de"],
+  stdin: "null",
   stdout: "null",
-  stderr: "piped",
 })
 
 app
