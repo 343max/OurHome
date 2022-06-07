@@ -21,11 +21,17 @@ const app = new Application()
 const authorized = (
   action: Action,
   // deno-lint-ignore no-explicit-any
-  handler: (c: Context) => Promise<any> | any
+  handler: (c: Context) => Promise<any> | any,
+  allowExternal = false
 ): [string, HandlerFunc] => [
   `/${action}`,
   async (c) => {
-    if (verifyAuth(c.request.headers.get("Authorization"), action, "remote")) {
+    const authHeader = c.request.headers.get("Authorization")
+    const externHeader = c.request.headers.get("X-External-Host")
+    console.log(externHeader)
+    if (
+      verifyAuth(authHeader, action, externHeader === null ? "local" : "remote")
+    ) {
       c.response.headers.append(
         "content-type",
         "application/json; charset=UTF-8"
