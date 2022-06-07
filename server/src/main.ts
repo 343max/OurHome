@@ -28,7 +28,6 @@ const authorized = (
   async (c) => {
     const authHeader = c.request.headers.get("Authorization")
     const externHeader = c.request.headers.get("X-External-Host")
-    console.log(externHeader)
     if (
       verifyAuth(authHeader, action, externHeader === null ? "local" : "remote")
     ) {
@@ -51,6 +50,12 @@ if (getRuntimeConfig().ignoreAuthentication) {
 
 const port = 4278
 console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
+
+Deno.run({
+  cmd: ["autossh", "-R 4278:localhost:4278", "max@343max.de"],
+  stdout: "null",
+  stderr: "piped",
+})
 
 app
   .post(
