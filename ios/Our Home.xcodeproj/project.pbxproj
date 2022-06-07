@@ -49,7 +49,6 @@
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
-		507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 507E8F9627A5B95900FDE508 /* KeychainAccess */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 /* End PBXBuildFile section */
@@ -147,7 +146,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */,
-				507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,13 +158,6 @@
 				5037F22927A5F18D007D1BBA /* Authentication */,
 			);
 			name = Packages;
-			sourceTree = "<group>";
-		};
-		5037F22A27A5F19C007D1BBA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5037F22D27A6B553007D1BBA /* ControlButtons */ = {
@@ -244,7 +235,6 @@
 				5037F24327A702B3007D1BBA /* WatchKit App */,
 				5037F24E27A702B4007D1BBA /* WatchKit Extension */,
 				503D1DB827A14EAB00FC8355 /* Products */,
-				5037F22A27A5F19C007D1BBA /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -363,7 +353,6 @@
 			);
 			name = "Our Home";
 			packageProductDependencies = (
-				507E8F9627A5B95900FDE508 /* KeychainAccess */,
 				5037F22B27A5F19C007D1BBA /* Authentication */,
 			);
 			productName = "Our Home";
@@ -404,7 +393,6 @@
 			);
 			mainGroup = 503D1DAE27A14EAB00FC8355;
 			packageReferences = (
-				507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 503D1DB827A14EAB00FC8355 /* Products */;
 			projectDirPath = "";
@@ -877,17 +865,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -896,11 +873,6 @@
 		5037F26B27A703D5007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
-		};
-		507E8F9627A5B95900FDE508 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
