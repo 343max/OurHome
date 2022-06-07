@@ -3,7 +3,7 @@ import SwiftUI
 struct ControllerView: View {
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
-  
+
   func loadState() {
     Task {
       do {
@@ -31,25 +31,25 @@ struct ControllerView: View {
   }
 
   var body: some View {
-    List() {
+    List {
       Section("Haustür") {
         BuzzerButton()
       }
-      Section() {
+      Section {
         UnlatchDoorButton(refresh: loadState)
       } header: {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
-      Section() {
+      Section {
         UnlockDoorButton(refresh: loadState)
         LockDoorButton(refresh: loadState)
       }
     }
-      .navigationTitle("Our Home")
-      .onAppear(perform: loadState)
-      .refreshable {
-        loadState()
-      }
+    .navigationTitle("Our Home")
+    .onAppear(perform: loadState)
+    .refreshable {
+      loadState()
+    }
   }
 }
 

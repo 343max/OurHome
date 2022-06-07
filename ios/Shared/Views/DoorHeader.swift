@@ -11,18 +11,16 @@ struct DoorHeader: View {
   @Binding var batteryState: BatteryState?
 
   var lockImage: String {
-    get {
-      guard let lockState = lockState else {
-        return "hourglass"
-      }
-      switch lockState {
-      case .unlocked:
-        return "lock.open.fill"
-      case .locked:
-        return "lock.fill"
-      case .unreachable:
-        return "lock.slash"
-      }
+    guard let lockState = lockState else {
+      return "hourglass"
+    }
+    switch lockState {
+    case .unlocked:
+      return "lock.open.fill"
+    case .locked:
+      return "lock.fill"
+    case .unreachable:
+      return "lock.slash"
     }
   }
 
@@ -39,7 +37,6 @@ struct DoorHeader: View {
 
 struct DoorHeader_Previews: PreviewProvider {
   static var previews: some View {
-
     List {
       Section {
         Text("unlocked")
@@ -73,7 +70,6 @@ struct DoorHeader_Previews: PreviewProvider {
           batteryState: .constant(nil)
         )
       }
-
     }
   }
 }

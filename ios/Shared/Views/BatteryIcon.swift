@@ -18,18 +18,16 @@ struct BatteryIcon: View {
   #endif
 
   var batteryImage: String {
-    get {
-      if state.level < 20 {
-        return "battery.0"
-      } else if state.level < 45 {
-        return "battery.25"
-      } else if state.level < 70 {
-        return "battery.50"
-      } else if state.level < 95 {
-        return "battery.75"
-      } else {
-        return "battery.100"
-      }
+    if state.level < 20 {
+      return "battery.0"
+    } else if state.level < 45 {
+      return "battery.25"
+    } else if state.level < 70 {
+      return "battery.50"
+    } else if state.level < 95 {
+      return "battery.75"
+    } else {
+      return "battery.100"
     }
   }
 

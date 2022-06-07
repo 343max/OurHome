@@ -48,15 +48,15 @@ platform :ios do
       in_house: false,
     )
 
-    match(
-      type: 'appstore',
-      app_identifier: ["de.343max.ourhome.Our-Home"],
-      api_key: api_key,
-      readonly: false,
-      git_url: 'https://github.com/343max/ourhome-certs.git',
-      keychain_name: keychain_name,
-      keychain_password: keychain_password,
-    )
+    # match(
+    #   type: 'appstore',
+    #   app_identifier: ["de.343max.ourhome.Our-Home"],
+    #   api_key: api_key,
+    #   readonly: false,
+    #   git_url: 'https://github.com/343max/ourhome-certs.git',
+    #   keychain_name: keychain_name,
+    #   keychain_password: keychain_password,
+    # )
     
     build_app(
       project: "Our Home.xcodeproj/",
