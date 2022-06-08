@@ -23,16 +23,13 @@ struct Home {
   let username: String
   let secret: String
 
-  let localNetworkHost = "http://plex-server.fritz.box:4278/"
-  let externalHost = "https://home.343max.de/"
+  static let localNetworkHost = URL(string: "http://plex-server.fritz.box:4278/")!
+  static let externalHost = URL(string: "https://home.343max.de/")!
+  
 //  let localNetworkHost = "http://localhost:4278/"
 
   func url(action: Action, external: Bool = false) -> URL {
-    if external {
-      return URL(string: "\(externalHost)\(action.rawValue)")!
-    } else {
-      return URL(string: "\(localNetworkHost)\(action.rawValue)")!
-    }
+    return (external ? Home.externalHost : Home.localNetworkHost).appendingPathComponent(action.rawValue)
   }
 
   func send<T>(_ type: T.Type, _ method: Method, action: Action, external: Bool = false) async throws -> T where T: Decodable {

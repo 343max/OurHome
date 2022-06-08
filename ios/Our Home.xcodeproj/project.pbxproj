@@ -49,6 +49,7 @@
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
+		50BBFFB028511F25001F1006 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFAF28511F25001F1006 /* Reachability.swift */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 /* End PBXBuildFile section */
@@ -127,6 +128,7 @@
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505C1B8F27B1630A00C1D268 /* LoggingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInView.swift; sourceTree = "<group>"; };
+		50BBFFAF28511F25001F1006 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
 		50F4E98427A5BEF200ECD03F /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Our-Home-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -207,6 +209,7 @@
 				50F4E98227A5BED100ECD03F /* Backend */,
 				5037F2B527AAA961007D1BBA /* Views */,
 				5037F2BB27ABF513007D1BBA /* Session.swift */,
+				50BBFFAF28511F25001F1006 /* Reachability.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */,
 				5037F2BC27ABF513007D1BBA /* Session.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
+				50BBFFB028511F25001F1006 /* Reachability.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
 				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
