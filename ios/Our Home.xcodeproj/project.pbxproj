@@ -50,6 +50,7 @@
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
 		50BBFFB028511F25001F1006 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFAF28511F25001F1006 /* Reachability.swift */; };
+		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 /* End PBXBuildFile section */
@@ -129,6 +130,7 @@
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505C1B8F27B1630A00C1D268 /* LoggingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInView.swift; sourceTree = "<group>"; };
 		50BBFFAF28511F25001F1006 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
 		50F4E98427A5BEF200ECD03F /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Our-Home-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -264,6 +266,7 @@
 				5037F2B727AAAB8A007D1BBA /* LoginHandlerView.swift */,
 				5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */,
 				505C1B8F27B1630A00C1D268 /* LoggingInView.swift */,
+				50BBFFB128512E6B001F1006 /* LocationChecker.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */,
 				5037F26627A70387007D1BBA /* ControllerView.swift in Sources */,
 				5037F23527A6C1AB007D1BBA /* UnlatchDoorButton.swift in Sources */,
 				5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */,

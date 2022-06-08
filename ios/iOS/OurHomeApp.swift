@@ -2,6 +2,8 @@ import SwiftUI
 
 @main
 struct OurHomeApp: App {
+  let locationChecker = LocationChecker()
+  
   var body: some Scene {
     WindowGroup {
 //      LoginHandlerView {
