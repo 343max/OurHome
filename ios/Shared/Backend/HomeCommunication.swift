@@ -19,6 +19,7 @@ func sharedHome() -> Home {
   return Home(username: "max", secret: "03d768a9-30c7-44c4-8cbf-852ab24dea21")
 }
 
+@MainActor
 struct Home {
   let username: String
   let secret: String

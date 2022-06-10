@@ -24,7 +24,7 @@ struct OurHomeApp: App {
         .navigationViewStyle(StackNavigationViewStyle())
         }.onAppear() {
           if ProcessInfo.processInfo.environment["FAKE_PUSH"] == "1" {
-            notificationProvider.showBuzzerNotification()
+            notificationProvider.showBuzzerNotification(delayed: true)
           }
         }
     }

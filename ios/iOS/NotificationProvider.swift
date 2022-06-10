@@ -21,16 +21,18 @@ class NotificationProvider: NSObject {
     UNUserNotificationCenter.current().setNotificationCategories([category])
   }
   
-  func showBuzzerNotification() {
+  func showBuzzerNotification(delayed: Bool = false) {
     let content = UNMutableNotificationContent()
     content.title = "Haustüröffner drücken"
     content.subtitle = "Tippe diese notification an, um den Haustüröffner zu drücken."
     content.sound = .default
     content.categoryIdentifier = categoryIdentifier
     
+    let trigger = delayed ? UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false) : nil
+    
     UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: UUID().uuidString,
                                                                  content: content,
-                                                                 trigger: nil))
+                                                                 trigger: trigger))
   }
 }
 
