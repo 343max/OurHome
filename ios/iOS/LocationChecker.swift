@@ -4,7 +4,7 @@ import UserNotifications
 class LocationChecker: NSObject {
   let locationManager = CLLocationManager()
   let homeRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 52.53826033352572, longitude: 13.425414271771368),
-                                    radius: 100, // m
+                                    radius: 50, // m
                                     identifier: "home")
   
   override init() {
