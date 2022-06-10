@@ -49,7 +49,9 @@
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
-		507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 507E8F9627A5B95900FDE508 /* KeychainAccess */; };
+		5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
+		50BBFFB028511F25001F1006 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFAF28511F25001F1006 /* Reachability.swift */; };
+		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 /* End PBXBuildFile section */
@@ -128,6 +130,9 @@
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505C1B8F27B1630A00C1D268 /* LoggingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInView.swift; sourceTree = "<group>"; };
+		5088888C285357B4006B8808 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
+		50BBFFAF28511F25001F1006 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
 		50F4E98427A5BEF200ECD03F /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Our-Home-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -147,7 +152,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */,
-				507E8F9727A5B95900FDE508 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,13 +164,6 @@
 				5037F22927A5F18D007D1BBA /* Authentication */,
 			);
 			name = Packages;
-			sourceTree = "<group>";
-		};
-		5037F22A27A5F19C007D1BBA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5037F22D27A6B553007D1BBA /* ControlButtons */ = {
@@ -216,6 +213,7 @@
 				50F4E98227A5BED100ECD03F /* Backend */,
 				5037F2B527AAA961007D1BBA /* Views */,
 				5037F2BB27ABF513007D1BBA /* Session.swift */,
+				50BBFFAF28511F25001F1006 /* Reachability.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -244,7 +242,6 @@
 				5037F24327A702B3007D1BBA /* WatchKit App */,
 				5037F24E27A702B4007D1BBA /* WatchKit Extension */,
 				503D1DB827A14EAB00FC8355 /* Products */,
-				5037F22A27A5F19C007D1BBA /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -271,6 +268,8 @@
 				5037F2B727AAAB8A007D1BBA /* LoginHandlerView.swift */,
 				5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */,
 				505C1B8F27B1630A00C1D268 /* LoggingInView.swift */,
+				50BBFFB128512E6B001F1006 /* LocationChecker.swift */,
+				5088888C285357B4006B8808 /* NotificationProvider.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -363,7 +362,6 @@
 			);
 			name = "Our Home";
 			packageProductDependencies = (
-				507E8F9627A5B95900FDE508 /* KeychainAccess */,
 				5037F22B27A5F19C007D1BBA /* Authentication */,
 			);
 			productName = "Our Home";
@@ -404,7 +402,6 @@
 			);
 			mainGroup = 503D1DAE27A14EAB00FC8355;
 			packageReferences = (
-				507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 503D1DB827A14EAB00FC8355 /* Products */;
 			projectDirPath = "";
@@ -481,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */,
 				5037F26627A70387007D1BBA /* ControllerView.swift in Sources */,
 				5037F23527A6C1AB007D1BBA /* UnlatchDoorButton.swift in Sources */,
 				5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */,
@@ -495,10 +493,12 @@
 				5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */,
 				5037F2BC27ABF513007D1BBA /* Session.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
+				50BBFFB028511F25001F1006 /* Reachability.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
 				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
+				5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */,
 				5037F2B827AAAB8A007D1BBA /* LoginHandlerView.swift in Sources */,
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
 			);
@@ -877,17 +877,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -896,11 +885,6 @@
 		5037F26B27A703D5007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
-		};
-		507E8F9627A5B95900FDE508 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 507E8F9527A5B95900FDE508 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

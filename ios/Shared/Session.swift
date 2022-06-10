@@ -1,5 +1,5 @@
 import Foundation
-import KeychainAccess
+//import KeychainAccess
 
 enum LoginState: Equatable {
   case loggedOut
@@ -9,7 +9,7 @@ enum LoginState: Equatable {
 
 class Session: ObservableObject {
   @Published public private(set) var loggedInState: LoginState = .loggedOut
-  private let keychain = Keychain(service: "de.343max.ourHome")
+//  private let keychain = Keychain(service: "de.343max.ourHome")
 
   enum Keys: String {
     case username
@@ -18,16 +18,16 @@ class Session: ObservableObject {
 
   init() throws {}
 
-  private func read() throws -> LoginState {
-    let username = try keychain.get(Keys.username.rawValue)
-    let secret = try keychain.get(Keys.secret.rawValue)
-
-    guard let username = username, let secret = secret else {
-      return .loggedOut
-    }
-
-    return .loggedIn(username: username, secret: secret)
-  }
+//  private func read() throws -> LoginState {
+//    let username = try keychain.get(Keys.username.rawValue)
+//    let secret = try keychain.get(Keys.secret.rawValue)
+//
+//    guard let username = username, let secret = secret else {
+//      return .loggedOut
+//    }
+//
+//    return .loggedIn(username: username, secret: secret)
+//  }
 
   private func parse(url: URL) -> (String, String)? {
     guard let fragment = url.fragment else {

@@ -23,15 +23,17 @@ struct Home {
   let username: String
   let secret: String
 
-  let localNetworkHost = "http://plex-server.fritz.box:4278/"
+  static let localNetworkHost = URL(string: "http://plex-server.fritz.box:4278/")!
+  static let externalHost = URL(string: "https://home.343max.de/")!
+  
 //  let localNetworkHost = "http://localhost:4278/"
 
-  func url(action: Action) -> URL {
-    return URL(string: "\(localNetworkHost)\(action.rawValue)")!
+  func url(action: Action, external: Bool = false) -> URL {
+    return (external ? Home.externalHost : Home.localNetworkHost).appendingPathComponent(action.rawValue)
   }
 
-  func send<T>(_ type: T.Type, _ method: Method, action: Action) async throws -> T where T: Decodable {
-    var request = URLRequest(url: url(action: action))
+  func send<T>(_ type: T.Type, _ method: Method, action: Action, external: Bool = false) async throws -> T where T: Decodable {
+    var request = URLRequest(url: url(action: action, external: external))
     request.httpMethod = method.rawValue
     request.addValue(
       getAuthHeader(user: username, secret: secret, action: action.rawValue, timestamp: Date().timeIntervalSince1970),
@@ -42,11 +44,11 @@ struct Home {
   }
 
   func getState() async throws -> HomeState {
-    return try await send(HomeState.self, .get, action: .state)
+    return try await send(HomeState.self, .get, action: .state, external: true)
   }
 
   func pressBuzzer() async throws -> HomeResponse {
-    return try await send(HomeResponse.self, .post, action: .buzzer)
+    return try await send(HomeResponse.self, .post, action: .buzzer, external: true)
   }
 
   func unlatchDoor() async throws -> HomeResponse {

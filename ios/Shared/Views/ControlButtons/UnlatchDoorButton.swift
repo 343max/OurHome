@@ -4,6 +4,7 @@ struct UnlatchDoorButton: View {
   @State var spinning = false
   @State var exclamationMark = false
   let refresh: (() -> Void)?
+  @Environment(\.isEnabled) private var isEnabled
 
   var body: some View {
     SpinningButton(spinning: $spinning, exclamationMark: $exclamationMark) {
@@ -20,7 +21,7 @@ struct UnlatchDoorButton: View {
         spinning = false
       }
     } label: {
-      Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red)
+      Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red.opacity(isEnabled ? 1 : 0.5))
     }.disabled(spinning)
   }
 }

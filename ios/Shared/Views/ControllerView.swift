@@ -3,6 +3,9 @@ import SwiftUI
 struct ControllerView: View {
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
+  
+  @ObservedObject var externalReachability = NetworkReachability(hostName: Home.externalHost.host!)
+  @ObservedObject var internalReachabiliy = NetworkReachability(hostName: Home.localNetworkHost.host!)
 
   func loadState() {
     Task {
@@ -33,16 +36,16 @@ struct ControllerView: View {
   var body: some View {
     List {
       Section("Haustür") {
-        BuzzerButton()
+        BuzzerButton().disabled(!externalReachability.reachable)
       }
       Section {
-        UnlatchDoorButton(refresh: loadState)
+        UnlatchDoorButton(refresh: loadState).disabled(!internalReachabiliy.reachable)
       } header: {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       Section {
-        UnlockDoorButton(refresh: loadState)
-        LockDoorButton(refresh: loadState)
+        UnlockDoorButton(refresh: loadState).disabled(!internalReachabiliy.reachable)
+        LockDoorButton(refresh: loadState).disabled(!internalReachabiliy.reachable)
       }
     }
     .navigationTitle("Our Home")
