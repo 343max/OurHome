@@ -9,6 +9,7 @@ import { getRuntimeConfig } from "./lib/config.ts"
 import { configuration } from "./secrets.ts"
 import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
 import { Action } from "./lib/action.ts"
+import { sleep } from "https://deno.land/x/sleep/mod.ts"
 
 import {
   Application,
@@ -60,7 +61,10 @@ Deno.run({
 app
   .post(
     ...authorized("buzzer", async () => {
-      await fetch(configuration.buzzerUrl)
+      for (const i in [0, 1, 2, 3, 4, 5]) {
+        await sleep(0.5)
+        await fetch(configuration.buzzerUrl)
+      }
       return { success: true }
     })
   )
