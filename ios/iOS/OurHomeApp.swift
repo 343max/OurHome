@@ -2,7 +2,13 @@ import SwiftUI
 
 @main
 struct OurHomeApp: App {
-  let locationChecker = LocationChecker()
+  let notificationProvider: NotificationProvider
+  let locationChecker: LocationChecker
+  
+  init() {
+    notificationProvider = NotificationProvider()
+    locationChecker = LocationChecker(notificationProvider: self.notificationProvider)
+  }
   
   var body: some Scene {
     WindowGroup {
@@ -16,7 +22,11 @@ struct OurHomeApp: App {
 //            }
 //        }
         .navigationViewStyle(StackNavigationViewStyle())
-      }
+        }.onAppear() {
+          if ProcessInfo.processInfo.environment["FAKE_PUSH"] == "1" {
+            notificationProvider.showBuzzerNotification()
+          }
+        }
     }
   }
 }

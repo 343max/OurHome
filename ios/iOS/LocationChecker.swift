@@ -6,14 +6,12 @@ class LocationChecker: NSObject {
   let homeRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 52.53826033352572, longitude: 13.425414271771368),
                                     radius: 50, // m
                                     identifier: "home")
+  weak var notificationProvider: NotificationProvider?
   
-  override init() {
+  init(notificationProvider: NotificationProvider) {
     super.init()
     locationManager.delegate = self
-    UNUserNotificationCenter.current().delegate = self
-    
-    UNUserNotificationCenter.current().requestAuthorization(
-      options: [.sound, .alert, .badge]) { _, _ in }
+    self.notificationProvider = notificationProvider
   }
   
   func startMonitoring() {
@@ -31,14 +29,7 @@ class LocationChecker: NSObject {
 
 extension LocationChecker: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-    let content = UNMutableNotificationContent()
-    content.title = "Haustüröffner drücken"
-    content.subtitle = "Tippe diese notification an, um den Haustüröffner zu drücken."
-    content.sound = .default
-    
-    UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: UUID().uuidString,
-                                                                 content: content,
-                                                                 trigger: nil))
+    notificationProvider?.showBuzzerNotification()
   }
   
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -50,11 +41,5 @@ extension LocationChecker: CLLocationManagerDelegate {
     default:
       break
     }
-  }
-}
-
-extension LocationChecker: UNUserNotificationCenterDelegate {
-  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-    try? await sharedHome().pressBuzzer()
   }
 }

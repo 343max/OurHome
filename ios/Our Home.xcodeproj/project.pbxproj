@@ -49,6 +49,7 @@
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
+		5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
 		50BBFFB028511F25001F1006 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFAF28511F25001F1006 /* Reachability.swift */; };
 		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
@@ -129,6 +130,7 @@
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505C1B8F27B1630A00C1D268 /* LoggingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInView.swift; sourceTree = "<group>"; };
+		5088888C285357B4006B8808 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
 		50BBFFAF28511F25001F1006 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */,
 				505C1B8F27B1630A00C1D268 /* LoggingInView.swift */,
 				50BBFFB128512E6B001F1006 /* LocationChecker.swift */,
+				5088888C285357B4006B8808 /* NotificationProvider.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
+				5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */,
 				5037F2B827AAAB8A007D1BBA /* LoginHandlerView.swift in Sources */,
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
 			);
