@@ -50,18 +50,21 @@ if (getRuntimeConfig().ignoreAuthentication) {
 }
 
 const port = 4278
-console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
+
+console.log(`running auto ssh`)
 
 Deno.run({
-  cmd: ["autossh", "-R 4278:localhost:4278", "max@343max.de"],
+  cmd: ["autossh", "-R 4278:localhost:4278", "max@343max.de", "-N"],
   stdin: "null",
   stdout: "null",
 })
 
+console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
+
 app
   .post(
     ...authorized("buzzer", async () => {
-      for (const i in [0, 1, 2, 3, 4, 5]) {
+      for (const _ in [0, 1, 2, 3, 4, 5]) {
         await sleep(0.5)
         await fetch(configuration.buzzerUrl)
       }
