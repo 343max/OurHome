@@ -23,8 +23,8 @@ class NotificationProvider: NSObject {
   
   func showBuzzerNotification(delayed: Bool = false) {
     let content = UNMutableNotificationContent()
-    content.title = "Haustüröffner drücken"
-    content.subtitle = "Tippe diese notification an, um den Haustüröffner zu drücken."
+    content.title = "Our Home"
+    content.subtitle = "Fast zu Hause…"
     content.sound = .default
     content.categoryIdentifier = categoryIdentifier
     
