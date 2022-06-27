@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  doorbellserver:
+    ports:
+      - "4278:4278"
+    container_name: doorbellserver
+    build: .
+    depends_on:
+      - remote-access
+  remote-access:
+    image: jnovack/autossh
+    container_name: remote-access
+    environment:
+      - SSH_REMOTE_USER=max
+      - SSH_REMOTE_HOST=343max.de
+      - SSH_TARGET_HOST=doorbellserver
+      - SSH_TARGET_PORT=4278
+      - SSH_TUNNEL_PORT=4278
+    restart: always
+    volumes:
+      - /Users/max/.ssh/id_rsa:/id_rsa
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
