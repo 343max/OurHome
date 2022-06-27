@@ -7,6 +7,7 @@ services:
     build: .
     depends_on:
       - remote-access
+    restart: always
   remote-access:
     image: jnovack/autossh
     container_name: remote-access
