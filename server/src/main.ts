@@ -45,14 +45,6 @@ if (getRuntimeConfig().ignoreAuthentication) {
 
 const port = 4278
 
-console.log(`running auto ssh`)
-
-Deno.run({
-  cmd: ["autossh", "-R 4278:localhost:4278", "max@343max.de", "-N"],
-  stdin: "null",
-  stdout: "null",
-})
-
 console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
 
 app
