@@ -1,7 +1,5 @@
-import {
-  assertEquals,
-  assertNotEquals,
-} from "https://deno.land/std@0.123.0/testing/asserts.ts"
+import { assertEquals, assertNotEquals } from "../deps.ts"
+
 import {
   accessAllowed,
   getAuthHeader,

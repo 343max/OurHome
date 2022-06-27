@@ -1,6 +1,6 @@
+import { createHash } from "../deps.ts"
 import { getRuntimeConfig } from "./config.ts"
 import { Action } from "./action.ts"
-import { createHash } from "https://deno.land/std@0.77.0/hash/mod.ts"
 import { findUser, Permission, Permissions, User } from "./user.ts"
 
 export const getToken = (

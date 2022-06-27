@@ -9,13 +9,7 @@ import { getRuntimeConfig } from "./lib/config.ts"
 import { configuration } from "./secrets.ts"
 import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
 import { Action } from "./lib/action.ts"
-import { sleep } from "https://deno.land/x/sleep/mod.ts"
-
-import {
-  Application,
-  Context,
-  HandlerFunc,
-} from "https://deno.land/x/abc@v1.3.3/mod.ts"
+import { Application, Context, HandlerFunc, sleep } from "./deps.ts"
 
 const app = new Application()
 
