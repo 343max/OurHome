@@ -18,7 +18,7 @@ services:
       - SSH_TUNNEL_PORT=4278
     restart: always
     volumes:
-      - /Users/max/.ssh/id_rsa:/id_rsa
+      - ${DOORBELL_ID_RSA}:/id_rsa
     dns:
       - 8.8.8.8
       - 1.1.1.1
