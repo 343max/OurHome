@@ -43,7 +43,11 @@ extension NotificationProvider: UNUserNotificationCenterDelegate {
     completionHandler([.alert, .badge, .sound])
   }
   
-  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-    try? await sharedHome().pressBuzzer()
+  // would love to use the async handler here, but that crashes because it isn't running on the main thread in iOS 15.5 :(
+  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    Task {
+      try? await sharedHome().pressBuzzer()
+    }
+    completionHandler()
   }
 }
