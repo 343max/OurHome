@@ -45,9 +45,9 @@ extension NotificationProvider: UNUserNotificationCenterDelegate {
   
   // would love to use the async handler here, but that crashes because it isn't running on the main thread in iOS 15.5 :(
   func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    Task {
-      try? await sharedHome().pressBuzzer()
+    Task { @MainActor in
+      let _ = try? await sharedHome().pressBuzzer()
+      completionHandler()
     }
-    completionHandler()
   }
 }
