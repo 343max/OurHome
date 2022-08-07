@@ -49,7 +49,9 @@
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
+		50701D96289FC49F00B690AB /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = 50701D95289FC49F00B690AB /* Inject */; };
 		5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
+		509F178A289FCF8500C6C7A7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFAF28511F25001F1006 /* Reachability.swift */; };
 		50BBFFB028511F25001F1006 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFAF28511F25001F1006 /* Reachability.swift */; };
 		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
@@ -152,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */,
+				50701D96289FC49F00B690AB /* Inject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +366,7 @@
 			name = "Our Home";
 			packageProductDependencies = (
 				5037F22B27A5F19C007D1BBA /* Authentication */,
+				50701D95289FC49F00B690AB /* Inject */,
 			);
 			productName = "Our Home";
 			productReference = 503D1DB727A14EAB00FC8355 /* Our Home.app */;
@@ -402,6 +406,7 @@
 			);
 			mainGroup = 503D1DAE27A14EAB00FC8355;
 			packageReferences = (
+				50701D94289FC49F00B690AB /* XCRemoteSwiftPackageReference "Inject" */,
 			);
 			productRefGroup = 503D1DB827A14EAB00FC8355 /* Products */;
 			projectDirPath = "";
@@ -468,6 +473,7 @@
 				5037F26A27A703C9007D1BBA /* HomeCommunication.swift in Sources */,
 				5037F27127A703F4007D1BBA /* UnlockDoorButton.swift in Sources */,
 				5037F25427A702B4007D1BBA /* ComplicationController.swift in Sources */,
+				509F178A289FCF8500C6C7A7 /* Reachability.swift in Sources */,
 				5037F26727A7038C007D1BBA /* ControllerView.swift in Sources */,
 				5037F27027A703F4007D1BBA /* UnlatchDoorButton.swift in Sources */,
 				5037F27327A70410007D1BBA /* Task+Sleep.swift in Sources */,
@@ -708,6 +714,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-interposable",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -877,6 +887,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		50701D94289FC49F00B690AB /* XCRemoteSwiftPackageReference "Inject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzysztofzablocki/Inject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -885,6 +906,11 @@
 		5037F26B27A703D5007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
+		};
+		50701D95289FC49F00B690AB /* Inject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50701D94289FC49F00B690AB /* XCRemoteSwiftPackageReference "Inject" */;
+			productName = Inject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

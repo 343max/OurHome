@@ -1,4 +1,7 @@
 import SwiftUI
+#if !os(watchOS)
+import Inject
+#endif
 
 struct ControllerView: View {
   @State private var frontDoorLockState: LockState? = nil
@@ -6,6 +9,10 @@ struct ControllerView: View {
   
   @ObservedObject var externalReachability = NetworkReachability(hostName: Home.externalHost.host!)
   @ObservedObject var internalReachabiliy = NetworkReachability(hostName: Home.localNetworkHost.host!)
+  
+  #if !os(watchOS)
+  @ObserveInjection var inject
+  #endif
 
   func loadState() {
     Task {
@@ -53,6 +60,9 @@ struct ControllerView: View {
     .refreshable {
       loadState()
     }
+    #if !os(watchOS)
+    .enableInjection()
+    #endif
   }
 }
 

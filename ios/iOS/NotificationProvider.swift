@@ -40,7 +40,7 @@ extension NotificationProvider: UNUserNotificationCenterDelegate {
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               willPresent notification: UNNotification,
                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    completionHandler([.alert, .badge, .sound])
+    completionHandler([.badge, .sound])
   }
   
   // would love to use the async handler here, but that crashes because it isn't running on the main thread in iOS 15.5 :(
