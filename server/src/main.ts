@@ -30,8 +30,11 @@ const authorized = (
         "content-type",
         "application/json; charset=UTF-8"
       )
-      return JSON.stringify(await handler(c))
+      const resp = JSON.stringify(await handler(c))
+      console.log(resp)
+      return resp
     } else {
+      console.log("unauthorized")
       c.response.status = 403
     }
   },
@@ -48,6 +51,10 @@ const port = 4278
 console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
 
 app
+  .pre((next) => (c) => {
+    console.log(`🌎 ${c.request.method} ${c.request.url}`)
+    return next(c)
+  })
   .post(
     ...authorized("buzzer", async () => {
       for (const _ in [0, 1, 2, 3, 4, 5]) {
