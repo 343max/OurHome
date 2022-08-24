@@ -23,8 +23,8 @@ struct Home {
   let username: String
   let secret: String
 
-  static let localNetworkHost = URL(string: "http://plex-server.fritz.box:4278/")!
-  static let externalHost = URL(string: "https://home.343max.de/")!
+  static let localNetworkHost = URL(string: "http://nuc.fritz.box:4278/")!
+  static let externalHost = URL(string: "https://home2.343max.de/")!
   
 //  let localNetworkHost = "http://localhost:4278/"
 
