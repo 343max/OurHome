@@ -12,8 +12,9 @@ services:
     image: jnovack/autossh
     container_name: remote-access
     environment:
-      - SSH_REMOTE_USER=max
-      - SSH_REMOTE_HOST=343max.de
+      - SSH_REMOTE_USER=home
+      - SSH_REMOTE_HOST=home2.343max.de
+      - SSH_REMOTE_PORT=22222
       - SSH_TARGET_HOST=doorbellserver
       - SSH_TARGET_PORT=4278
       - SSH_TUNNEL_PORT=4278
