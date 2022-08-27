@@ -4,7 +4,11 @@ services:
     ports:
       - "4278:4278"
     container_name: doorbellserver
-    build: .
+    build:
+      context: .
+      labels:
+        com.centurylinklabs.watchtower.enable: "false"
+
     depends_on:
       - remote-access
     restart: always
