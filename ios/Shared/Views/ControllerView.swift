@@ -7,8 +7,8 @@ struct ControllerView: View {
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
   
-  @ObservedObject var externalReachability = NetworkReachability(hostName: Home.externalHost.host!)
-  @ObservedObject var internalReachabiliy = NetworkReachability(hostName: Home.localNetworkHost.host!)
+  @ObservedObject var nearbyReachability = Reachability(distance: .Nearby)
+  @ObservedObject var remoteReachabiliy = Reachability(distance: .Remote)
   
   #if !os(watchOS)
   @ObserveInjection var inject
@@ -43,16 +43,16 @@ struct ControllerView: View {
   var body: some View {
     List {
       Section("Haustür") {
-        BuzzerButton().disabled(!externalReachability.reachable)
+        BuzzerButton().disabled(!nearbyReachability.reachable)
       }
       Section {
-        UnlatchDoorButton(refresh: loadState).disabled(!internalReachabiliy.reachable)
+        UnlatchDoorButton(refresh: loadState).disabled(!remoteReachabiliy.reachable)
       } header: {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       Section {
-        UnlockDoorButton(refresh: loadState).disabled(!internalReachabiliy.reachable)
-        LockDoorButton(refresh: loadState).disabled(!internalReachabiliy.reachable)
+        UnlockDoorButton(refresh: loadState).disabled(!remoteReachabiliy.reachable)
+        LockDoorButton(refresh: loadState).disabled(!remoteReachabiliy.reachable)
       }
     }
     .navigationTitle("Our Home")

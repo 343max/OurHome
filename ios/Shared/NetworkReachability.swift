@@ -1,12 +1,31 @@
 import Foundation
 import SystemConfiguration
 
-class NetworkReachability: ObservableObject {
-  @Published private(set) var reachable: Bool = false
+class NetworkReachability: ReachabilityProvider {
   private let reachability: SCNetworkReachability
+  private var reachable = false {
+    didSet {
+      setReachable?(reachable)
+    }
+  }
+  
+  var setReachable: ReachableSetter? = nil {
+    didSet {
+      setReachable?(reachable)
+    }
+  }
   
   // Queue where the `SCNetworkReachability` callbacks run
   private let queue = DispatchQueue.main
+  
+  required convenience init(distance: Distance) {
+    switch distance {
+    case .Nearby:
+      self.init(hostName: Home.externalHost.host!)
+    case .Remote:
+      self.init(hostName: Home.localNetworkHost.host!)
+    }
+  }
   
   init(hostName: String) {
     self.reachability = SCNetworkReachabilityCreateWithName(nil, hostName)!
@@ -25,8 +44,7 @@ class NetworkReachability: ObservableObject {
     var flags = SCNetworkReachabilityFlags()
     SCNetworkReachabilityGetFlags(reachability, &flags)
     
-    let reachable = isNetworkReachable(with: flags)
-    self.reachable = reachable
+    self.reachable = isNetworkReachable(with: flags)
   }
   
   // Flag used to avoid starting listening if we are already listening
