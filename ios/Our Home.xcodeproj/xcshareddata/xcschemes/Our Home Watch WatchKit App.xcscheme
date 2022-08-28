@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "503D1DB627A14EAB00FC8355"
-               BuildableName = "Our Home.app"
-               BlueprintName = "Our Home"
+               BlueprintIdentifier = "5037F23E27A702B3007D1BBA"
+               BuildableName = "Our Home Watch WatchKit App.app"
+               BlueprintName = "Our Home Watch WatchKit App"
+               ReferencedContainer = "container:Our Home.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5037F23B27A702B3007D1BBA"
+               BuildableName = "Our Home Watch.app"
+               BlueprintName = "Our Home Watch"
                ReferencedContainer = "container:Our Home.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,19 +58,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "503D1DB627A14EAB00FC8355"
-            BuildableName = "Our Home.app"
-            BlueprintName = "Our Home"
+            BlueprintIdentifier = "5037F23E27A702B3007D1BBA"
+            BuildableName = "Our Home Watch WatchKit App.app"
+            BlueprintName = "Our Home Watch WatchKit App"
             ReferencedContainer = "container:Our Home.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "FAKE_PUSH"
-            value = "1"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -68,9 +75,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "503D1DB627A14EAB00FC8355"
-            BuildableName = "Our Home.app"
-            BlueprintName = "Our Home"
+            BlueprintIdentifier = "5037F23E27A702B3007D1BBA"
+            BuildableName = "Our Home Watch WatchKit App.app"
+            BlueprintName = "Our Home Watch WatchKit App"
             ReferencedContainer = "container:Our Home.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
