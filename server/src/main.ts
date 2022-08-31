@@ -10,6 +10,7 @@ import { configuration } from "./secrets.ts"
 import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
 import { Action } from "./lib/action.ts"
 import { Application, Context, HandlerFunc, sleep } from "./deps.ts"
+import { getArrivedRecently, setArrivedNow } from "./lib/arrivedRecently.ts"
 
 const app = new Application()
 
@@ -50,6 +51,13 @@ const port = 4278
 
 console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
 
+const pressBuzzer = async () => {
+  for (const _ in [0, 1, 2, 3, 4, 5]) {
+    await sleep(0.5)
+    await fetch(configuration.buzzerUrl)
+  }
+}
+
 app
   .pre((next) => (c) => {
     console.log(`🌎 ${c.request.method} ${c.request.url}`)
@@ -57,10 +65,7 @@ app
   })
   .post(
     ...authorized("buzzer", async () => {
-      for (const _ in [0, 1, 2, 3, 4, 5]) {
-        await sleep(0.5)
-        await fetch(configuration.buzzerUrl)
-      }
+      await pressBuzzer()
       return { success: true }
     })
   )
@@ -86,6 +91,23 @@ app
     ...authorized("state", async () => {
       const nukiState = await getNukiLockConfig(configuration.nuki)
       return { success: true, doorlock: nukiState }
+    })
+  )
+  .post(
+    ...authorized("arrived", () => {
+      setArrivedNow()
+      return { success: true }
+    })
+  )
+  .post(
+    ...authorized("doorbell", async () => {
+      if (getArrivedRecently()) {
+        // await pressBuzzer()
+        await sleep(0.5)
+        return { success: true }
+      } else {
+        return { sucess: false }
+      }
     })
   )
   .start({ port })

@@ -1,1 +1,9 @@
-export type Action = "lock" | "unlock" | "unlatch" | "buzzer" | "state" | "user"
+export type Action =
+  | "lock"
+  | "unlock"
+  | "unlatch"
+  | "buzzer"
+  | "state"
+  | "user"
+  | "arrived"
+  | "doorbell"
