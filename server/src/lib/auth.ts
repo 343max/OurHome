@@ -58,6 +58,8 @@ export const getPermissionsKey = (action: Action): null | keyof Permissions => {
     lock: "frontdoor",
     unlock: "frontdoor",
     unlatch: "unlatch",
+    arrived: "arrived",
+    doorbell: null,
   }
   return mapping[action]
 }
@@ -69,9 +71,7 @@ export const verifyAuth = (
   now: number = new Date().getTime() / 1000,
   users?: User[]
 ): boolean => {
-  if (getRuntimeConfig().ignoreAuthentication) {
-    return true
-  }
+  const skipAuth = getRuntimeConfig().ignoreAuthentication
 
   if (header === null) {
     return false
@@ -84,7 +84,7 @@ export const verifyAuth = (
 
   const { username, token, timestamp } = headerParts
 
-  if (!verifyTimestamps(timestamp, now)) {
+  if (!skipAuth && !verifyTimestamps(timestamp, now)) {
     return false
   }
 
@@ -93,7 +93,10 @@ export const verifyAuth = (
     return false
   }
 
-  if (getToken(user.username, user.secret, action, timestamp) !== token) {
+  if (
+    !skipAuth &&
+    getToken(user.username, user.secret, action, timestamp) !== token
+  ) {
     return false
   }
 

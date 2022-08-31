@@ -99,15 +99,13 @@ app
       return { success: true }
     })
   )
-  .post(
-    ...authorized("doorbell", async () => {
-      if (getArrivedRecently()) {
-        // await pressBuzzer()
-        await sleep(0.5)
-        return { success: true }
-      } else {
-        return { sucess: false }
-      }
-    })
-  )
+  .post("doorbell", async () => {
+    if (getArrivedRecently()) {
+      // await pressBuzzer()
+      await sleep(0.5)
+      return { success: true }
+    } else {
+      return { sucess: false }
+    }
+  })
   .start({ port })
