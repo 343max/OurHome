@@ -30,6 +30,10 @@ class LocationChecker: NSObject {
 extension LocationChecker: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
     notificationProvider?.showBuzzerNotification()
+    
+    Task { @MainActor in
+      let _ = try? await sharedHome().arrived()
+    }
   }
   
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

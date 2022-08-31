@@ -8,6 +8,8 @@ enum Action: String {
   case buzzer
   case state
   case user
+  case arrived
+  case doorbell
 }
 
 enum Method: String {
@@ -24,7 +26,7 @@ struct Home {
   let secret: String
 
   static let localNetworkHost = URL(string: "http://nuc.fritz.box:4278/")!
-  static let externalHost = URL(string: "https://home2.343max.de/")!
+  static let externalHost = URL(string: "https://home.343max.de/")!
   
 //  let localNetworkHost = "http://localhost:4278/"
 
@@ -61,5 +63,9 @@ struct Home {
 
   func unlockDoor() async throws -> HomeResponse {
     return try await send(HomeResponse.self, .post, action: .unlock)
+  }
+  
+  func arrived() async throws -> HomeResponse {
+    return try await send(HomeResponse.self, .post, action: .arrived)
   }
 }
