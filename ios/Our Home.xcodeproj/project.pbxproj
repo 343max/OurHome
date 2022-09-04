@@ -541,6 +541,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Our-Home-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -569,6 +571,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Our-Home-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.</string>
 	<key>CFBundleDocumentTypes</key>
 	<array/>
 	<key>CFBundleURLTypes</key>
@@ -28,5 +24,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 </dict>
 </plist>

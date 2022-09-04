@@ -6,11 +6,14 @@ class LocationChecker: NSObject {
   let homeRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 52.53826033352572, longitude: 13.425414271771368),
                                     radius: 50, // m
                                     identifier: "home")
+  
   weak var notificationProvider: NotificationProvider?
   
   init(notificationProvider: NotificationProvider) {
     super.init()
     locationManager.delegate = self
+    locationManager.allowsBackgroundLocationUpdates = true
+    
     self.notificationProvider = notificationProvider
   }
   
@@ -31,7 +34,7 @@ extension LocationChecker: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
     notificationProvider?.showBuzzerNotification()
     
-    Task { @MainActor in
+    Task {
       let _ = try? await sharedHome().arrived()
     }
   }
