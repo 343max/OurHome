@@ -1,0 +1,16 @@
+server {
+	include snippets/ssl_boilerplate.conf;
+
+	server_name buzzer.343max.de;
+	ssl_certificate_key /etc/letsencrypt/live/buzzer.343max.de/privkey.pem;
+  ssl_certificate /etc/letsencrypt/live/buzzer.343max.de/fullchain.pem;
+
+	location ~ /\.ht {
+	  deny all;
+	}
+
+	location / {
+		proxy_pass  http://doorbellserver:4278/;
+		proxy_set_header X-External-Host external-host;
+	}
+}
