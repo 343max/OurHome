@@ -21,9 +21,9 @@ class NetworkReachability: ReachabilityProvider {
   required convenience init(distance: Distance) {
     switch distance {
     case .Nearby:
-      self.init(hostName: Home.externalHost.host!)
-    case .Remote:
       self.init(hostName: Home.localNetworkHost.host!)
+    case .Remote:
+      self.init(hostName: Home.externalHost.host!)
     }
   }
   
