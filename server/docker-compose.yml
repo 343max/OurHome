@@ -11,22 +11,6 @@ services:
     depends_on:
       - remote-access
     restart: always
-  remote-access:
-    image: jnovack/autossh
-    container_name: remote-access
-    environment:
-      - SSH_REMOTE_USER=home
-      - SSH_REMOTE_HOST=home2.343max.de
-      - SSH_REMOTE_PORT=22222
-      - SSH_TARGET_HOST=doorbellserver
-      - SSH_TARGET_PORT=4278
-      - SSH_TUNNEL_PORT=4278
-    restart: always
-    volumes:
-      - ${DOORBELL_ID_RSA}:/id_rsa
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
   nginx:
     image: nginx:latest
     restart: always
