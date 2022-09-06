@@ -108,4 +108,5 @@ app
       return { sucess: false }
     }
   })
+  .get("/", () => ({ success: true, message: "please leave me alone" }))
   .start({ port })
