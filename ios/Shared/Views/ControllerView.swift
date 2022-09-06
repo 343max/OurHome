@@ -43,16 +43,16 @@ struct ControllerView: View {
   var body: some View {
     List {
       Section("Haustür") {
-        BuzzerButton().disabled(!nearbyReachability.reachable)
+        BuzzerButton().disabled(!remoteReachabiliy.reachable)
       }
       Section {
-        UnlatchDoorButton(refresh: loadState).disabled(!remoteReachabiliy.reachable)
+        UnlatchDoorButton(refresh: loadState).disabled(!nearbyReachability.reachable)
       } header: {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       Section {
-        UnlockDoorButton(refresh: loadState).disabled(!remoteReachabiliy.reachable)
-        LockDoorButton(refresh: loadState).disabled(!remoteReachabiliy.reachable)
+        UnlockDoorButton(refresh: loadState).disabled(!nearbyReachability.reachable)
+        LockDoorButton(refresh: loadState).disabled(!nearbyReachability.reachable)
       }
     }
     .navigationTitle("Our Home")
