@@ -17,8 +17,13 @@ enum Method: String {
   case post = "POST"
 }
 
+struct AppSecrets {
+  let username: String
+  let secret: String
+}
+
 func sharedHome() -> Home {
-  return Home(username: "max", secret: "03d768a9-30c7-44c4-8cbf-852ab24dea21")
+  return Home(username: appSecrets.username, secret: appSecrets.secret)
 }
 
 struct Home {

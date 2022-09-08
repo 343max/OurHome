@@ -26,6 +26,8 @@
 		5037F2BC27ABF513007D1BBA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2BB27ABF513007D1BBA /* Session.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
+		504003AA28C9F01000AD6EFD /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504003A928C9F01000AD6EFD /* AppSecrets.swift */; };
+		504003AB28C9F01000AD6EFD /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504003A928C9F01000AD6EFD /* AppSecrets.swift */; };
 		5059217C28BBC5FA005A4E3A /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */; };
 		5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217D28BBC5FA005A4E3A /* ContentView.swift */; };
 		5059218B28BBC6A9005A4E3A /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
@@ -77,6 +79,7 @@
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		504003A928C9F01000AD6EFD /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		5059217628BBC5FA005A4E3A /* Our Home Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		5059217D28BBC5FA005A4E3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 			children = (
 				50F4E98327A5BEE300ECD03F /* Model */,
 				50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */,
+				504003A928C9F01000AD6EFD /* AppSecrets.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -369,6 +373,7 @@
 				50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
+				504003AA28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
 				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
@@ -389,6 +394,7 @@
 				50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */,
 				5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */,
 				50E9109628BBCFE6001C10D2 /* GeoReachability.swift in Sources */,
+				504003AB28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
 				5059218D28BBC7CF005A4E3A /* BatteryIcon.swift in Sources */,
 				50E9109D28BBD138001C10D2 /* Spinner.swift in Sources */,
 				50E9109728BBD075001C10D2 /* BuzzerButton.swift in Sources */,
