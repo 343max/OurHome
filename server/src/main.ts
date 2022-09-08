@@ -101,7 +101,7 @@ app
   )
   .post("doorbell", async () => {
     if (getArrivedRecently()) {
-      // await pressBuzzer()
+      await pressBuzzer()
       await sleep(0.5)
       return { success: true }
     } else {
