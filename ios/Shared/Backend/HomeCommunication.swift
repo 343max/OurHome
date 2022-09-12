@@ -71,6 +71,6 @@ struct Home {
   }
   
   func arrived() async throws -> HomeResponse {
-    return try await send(HomeResponse.self, .post, action: .arrived)
+    return try await send(HomeResponse.self, .post, action: .arrived, external: true)
   }
 }

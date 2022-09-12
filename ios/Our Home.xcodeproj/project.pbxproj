@@ -177,12 +177,12 @@
 			isa = PBXGroup;
 			children = (
 				5037F2B427AAA929007D1BBA /* Shared */,
-				5037F27627A7EE5A007D1BBA /* Config.xcconfig */,
 				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* iOS */,
 				5059217A28BBC5FA005A4E3A /* Watch */,
 				503D1DB827A14EAB00FC8355 /* Products */,
 				5059219028BBC84B005A4E3A /* Frameworks */,
+				5037F27627A7EE5A007D1BBA /* Config.xcconfig */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
