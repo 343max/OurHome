@@ -39,7 +39,7 @@ struct Home {
     return (external ? Home.externalHost : Home.localNetworkHost).appendingPathComponent(action.rawValue)
   }
 
-  func send<T>(_ type: T.Type, _ method: Method, action: Action, external: Bool = false) async throws -> T where T: Decodable {
+  func send<T>(_ type: T.Type, _ method: Method, action: Action, external: Bool) async throws -> T where T: Decodable {
     var request = URLRequest(url: url(action: action, external: external))
     request.httpMethod = method.rawValue
     request.addValue(
@@ -59,15 +59,15 @@ struct Home {
   }
 
   func unlatchDoor() async throws -> HomeResponse {
-    return try await send(HomeResponse.self, .post, action: .unlatch)
+    return try await send(HomeResponse.self, .post, action: .unlatch, external: false)
   }
 
   func lockDoor() async throws -> HomeResponse {
-    return try await send(HomeResponse.self, .post, action: .lock)
+    return try await send(HomeResponse.self, .post, action: .lock, external: false)
   }
 
   func unlockDoor() async throws -> HomeResponse {
-    return try await send(HomeResponse.self, .post, action: .unlock)
+    return try await send(HomeResponse.self, .post, action: .unlock, external: false)
   }
   
   func arrived() async throws -> HomeResponse {
