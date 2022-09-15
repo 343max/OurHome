@@ -8,3 +8,7 @@ export const setArrivedNow = () => {
 
 export const getArrivedRecently = (): boolean =>
   getTime() - lastArrival < 3 * 60
+
+export const resetArrival = () => {
+  lastArrival = 0
+}
