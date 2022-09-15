@@ -1,15 +1,22 @@
 import Foundation
-
 import UserNotifications
+import UIKit
+
+
+enum NotificationId: String {
+  case arrived
+}
 
 class NotificationProvider: NSObject {
   let categoryIdentifier = "buzzer"
   
   override init() {
     super.init()
-    UNUserNotificationCenter.current().delegate = self
     
-    UNUserNotificationCenter.current().requestAuthorization(
+    let center = UNUserNotificationCenter.current()
+    center.delegate = self
+    
+    center.requestAuthorization(
       options: [.sound, .alert, .badge]) { _, _ in }
     
     let buzzerAction = UNNotificationAction(identifier: "buzzer",
@@ -18,7 +25,9 @@ class NotificationProvider: NSObject {
     
     let category = UNNotificationCategory(identifier: categoryIdentifier, actions: [buzzerAction], intentIdentifiers: [])
     
-    UNUserNotificationCenter.current().setNotificationCategories([category])
+    center.setNotificationCategories([category])
+    
+    center.removeDeliveredNotifications(withIdentifiers: [NotificationId.arrived.rawValue])
   }
   
   func showBuzzerNotification(delayed: Bool = false) {
@@ -30,11 +39,16 @@ class NotificationProvider: NSObject {
     
     let trigger = delayed ? UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) : nil
     
-    let id = UUID().uuidString
+    let center = UNUserNotificationCenter.current()
+    center.add(UNNotificationRequest(identifier: NotificationId.arrived.rawValue,
+                                     content: content,
+                                     trigger: trigger))
     
-    UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: id,
-                                                                 content: content,
-                                                                 trigger: trigger))
+    UIApplication.shared.beginBackgroundTask ()
+    
+    Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false) { Timer in
+      center.removeDeliveredNotifications(withIdentifiers: [NotificationId.arrived.rawValue])
+    }
   }
 }
 
@@ -42,10 +56,6 @@ extension NotificationProvider: UNUserNotificationCenterDelegate {
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               willPresent notification: UNNotification,
                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    Timer.scheduledTimer(withTimeInterval: 60 * 5, repeats: false) { Timer in
-      center.removeDeliveredNotifications(withIdentifiers: [notification.request.identifier])
-    }
-    
     completionHandler([.badge, .sound, .banner, .list])
   }
   
