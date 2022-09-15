@@ -28,9 +28,11 @@ class NotificationProvider: NSObject {
     content.sound = .default
     content.categoryIdentifier = categoryIdentifier
     
-    let trigger = delayed ? UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false) : nil
+    let trigger = delayed ? UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) : nil
     
-    UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: UUID().uuidString,
+    let id = UUID().uuidString
+    
+    UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: id,
                                                                  content: content,
                                                                  trigger: trigger))
   }
@@ -40,7 +42,11 @@ extension NotificationProvider: UNUserNotificationCenterDelegate {
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               willPresent notification: UNNotification,
                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    completionHandler([.badge, .sound])
+    Timer.scheduledTimer(withTimeInterval: 60 * 5, repeats: false) { Timer in
+      center.removeDeliveredNotifications(withIdentifiers: [notification.request.identifier])
+    }
+    
+    completionHandler([.badge, .sound, .banner, .list])
   }
   
   // would love to use the async handler here, but that crashes because it isn't running on the main thread in iOS 15.5 :(
