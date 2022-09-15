@@ -15,7 +15,7 @@ struct SpinningButton<Content: View>: View {
           Image(systemName: "exclamationmark.triangle").foregroundColor(.red)
         }
         if spinning {
-          Spinner(spinning: .constant(true))
+          ProgressView().frame(maxWidth: 20)
         }
       }
     }
