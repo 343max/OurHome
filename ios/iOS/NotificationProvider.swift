@@ -7,6 +7,11 @@ enum NotificationId: String {
   case arrived
 }
 
+enum ActionId: String {
+  case buzzer
+  case unlatchDoor
+}
+
 class NotificationProvider: NSObject {
   let categoryIdentifier = "buzzer"
   
@@ -19,11 +24,15 @@ class NotificationProvider: NSObject {
     center.requestAuthorization(
       options: [.sound, .alert, .badge]) { _, _ in }
     
-    let buzzerAction = UNNotificationAction(identifier: "buzzer",
+    let buzzerAction = UNNotificationAction(identifier: ActionId.buzzer.rawValue,
                                             title: "Türöffner drücken",
-                                            options: [.authenticationRequired, .destructive])
+                                            options: [.authenticationRequired])
     
-    let category = UNNotificationCategory(identifier: categoryIdentifier, actions: [buzzerAction], intentIdentifiers: [])
+    let openDoorAction = UNNotificationAction(identifier: ActionId.unlatchDoor.rawValue,
+                                              title: "Wohnungstür öffnen",
+                                              options: [.authenticationRequired, .destructive])
+    
+    let category = UNNotificationCategory(identifier: categoryIdentifier, actions: [buzzerAction, openDoorAction], intentIdentifiers: [])
     
     center.setNotificationCategories([category])
     
@@ -62,7 +71,14 @@ extension NotificationProvider: UNUserNotificationCenterDelegate {
   // would love to use the async handler here, but that crashes because it isn't running on the main thread in iOS 15.5 :(
   func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
     Task { @MainActor in
-      let _ = try? await sharedHome().pressBuzzer()
+      switch response.actionIdentifier {
+      case ActionId.buzzer.rawValue:
+        let _ = try? await sharedHome().pressBuzzer()
+      case ActionId.unlatchDoor.rawValue:
+        let _ = try? await sharedHome().unlatchDoor()
+      default:
+        break
+      }
       completionHandler()
     }
   }
