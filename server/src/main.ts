@@ -64,7 +64,13 @@ const pressBuzzer = async () => {
 
 app
   .pre((next) => (c) => {
-    console.log(`🌎 ${c.request.method} ${c.request.url}`)
+    console.log(
+      `🌎 ${
+        c.request.conn.remoteAddr.transport === "tcp"
+          ? c.request.conn.remoteAddr.hostname
+          : "???"
+      } ${c.request.method} ${c.request.url}`
+    )
     return next(c)
   })
   .post(
