@@ -4,6 +4,8 @@ import Inject
 #endif
 
 struct ControllerView: View {
+  let home: Home
+  
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
   
@@ -17,7 +19,7 @@ struct ControllerView: View {
   func loadState() {
     Task {
       do {
-        let state = try await sharedHome().getState()
+        let state = try await home.getState()
         frontDoorLockState = {
           switch state.doorlock.state {
           case .Locked:
@@ -43,16 +45,21 @@ struct ControllerView: View {
   var body: some View {
     List {
       Section("Haustür") {
-        BuzzerButton().disabled(!remoteReachabiliy.reachable)
+        BuzzerButton(home: home)
+          .disabled(!remoteReachabiliy.reachable)
       }
       Section {
-        UnlatchDoorButton(refresh: loadState).disabled(!nearbyReachability.reachable)
+        UnlatchDoorButton(home: home,
+                          refresh: loadState)
+        .disabled(!nearbyReachability.reachable)
       } header: {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       Section {
-        UnlockDoorButton(refresh: loadState).disabled(!nearbyReachability.reachable)
-        LockDoorButton(refresh: loadState).disabled(!nearbyReachability.reachable)
+        UnlockDoorButton(home: home, refresh: loadState)
+          .disabled(!nearbyReachability.reachable)
+        LockDoorButton(home: home, refresh: loadState)
+          .disabled(!nearbyReachability.reachable)
       }
     }
     .navigationTitle("Our Home")
@@ -68,6 +75,6 @@ struct ControllerView: View {
 
 struct ControllerView_Previews: PreviewProvider {
   static var previews: some View {
-    ControllerView()
+    ControllerView(home: DummyHome())
   }
 }

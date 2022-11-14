@@ -13,9 +13,11 @@ enum ActionId: String {
 }
 
 class NotificationProvider: NSObject {
+  let home: Home
   let categoryIdentifier = "buzzer"
   
-  override init() {
+  init(home: Home) {
+    self.home = home
     super.init()
     
     let center = UNUserNotificationCenter.current()
@@ -73,9 +75,9 @@ extension NotificationProvider: UNUserNotificationCenterDelegate {
     Task { @MainActor in
       switch response.actionIdentifier {
       case ActionId.buzzer.rawValue:
-        let _ = try? await sharedHome().pressBuzzer()
+        let _ = try? await home.pressBuzzer()
       case ActionId.unlatchDoor.rawValue:
-        let _ = try? await sharedHome().unlatchDoor()
+        let _ = try? await home.unlatchDoor()
       default:
         break
       }

@@ -2,19 +2,21 @@ import SwiftUI
 
 @main
 struct OurHomeApp: App {
+  let home: Home
   let notificationProvider: NotificationProvider
   let locationChecker: LocationChecker
   
   init() {
-    notificationProvider = NotificationProvider()
-    locationChecker = LocationChecker(notificationProvider: self.notificationProvider)
+    home = RemoteHome(username: appSecrets.username, secret: appSecrets.secret)
+    notificationProvider = NotificationProvider(home: home)
+    locationChecker = LocationChecker(home: home, notificationProvider: self.notificationProvider)
   }
   
   var body: some Scene {
     WindowGroup {
 //      LoginHandlerView {
         NavigationView {
-          ControllerView()
+          ControllerView(home: home)
 //            .toolbar {
 //              NavigationLink(destination: { SettingsView() }) {
 //                Label("Einstellungen", systemImage: "slider.horizontal.3")

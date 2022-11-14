@@ -39,6 +39,10 @@
 		5086826D28BFDEF300EF6EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5059217F28BBC5FA005A4E3A /* Assets.xcassets */; };
 		5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
 		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
+		50DAFAC22922D679008CC486 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
+		50DAFAC32922D679008CC486 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
+		50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
+		50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
 		50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9108E28BBC9A3001C10D2 /* Reachability.swift */; };
 		50E9109028BBC9A3001C10D2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9108E28BBC9A3001C10D2 /* Reachability.swift */; };
 		50E9109128BBCE27001C10D2 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFAF28511F25001F1006 /* NetworkReachability.swift */; };
@@ -85,6 +89,8 @@
 		5088888C285357B4006B8808 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
 		50BBFFAF28511F25001F1006 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
+		50DAFAC12922D679008CC486 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		50DAFAC42922D68F008CC486 /* DummyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyHome.swift; sourceTree = "<group>"; };
 		50E9108E28BBC9A3001C10D2 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		50E9109528BBCFE6001C10D2 /* GeoReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoReachability.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
@@ -144,14 +150,16 @@
 		5037F2B427AAA929007D1BBA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
 				5037F2AB27A80DA6007D1BBA /* Configuration.swift */,
-				50F4E98227A5BED100ECD03F /* Backend */,
-				5037F2B527AAA961007D1BBA /* Views */,
-				5037F2BB27ABF513007D1BBA /* Session.swift */,
+				50DAFAC42922D68F008CC486 /* DummyHome.swift */,
+				50E9109528BBCFE6001C10D2 /* GeoReachability.swift */,
+				50DAFAC12922D679008CC486 /* Home.swift */,
 				50BBFFAF28511F25001F1006 /* NetworkReachability.swift */,
 				50E9108E28BBC9A3001C10D2 /* Reachability.swift */,
-				50E9109528BBCFE6001C10D2 /* GeoReachability.swift */,
+				5037F2BB27ABF513007D1BBA /* Session.swift */,
+				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
+				50F4E98227A5BED100ECD03F /* Backend */,
+				5037F2B527AAA961007D1BBA /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -373,7 +381,9 @@
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
 				5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */,
+				50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */,
 				5037F2B827AAAB8A007D1BBA /* LoginHandlerView.swift in Sources */,
+				50DAFAC22922D679008CC486 /* Home.swift in Sources */,
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
 				50E9109128BBCE27001C10D2 /* NetworkReachability.swift in Sources */,
 			);
@@ -388,7 +398,9 @@
 				5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */,
 				50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */,
 				5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */,
+				50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */,
 				50E9109628BBCFE6001C10D2 /* GeoReachability.swift in Sources */,
+				50DAFAC32922D679008CC486 /* Home.swift in Sources */,
 				504003AB28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
 				5059218D28BBC7CF005A4E3A /* BatteryIcon.swift in Sources */,
 				50E9109728BBD075001C10D2 /* BuzzerButton.swift in Sources */,
@@ -604,7 +616,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "de.343max.ourhome.Our-Home";
+				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,7 +648,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "de.343max.ourhome.Our-Home";
+				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

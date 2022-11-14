@@ -22,11 +22,7 @@ struct AppSecrets {
   let secret: String
 }
 
-func sharedHome() -> Home {
-  return Home(username: appSecrets.username, secret: appSecrets.secret)
-}
-
-struct Home {
+struct RemoteHome: Home {
   let username: String
   let secret: String
 
@@ -36,7 +32,7 @@ struct Home {
 //  let localNetworkHost = "http://localhost:4278/"
 
   func url(action: Action, external: Bool = false) -> URL {
-    return (external ? Home.externalHost : Home.localNetworkHost).appendingPathComponent(action.rawValue)
+    return (external ? RemoteHome.externalHost : RemoteHome.localNetworkHost).appendingPathComponent(action.rawValue)
   }
 
   func send<T>(_ type: T.Type, _ method: Method, action: Action, external: Bool) async throws -> T where T: Decodable {

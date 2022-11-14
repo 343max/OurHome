@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct LockDoorButton: View {
+  let home: Home
+  let refresh: (() -> Void)?
+  
   @State var spinning = false
   @State var exclamationMark = false
-  let refresh: (() -> Void)?
 
   var body: some View {
     SpinningButton(spinning: $spinning, exclamationMark: $exclamationMark) {
@@ -11,7 +13,7 @@ struct LockDoorButton: View {
         spinning = true
         do {
           exclamationMark = false
-          _ = try await sharedHome().lockDoor()
+          _ = try await home.lockDoor()
           try await Task.sleep(seconds: 0.2)
           refresh?()
         } catch {
@@ -27,6 +29,6 @@ struct LockDoorButton: View {
 
 struct LockDoorButton_Previews: PreviewProvider {
   static var previews: some View {
-    LockDoorButton(refresh: nil)
+    LockDoorButton(home: DummyHome(), refresh: nil)
   }
 }

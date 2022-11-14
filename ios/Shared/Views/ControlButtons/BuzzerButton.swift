@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct BuzzerButton: View {
+  let home: Home
   @State var spinning = false
   @State var exclamationMark = false
 
@@ -10,7 +11,7 @@ struct BuzzerButton: View {
         spinning = true
         do {
           exclamationMark = false
-          _ = try await sharedHome().pressBuzzer()
+          _ = try await home.pressBuzzer()
           try await Task.sleep(seconds: 0.2)
         } catch {
           exclamationMark = true
@@ -25,6 +26,6 @@ struct BuzzerButton: View {
 
 struct BuzzerButton_Previews: PreviewProvider {
   static var previews: some View {
-    BuzzerButton()
+    BuzzerButton(home: DummyHome())
   }
 }
