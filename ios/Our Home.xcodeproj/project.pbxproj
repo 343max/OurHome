@@ -35,7 +35,6 @@
 		5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		5059219228BBC84B005A4E3A /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 5059219128BBC84B005A4E3A /* Authentication */; };
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
-		50701D96289FC49F00B690AB /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = 50701D95289FC49F00B690AB /* Inject */; };
 		5086826D28BFDEF300EF6EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5059217F28BBC5FA005A4E3A /* Assets.xcassets */; };
 		5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
 		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
@@ -104,7 +103,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */,
-				50701D96289FC49F00B690AB /* Inject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +268,6 @@
 			name = "Our Home";
 			packageProductDependencies = (
 				5037F22B27A5F19C007D1BBA /* Authentication */,
-				50701D95289FC49F00B690AB /* Inject */,
 			);
 			productName = "Our Home";
 			productReference = 503D1DB727A14EAB00FC8355 /* Our Home.app */;
@@ -324,7 +321,6 @@
 			);
 			mainGroup = 503D1DAE27A14EAB00FC8355;
 			packageReferences = (
-				50701D94289FC49F00B690AB /* XCRemoteSwiftPackageReference "Inject" */,
 			);
 			productRefGroup = 503D1DB827A14EAB00FC8355 /* Products */;
 			projectDirPath = "";
@@ -698,17 +694,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		50701D94289FC49F00B690AB /* XCRemoteSwiftPackageReference "Inject" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/krzysztofzablocki/Inject.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -717,11 +702,6 @@
 		5059219128BBC84B005A4E3A /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
-		};
-		50701D95289FC49F00B690AB /* Inject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50701D94289FC49F00B690AB /* XCRemoteSwiftPackageReference "Inject" */;
-			productName = Inject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

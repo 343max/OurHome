@@ -1,7 +1,4 @@
 import SwiftUI
-#if !os(watchOS)
-import Inject
-#endif
 
 struct ControllerView: View {
   let home: Home
@@ -12,10 +9,6 @@ struct ControllerView: View {
   @ObservedObject var nearbyReachability = Reachability(distance: .Nearby)
   @ObservedObject var remoteReachabiliy = Reachability(distance: .Remote)
   
-  #if !os(watchOS)
-  @ObserveInjection var inject
-  #endif
-
   func loadState() {
     Task {
       do {
@@ -67,9 +60,6 @@ struct ControllerView: View {
     .refreshable {
       loadState()
     }
-    #if !os(watchOS)
-    .enableInjection()
-    #endif
   }
 }
 
