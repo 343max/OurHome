@@ -35,7 +35,7 @@ const authorized = (
         "application/json; charset=UTF-8"
       )
       const resp = JSON.stringify(await handler(c))
-      console.log(resp)
+      console.log(`response: ${resp}`)
       return resp
     } else {
       console.log("unauthorized")
@@ -125,7 +125,10 @@ app
   .get(
     ...authorized(
       "state",
-      handleError(() => getNukiLockConfig(configuration.nuki))
+      handleError(async () => ({
+        success: true,
+        doorlock: await getNukiLockConfig(configuration.nuki),
+      }))
     )
   )
   .post(
