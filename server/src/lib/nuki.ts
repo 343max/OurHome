@@ -13,30 +13,14 @@ export const getNukiRequest = (
   })
 }
 
-// deno-lint-ignore no-explicit-any
-const parseJson = async (response: Response): Promise<any> => {
-  const text = await response.text()
-  try {
-    return JSON.parse(text)
-  } catch (error) {
-    throw Error(
-      [error, `tried to parse: ${text}`, `status: ${response.status}`].join(
-        "\n"
-      )
-    )
-  }
-}
-
 export const nukiLock = async (config: NukiConfiguration) =>
-  await parseJson(await fetch(getNukiRequest("lock", config)))
+  (await fetch(getNukiRequest("lock", config))).json()
 
 export const nukiUnlock = async (config: NukiConfiguration) =>
-  await parseJson(await fetch(getNukiRequest("unlock", config)))
+  (await fetch(getNukiRequest("unlock", config))).json()
 
 export const nukiUnlatch = async (config: NukiConfiguration) =>
-  await parseJson(
-    await fetch(getNukiRequest("lockAction", config, { action: 3 }))
-  )
+  (await fetch(getNukiRequest("lockAction", config, { action: 3 }))).json()
 
 export enum NukiSmartLockState {
   Uncalibrated = 0,
@@ -63,4 +47,4 @@ type NukiSmartLockConfig = {
 export const getNukiLockConfig = async (
   config: NukiConfiguration
 ): Promise<NukiSmartLockConfig> =>
-  await parseJson(await fetch(getNukiRequest("lockState", config)))
+  (await fetch(getNukiRequest("lockState", config))).json()

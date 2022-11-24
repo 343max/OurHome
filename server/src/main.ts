@@ -20,8 +20,7 @@ const app = new Application()
 
 const authorized = (
   action: Action,
-  // deno-lint-ignore no-explicit-any
-  handler: (c: Context) => Promise<any> | any,
+  handler: (c: Context) => Promise<unknown> | unknown,
   allowExternal = false
 ): [string, HandlerFunc] => [
   `/${action}`,
@@ -62,6 +61,21 @@ const pressBuzzer = async () => {
   }
 }
 
+const handleError =
+  <R>(
+    fn: () => Promise<R>
+  ): (() => Promise<R | { success: false; error: string }>) =>
+  async () => {
+    try {
+      return await fn()
+    } catch (error) {
+      return {
+        success: false,
+        error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+      }
+    }
+  }
+
 app
   .pre((next) => (c) => {
     console.log(
@@ -79,12 +93,23 @@ app
       return { success: true }
     })
   )
-  .post(...authorized("lock", async () => await nukiLock(configuration.nuki)))
   .post(
-    ...authorized("unlock", async () => await nukiUnlock(configuration.nuki))
+    ...authorized(
+      "lock",
+      handleError(() => nukiLock(configuration.nuki))
+    )
   )
   .post(
-    ...authorized("unlatch", async () => await nukiUnlatch(configuration.nuki))
+    ...authorized(
+      "unlock",
+      handleError(() => nukiUnlock(configuration.nuki))
+    )
+  )
+  .post(
+    ...authorized(
+      "unlatch",
+      handleError(() => nukiUnlatch(configuration.nuki))
+    )
   )
   .get(
     ...authorized("user", ({ request }) => {
@@ -98,10 +123,10 @@ app
     })
   )
   .get(
-    ...authorized("state", async () => {
-      const nukiState = await getNukiLockConfig(configuration.nuki)
-      return { success: true, doorlock: nukiState }
-    })
+    ...authorized(
+      "state",
+      handleError(() => getNukiLockConfig(configuration.nuki))
+    )
   )
   .post(
     ...authorized("arrived", () => {
