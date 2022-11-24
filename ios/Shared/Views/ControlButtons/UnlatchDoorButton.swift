@@ -22,7 +22,7 @@ struct UnlatchDoorButton: View {
         spinning = false
       }
     } label: {
-      Label("Wohnungstür öffnen", systemImage: "lock").foregroundColor(.red.opacity(isEnabled ? 1 : 0.5))
+      Label("Wohnungstür öffnen", systemImage: "door.left.hand.closed").foregroundColor(.red.opacity(isEnabled ? 1 : 0.5))
     }.disabled(spinning)
   }
 }
