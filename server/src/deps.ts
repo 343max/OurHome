@@ -11,4 +11,4 @@ export {
   assertNotEquals,
 } from "https://deno.land/std@0.123.0/testing/asserts.ts"
 
-export { createHash } from "https://deno.land/std@0.77.0/hash/mod.ts"
+export { createHash } from "https://deno.land/std@0.165.0/node/crypto.ts"

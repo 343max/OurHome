@@ -11,7 +11,8 @@ export const getToken = (
 ): string =>
   createHash("sha256")
     .update([user, secret, action, `${unixTimeSecs}`].join(":"))
-    .toString("base64")
+    .digest("base64")
+    .toString()
 
 export const getAuthHeader = (
   user: string,
