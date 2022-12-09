@@ -136,6 +136,12 @@ app
     })
   )
   .post(
+    ...authorized("arm/buzzer", () => {
+      armForDoorBellAction("buzzer")
+      return { success: true }
+    })
+  )
+  .post(
     ...authorized("arm/unlatch", () => {
       armForDoorBellAction("unlatch")
       return { success: true }

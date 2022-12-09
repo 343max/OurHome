@@ -7,4 +7,5 @@ export type Action =
   | "user"
   | "arrived"
   | "doorbell"
+  | "arm/buzzer"
   | "arm/unlatch"

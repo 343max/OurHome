@@ -3,7 +3,7 @@ import { allUsers } from "../secrets.ts"
 export type Permission = "full" | "local" | "none"
 
 export type Permissions = Record<
-  "buzzer" | "frontdoor" | "unlatch" | "arrived" | "arm/unlatch",
+  "buzzer" | "frontdoor" | "unlatch" | "arm/buzzer" | "arm/unlatch",
   Permission
 >
 

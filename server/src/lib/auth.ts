@@ -59,9 +59,10 @@ export const getPermissionsKey = (action: Action): null | keyof Permissions => {
     lock: "frontdoor",
     unlock: "frontdoor",
     unlatch: "unlatch",
-    arrived: "arrived",
+    arrived: "arm/buzzer",
     doorbell: null,
-    "arm/unlatch": "arm-unlatch",
+    "arm/unlatch": "arm/unlatch",
+    "arm/buzzer": "arm/buzzer",
   }
   return mapping[action]
 }
