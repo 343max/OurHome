@@ -11,7 +11,7 @@ import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
 import { Action } from "./lib/action.ts"
 import { Application, Context, HandlerFunc, sleep } from "./deps.ts"
 import {
-  getDoorbellAction,
+  getCurrentDoorbellAction,
   resetDoorBellAction,
   armForDoorBellAction,
 } from "./lib/arrivedRecently.ts"
@@ -128,6 +128,7 @@ app
       handleError(async () => ({
         success: true,
         doorlock: await getNukiLockConfig(configuration.nuki),
+        doorbellAction: getCurrentDoorbellAction(),
       }))
     )
   )
@@ -150,20 +151,22 @@ app
     })
   )
   .post("doorbell", async () => {
-    const action = getDoorbellAction()
-    if (action === "buzzer") {
-      console.log("pressing buzzer")
-      await pressBuzzer()
-      await sleep(0.5)
-      resetDoorBellAction()
-      return { success: true }
-    } else if (action === "unlatch") {
-      console.log("unlatching door")
-      resetDoorBellAction()
-      return await handleError(() => nukiUnlatch(configuration.nuki))()
-    } else {
+    const action = getCurrentDoorbellAction()
+    if (action === null) {
       console.log("doorbell action not armed, doing nothing")
       return { sucess: false }
+    }
+
+    switch (action.action) {
+      case "buzzer":
+        await pressBuzzer()
+        await sleep(0.5)
+        resetDoorBellAction()
+        return { success: true }
+      case "unlatch":
+        console.log("unlatching door")
+        resetDoorBellAction()
+        return await handleError(() => nukiUnlatch(configuration.nuki))()
     }
   })
   .get("/", () => ({ success: true, message: "please leave me alone" }))
