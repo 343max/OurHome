@@ -61,6 +61,7 @@ export const getPermissionsKey = (action: Action): null | keyof Permissions => {
     unlatch: "unlatch",
     arrived: "arrived",
     doorbell: null,
+    "arm/unlatch": "arm-unlatch",
   }
   return mapping[action]
 }

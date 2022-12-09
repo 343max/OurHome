@@ -1,14 +1,18 @@
 const getTime = () => new Date().getTime() / 1000
 
-let lastArrival = 0
+type DoorBellAction = "buzzer" | "unlatch"
 
-export const setArrivedNow = () => {
-  lastArrival = getTime()
+let lastArrival: null | { arrival: number; action: DoorBellAction }
+
+export const armForDoorBellAction = (action: DoorBellAction) => {
+  lastArrival = { arrival: getTime(), action }
 }
 
-export const getArrivedRecently = (): boolean =>
-  getTime() - lastArrival < 3 * 60
+export const getDoorbellAction = (): DoorBellAction | null =>
+  lastArrival !== null && getTime() - lastArrival.arrival < 3 * 60
+    ? lastArrival.action
+    : null
 
-export const resetArrival = () => {
-  lastArrival = 0
+export const resetDoorBellAction = () => {
+  lastArrival = null
 }

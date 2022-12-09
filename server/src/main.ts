@@ -11,17 +11,16 @@ import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
 import { Action } from "./lib/action.ts"
 import { Application, Context, HandlerFunc, sleep } from "./deps.ts"
 import {
-  getArrivedRecently,
-  resetArrival,
-  setArrivedNow,
+  getDoorbellAction,
+  resetDoorBellAction,
+  armForDoorBellAction,
 } from "./lib/arrivedRecently.ts"
 
 const app = new Application()
 
 const authorized = (
   action: Action,
-  handler: (c: Context) => Promise<unknown> | unknown,
-  allowExternal = false
+  handler: (c: Context) => Promise<unknown> | unknown
 ): [string, HandlerFunc] => [
   `/${action}`,
   async (c) => {
@@ -117,8 +116,7 @@ app
       if (authHeader === null) {
         return { sucess: false }
       }
-      // deno-lint-ignore no-unused-vars
-      const { secret, ...userInfo } = findUser(authHeader.username)!
+      const { secret: _secret, ...userInfo } = findUser(authHeader.username)!
       return { success: true, userInfo }
     })
   )
@@ -133,16 +131,26 @@ app
   )
   .post(
     ...authorized("arrived", () => {
-      setArrivedNow()
+      armForDoorBellAction("buzzer")
+      return { success: true }
+    })
+  )
+  .post(
+    ...authorized("arm/unlatch", () => {
+      armForDoorBellAction("unlatch")
       return { success: true }
     })
   )
   .post("doorbell", async () => {
-    if (getArrivedRecently()) {
+    const action = getDoorbellAction()
+    if (action === "buzzer") {
       await pressBuzzer()
       await sleep(0.5)
-      resetArrival()
+      resetDoorBellAction()
       return { success: true }
+    } else if (action === "unlatch") {
+      resetDoorBellAction()
+      return await handleError(() => nukiUnlatch(configuration.nuki))
     } else {
       return { sucess: false }
     }
