@@ -150,14 +150,17 @@ app
   .post("doorbell", async () => {
     const action = getDoorbellAction()
     if (action === "buzzer") {
+      console.log("pressing buzzer")
       await pressBuzzer()
       await sleep(0.5)
       resetDoorBellAction()
       return { success: true }
     } else if (action === "unlatch") {
+      console.log("unlatching door")
       resetDoorBellAction()
       return await handleError(() => nukiUnlatch(configuration.nuki))
     } else {
+      console.log("doorbell action not armed, doing nothing")
       return { sucess: false }
     }
   })
