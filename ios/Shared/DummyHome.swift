@@ -15,7 +15,11 @@ class DummyHome: Home {
     return success
   }
   
-  func arrived() async throws -> HomeResponse {
+  func armBuzzer() async throws -> HomeResponse {
+    return success
+  }
+  
+  func armUnlatch() async throws -> HomeResponse {
     return success
   }
   

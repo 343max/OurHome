@@ -8,8 +8,9 @@ enum Action: String {
   case buzzer
   case state
   case user
-  case arrived
   case doorbell
+  case armBuzzer = "arm/buzzer"
+  case armUnlatch = "arm/unlatch"
 }
 
 enum Method: String {
@@ -66,7 +67,11 @@ struct RemoteHome: Home {
     return try await send(HomeResponse.self, .post, action: .unlock, external: false)
   }
   
-  func arrived() async throws -> HomeResponse {
-    return try await send(HomeResponse.self, .post, action: .arrived, external: true)
+  func armBuzzer() async throws -> HomeResponse {
+    return try await send(HomeResponse.self, .post, action: .armBuzzer, external: true)
+  }
+  
+  func armUnlatch() async throws -> HomeResponse {
+    return try await send(HomeResponse.self, .post, action: .armUnlatch, external: true)
   }
 }

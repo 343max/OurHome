@@ -54,6 +54,12 @@ struct ControllerView: View {
         LockDoorButton(home: home, refresh: loadState)
           .disabled(!nearbyReachability.reachable)
       }
+      Section {
+        ArmBuzzerButton(home: home)
+        ArmUnlatchButton(home: home)
+      } header: {
+        Label("Klingeln zum…", systemImage: "bell")
+      }
     }
     .navigationTitle("Our Home")
     .onAppear(perform: loadState)

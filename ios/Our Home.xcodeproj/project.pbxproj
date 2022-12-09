@@ -35,6 +35,10 @@
 		5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		5059219228BBC84B005A4E3A /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 5059219128BBC84B005A4E3A /* Authentication */; };
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
+		5061C63F2943BF5F00BC3AAB /* ArmBuzzerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5061C63E2943BF5F00BC3AAB /* ArmBuzzerButton.swift */; };
+		5061C6402943BF5F00BC3AAB /* ArmBuzzerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5061C63E2943BF5F00BC3AAB /* ArmBuzzerButton.swift */; };
+		5061C6422943C03800BC3AAB /* ArmUnlatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5061C6412943C03800BC3AAB /* ArmUnlatchButton.swift */; };
+		5061C6432943C03800BC3AAB /* ArmUnlatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5061C6412943C03800BC3AAB /* ArmUnlatchButton.swift */; };
 		5086826D28BFDEF300EF6EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5059217F28BBC5FA005A4E3A /* Assets.xcassets */; };
 		5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
 		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
@@ -85,6 +89,8 @@
 		5059217D28BBC5FA005A4E3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5059217F28BBC5FA005A4E3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505C1B8F27B1630A00C1D268 /* LoggingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInView.swift; sourceTree = "<group>"; };
+		5061C63E2943BF5F00BC3AAB /* ArmBuzzerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmBuzzerButton.swift; sourceTree = "<group>"; };
+		5061C6412943C03800BC3AAB /* ArmUnlatchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmUnlatchButton.swift; sourceTree = "<group>"; };
 		5088888C285357B4006B8808 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
 		50BBFFAF28511F25001F1006 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
@@ -128,9 +134,11 @@
 		5037F22D27A6B553007D1BBA /* ControlButtons */ = {
 			isa = PBXGroup;
 			children = (
+				5061C63E2943BF5F00BC3AAB /* ArmBuzzerButton.swift */,
+				5061C6412943C03800BC3AAB /* ArmUnlatchButton.swift */,
 				5037F23027A6B838007D1BBA /* BuzzerButton.swift */,
-				5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */,
 				5037F23627A6C61E007D1BBA /* LockDoorButton.swift */,
+				5037F23427A6C1AB007D1BBA /* UnlatchDoorButton.swift */,
 				5037F23827A6C63D007D1BBA /* UnlockDoorButton.swift */,
 			);
 			path = ControlButtons;
@@ -372,9 +380,11 @@
 				50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
+				5061C63F2943BF5F00BC3AAB /* ArmBuzzerButton.swift in Sources */,
 				504003AA28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
 				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
+				5061C6422943C03800BC3AAB /* ArmUnlatchButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
 				5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */,
 				50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */,
@@ -393,6 +403,7 @@
 				50E9109928BBD0CD001C10D2 /* UnlatchDoorButton.swift in Sources */,
 				5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */,
 				50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */,
+				5061C6432943C03800BC3AAB /* ArmUnlatchButton.swift in Sources */,
 				5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */,
 				50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */,
 				50E9109628BBCFE6001C10D2 /* GeoReachability.swift in Sources */,
@@ -406,6 +417,7 @@
 				50E9109B28BBD125001C10D2 /* UnlockDoorButton.swift in Sources */,
 				5059218B28BBC6A9005A4E3A /* ControllerView.swift in Sources */,
 				50E9109A28BBD11D001C10D2 /* Task+Sleep.swift in Sources */,
+				5061C6402943BF5F00BC3AAB /* ArmBuzzerButton.swift in Sources */,
 				50E9109C28BBD12B001C10D2 /* LockDoorButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
