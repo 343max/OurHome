@@ -8,8 +8,6 @@ services:
       context: .
       labels:
         com.centurylinklabs.watchtower.enable: "false"
-    depends_on:
-      - nginx
     restart: always
   nginx:
     image: nginx:latest
@@ -22,3 +20,5 @@ services:
       - ./nginx/sites:/etc/nginx/sites
     ports:
       - "443:443"
+    depends_on:
+      - doorbellserver
