@@ -55,8 +55,8 @@ struct ControllerView: View {
           .disabled(!nearbyReachability.reachable)
       }
       Section {
-        ArmBuzzerButton(home: home)
-        ArmUnlatchButton(home: home)
+        ArmDoorbellButton(action: .buzzer, home: home, refresh: loadState)
+        ArmDoorbellButton(action: .unlatch, home: home, refresh: loadState)
       } header: {
         Label("Klingeln zum…", systemImage: "bell")
       }

@@ -28,13 +28,15 @@ class DummyHome: Home {
   var doorState = DoorlockState.Locked
   
   func getState() async throws -> HomeState {
-    return HomeState(success: true, doorlock: Doorlock(mode: 0,
-                                                       state: doorState,
-                                                       stateName: "name",
-                                                       batteryCritical: false,
-                                                       batteryCharging: false,
-                                                       batteryChargeState: 96,
-                                                       success: true))
+    return HomeState(success: true,
+                     doorlock: Doorlock(mode: 0,
+                                        state: doorState,
+                                        stateName: "name",
+                                        batteryCritical: false,
+                                        batteryCharging: false,
+                                        batteryChargeState: 96,
+                                        success: true),
+                     doorbellAction: nil)
   }
   
   func pressBuzzer() async throws -> HomeResponse {

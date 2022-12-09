@@ -7,6 +7,7 @@ struct HomeResponse: Codable {
 struct HomeState: Codable {
   let success: Bool
   let doorlock: Doorlock
+  let doorbellAction: DoorbellAction?
 }
 
 enum DoorlockState: Int, Codable {
