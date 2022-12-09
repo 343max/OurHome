@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50292D77293B9CA800530CEB /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 50292D76293B9CA800530CEB /* KeychainAccess */; };
 		502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
 		502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
 		502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
@@ -111,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50292D77293B9CA800530CEB /* KeychainAccess in Frameworks */,
 				5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +282,7 @@
 			name = "Our Home";
 			packageProductDependencies = (
 				5037F22B27A5F19C007D1BBA /* Authentication */,
+				50292D76293B9CA800530CEB /* KeychainAccess */,
 			);
 			productName = "Our Home";
 			productReference = 503D1DB727A14EAB00FC8355 /* Our Home.app */;
@@ -333,6 +336,7 @@
 			);
 			mainGroup = 503D1DAE27A14EAB00FC8355;
 			packageReferences = (
+				50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 503D1DB827A14EAB00FC8355 /* Products */;
 			projectDirPath = "";
@@ -712,7 +716,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		50292D76293B9CA800530CEB /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
