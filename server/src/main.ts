@@ -15,6 +15,7 @@ import {
   resetDoorBellAction,
   armForDoorBellAction,
 } from "./lib/arrivedRecently.ts"
+import { buildInfo } from "./lib/buildinfo.ts"
 
 const app = new Application()
 
@@ -52,6 +53,7 @@ if (getRuntimeConfig().ignoreAuthentication) {
 const port = 4278
 
 console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
+console.log(`👷 build date: ${buildInfo.date}`)
 
 const pressBuzzer = async () => {
   for (const _ in [0, 1, 2, 3, 4, 5]) {
