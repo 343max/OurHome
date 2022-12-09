@@ -7,25 +7,49 @@ Deno.test("findUser", () => {
       username: "ringo",
       displayName: "Ringo Start",
       secret: "aaa",
-      permissions: { frontdoor: "full", buzzer: "full", unlatch: "full" },
+      permissions: {
+        frontdoor: "full",
+        buzzer: "full",
+        unlatch: "full",
+        "arm/buzzer": "full",
+        "arm/unlatch": "full",
+      },
     },
     {
       username: "george",
       displayName: "George Harrison",
       secret: "bbbb",
-      permissions: { frontdoor: "full", buzzer: "full", unlatch: "full" },
+      permissions: {
+        frontdoor: "full",
+        buzzer: "full",
+        unlatch: "full",
+        "arm/buzzer": "full",
+        "arm/unlatch": "full",
+      },
     },
     {
       username: "john",
       displayName: "John Lennon",
       secret: "dead",
-      permissions: { frontdoor: "full", buzzer: "full", unlatch: "full" },
+      permissions: {
+        frontdoor: "full",
+        buzzer: "full",
+        unlatch: "full",
+        "arm/buzzer": "full",
+        "arm/unlatch": "full",
+      },
     },
     {
       username: "paul",
       displayName: "Paul McCartney",
       secret: "deaf",
-      permissions: { frontdoor: "full", buzzer: "full", unlatch: "full" },
+      permissions: {
+        frontdoor: "full",
+        buzzer: "full",
+        unlatch: "full",
+        "arm/buzzer": "full",
+        "arm/unlatch": "full",
+      },
     },
   ]
 

@@ -1,14 +1,22 @@
 import { NukiConfiguration } from "./config.ts"
 
-export const getNukiRequest = (
+export const getNukiUrl = (
   action: string,
   { host, port, token, deviceId }: NukiConfiguration,
-  params: { [key: string]: string | number } = {}
-): Request => {
+  params: { [key: string]: string | number }
+): string => {
   const allParams = Object.entries({ token, nukiId: deviceId, ...params })
     .map(([key, value]) => `${key}=${value}`)
     .join("&")
-  return new Request(`http://${host}:${port}/${action}?${allParams}`, {
+  return `http://${host}:${port}/${action}?${allParams}`
+}
+
+export const getNukiRequest = (
+  action: string,
+  config: NukiConfiguration,
+  params: { [key: string]: string | number } = {}
+): Request => {
+  return new Request(getNukiUrl(action, config, params), {
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   })
 }
