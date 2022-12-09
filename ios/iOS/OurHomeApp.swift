@@ -17,11 +17,11 @@ struct OurHomeApp: App {
 //      LoginHandlerView {
         NavigationView {
           ControllerView(home: home)
-//            .toolbar {
-//              NavigationLink(destination: { SettingsView() }) {
-//                Label("Einstellungen", systemImage: "slider.horizontal.3")
-//              }
-//            }
+            .toolbar {
+              NavigationLink(destination: { SettingsView() }) {
+                Label("Einstellungen", systemImage: "slider.horizontal.3")
+              }
+            }
 //        }
         .navigationViewStyle(StackNavigationViewStyle())
         }.onAppear() {
