@@ -1,4 +1,4 @@
-import { findUser } from "./lib/user.ts"
+import { dumpInviteLinks, findUser } from "./lib/user.ts"
 import {
   getNukiLockConfig,
   nukiLock,
@@ -54,6 +54,8 @@ const port = 4278
 
 console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
 console.log(`👷 build date: ${buildInfo.date}`)
+
+dumpInviteLinks()
 
 const pressBuzzer = async () => {
   for (const _ in [0, 1, 2, 3, 4, 5]) {
