@@ -157,7 +157,7 @@ app
       return { sucess: false }
     }
 
-    switch (action.action) {
+    switch (action.type) {
       case "buzzer":
         await pressBuzzer()
         await sleep(0.5)
@@ -170,4 +170,5 @@ app
     }
   })
   .get("/", () => ({ success: true, message: "please leave me alone" }))
+  .head("/", () => ({ success: true, message: "please leave me alone" }))
   .start({ port })

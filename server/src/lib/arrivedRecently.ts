@@ -1,15 +1,15 @@
 const getTime = () => new Date().getTime() / 1000
 
-type DoorBellAction = "buzzer" | "unlatch"
-type DoorBellActionWithTimeout = { timeout: number; action: DoorBellAction }
+type DoorBellActionType = "buzzer" | "unlatch"
+type DoorBellAction = { timeout: number; type: DoorBellActionType }
 
-let doorBellAction: null | DoorBellActionWithTimeout = null
+let doorBellAction: null | DoorBellAction = null
 
-export const armForDoorBellAction = (action: DoorBellAction) => {
-  doorBellAction = { timeout: getTime() + 3 * 60, action }
+export const armForDoorBellAction = (type: DoorBellActionType) => {
+  doorBellAction = { timeout: getTime() + 3 * 60, type }
 }
 
-export const getCurrentDoorbellAction = (): DoorBellActionWithTimeout | null =>
+export const getCurrentDoorbellAction = (): DoorBellAction | null =>
   doorBellAction !== null && getTime() - doorBellAction.timeout
     ? doorBellAction
     : null
