@@ -110,5 +110,7 @@ export const verifyAuth = (
     }
   }
 
+  console.log(`🧑 Authorized user: ${user.username}`)
+
   return true
 }
