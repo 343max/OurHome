@@ -12,4 +12,9 @@ final class URLHandlerTests: XCTestCase {
     let action = getAction(url: URL(string: "de.343max.ourhome://login?user=max&key=xyz")!)
     XCTAssertEqual(action, .login(username: "max", key: "xyz"))
   }
+
+  func testLogoutURL() {
+    let action = getAction(url: URL(string: "de.343max.ourhome://logout")!)
+    XCTAssertEqual(action, .logout)
+  }
 }

@@ -2,6 +2,7 @@ import Foundation
 
 enum URLAction: Equatable {
   case login(username: String, key: String)
+  case logout
 }
 
 func getAction(url: URL) -> URLAction? {
@@ -21,6 +22,8 @@ func getAction(url: URL) -> URLAction? {
     }
     
     return .login(username: username, key: key)
+  case "logout":
+    return .logout
   default:
     return nil
   }

@@ -2,7 +2,7 @@ import CoreLocation
 import UserNotifications
 
 class LocationChecker: NSObject {
-  let home: Home
+  var home: Home
   
   let locationManager = CLLocationManager()
   let homeRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 52.53826033352572, longitude: 13.425414271771368),

@@ -13,7 +13,7 @@ enum ActionId: String {
 }
 
 class NotificationProvider: NSObject {
-  let home: Home
+  var home: Home
   let categoryIdentifier = "buzzer"
   
   init(home: Home) {

@@ -22,7 +22,6 @@
 		5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AB27A80DA6007D1BBA /* Configuration.swift */; };
 		5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AF27A80E13007D1BBA /* AppVersion.swift */; };
 		5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */; };
-		5037F2BC27ABF513007D1BBA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2BB27ABF513007D1BBA /* Session.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		504003AA28C9F01000AD6EFD /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504003A928C9F01000AD6EFD /* AppSecrets.swift */; };
@@ -35,6 +34,13 @@
 		505121C72943E58F00F78E5E /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
 		505121C92944C9B700F78E5E /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C82944C9B700F78E5E /* URLHandler.swift */; };
 		5051220E2944CAAC00F78E5E /* URLHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220D2944CAAC00F78E5E /* URLHandlerTests.swift */; };
+		505122102944D34000F78E5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
+		505122112944D34000F78E5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
+		505122172944D5B300F78E5E /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122122944D37E00F78E5E /* UserView.swift */; };
+		505122182944D5B400F78E5E /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122122944D37E00F78E5E /* UserView.swift */; };
+		5051221A2944ECCD00F78E5E /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
+		5051221B2944ECCD00F78E5E /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
+		5051221D2944EDF700F78E5E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5051221C2944EDF700F78E5E /* KeychainAccess */; };
 		5059217C28BBC5FA005A4E3A /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */; };
 		5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217D28BBC5FA005A4E3A /* ContentView.swift */; };
 		5059218B28BBC6A9005A4E3A /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
@@ -91,7 +97,6 @@
 		5037F2AF27A80E13007D1BBA /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		5037F2B127A83C7D007D1BBA /* Our Home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Our Home.entitlements"; sourceTree = "<group>"; };
 		5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
-		5037F2BB27ABF513007D1BBA /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
@@ -103,6 +108,9 @@
 		505121C82944C9B700F78E5E /* URLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandler.swift; sourceTree = "<group>"; };
 		505122042944CA7C00F78E5E /* Our Home Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Our Home Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5051220D2944CAAC00F78E5E /* URLHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandlerTests.swift; sourceTree = "<group>"; };
+		5051220F2944D34000F78E5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		505122122944D37E00F78E5E /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		505122192944ECCD00F78E5E /* UserKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeychain.swift; sourceTree = "<group>"; };
 		5059217628BBC5FA005A4E3A /* Our Home Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		5059217D28BBC5FA005A4E3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -141,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5051221D2944EDF700F78E5E /* KeychainAccess in Frameworks */,
 				5059219228BBC84B005A4E3A /* Authentication in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,11 +195,12 @@
 				50DAFAC12922D679008CC486 /* Home.swift */,
 				50BBFFAF28511F25001F1006 /* NetworkReachability.swift */,
 				50E9108E28BBC9A3001C10D2 /* Reachability.swift */,
-				5037F2BB27ABF513007D1BBA /* Session.swift */,
 				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
+				505121C82944C9B700F78E5E /* URLHandler.swift */,
+				5051220F2944D34000F78E5E /* User.swift */,
+				505122192944ECCD00F78E5E /* UserKeychain.swift */,
 				50F4E98227A5BED100ECD03F /* Backend */,
 				5037F2B527AAA961007D1BBA /* Views */,
-				505121C82944C9B700F78E5E /* URLHandler.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -199,12 +209,13 @@
 			isa = PBXGroup;
 			children = (
 				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
-				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
 				503D1DBC27A14EAB00FC8355 /* ControllerView.swift */,
-				502C730927A47DBB006D0132 /* SpinningButton.swift */,
-				5037F2AE27A80DEE007D1BBA /* Settings */,
-				5037F22D27A6B553007D1BBA /* ControlButtons */,
 				505121C52943E58F00F78E5E /* CountdownView.swift */,
+				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
+				502C730927A47DBB006D0132 /* SpinningButton.swift */,
+				505122122944D37E00F78E5E /* UserView.swift */,
+				5037F22D27A6B553007D1BBA /* ControlButtons */,
+				5037F2AE27A80DEE007D1BBA /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,6 +362,7 @@
 			name = "Our Home Watch App";
 			packageProductDependencies = (
 				5059219128BBC84B005A4E3A /* Authentication */,
+				5051221C2944EDF700F78E5E /* KeychainAccess */,
 			);
 			productName = "Our Home Watch App";
 			productReference = 5059217628BBC5FA005A4E3A /* Our Home Watch App.app */;
@@ -440,12 +452,12 @@
 				505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */,
 				5037F23727A6C61E007D1BBA /* LockDoorButton.swift in Sources */,
 				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
+				505122102944D34000F78E5E /* User.swift in Sources */,
 				5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */,
 				502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */,
 				5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */,
 				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
 				5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */,
-				5037F2BC27ABF513007D1BBA /* Session.swift in Sources */,
 				505121C62943E58F00F78E5E /* CountdownView.swift in Sources */,
 				50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
@@ -455,10 +467,12 @@
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
 				5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */,
+				5051221A2944ECCD00F78E5E /* UserKeychain.swift in Sources */,
 				505121C92944C9B700F78E5E /* URLHandler.swift in Sources */,
 				50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */,
 				50DAFAC22922D679008CC486 /* Home.swift in Sources */,
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
+				505122172944D5B300F78E5E /* UserView.swift in Sources */,
 				505121C32943DFBC00F78E5E /* ArmButton.swift in Sources */,
 				50E9109128BBCE27001C10D2 /* NetworkReachability.swift in Sources */,
 			);
@@ -480,12 +494,15 @@
 				50E9109928BBD0CD001C10D2 /* UnlatchDoorButton.swift in Sources */,
 				5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */,
 				505121C72943E58F00F78E5E /* CountdownView.swift in Sources */,
+				505122182944D5B400F78E5E /* UserView.swift in Sources */,
 				50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */,
 				505121C12943DDFD00F78E5E /* DoorbellAction.swift in Sources */,
 				5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */,
+				5051221B2944ECCD00F78E5E /* UserKeychain.swift in Sources */,
 				50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */,
 				50E9109628BBCFE6001C10D2 /* GeoReachability.swift in Sources */,
 				50DAFAC32922D679008CC486 /* Home.swift in Sources */,
+				505122112944D34000F78E5E /* User.swift in Sources */,
 				504003AB28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
 				5059218D28BBC7CF005A4E3A /* BatteryIcon.swift in Sources */,
 				50E9109728BBD075001C10D2 /* BuzzerButton.swift in Sources */,
@@ -861,6 +878,11 @@
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
+		};
+		5051221C2944EDF700F78E5E /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 		5059219128BBC84B005A4E3A /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
