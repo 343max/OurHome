@@ -92,7 +92,7 @@ extension OurHomeApp {
     case .login(let username, let key):
       User.store(user: User(username: username, key: key))
       loadUser()
-      destination.append(Destination.settings)
+      destination = destination.filter({ $0 != .settings }) + [.settings]
       break
     case .logout:
       try? User.remove()

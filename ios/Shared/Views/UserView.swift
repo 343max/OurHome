@@ -5,11 +5,9 @@ struct UserView: View {
   let minHeight = CGFloat(100)
   
   var inviteButton: some View {
-    Link("Max nach Schlüssel-Link fragen", destination: URL(string: "sms://+491759116208")!)
+    Link("Max kontaktieren", destination: URL(string: "sms://+491759116208")!)
     .font(.callout)
-    .foregroundColor(.primary)
-    .colorInvert()
-    .buttonStyle(.borderedProminent)
+    .buttonStyle(.bordered)
   }
   
   var body: some View {
@@ -32,9 +30,11 @@ struct UserView: View {
       .frame(maxWidth: .infinity, minHeight: minHeight)
     case .loggedIn(let username):
       VStack {
-        Image(systemName: "person")
+        Image(systemName: "person.crop.circle")
         Text(username).bold()
+        Text("Der Schlüssel funktioniert")
       }
+      .foregroundColor(.cyan)
       .frame(maxWidth: .infinity, minHeight: minHeight)
     case .loginFailed(let username):
       VStack {
