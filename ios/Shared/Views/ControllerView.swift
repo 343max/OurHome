@@ -5,6 +5,7 @@ struct ControllerView: View {
   
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
+  @State private var doorbellAction: DoorbellAction? = nil
   
   @ObservedObject var nearbyReachability = Reachability(distance: .Nearby)
   @ObservedObject var remoteReachabiliy = Reachability(distance: .Remote)
@@ -28,9 +29,11 @@ struct ControllerView: View {
           charging: state.doorlock.batteryCharging,
           critical: state.doorlock.batteryCritical
         )
+        doorbellAction = state.doorbellAction
       } catch {
         frontDoorLockState = .unreachable
         frontDoorBatteryState = nil
+        doorbellAction = nil
       }
     }
   }
@@ -55,10 +58,10 @@ struct ControllerView: View {
           .disabled(!nearbyReachability.reachable)
       }
       Section {
-        ArmDoorbellButton(action: .buzzer, home: home, refresh: loadState)
-        ArmDoorbellButton(action: .unlatch, home: home, refresh: loadState)
+        ArmDoorbellButton(action: .buzzer, armedAction: doorbellAction, home: home, refresh: loadState)
+        ArmDoorbellButton(action: .unlatch, armedAction: doorbellAction, home: home, refresh: loadState)
       } header: {
-        Label("Klingeln zum…", systemImage: "bell")
+        Label("Klingeln zum Öffnen…", systemImage: "bell")
       }
     }
     .navigationTitle("Our Home")

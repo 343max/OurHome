@@ -6,6 +6,12 @@ enum DoorbellActionType: String, Codable {
 }
 
 struct DoorbellAction: Codable {
-  let timeout: Float
+  let timeout: Double
   let type: DoorbellActionType
+}
+
+extension DoorbellAction {
+  var timeoutDate: Date {
+    Date(timeIntervalSince1970: timeout)
+  }
 }

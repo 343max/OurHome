@@ -31,6 +31,8 @@
 		505121C12943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
 		505121C32943DFBC00F78E5E /* ArmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C22943DFBC00F78E5E /* ArmButton.swift */; };
 		505121C42943DFBC00F78E5E /* ArmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C22943DFBC00F78E5E /* ArmButton.swift */; };
+		505121C62943E58F00F78E5E /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
+		505121C72943E58F00F78E5E /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
 		5059217C28BBC5FA005A4E3A /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */; };
 		5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217D28BBC5FA005A4E3A /* ContentView.swift */; };
 		5059218B28BBC6A9005A4E3A /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
@@ -86,6 +88,7 @@
 		504003A928C9F01000AD6EFD /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		505121BF2943DDFD00F78E5E /* DoorbellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorbellAction.swift; sourceTree = "<group>"; };
 		505121C22943DFBC00F78E5E /* ArmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmButton.swift; sourceTree = "<group>"; };
+		505121C52943E58F00F78E5E /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		5059217628BBC5FA005A4E3A /* Our Home Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		5059217D28BBC5FA005A4E3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 				502C730927A47DBB006D0132 /* SpinningButton.swift */,
 				5037F2AE27A80DEE007D1BBA /* Settings */,
 				5037F22D27A6B553007D1BBA /* ControlButtons */,
+				505121C52943E58F00F78E5E /* CountdownView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,6 +382,7 @@
 				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
 				5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */,
 				5037F2BC27ABF513007D1BBA /* Session.swift in Sources */,
+				505121C62943E58F00F78E5E /* CountdownView.swift in Sources */,
 				50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
@@ -402,6 +407,7 @@
 				5059218C28BBC7C9005A4E3A /* DoorHeader.swift in Sources */,
 				50E9109928BBD0CD001C10D2 /* UnlatchDoorButton.swift in Sources */,
 				5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */,
+				505121C72943E58F00F78E5E /* CountdownView.swift in Sources */,
 				50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */,
 				505121C12943DDFD00F78E5E /* DoorbellAction.swift in Sources */,
 				5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */,
@@ -478,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -540,7 +546,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

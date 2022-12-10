@@ -7,6 +7,7 @@ private struct Config {
 
 struct ArmDoorbellButton: View {
   let action: DoorbellActionType
+  let armedAction: DoorbellAction?
   let home: Home
   let refresh: (() -> Void)?
   @State var spinning = false
@@ -15,9 +16,9 @@ struct ArmDoorbellButton: View {
   private var config: Config {
     switch action {
     case .buzzer:
-      return Config(label: "…Öffnen der Haustür", systemImage: "figure.walk")
+      return Config(label: "…der Haustür", systemImage: "figure.walk")
     case .unlatch:
-      return Config(label: "…Öffnen der Wohnungstür", systemImage: "door.left.hand.closed")
+      return Config(label: "…der Wohnungstür", systemImage: "door.left.hand.closed")
     }
   }
   
@@ -41,16 +42,30 @@ struct ArmDoorbellButton: View {
         spinning = false
       }
     } label: {
-      Label(config.label, systemImage: config.systemImage)
+      LabeledContent {
+        if let armedAction = armedAction, armedAction.type == action {
+          CountdownView(timeout: armedAction.timeoutDate)
+        }
+      } label: {
+        Label(config.label, systemImage: config.systemImage)
+      }
     }.disabled(spinning)
   }
 }
 
 struct ArmDoorebellButton_Previews: PreviewProvider {
+  static let doorbellAction = DoorbellAction(
+    timeout: Date().addingTimeInterval(2 * 60 + 42).timeIntervalSince1970,
+    type: .unlatch)
+  
   static var previews: some View {
     List {
-      ArmDoorbellButton(action: .buzzer, home: DummyHome(), refresh: nil)
-      ArmDoorbellButton(action: .unlatch, home: DummyHome(), refresh: nil)
-    }
+      Section {
+        ArmDoorbellButton(action: .buzzer, armedAction: doorbellAction, home: DummyHome(), refresh: nil)
+        ArmDoorbellButton(action: .unlatch, armedAction: doorbellAction, home: DummyHome(), refresh: nil)
+      } header: {
+        Label("Klingeln zum Öffnen…", systemImage: "bell")
+      }
+    }.frame(maxHeight: 300).previewLayout(.sizeThatFits)
   }
 }
