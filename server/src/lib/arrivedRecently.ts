@@ -9,10 +9,11 @@ export const armForDoorBellAction = (type: DoorBellActionType) => {
   doorBellAction = { timeout: getTime() + 3 * 60, type }
 }
 
+export const isArmedDoorbellAction = (action: DoorBellAction | null): boolean =>
+  action !== null && getTime() < action.timeout
+
 export const getCurrentDoorbellAction = (): DoorBellAction | null =>
-  doorBellAction !== null && getTime() - doorBellAction.timeout
-    ? doorBellAction
-    : null
+  isArmedDoorbellAction(doorBellAction) ? doorBellAction : null
 
 export const resetDoorBellAction = () => {
   doorBellAction = null
