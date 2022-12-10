@@ -14,7 +14,6 @@ struct OurHomeApp: App {
   
   var body: some Scene {
     WindowGroup {
-//      LoginHandlerView {
         NavigationView {
           ControllerView(home: home)
             .toolbar {
@@ -22,12 +21,14 @@ struct OurHomeApp: App {
                 Label("Einstellungen", systemImage: "slider.horizontal.3")
               }
             }
-//        }
         .navigationViewStyle(StackNavigationViewStyle())
         }.onAppear() {
           if ProcessInfo.processInfo.environment["FAKE_PUSH"] == "1" {
             notificationProvider.showBuzzerNotification(delayed: true)
           }
+        }
+        .onOpenURL { url in
+          print("openURL: \(url)")
         }
     }
   }
