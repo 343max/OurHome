@@ -24,8 +24,6 @@
 		5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
-		504003AA28C9F01000AD6EFD /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504003A928C9F01000AD6EFD /* AppSecrets.swift */; };
-		504003AB28C9F01000AD6EFD /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504003A928C9F01000AD6EFD /* AppSecrets.swift */; };
 		505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
 		505121C12943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
 		505121C32943DFBC00F78E5E /* ArmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C22943DFBC00F78E5E /* ArmButton.swift */; };
@@ -101,7 +99,6 @@
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		504003A928C9F01000AD6EFD /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		505121BF2943DDFD00F78E5E /* DoorbellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorbellAction.swift; sourceTree = "<group>"; };
 		505121C22943DFBC00F78E5E /* ArmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmButton.swift; sourceTree = "<group>"; };
 		505121C52943E58F00F78E5E /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
@@ -291,7 +288,6 @@
 			children = (
 				50F4E98327A5BEE300ECD03F /* Model */,
 				50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */,
-				504003A928C9F01000AD6EFD /* AppSecrets.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -462,7 +458,6 @@
 				50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
-				504003AA28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
 				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
@@ -503,7 +498,6 @@
 				50E9109628BBCFE6001C10D2 /* GeoReachability.swift in Sources */,
 				50DAFAC32922D679008CC486 /* Home.swift in Sources */,
 				505122112944D34000F78E5E /* User.swift in Sources */,
-				504003AB28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
 				5059218D28BBC7CF005A4E3A /* BatteryIcon.swift in Sources */,
 				50E9109728BBD075001C10D2 /* BuzzerButton.swift in Sources */,
 				50E9109228BBCE35001C10D2 /* HomeState.swift in Sources */,

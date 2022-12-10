@@ -18,11 +18,6 @@ enum Method: String {
   case post = "POST"
 }
 
-struct AppSecrets {
-  let username: String
-  let secret: String
-}
-
 struct RemoteHome: Home {
   let username: String
   let secret: String
