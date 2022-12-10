@@ -1,6 +1,8 @@
 import Foundation
 
 class DummyHome: Home {
+  var doorbellAction: DoorbellAction?
+  
   func lockDoor() async throws -> HomeResponse {
     doorState = .Locking
     try await Task.sleep(seconds: 2)
@@ -16,10 +18,20 @@ class DummyHome: Home {
   }
   
   func armBuzzer() async throws -> HomeResponse {
+    try await Task.sleep(seconds: 0.5)
+    doorbellAction = DoorbellAction(
+      timeout: Date().addingTimeInterval(3 * 60).timeIntervalSince1970,
+      type: .buzzer
+    )
     return success
   }
   
   func armUnlatch() async throws -> HomeResponse {
+    try await Task.sleep(seconds: 0.5)
+    doorbellAction = DoorbellAction(
+      timeout: Date().addingTimeInterval(3 * 60).timeIntervalSince1970,
+      type: .unlatch
+    )
     return success
   }
   
@@ -36,7 +48,7 @@ class DummyHome: Home {
                                         batteryCharging: false,
                                         batteryChargeState: 96,
                                         success: true),
-                     doorbellAction: nil)
+                     doorbellAction: doorbellAction)
   }
   
   func pressBuzzer() async throws -> HomeResponse {

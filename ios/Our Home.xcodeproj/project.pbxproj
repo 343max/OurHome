@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50292D77293B9CA800530CEB /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 50292D76293B9CA800530CEB /* KeychainAccess */; };
 		502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
 		502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
 		502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
@@ -20,19 +21,24 @@
 		5037F26627A70387007D1BBA /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
 		5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AB27A80DA6007D1BBA /* Configuration.swift */; };
 		5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AF27A80E13007D1BBA /* AppVersion.swift */; };
-		5037F2B827AAAB8A007D1BBA /* LoginHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2B727AAAB8A007D1BBA /* LoginHandlerView.swift */; };
 		5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */; };
-		5037F2BC27ABF513007D1BBA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2BB27ABF513007D1BBA /* Session.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
-		504003AA28C9F01000AD6EFD /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504003A928C9F01000AD6EFD /* AppSecrets.swift */; };
-		504003AB28C9F01000AD6EFD /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504003A928C9F01000AD6EFD /* AppSecrets.swift */; };
 		505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
 		505121C12943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
 		505121C32943DFBC00F78E5E /* ArmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C22943DFBC00F78E5E /* ArmButton.swift */; };
 		505121C42943DFBC00F78E5E /* ArmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C22943DFBC00F78E5E /* ArmButton.swift */; };
 		505121C62943E58F00F78E5E /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
 		505121C72943E58F00F78E5E /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
+		505121C92944C9B700F78E5E /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C82944C9B700F78E5E /* URLHandler.swift */; };
+		5051220E2944CAAC00F78E5E /* URLHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220D2944CAAC00F78E5E /* URLHandlerTests.swift */; };
+		505122102944D34000F78E5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
+		505122112944D34000F78E5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
+		505122172944D5B300F78E5E /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122122944D37E00F78E5E /* UserView.swift */; };
+		505122182944D5B400F78E5E /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122122944D37E00F78E5E /* UserView.swift */; };
+		5051221A2944ECCD00F78E5E /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
+		5051221B2944ECCD00F78E5E /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
+		5051221D2944EDF700F78E5E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5051221C2944EDF700F78E5E /* KeychainAccess */; };
 		5059217C28BBC5FA005A4E3A /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */; };
 		5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217D28BBC5FA005A4E3A /* ContentView.swift */; };
 		5059218B28BBC6A9005A4E3A /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
@@ -63,6 +69,16 @@
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		505122082944CA7C00F78E5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503D1DAF27A14EAB00FC8355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 503D1DB627A14EAB00FC8355;
+			remoteInfo = "Our Home";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
@@ -78,17 +94,20 @@
 		5037F2AB27A80DA6007D1BBA /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		5037F2AF27A80E13007D1BBA /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		5037F2B127A83C7D007D1BBA /* Our Home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Our Home.entitlements"; sourceTree = "<group>"; };
-		5037F2B727AAAB8A007D1BBA /* LoginHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHandlerView.swift; sourceTree = "<group>"; };
 		5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
-		5037F2BB27ABF513007D1BBA /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		503D1DBE27A14EAB00FC8355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		504003A928C9F01000AD6EFD /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		505121BF2943DDFD00F78E5E /* DoorbellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorbellAction.swift; sourceTree = "<group>"; };
 		505121C22943DFBC00F78E5E /* ArmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmButton.swift; sourceTree = "<group>"; };
 		505121C52943E58F00F78E5E /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		505121C82944C9B700F78E5E /* URLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandler.swift; sourceTree = "<group>"; };
+		505122042944CA7C00F78E5E /* Our Home Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Our Home Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5051220D2944CAAC00F78E5E /* URLHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandlerTests.swift; sourceTree = "<group>"; };
+		5051220F2944D34000F78E5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		505122122944D37E00F78E5E /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		505122192944ECCD00F78E5E /* UserKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeychain.swift; sourceTree = "<group>"; };
 		5059217628BBC5FA005A4E3A /* Our Home Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		5059217D28BBC5FA005A4E3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,7 +130,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50292D77293B9CA800530CEB /* KeychainAccess in Frameworks */,
 				5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		505122012944CA7C00F78E5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5051221D2944EDF700F78E5E /* KeychainAccess in Frameworks */,
 				5059219228BBC84B005A4E3A /* Authentication in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,8 +192,10 @@
 				50DAFAC12922D679008CC486 /* Home.swift */,
 				50BBFFAF28511F25001F1006 /* NetworkReachability.swift */,
 				50E9108E28BBC9A3001C10D2 /* Reachability.swift */,
-				5037F2BB27ABF513007D1BBA /* Session.swift */,
 				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
+				505121C82944C9B700F78E5E /* URLHandler.swift */,
+				5051220F2944D34000F78E5E /* User.swift */,
+				505122192944ECCD00F78E5E /* UserKeychain.swift */,
 				50F4E98227A5BED100ECD03F /* Backend */,
 				5037F2B527AAA961007D1BBA /* Views */,
 			);
@@ -176,12 +206,13 @@
 			isa = PBXGroup;
 			children = (
 				502C730B27A56A4A006D0132 /* BatteryIcon.swift */,
-				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
 				503D1DBC27A14EAB00FC8355 /* ControllerView.swift */,
-				502C730927A47DBB006D0132 /* SpinningButton.swift */,
-				5037F2AE27A80DEE007D1BBA /* Settings */,
-				5037F22D27A6B553007D1BBA /* ControlButtons */,
 				505121C52943E58F00F78E5E /* CountdownView.swift */,
+				502C730D27A56FDF006D0132 /* DoorHeader.swift */,
+				502C730927A47DBB006D0132 /* SpinningButton.swift */,
+				505122122944D37E00F78E5E /* UserView.swift */,
+				5037F22D27A6B553007D1BBA /* ControlButtons */,
+				5037F2AE27A80DEE007D1BBA /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +224,7 @@
 				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* iOS */,
 				5059217A28BBC5FA005A4E3A /* Watch */,
+				505122052944CA7C00F78E5E /* Our Home Tests */,
 				503D1DB827A14EAB00FC8355 /* Products */,
 				5059219028BBC84B005A4E3A /* Frameworks */,
 				5037F27627A7EE5A007D1BBA /* Config.xcconfig */,
@@ -206,6 +238,7 @@
 			children = (
 				503D1DB727A14EAB00FC8355 /* Our Home.app */,
 				5059217628BBC5FA005A4E3A /* Our Home Watch App.app */,
+				505122042944CA7C00F78E5E /* Our Home Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -217,13 +250,20 @@
 				5037F2B127A83C7D007D1BBA /* Our Home.entitlements */,
 				50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */,
 				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
-				5037F2B727AAAB8A007D1BBA /* LoginHandlerView.swift */,
 				5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */,
 				505C1B8F27B1630A00C1D268 /* LoggingInView.swift */,
 				50BBFFB128512E6B001F1006 /* LocationChecker.swift */,
 				5088888C285357B4006B8808 /* NotificationProvider.swift */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		505122052944CA7C00F78E5E /* Our Home Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5051220D2944CAAC00F78E5E /* URLHandlerTests.swift */,
+			);
+			path = "Our Home Tests";
 			sourceTree = "<group>";
 		};
 		5059217A28BBC5FA005A4E3A /* Watch */ = {
@@ -248,7 +288,6 @@
 			children = (
 				50F4E98327A5BEE300ECD03F /* Model */,
 				50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */,
-				504003A928C9F01000AD6EFD /* AppSecrets.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -280,10 +319,29 @@
 			name = "Our Home";
 			packageProductDependencies = (
 				5037F22B27A5F19C007D1BBA /* Authentication */,
+				50292D76293B9CA800530CEB /* KeychainAccess */,
 			);
 			productName = "Our Home";
 			productReference = 503D1DB727A14EAB00FC8355 /* Our Home.app */;
 			productType = "com.apple.product-type.application";
+		};
+		505122032944CA7C00F78E5E /* Our Home Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5051220A2944CA7C00F78E5E /* Build configuration list for PBXNativeTarget "Our Home Tests" */;
+			buildPhases = (
+				505122002944CA7C00F78E5E /* Sources */,
+				505122012944CA7C00F78E5E /* Frameworks */,
+				505122022944CA7C00F78E5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				505122092944CA7C00F78E5E /* PBXTargetDependency */,
+			);
+			name = "Our Home Tests";
+			productName = "Our Home Tests";
+			productReference = 505122042944CA7C00F78E5E /* Our Home Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		5059217528BBC5FA005A4E3A /* Our Home Watch App */ = {
 			isa = PBXNativeTarget;
@@ -300,6 +358,7 @@
 			name = "Our Home Watch App";
 			packageProductDependencies = (
 				5059219128BBC84B005A4E3A /* Authentication */,
+				5051221C2944EDF700F78E5E /* KeychainAccess */,
 			);
 			productName = "Our Home Watch App";
 			productReference = 5059217628BBC5FA005A4E3A /* Our Home Watch App.app */;
@@ -312,11 +371,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					503D1DB627A14EAB00FC8355 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					505122032944CA7C00F78E5E = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 503D1DB627A14EAB00FC8355;
 					};
 					5059217528BBC5FA005A4E3A = {
 						CreatedOnToolsVersion = 14.0;
@@ -333,6 +396,7 @@
 			);
 			mainGroup = 503D1DAE27A14EAB00FC8355;
 			packageReferences = (
+				50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 503D1DB827A14EAB00FC8355 /* Products */;
 			projectDirPath = "";
@@ -340,6 +404,7 @@
 			targets = (
 				503D1DB627A14EAB00FC8355 /* Our Home */,
 				5059217528BBC5FA005A4E3A /* Our Home Watch App */,
+				505122032944CA7C00F78E5E /* Our Home Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -350,6 +415,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		505122022944CA7C00F78E5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,27 +448,36 @@
 				505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */,
 				5037F23727A6C61E007D1BBA /* LockDoorButton.swift in Sources */,
 				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
+				505122102944D34000F78E5E /* User.swift in Sources */,
 				5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */,
 				502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */,
 				5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */,
 				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
 				5037F23127A6B838007D1BBA /* BuzzerButton.swift in Sources */,
-				5037F2BC27ABF513007D1BBA /* Session.swift in Sources */,
 				505121C62943E58F00F78E5E /* CountdownView.swift in Sources */,
 				50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
-				504003AA28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
 				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
 				5037F23927A6C63D007D1BBA /* UnlockDoorButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
 				5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */,
+				5051221A2944ECCD00F78E5E /* UserKeychain.swift in Sources */,
+				505121C92944C9B700F78E5E /* URLHandler.swift in Sources */,
 				50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */,
-				5037F2B827AAAB8A007D1BBA /* LoginHandlerView.swift in Sources */,
 				50DAFAC22922D679008CC486 /* Home.swift in Sources */,
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
+				505122172944D5B300F78E5E /* UserView.swift in Sources */,
 				505121C32943DFBC00F78E5E /* ArmButton.swift in Sources */,
 				50E9109128BBCE27001C10D2 /* NetworkReachability.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		505122002944CA7C00F78E5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5051220E2944CAAC00F78E5E /* URLHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,13 +489,15 @@
 				50E9109928BBD0CD001C10D2 /* UnlatchDoorButton.swift in Sources */,
 				5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */,
 				505121C72943E58F00F78E5E /* CountdownView.swift in Sources */,
+				505122182944D5B400F78E5E /* UserView.swift in Sources */,
 				50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */,
 				505121C12943DDFD00F78E5E /* DoorbellAction.swift in Sources */,
 				5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */,
+				5051221B2944ECCD00F78E5E /* UserKeychain.swift in Sources */,
 				50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */,
 				50E9109628BBCFE6001C10D2 /* GeoReachability.swift in Sources */,
 				50DAFAC32922D679008CC486 /* Home.swift in Sources */,
-				504003AB28C9F01000AD6EFD /* AppSecrets.swift in Sources */,
+				505122112944D34000F78E5E /* User.swift in Sources */,
 				5059218D28BBC7CF005A4E3A /* BatteryIcon.swift in Sources */,
 				50E9109728BBD075001C10D2 /* BuzzerButton.swift in Sources */,
 				50E9109228BBCE35001C10D2 /* HomeState.swift in Sources */,
@@ -429,6 +512,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		505122092944CA7C00F78E5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 503D1DB627A14EAB00FC8355 /* Our Home */;
+			targetProxy = 505122082944CA7C00F78E5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		503D1DC327A14EAB00FC8355 /* Debug */ = {
@@ -616,6 +707,46 @@
 			};
 			name = Release;
 		};
+		5051220B2944CA7C00F78E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Our Home.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Our Home";
+			};
+			name = Debug;
+		};
+		5051220C2944CA7C00F78E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Our Home.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Our Home";
+			};
+			name = Release;
+		};
 		5059218528BBC5FA005A4E3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -701,6 +832,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5051220A2944CA7C00F78E5E /* Build configuration list for PBXNativeTarget "Our Home Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5051220B2944CA7C00F78E5E /* Debug */,
+				5051220C2944CA7C00F78E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5059218428BBC5FA005A4E3A /* Build configuration list for PBXNativeTarget "Our Home Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -712,10 +852,31 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		50292D76293B9CA800530CEB /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
+		};
+		5051221C2944EDF700F78E5E /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 		5059219128BBC84B005A4E3A /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;

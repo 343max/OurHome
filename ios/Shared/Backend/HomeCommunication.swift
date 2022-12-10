@@ -18,11 +18,6 @@ enum Method: String {
   case post = "POST"
 }
 
-struct AppSecrets {
-  let username: String
-  let secret: String
-}
-
 struct RemoteHome: Home {
   let username: String
   let secret: String
@@ -30,8 +25,6 @@ struct RemoteHome: Home {
   static let localNetworkHost = URL(string: "http://nuc.fritz.box:4278/")!
   static let externalHost = URL(string: "https://buzzer.343max.de/")!
   
-//  let localNetworkHost = "http://localhost:4278/"
-
   func url(action: Action, external: Bool = false) -> URL {
     return (external ? RemoteHome.externalHost : RemoteHome.localNetworkHost).appendingPathComponent(action.rawValue)
   }
