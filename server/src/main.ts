@@ -130,19 +130,19 @@ app
   )
   .post(
     ...authorized("arrived", () => {
-      armForDoorBellAction("buzzer")
+      armForDoorBellAction("buzzer", configuration.arrivalTimeout)
       return { success: true }
     })
   )
   .post(
     ...authorized("arm/buzzer", () => {
-      armForDoorBellAction("buzzer")
+      armForDoorBellAction("buzzer", configuration.buzzerArmTimeout)
       return { success: true }
     })
   )
   .post(
     ...authorized("arm/unlatch", () => {
-      armForDoorBellAction("unlatch")
+      armForDoorBellAction("unlatch", configuration.unlatchArmTimeout)
       return { success: true }
     })
   )
@@ -155,12 +155,13 @@ app
 
     switch (action.type) {
       case "buzzer":
+        console.log("buzzer because the doorbell buzzer was armed")
         await pressBuzzer()
         await sleep(0.5)
         resetDoorBellAction()
         return { success: true }
       case "unlatch":
-        console.log("unlatching door")
+        console.log("unlatching because the doorbell buzzer was armed")
         resetDoorBellAction()
         return await handleError(() => configuration.nuki.unlatch())()
     }

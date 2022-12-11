@@ -4,6 +4,9 @@ import { Nuki } from "./nuki.ts"
 export type Configuration = {
   buzzer: Buzzer
   nuki: Nuki
+  buzzerArmTimeout: number
+  unlatchArmTimeout: number
+  arrivalTimeout: number
 }
 
 type EnvOverwrites = { ignoreAuthentication: boolean }
