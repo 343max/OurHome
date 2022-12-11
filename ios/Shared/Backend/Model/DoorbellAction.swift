@@ -15,3 +15,17 @@ extension DoorbellAction {
     Date(timeIntervalSince1970: timeout)
   }
 }
+
+extension DoorbellAction {
+  static func getActiveType(_ action: DoorbellAction?) -> DoorbellActionType? {
+    guard let action else {
+      return nil
+    }
+    
+    guard action.timeoutDate > Date() else {
+      return nil
+    }
+    
+    return action.type
+  }
+}

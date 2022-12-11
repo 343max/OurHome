@@ -60,7 +60,7 @@ dumpInviteLinks()
 const pressBuzzer = async () => {
   for (const _ in [0, 1, 2, 3, 4, 5]) {
     await sleep(0.5)
-    await fetch(configuration.buzzerUrl)
+    await configuration.buzzer.pressBuzzer()
   }
 }
 

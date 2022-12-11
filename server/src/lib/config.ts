@@ -1,3 +1,5 @@
+import { Buzzer } from "./buzzer.ts"
+
 export type NukiConfiguration = {
   host: string
   port: number
@@ -6,7 +8,7 @@ export type NukiConfiguration = {
 }
 
 export type Configuration = {
-  buzzerUrl: string
+  buzzer: Buzzer
   nuki: NukiConfiguration
 }
 

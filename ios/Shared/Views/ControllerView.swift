@@ -66,7 +66,7 @@ struct ControllerView: View {
       } header: {
         Label("Klingeln zum Öffnen…", systemImage: "bell")
       } footer: {
-        switch(doorbellAction?.type) {
+        switch(DoorbellAction.getActiveType(doorbellAction)) {
         case nil:
           EmptyView()
         case .buzzer:
