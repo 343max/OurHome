@@ -1,5 +1,6 @@
 import { assertEquals } from "../deps.ts"
-import { getNukiUrl } from "./nuki.ts"
+import { getNukiUrl } from "./liveNuki.ts"
+
 Deno.test("generate url", () => {
   const url = getNukiUrl(
     "lock",

@@ -1,15 +1,9 @@
 import { Buzzer } from "./buzzer.ts"
-
-export type NukiConfiguration = {
-  host: string
-  port: number
-  token: string
-  deviceId: number
-}
+import { Nuki } from "./nuki.ts"
 
 export type Configuration = {
   buzzer: Buzzer
-  nuki: NukiConfiguration
+  nuki: Nuki
 }
 
 type EnvOverwrites = { ignoreAuthentication: boolean }

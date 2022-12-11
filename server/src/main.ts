@@ -1,10 +1,4 @@
 import { dumpInviteLinks, findUser } from "./lib/user.ts"
-import {
-  getNukiLockConfig,
-  nukiLock,
-  nukiUnlatch,
-  nukiUnlock,
-} from "./lib/nuki.ts"
 import { getRuntimeConfig } from "./lib/config.ts"
 import { configuration } from "./secrets.ts"
 import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
@@ -99,19 +93,19 @@ app
   .post(
     ...authorized(
       "lock",
-      handleError(() => nukiLock(configuration.nuki))
+      handleError(() => configuration.nuki.lock())
     )
   )
   .post(
     ...authorized(
       "unlock",
-      handleError(() => nukiUnlock(configuration.nuki))
+      handleError(() => configuration.nuki.unlock())
     )
   )
   .post(
     ...authorized(
       "unlatch",
-      handleError(() => nukiUnlatch(configuration.nuki))
+      handleError(() => configuration.nuki.unlatch())
     )
   )
   .get(
@@ -129,7 +123,7 @@ app
       "state",
       handleError(async () => ({
         success: true,
-        doorlock: await getNukiLockConfig(configuration.nuki),
+        doorlock: await configuration.nuki.getState(),
         doorbellAction: getCurrentDoorbellAction(),
       }))
     )
@@ -168,7 +162,7 @@ app
       case "unlatch":
         console.log("unlatching door")
         resetDoorBellAction()
-        return await handleError(() => nukiUnlatch(configuration.nuki))()
+        return await handleError(() => configuration.nuki.unlatch())()
     }
   })
   .get("/", () => ({ success: true, message: "please leave me alone" }))
