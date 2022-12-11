@@ -38,7 +38,7 @@ extension LocationChecker: CLLocationManagerDelegate {
     notificationProvider?.showBuzzerNotification()
     
     Task {
-      let _ = try? await home.armBuzzer()
+      let _ = try? await home.arrived()
     }
   }
   

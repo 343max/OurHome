@@ -11,4 +11,5 @@ protocol Home {
   func unlockDoor() async throws -> HomeResponse
   func armBuzzer() async throws -> HomeResponse
   func armUnlatch() async throws -> HomeResponse
+  func arrived() async throws -> HomeResponse
 }

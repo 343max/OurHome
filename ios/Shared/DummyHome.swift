@@ -23,7 +23,7 @@ class DummyHome: Home {
   func armBuzzer() async throws -> HomeResponse {
     try await Task.sleep(seconds: 0.5)
     doorbellAction = DoorbellAction(
-      timeout: Date().addingTimeInterval(3 * 60).timeIntervalSince1970,
+      timeout: Date().addingTimeInterval(15).timeIntervalSince1970,
       type: .buzzer
     )
     return success
@@ -32,12 +32,21 @@ class DummyHome: Home {
   func armUnlatch() async throws -> HomeResponse {
     try await Task.sleep(seconds: 0.5)
     doorbellAction = DoorbellAction(
+      timeout: Date().addingTimeInterval(15).timeIntervalSince1970,
+      type: .unlatch
+    )
+    return success
+  }
+
+  func arrived() async throws -> HomeResponse {
+    try await Task.sleep(seconds: 0.5)
+    doorbellAction = DoorbellAction(
       timeout: Date().addingTimeInterval(3 * 60).timeIntervalSince1970,
       type: .unlatch
     )
     return success
   }
-  
+
   private let success = HomeResponse(success: true)
   
   var doorState = DoorlockState.Locked
@@ -46,7 +55,6 @@ class DummyHome: Home {
     return HomeState(success: true,
                      doorlock: Doorlock(mode: 0,
                                         state: doorState,
-                                        stateName: "name",
                                         batteryCritical: false,
                                         batteryCharging: false,
                                         batteryChargeState: 96,
