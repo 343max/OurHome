@@ -28,7 +28,7 @@ export const getNukiRequest = (
   })
 }
 
-export const LiveNuki = (config: LiveNukiConfiguration): Nuki => ({
+export const liveNuki = (config: LiveNukiConfiguration): Nuki => ({
   lock: async () => (await fetch(getNukiRequest("lock", config))).json(),
   unlock: async () => (await fetch(getNukiRequest("unlock", config))).json(),
   unlatch: async () =>
