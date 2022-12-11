@@ -7,8 +7,18 @@ struct ControllerView: View {
   @State private var frontDoorBatteryState: BatteryState? = nil
   @State private var doorbellAction: DoorbellAction? = nil
   
-  @ObservedObject var nearbyReachability = Reachability(distance: .Nearby)
-  @ObservedObject var remoteReachabiliy = Reachability(distance: .Remote)
+  @ObservedObject var nearbyReachability: Reachability
+  @ObservedObject var remoteReachabiliy: Reachability
+  
+  init(home: Home, frontDoorLockState: LockState? = nil, frontDoorBatteryState: BatteryState? = nil, doorbellAction: DoorbellAction? = nil) {
+    self.nearbyReachability = Reachability(distance: .Nearby, home: home)
+    self.remoteReachabiliy = Reachability(distance: .Remote, home: home)
+
+    self.home = home
+    self.frontDoorLockState = frontDoorLockState
+    self.frontDoorBatteryState = frontDoorBatteryState
+    self.doorbellAction = doorbellAction
+  }
   
   func loadState() {
     Task {

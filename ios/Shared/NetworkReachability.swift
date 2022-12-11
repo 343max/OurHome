@@ -18,12 +18,12 @@ class NetworkReachability: ReachabilityProvider {
   // Queue where the `SCNetworkReachability` callbacks run
   private let queue = DispatchQueue.main
   
-  required convenience init(distance: Distance) {
+  required convenience init(distance: Distance, home: Home) {
     switch distance {
     case .Nearby:
-      self.init(hostName: RemoteHome.localNetworkHost.host!)
+      self.init(hostName: home.localNetworkHost.host!)
     case .Remote:
-      self.init(hostName: RemoteHome.externalHost.host!)
+      self.init(hostName: home.externalHost.host!)
     }
   }
   

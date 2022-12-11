@@ -1,6 +1,9 @@
 import Foundation
 
 protocol Home {
+  var localNetworkHost: URL { get }
+  var externalHost: URL { get }
+  
   func getState() async throws -> HomeState
   func pressBuzzer() async throws -> HomeResponse
   func unlatchDoor() async throws -> HomeResponse

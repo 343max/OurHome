@@ -1,6 +1,9 @@
 import Foundation
 
 class DummyHome: Home {
+  let localNetworkHost = URL(string: "https://google.com/")!
+  let externalHost = URL(string: "https://google.com/")!
+  
   var doorbellAction: DoorbellAction?
   
   func lockDoor() async throws -> HomeResponse {

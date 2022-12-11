@@ -80,6 +80,7 @@ extension OurHomeApp {
         let _ = try await home.getState()
         userState = .loggedIn(username: user.username)
       } catch {
+        print("error: \(error)")
         userState = .loginFailed(username: user.username)
       }
     }

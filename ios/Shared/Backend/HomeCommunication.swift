@@ -22,20 +22,36 @@ struct RemoteHome: Home {
   let username: String
   let secret: String
 
-  static let localNetworkHost = URL(string: "http://nuc.fritz.box:4278/")!
-  static let externalHost = URL(string: "https://buzzer.343max.de/")!
+  let localNetworkHost: URL
+  let externalHost: URL
+  
+  init(username: String, secret: String) {
+    self.username = username
+    self.secret = secret
+    if let host = ProcessInfo.processInfo.environment["HOST"], host.hasPrefix("http") {
+      let url = URL(string: host)!
+      self.localNetworkHost = url
+      self.externalHost = url
+    } else {
+      self.localNetworkHost = URL(string: "http://nuc.fritz.box:4278/")!
+      self.externalHost = URL(string: "https://buzzer.343max.de/")!
+    }
+  }
   
   func url(action: Action, external: Bool = false) -> URL {
-    return (external ? RemoteHome.externalHost : RemoteHome.localNetworkHost).appendingPathComponent(action.rawValue)
+    return (external ? externalHost : localNetworkHost).appendingPathComponent(action.rawValue)
   }
 
   func send<T>(_ type: T.Type, _ method: Method, action: Action, external: Bool) async throws -> T where T: Decodable {
-    var request = URLRequest(url: url(action: action, external: external))
+    let url = url(action: action, external: external)
+    var request = URLRequest(url: url)
+    print(String(describing: request.url))
     request.httpMethod = method.rawValue
-    request.addValue(
-      getAuthHeader(user: username, secret: secret, action: action.rawValue, timestamp: Date().timeIntervalSince1970),
-      forHTTPHeaderField: "Authorization"
-    )
+    let authorization = getAuthHeader(user: username, secret: secret, action: action.rawValue, timestamp: Date().timeIntervalSince1970)
+    request.addValue(authorization, forHTTPHeaderField: "Authorization")
+    
+    print("curl -X \(method.rawValue) --header \"Authorization: \(authorization)\" \(url.absoluteString)")
+    
     let (data, _) = try await URLSession.shared.data(for: request)
     return try JSONDecoder().decode(type, from: data)
   }

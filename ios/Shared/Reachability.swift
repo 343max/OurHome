@@ -8,7 +8,6 @@ enum Distance {
 typealias ReachableSetter = (_ reachable: Bool) -> Void
 
 protocol ReachabilityProvider {
-  init(distance: Distance)
   var setReachable: ReachableSetter? { get set }
 }
 
@@ -17,11 +16,11 @@ class Reachability: ObservableObject {
   
   private var reachabilityProvider: ReachabilityProvider
   
-  init(distance: Distance) {
+  init(distance: Distance, home: Home) {
     #if os(watchOS)
     reachabilityProvider = GeoReachability(distance: distance)
     #else
-    reachabilityProvider = NetworkReachability(distance: distance)
+    reachabilityProvider = NetworkReachability(distance: distance, home: home)
     #endif
     reachabilityProvider.setReachable = { [weak self] in self?.reachable = $0 }
   }
