@@ -53,12 +53,13 @@ class DummyHome: Home {
   
   func getState() async throws -> HomeState {
     return HomeState(success: true,
-                     doorlock: Doorlock(mode: 0,
-                                        state: doorState,
-                                        batteryCritical: false,
-                                        batteryCharging: false,
-                                        batteryChargeState: 96,
-                                        success: true),
+                     doorlock: Doorlock(
+                      state: doorState,
+                      batteryCritical: false,
+                      batteryCharging: false,
+                      batteryChargeState: 96,
+                      success: true
+                     ),
                      doorbellAction: doorbellAction)
   }
   

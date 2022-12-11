@@ -4,7 +4,6 @@ import { sleep } from "../deps.ts"
 
 export const dummyNuki = (): Nuki => {
   const state: NukiSmartLockConfig = {
-    mode: 0,
     state: NukiSmartLockState.Locked,
     batteryCritical: false,
     batteryCharging: false,

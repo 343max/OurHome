@@ -12,7 +12,6 @@ export enum NukiSmartLockState {
 }
 
 export type NukiSmartLockConfig = {
-  mode: number
   state: NukiSmartLockState
   batteryCritical: boolean
   batteryCharging: boolean

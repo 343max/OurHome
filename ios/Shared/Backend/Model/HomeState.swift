@@ -24,7 +24,6 @@ enum DoorlockState: Int, Codable {
 }
 
 struct Doorlock: Codable {
-  let mode: Int
   let state: DoorlockState
   let batteryCritical: Bool
   let batteryCharging: Bool
