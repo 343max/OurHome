@@ -64,10 +64,9 @@ class NetworkReachability: ReachabilityProvider {
       (reachability:SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutableRawPointer?) in
       guard let info = info else { return }
 
-      // Gets the `Handler` object from the context info
-      let handler = Unmanaged<NetworkReachability>.fromOpaque(info).takeUnretainedValue()
-
-      DispatchQueue.main.async {
+      Task {
+        // Gets the `Handler` object from the context info
+        let handler = Unmanaged<NetworkReachability>.fromOpaque(info).takeUnretainedValue()
         handler.checkConnection()
       }
     }
