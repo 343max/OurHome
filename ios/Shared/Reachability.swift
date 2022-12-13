@@ -22,6 +22,10 @@ class Reachability: ObservableObject {
     #else
     reachabilityProvider = NetworkReachability(distance: distance, home: home)
     #endif
-    reachabilityProvider.setReachable = { [weak self] in self?.reachable = $0 }
+    reachabilityProvider.setReachable = { reachable in
+      Task { @MainActor [weak self] in
+        self?.reachable = reachable
+      }
+    }
   }
 }

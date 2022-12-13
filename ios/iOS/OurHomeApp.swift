@@ -59,7 +59,9 @@ struct OurHomeApp: App {
             notificationProvider.showBuzzerNotification(delayed: true)
           }
         }
-        .onOpenURL(perform: handle)
+        .onOpenURL(perform: { url in
+          handle(url: url)
+        })
     }
   }
 }

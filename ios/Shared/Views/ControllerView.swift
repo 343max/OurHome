@@ -87,7 +87,7 @@ struct ControllerView: View {
       }
     }
     .onAppear(perform: {
-      loadState()
+      self.loadState()
     })
     .navigationTitle("Our Home")
     .refreshable {
