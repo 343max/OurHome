@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ControllerView: View {
-  let home: Home
+  let home: Binding<Home>
   
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
@@ -10,20 +10,22 @@ struct ControllerView: View {
   @ObservedObject var nearbyReachability: Reachability
   @ObservedObject var remoteReachabiliy: Reachability
   
-  init(home: Home, frontDoorLockState: LockState? = nil, frontDoorBatteryState: BatteryState? = nil, doorbellAction: DoorbellAction? = nil) {
-    self.nearbyReachability = Reachability(distance: .Nearby, home: home)
-    self.remoteReachabiliy = Reachability(distance: .Remote, home: home)
+  init(home: Binding<Home>, frontDoorLockState: LockState? = nil, frontDoorBatteryState: BatteryState? = nil, doorbellAction: DoorbellAction? = nil) {
+    self.nearbyReachability = Reachability(distance: .Nearby, home: home.wrappedValue)
+    self.remoteReachabiliy = Reachability(distance: .Remote, home: home.wrappedValue)
 
     self.home = home
     self.frontDoorLockState = frontDoorLockState
     self.frontDoorBatteryState = frontDoorBatteryState
     self.doorbellAction = doorbellAction
+    
+    self.loadState()
   }
   
   func loadState() {
     Task {
       do {
-        let state = try await home.getState()
+        let state = try await home.wrappedValue.getState()
         frontDoorLockState = {
           switch state.doorlock.state {
           case .Locked:
@@ -47,16 +49,16 @@ struct ControllerView: View {
       }
     }
   }
-
+  
   var body: some View {
     List {
       Section("Haustür") {
-        BuzzerButton(home: home)
+        BuzzerButton(home: home.wrappedValue)
           .disabled(!remoteReachabiliy.reachable)
       }
       
       Section {
-        UnlatchDoorButton(home: home,
+        UnlatchDoorButton(home: home.wrappedValue,
                           refresh: loadState)
         .disabled(!nearbyReachability.reachable)
       } header: {
@@ -64,15 +66,15 @@ struct ControllerView: View {
       }
       
       Section {
-        UnlockDoorButton(home: home, refresh: loadState)
+        UnlockDoorButton(home: home.wrappedValue, refresh: loadState)
           .disabled(!nearbyReachability.reachable)
-        LockDoorButton(home: home, refresh: loadState)
+        LockDoorButton(home: home.wrappedValue, refresh: loadState)
           .disabled(!nearbyReachability.reachable)
       }
 
       Section {
-        ArmDoorbellButton(action: .buzzer, armedAction: doorbellAction, home: home, refresh: loadState)
-        ArmDoorbellButton(action: .unlatch, armedAction: doorbellAction, home: home, refresh: loadState)
+        ArmDoorbellButton(action: .buzzer, armedAction: doorbellAction, home: home.wrappedValue, refresh: loadState)
+        ArmDoorbellButton(action: .unlatch, armedAction: doorbellAction, home: home.wrappedValue, refresh: loadState)
       } header: {
         Label("Klingeln zum Öffnen…", systemImage: "bell")
       } footer: {
@@ -86,16 +88,18 @@ struct ControllerView: View {
         }
       }
     }
-    .navigationTitle("Our Home")
-    .onAppear(perform: loadState)
-    .refreshable {
+    .onAppear(perform: {
       loadState()
+    })
+    .navigationTitle("Our Home")
+    .refreshable {
+      self.loadState()
     }
   }
 }
 
 struct ControllerView_Previews: PreviewProvider {
   static var previews: some View {
-    ControllerView(home: DummyHome())
+    ControllerView(home: .constant(DummyHome()))
   }
 }

@@ -5,7 +5,7 @@ struct Our_Home_Watch_AppApp: App {
   let home = DummyHome()
   var body: some Scene {
     WindowGroup {
-      ControllerView(home: home)
+      ControllerView(home: .constant(home))
     }
   }
 }

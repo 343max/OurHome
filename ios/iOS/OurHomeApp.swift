@@ -29,7 +29,7 @@ struct OurHomeApp: App {
   var body: some Scene {
     WindowGroup {
         NavigationStack(path: $destination) {
-          ControllerView(home: home)
+          ControllerView(home: $home)
             .toolbar {
               NavigationLink(value: Destination.settings) {
                 switch userState {
