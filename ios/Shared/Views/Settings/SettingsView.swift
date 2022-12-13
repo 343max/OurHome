@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
   let userState: UserState
+  let settingsUrl = URL(string: UIApplication.openSettingsURLString)!
   
   var body: some View {
     List {
@@ -9,6 +10,12 @@ struct SettingsView: View {
         UserView(state: userState)
       } header: {
         Text("Benutzer")
+      }
+      
+      Section {
+        Link(destination: settingsUrl) {
+          Label("Systemeinstellungen öffnen", systemImage: "gear")
+        }
       }
 
       Section {
