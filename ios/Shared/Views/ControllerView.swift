@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ControllerView: View {
-  let home: Binding<Home>
+  @Binding var home: Home
   
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
@@ -14,18 +14,16 @@ struct ControllerView: View {
     self.nearbyReachability = Reachability(distance: .Nearby, home: home.wrappedValue)
     self.remoteReachabiliy = Reachability(distance: .Remote, home: home.wrappedValue)
 
-    self.home = home
+    self._home = home
     self.frontDoorLockState = frontDoorLockState
     self.frontDoorBatteryState = frontDoorBatteryState
     self.doorbellAction = doorbellAction
-    
-    self.loadState()
   }
   
   func loadState() {
     Task {
       do {
-        let state = try await home.wrappedValue.getState()
+        let state = try await home.getState()
         frontDoorLockState = {
           switch state.doorlock.state {
           case .Locked:
@@ -53,12 +51,12 @@ struct ControllerView: View {
   var body: some View {
     List {
       Section("Haustür") {
-        BuzzerButton(home: home.wrappedValue)
+        BuzzerButton(home: home)
           .disabled(!remoteReachabiliy.reachable)
       }
       
       Section {
-        UnlatchDoorButton(home: home.wrappedValue,
+        UnlatchDoorButton(home: home,
                           refresh: loadState)
         .disabled(!nearbyReachability.reachable)
       } header: {
@@ -66,15 +64,15 @@ struct ControllerView: View {
       }
       
       Section {
-        UnlockDoorButton(home: home.wrappedValue, refresh: loadState)
+        UnlockDoorButton(home: home, refresh: loadState)
           .disabled(!nearbyReachability.reachable)
-        LockDoorButton(home: home.wrappedValue, refresh: loadState)
+        LockDoorButton(home: home, refresh: loadState)
           .disabled(!nearbyReachability.reachable)
       }
 
       Section {
-        ArmDoorbellButton(action: .buzzer, armedAction: doorbellAction, home: home.wrappedValue, refresh: loadState)
-        ArmDoorbellButton(action: .unlatch, armedAction: doorbellAction, home: home.wrappedValue, refresh: loadState)
+        ArmDoorbellButton(action: .buzzer, armedAction: doorbellAction, home: home, refresh: loadState)
+        ArmDoorbellButton(action: .unlatch, armedAction: doorbellAction, home: home, refresh: loadState)
       } header: {
         Label("Klingeln zum Öffnen…", systemImage: "bell")
       } footer: {
