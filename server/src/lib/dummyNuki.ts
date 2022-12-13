@@ -7,7 +7,7 @@ export const dummyNuki = (): Nuki => {
     state: NukiSmartLockState.Locked,
     batteryCritical: false,
     batteryCharging: false,
-    batteryChargeState: 76,
+    batteryChargeState: 42,
     success: true,
   }
 
