@@ -44,7 +44,7 @@ struct RemoteHome: Home {
   }
 
   func send<T>(_ type: T.Type, _ method: Method, action: Action, external: Bool) async throws -> T where T: Decodable {
-    let url = url(action: action, external: external).appending(queryItems: [URLQueryItem(name: "refresh", value: String(Date().timeIntervalSince1970))])
+    let url = url(action: action, external: external)
     var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
     request.httpMethod = method.rawValue
     let authorization = getAuthHeader(user: username, secret: secret, action: action.rawValue, timestamp: Date().timeIntervalSince1970)
