@@ -35,7 +35,7 @@ struct RemoteHome: Home {
       self.externalHost = url
     } else {
       self.localNetworkHost = URL(string: "http://lol.fritz.box:4278/")!
-      self.externalHost = URL(string: "https://buzzer.343max.de/")!
+      self.externalHost = URL(string: "https://buzzer.343max.com/")!
     }
   }
   
