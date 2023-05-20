@@ -9,16 +9,7 @@ services:
       labels:
         com.centurylinklabs.watchtower.enable: "false"
     restart: always
-  nginx:
-    image: nginx:latest
+  cloudflared:
+    image: cloudflare/cloudflared:latest
     restart: always
-    container_name: nginx
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/snippets:/etc/nginx/snippets
-      - ./nginx/sites:/etc/nginx/sites
-    ports:
-      - "443:443"
-    depends_on:
-      - doorbellserver
+    command: "tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_KEY}"
