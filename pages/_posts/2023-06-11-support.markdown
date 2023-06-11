@@ -1,0 +1,7 @@
+---
+layout: page
+title: "Support"
+date: 2023-06-11 15:13:42 +0200
+---
+
+Falls es Probleme gibt wende dich bitte an [Max](imessage://max@343max.de).
