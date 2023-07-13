@@ -10,6 +10,7 @@ import {
   armForDoorBellAction,
 } from "./lib/arrivedRecently.ts"
 import { buildInfo } from "./lib/buildinfo.ts"
+import { sendNotification } from "./lib/ntfy.ts"
 
 const app = new Application()
 
@@ -147,6 +148,10 @@ app
     })
   )
   .post("doorbell", async () => {
+    if (configuration.doorbellNtfy !== null) {
+      sendNotification("🔔 Ding! Dong!", configuration.doorbellNtfy)
+    }
+
     const action = getCurrentDoorbellAction()
     if (action === null) {
       console.log("doorbell action not armed, doing nothing")

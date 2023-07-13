@@ -12,3 +12,4 @@ export {
 } from "https://deno.land/std@0.123.0/testing/asserts.ts"
 
 export { createHash } from "https://deno.land/std@0.165.0/node/crypto.ts"
+export * as base64 from "https://deno.land/std@0.194.0/encoding/base64.ts"
