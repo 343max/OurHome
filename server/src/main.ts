@@ -148,12 +148,13 @@ app
     })
   )
   .post("doorbell", async () => {
-    if (configuration.doorbellNtfy !== null) {
-      sendNotification("🔔 Ding! Dong!", configuration.doorbellNtfy)
-    }
-
     const action = getCurrentDoorbellAction()
     if (action === null) {
+      // if it wasn't one of us, send a notification
+      if (configuration.doorbellNtfy !== null) {
+        sendNotification("🔔 Ding! Dong!", configuration.doorbellNtfy)
+      }
+
       console.log("doorbell action not armed, doing nothing")
       return { sucess: false }
     }
