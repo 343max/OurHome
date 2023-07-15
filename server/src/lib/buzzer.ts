@@ -1,5 +1,3 @@
-import { sleep } from "../deps.ts"
-
 export type Buzzer = {
   pressBuzzer: () => Promise<void>
 }
@@ -13,6 +11,6 @@ export const liveBuzzer = (buzzerUrl: string): Buzzer => ({
 export const dummyBuzzer = (): Buzzer => ({
   pressBuzzer: async () => {
     console.log("🚪 pressing buzzer")
-    await sleep(0.5)
+    await Bun.sleep(500)
   },
 })

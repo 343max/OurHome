@@ -1,7 +1,7 @@
-import { assertEquals } from "../deps.ts"
+import { expect, test } from "bun:test"
 import { findUser, User } from "./user.ts"
 
-Deno.test("findUser", () => {
+test("findUser", () => {
   const fakeUsers: User[] = [
     {
       username: "ringo",
@@ -55,7 +55,7 @@ Deno.test("findUser", () => {
 
   const user = findUser("john", fakeUsers)!
   console.log(user)
-  assertEquals(user.username, "john")
+  expect(user.username).toBe("john")
 
-  assertEquals(findUser("nobody", fakeUsers), null)
+  expect(findUser("nobody", fakeUsers)).toBeNull()
 })

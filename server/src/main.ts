@@ -3,7 +3,6 @@ import { getRuntimeConfig } from "./lib/config.ts"
 import { configuration } from "./secrets.ts"
 import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
 import { Action } from "./lib/action.ts"
-import { Application, Context, HandlerFunc, sleep } from "./deps.ts"
 import {
   getCurrentDoorbellAction,
   resetDoorBellAction,
@@ -11,30 +10,31 @@ import {
 } from "./lib/arrivedRecently.ts"
 import { buildInfo } from "./lib/buildinfo.ts"
 import { sendNotification } from "./lib/ntfy.ts"
+import express, { RequestHandler, Response } from "express"
 
-const app = new Application()
+const app = express()
 
 const authorized = (
   action: Action,
-  handler: (c: Context) => Promise<unknown> | unknown
-): [string, HandlerFunc] => [
+  handler: RequestHandler
+): [string, RequestHandler] => [
   `/${action}`,
-  async (c) => {
-    const authHeader = c.request.headers.get("Authorization")
-    const externHeader = c.request.headers.get("X-External-Host")
+  async (req, res, next) => {
+    const authHeader = req.header("Authorization")
+    const externHeader = req.header("x-forwarded-for")
+    console.log(externHeader === undefined ? "local" : "remote")
     if (
-      verifyAuth(authHeader, action, externHeader === null ? "local" : "remote")
-    ) {
-      c.response.headers.append(
-        "content-type",
-        "application/json; charset=UTF-8"
+      verifyAuth(
+        authHeader,
+        action,
+        externHeader === undefined ? "local" : "remote"
       )
-      const resp = JSON.stringify(await handler(c))
-      console.log(`response: ${resp}`)
-      return resp
+    ) {
+      res.contentType("application/json; charset=UTF-8")
+      await handler(req, res, next)
     } else {
       console.log("unauthorized")
-      c.response.status = 403
+      res.status(403)
     }
   },
 ]
@@ -54,41 +54,33 @@ dumpInviteLinks()
 
 const pressBuzzer = async () => {
   for (const _ in [0, 1, 2, 3, 4, 5]) {
-    await sleep(0.5)
+    await Bun.sleep(500)
     await configuration.buzzer.pressBuzzer()
   }
 }
 
 const handleError =
-  <R>(
-    fn: () => Promise<R>
-  ): (() => Promise<R | { success: false; error: string }>) =>
-  async () => {
+  <R>(fn: () => Promise<R>): RequestHandler =>
+  async (req, res) => {
     try {
-      return await fn()
+      res.send(await fn())
     } catch (error) {
-      return {
+      res.send({
         success: false,
         error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
-      }
+      })
     }
   }
 
 app
-  .pre((next) => (c) => {
-    console.log(
-      `🌎 ${
-        c.request.conn.remoteAddr.transport === "tcp"
-          ? c.request.conn.remoteAddr.hostname
-          : "???"
-      } ${c.request.method} ${c.request.url}`
-    )
-    return next(c)
+  .all("*", (req, res, next) => {
+    console.log(`🌎 ${req.ip} ${req.method} ${req.url}`)
+    next()
   })
   .post(
-    ...authorized("buzzer", async () => {
+    ...authorized("buzzer", async (req, res) => {
       await pressBuzzer()
-      return { success: true }
+      res.send({ success: true })
     })
   )
   .post(
@@ -110,13 +102,14 @@ app
     )
   )
   .get(
-    ...authorized("user", ({ request }) => {
-      const authHeader = splitAuthHeader(request.headers.get("Authorization"))
+    ...authorized("user", (req, res) => {
+      const authHeader = splitAuthHeader(req.headers.authorization)
       if (authHeader === null) {
-        return { sucess: false }
+        res.send({ sucess: false })
+        return
       }
       const { secret: _secret, ...userInfo } = findUser(authHeader.username)!
-      return { success: true, userInfo }
+      res.send({ success: true, userInfo })
     })
   )
   .get(
@@ -130,24 +123,24 @@ app
     )
   )
   .post(
-    ...authorized("arrived", () => {
+    ...authorized("arrived", (req, res) => {
       armForDoorBellAction("buzzer", configuration.arrivalTimeout)
-      return { success: true }
+      res.send({ success: true })
     })
   )
   .post(
-    ...authorized("arm/buzzer", () => {
+    ...authorized("arm/buzzer", (req, res) => {
       armForDoorBellAction("buzzer", configuration.buzzerArmTimeout)
-      return { success: true }
+      res.send({ success: true })
     })
   )
   .post(
-    ...authorized("arm/unlatch", () => {
+    ...authorized("arm/unlatch", (req, res) => {
       armForDoorBellAction("unlatch", configuration.unlatchArmTimeout)
-      return { success: true }
+      res.send({ success: true })
     })
   )
-  .post("doorbell", async () => {
+  .post("doorbell", async (req, res, next) => {
     const action = getCurrentDoorbellAction()
     if (action === null) {
       // if it wasn't one of us, send a notification
@@ -156,22 +149,27 @@ app
       }
 
       console.log("doorbell action not armed, doing nothing")
-      return { sucess: false }
+      res.send({ sucess: false })
+      return
     }
 
     switch (action.type) {
       case "buzzer":
         console.log("buzzer because the doorbell buzzer was armed")
         await pressBuzzer()
-        await sleep(0.5)
+        await Bun.sleep(500)
         resetDoorBellAction()
-        return { success: true }
+        res.send({ success: true })
       case "unlatch":
         console.log("unlatching because the doorbell buzzer was armed")
         resetDoorBellAction()
-        return await handleError(() => configuration.nuki.unlatch())()
+        await handleError(() => configuration.nuki.unlatch())(req, res, next)
     }
   })
-  .get("/", () => ({ success: true, message: "please leave me alone" }))
-  .head("/", () => ({ success: true, message: "please leave me alone" }))
-  .start({ port })
+  .get("/", (req, res) =>
+    res.send({ success: true, message: "please leave me alone" })
+  )
+  .head("/", (req, res) =>
+    res.send({ success: true, message: "please leave me alone" })
+  )
+  .listen(port)

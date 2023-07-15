@@ -1,21 +1,19 @@
-import { assertEquals } from "../deps.ts"
+import { expect, test } from "bun:test"
 import { isArmedDoorbellAction } from "./arrivedRecently.ts"
 
 const getTime = () => new Date().getTime() / 1000
 
-Deno.test("isArmedDoorbellAction - null", () => {
-  assertEquals(isArmedDoorbellAction(null), false)
+test("isArmedDoorbellAction - null", () => {
+  expect(isArmedDoorbellAction(null)).toBeFalse()
 })
-Deno.test("isArmedDoorbellAction - past", () => {
-  assertEquals(
-    isArmedDoorbellAction({ type: "buzzer", timeout: getTime() - 10 }),
-    false
-  )
+test("isArmedDoorbellAction - past", () => {
+  expect(
+    isArmedDoorbellAction({ type: "buzzer", timeout: getTime() - 10 })
+  ).toBeFalse()
 })
 
-Deno.test("isArmedDoorbellAction - future", () => {
-  assertEquals(
-    isArmedDoorbellAction({ type: "buzzer", timeout: getTime() + 10 }),
-    true
-  )
+test("isArmedDoorbellAction - future", () => {
+  expect(
+    isArmedDoorbellAction({ type: "buzzer", timeout: getTime() + 10 })
+  ).toBeTrue()
 })
