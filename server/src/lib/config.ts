@@ -19,5 +19,5 @@ export type Configuration = {
 type EnvOverwrites = { ignoreAuthentication: boolean }
 
 export const getRuntimeConfig = (): EnvOverwrites => ({
-  ignoreAuthentication: Deno.env.get("DISABLE_AUTH") === "1",
+  ignoreAuthentication: Bun.env["DISABLE_AUTH"] === "1",
 })

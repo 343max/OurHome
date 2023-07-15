@@ -1,4 +1,3 @@
-import { createHash } from "../deps.ts"
 import { getRuntimeConfig } from "./config.ts"
 import { Action } from "./action.ts"
 import { findUser, Permission, Permissions, User } from "./user.ts"
@@ -9,7 +8,7 @@ export const getToken = (
   action: Action,
   unixTimeSecs: number
 ): string =>
-  createHash("sha256")
+  new Bun.CryptoHasher("sha256")
     .update([user, secret, action, `${unixTimeSecs}`].join(":"))
     .digest("base64")
     .toString()

@@ -1,7 +1,7 @@
-import { assertEquals } from "../deps.ts"
+import { expect, test } from "bun:test"
 import { getNukiUrl } from "./liveNuki.ts"
 
-Deno.test("generate url", () => {
+test("generate url", () => {
   const url = getNukiUrl(
     "lock",
     {
@@ -12,10 +12,10 @@ Deno.test("generate url", () => {
     },
     {}
   )
-  assertEquals(url, "http://my-nuki.local:8080/lock?token=1234&nukiId=5")
+  expect(url).toBe("http://my-nuki.local:8080/lock?token=1234&nukiId=5")
 })
 
-Deno.test("generate url with additional parameters", () => {
+test("generate url with additional parameters", () => {
   const url = getNukiUrl(
     "lock",
     {
@@ -26,8 +26,7 @@ Deno.test("generate url with additional parameters", () => {
     },
     { action: 42, name: "lockylock" }
   )
-  assertEquals(
-    url,
+  expect(url).toBe(
     "http://my-nuki.local:8080/lock?token=1234&nukiId=5&action=42&name=lockylock"
   )
 })

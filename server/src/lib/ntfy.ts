@@ -1,5 +1,4 @@
 import { NtfyshConfig } from "./config.ts"
-import { base64 } from "../deps.ts"
 
 export const sendNotification = async (
   message: string,
@@ -10,7 +9,9 @@ export const sendNotification = async (
     body: message,
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Basic ${base64.encode(`${username}:${password}`)}`,
+      Authorization: `Basic ${Buffer.from(`${username}:${password}`).toString(
+        "base64"
+      )}`,
     },
   })
 }

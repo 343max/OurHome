@@ -3,7 +3,6 @@ import { getRuntimeConfig } from "./lib/config.ts"
 import { configuration } from "./secrets.ts"
 import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
 import { Action } from "./lib/action.ts"
-import { Application, Context, HandlerFunc, sleep } from "./deps.ts"
 import {
   getCurrentDoorbellAction,
   resetDoorBellAction,
@@ -11,8 +10,9 @@ import {
 } from "./lib/arrivedRecently.ts"
 import { buildInfo } from "./lib/buildinfo.ts"
 import { sendNotification } from "./lib/ntfy.ts"
+import express from "express"
 
-const app = new Application()
+const app = express()
 
 const authorized = (
   action: Action,
@@ -54,7 +54,7 @@ dumpInviteLinks()
 
 const pressBuzzer = async () => {
   for (const _ in [0, 1, 2, 3, 4, 5]) {
-    await sleep(0.5)
+    await Bun.sleep(500)
     await configuration.buzzer.pressBuzzer()
   }
 }
@@ -75,15 +75,9 @@ const handleError =
   }
 
 app
-  .pre((next) => (c) => {
-    console.log(
-      `🌎 ${
-        c.request.conn.remoteAddr.transport === "tcp"
-          ? c.request.conn.remoteAddr.hostname
-          : "???"
-      } ${c.request.method} ${c.request.url}`
-    )
-    return next(c)
+  .all("*", (req, res, next) => {
+    console.log(`🌎 ${req.ip} ${req.method} ${req.url}`)
+    next()
   })
   .post(
     ...authorized("buzzer", async () => {
@@ -163,7 +157,7 @@ app
       case "buzzer":
         console.log("buzzer because the doorbell buzzer was armed")
         await pressBuzzer()
-        await sleep(0.5)
+        await Bun.sleep(500)
         resetDoorBellAction()
         return { success: true }
       case "unlatch":
@@ -174,4 +168,4 @@ app
   })
   .get("/", () => ({ success: true, message: "please leave me alone" }))
   .head("/", () => ({ success: true, message: "please leave me alone" }))
-  .start({ port })
+  .listen(port)
