@@ -10,7 +10,7 @@ import {
 } from "./lib/arrivedRecently.ts"
 import { buildInfo } from "./lib/buildinfo.ts"
 import { sendNotification } from "./lib/ntfy.ts"
-import express, { RequestHandler } from "express"
+import express, { RequestHandler, Response } from "express"
 
 const app = express()
 
@@ -20,8 +20,9 @@ const authorized = (
 ): [string, RequestHandler] => [
   `/${action}`,
   async (req, res, next) => {
-    const authHeader = req.headers.authorization
-    const externHeader = req.headers["X-External-Host"]
+    const authHeader = req.header("Authorization")
+    const externHeader = req.header("x-forwarded-for")
+    console.log(externHeader === undefined ? "local" : "remote")
     if (
       verifyAuth(
         authHeader,
@@ -30,9 +31,7 @@ const authorized = (
       )
     ) {
       res.contentType("application/json; charset=UTF-8")
-      const resp = JSON.stringify(await handler(req, res, next))
-      console.log(`response: ${resp}`)
-      return resp
+      await handler(req, res, next)
     } else {
       console.log("unauthorized")
       res.status(403)
@@ -61,17 +60,15 @@ const pressBuzzer = async () => {
 }
 
 const handleError =
-  <R>(
-    fn: () => Promise<R>
-  ): (() => Promise<R | { success: false; error: string }>) =>
-  async () => {
+  <R>(fn: () => Promise<R>): RequestHandler =>
+  async (req, res) => {
     try {
-      return await fn()
+      res.send(await fn())
     } catch (error) {
-      return {
+      res.send({
         success: false,
         error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
-      }
+      })
     }
   }
 
@@ -81,9 +78,9 @@ app
     next()
   })
   .post(
-    ...authorized("buzzer", async () => {
+    ...authorized("buzzer", async (req, res) => {
       await pressBuzzer()
-      return { success: true }
+      res.send({ success: true })
     })
   )
   .post(
@@ -105,13 +102,14 @@ app
     )
   )
   .get(
-    ...authorized("user", (req) => {
+    ...authorized("user", (req, res) => {
       const authHeader = splitAuthHeader(req.headers.authorization)
       if (authHeader === null) {
-        return { sucess: false }
+        res.send({ sucess: false })
+        return
       }
       const { secret: _secret, ...userInfo } = findUser(authHeader.username)!
-      return { success: true, userInfo }
+      res.send({ success: true, userInfo })
     })
   )
   .get(
@@ -125,24 +123,24 @@ app
     )
   )
   .post(
-    ...authorized("arrived", () => {
+    ...authorized("arrived", (req, res) => {
       armForDoorBellAction("buzzer", configuration.arrivalTimeout)
-      return { success: true }
+      res.send({ success: true })
     })
   )
   .post(
-    ...authorized("arm/buzzer", () => {
+    ...authorized("arm/buzzer", (req, res) => {
       armForDoorBellAction("buzzer", configuration.buzzerArmTimeout)
-      return { success: true }
+      res.send({ success: true })
     })
   )
   .post(
-    ...authorized("arm/unlatch", () => {
+    ...authorized("arm/unlatch", (req, res) => {
       armForDoorBellAction("unlatch", configuration.unlatchArmTimeout)
-      return { success: true }
+      res.send({ success: true })
     })
   )
-  .post("doorbell", async () => {
+  .post("doorbell", async (req, res, next) => {
     const action = getCurrentDoorbellAction()
     if (action === null) {
       // if it wasn't one of us, send a notification
@@ -151,7 +149,8 @@ app
       }
 
       console.log("doorbell action not armed, doing nothing")
-      return { sucess: false }
+      res.send({ sucess: false })
+      return
     }
 
     switch (action.type) {
@@ -160,13 +159,17 @@ app
         await pressBuzzer()
         await Bun.sleep(500)
         resetDoorBellAction()
-        return { success: true }
+        res.send({ success: true })
       case "unlatch":
         console.log("unlatching because the doorbell buzzer was armed")
         resetDoorBellAction()
-        return await handleError(() => configuration.nuki.unlatch())()
+        await handleError(() => configuration.nuki.unlatch())(req, res, next)
     }
   })
-  .get("/", () => ({ success: true, message: "please leave me alone" }))
-  .head("/", () => ({ success: true, message: "please leave me alone" }))
+  .get("/", (req, res) =>
+    res.send({ success: true, message: "please leave me alone" })
+  )
+  .head("/", (req, res) =>
+    res.send({ success: true, message: "please leave me alone" })
+  )
   .listen(port)
