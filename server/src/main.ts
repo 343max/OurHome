@@ -10,31 +10,32 @@ import {
 } from "./lib/arrivedRecently.ts"
 import { buildInfo } from "./lib/buildinfo.ts"
 import { sendNotification } from "./lib/ntfy.ts"
-import express from "express"
+import express, { RequestHandler } from "express"
 
 const app = express()
 
 const authorized = (
   action: Action,
-  handler: (c: Context) => Promise<unknown> | unknown
-): [string, HandlerFunc] => [
+  handler: RequestHandler
+): [string, RequestHandler] => [
   `/${action}`,
-  async (c) => {
-    const authHeader = c.request.headers.get("Authorization")
-    const externHeader = c.request.headers.get("X-External-Host")
+  async (req, res, next) => {
+    const authHeader = req.headers.authorization
+    const externHeader = req.headers["X-External-Host"]
     if (
-      verifyAuth(authHeader, action, externHeader === null ? "local" : "remote")
-    ) {
-      c.response.headers.append(
-        "content-type",
-        "application/json; charset=UTF-8"
+      verifyAuth(
+        authHeader,
+        action,
+        externHeader === undefined ? "local" : "remote"
       )
-      const resp = JSON.stringify(await handler(c))
+    ) {
+      res.contentType("application/json; charset=UTF-8")
+      const resp = JSON.stringify(await handler(req, res, next))
       console.log(`response: ${resp}`)
       return resp
     } else {
       console.log("unauthorized")
-      c.response.status = 403
+      res.status(403)
     }
   },
 ]
@@ -104,8 +105,8 @@ app
     )
   )
   .get(
-    ...authorized("user", ({ request }) => {
-      const authHeader = splitAuthHeader(request.headers.get("Authorization"))
+    ...authorized("user", (req) => {
+      const authHeader = splitAuthHeader(req.headers.authorization)
       if (authHeader === null) {
         return { sucess: false }
       }

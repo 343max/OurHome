@@ -35,9 +35,9 @@ export const accessAllowed = (
 }
 
 export const splitAuthHeader = (
-  authHeader: string | null
+  authHeader: string | undefined
 ): { username: string; token: string; timestamp: number } | null => {
-  const result = authHeader === null ? [] : authHeader.split(":")
+  const result = authHeader === undefined ? [] : authHeader.split(":")
   if (result.length != 3) {
     return null
   }
@@ -67,7 +67,7 @@ export const getPermissionsKey = (action: Action): null | keyof Permissions => {
 }
 
 export const verifyAuth = (
-  header: string | null,
+  header: string | undefined,
   action: Action,
   userLocation: UserLocation,
   now: number = new Date().getTime() / 1000,
@@ -75,7 +75,7 @@ export const verifyAuth = (
 ): boolean => {
   const skipAuth = getRuntimeConfig().ignoreAuthentication
 
-  if (header === null) {
+  if (header === undefined) {
     return false
   }
 
