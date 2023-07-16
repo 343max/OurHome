@@ -67,7 +67,7 @@ const getPermissions = (
     "/arrived": permissions["arm/buzzer"],
     "/arm/unlatch": permissions["arm/unlatch"],
     "/arm/buzzer": permissions["arm/buzzer"],
-    "/pushnotifications/register": "full",
+    "/pushnotifications": "full",
   }
   return mapping[action]
 }

@@ -4,19 +4,30 @@ enum Destination {
   case settings
 }
 
+extension EnvironmentValues {
+  struct HomeKey: EnvironmentKey {
+    static var defaultValue: Home = DummyHome()
+  }
+  
+  var home: Home {
+    get { self[HomeKey.self] }
+    set { self[HomeKey.self] = newValue }
+  }
+}
+
 @main
 struct OurHomeApp: App {
   @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
   
   let notificationProvider: NotificationProvider
   let locationChecker: LocationChecker
-  
-  private var deviceToken: String? = nil
-  
+  let pushNotificationSync = PushNotificationSync()
+    
   @State private var home: Home = DummyHome() {
     didSet {
       notificationProvider.home = home
       locationChecker.home = home
+      pushNotificationSync.home = home as? RemoteHome
     }
   }
   
@@ -29,6 +40,7 @@ struct OurHomeApp: App {
     notificationProvider = NotificationProvider(home: home)
     locationChecker = LocationChecker(home: home, notificationProvider: self.notificationProvider)
     self.home = home
+    self.appDelegate.pushNotificationSync = pushNotificationSync
   }
   
   var body: some Scene {
@@ -50,6 +62,8 @@ struct OurHomeApp: App {
         }
         .onAppear() {
           loadUser()
+          
+          UIApplication.shared.registerForRemoteNotifications()
           
           if ProcessInfo.processInfo.environment["FAKE_PUSH"] == "1" {
             notificationProvider.showBuzzerNotification(delayed: true)
@@ -104,10 +118,10 @@ extension OurHomeApp {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
-  @Published var deviceToken: String? = nil
+  weak var pushNotificationSync: PushNotificationSync?
   
   func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-    self.deviceToken = tokenParts.joined()
+    self.pushNotificationSync?.deviceToken = tokenParts.joined()
   }
 }

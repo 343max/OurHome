@@ -3,9 +3,6 @@ import SwiftUI
 
 struct SettingsView: View {
   let userState: UserState
-  let settingsUrl = URL(string: UIApplication.openSettingsURLString)!
-  @Default(.doorbellRingPushNotification) var doorbellRingPushNotification
-  @Default(.whenOtherUserArrivesPushNotification) var whenOtherUserArrivesPushNotification
   
   var body: some View {
     List {
@@ -15,13 +12,15 @@ struct SettingsView: View {
         Text("Benutzer")
       }
       
-      Section("Push Notifications") {
-        Toggle("Wenn es klingelt", isOn: $doorbellRingPushNotification)
-        Toggle("Wenn jemand ankommt", isOn: $whenOtherUserArrivesPushNotification)
+      if case .loggedIn(_) = userState {
+        Section("Push Notifications") {
+          Defaults.Toggle("Wenn es klingelt", key: .doorbellRingPushNotification)
+          Defaults.Toggle("Wenn jemand ankommt", key: .whenOtherUserArrivesPushNotification)
+        }
       }
       
       Section {
-        Link(destination: settingsUrl) {
+        Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
           Label("Systemeinstellungen öffnen", systemImage: "gear")
         }
       }

@@ -2,43 +2,52 @@ import { dumpInviteLinks, findUser } from "./lib/user.ts"
 import { getRuntimeConfig } from "./lib/config.ts"
 import { configuration } from "./secrets.ts"
 import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
-import { Action } from "./lib/action.ts"
 import {
   getCurrentDoorbellAction,
   resetDoorBellAction,
   armForDoorBellAction,
 } from "./lib/arrivedRecently.ts"
 import { buildInfo } from "./lib/buildinfo.ts"
-import { sendNotification } from "./lib/ntfy.ts"
-import express, { RequestHandler, Response } from "express"
-import { pushNotificationRegistration } from "./lib/pushNotifications"
+import express, { RequestHandler } from "express"
+import {
+  pushNotificationRegistration,
+  pushNotificationController,
+} from "./lib/pushNotifications"
+import { actionForPath } from "./lib/action"
+import { env } from "./lib/env.ts"
 
 const app = express()
 
 const authorized = (
-  action: Action,
+  path: string,
   handler: RequestHandler
-): [string, RequestHandler] => [
-  action,
-  async (req, res, next) => {
-    const authHeader = req.header("Authorization")
-    const externHeader = req.header("x-forwarded-for")
-    if (
-      verifyAuth(
-        authHeader,
-        action,
-        externHeader === undefined ? "local" : "remote"
-      )
-    ) {
-      res.contentType("application/json; charset=UTF-8")
-      await handler(req, res, next)
-    } else {
-      console.log("unauthorized")
-      res.status(403)
-      res.send({ success: false })
-    }
-  },
-]
+): [string, RequestHandler] => {
+  const action = actionForPath(path)
+  if (action === undefined) {
+    throw new Error(`unknown action for path ${path}`)
+  }
+  return [
+    path,
+    async (req, res, next) => {
+      const authHeader = req.header("Authorization")
+      const externHeader = req.header("x-forwarded-for")
+      if (
+        verifyAuth(
+          authHeader,
+          action,
+          externHeader === undefined ? "local" : "remote"
+        )
+      ) {
+        res.contentType("application/json; charset=UTF-8")
+        await handler(req, res, next)
+      } else {
+        console.log("unauthorized")
+        res.status(403)
+        res.send({ success: false })
+      }
+    },
+  ]
+}
 
 if (getRuntimeConfig().ignoreAuthentication) {
   console.log(
@@ -52,6 +61,14 @@ console.log(`🌳 server running at http://localhost:${port}/ 🌳`)
 console.log(`👷 build date: ${buildInfo.date}`)
 
 dumpInviteLinks()
+
+const {
+  registerDevice,
+  removeDevice,
+  sendPush,
+  getDoorbellRingSubscribers,
+  getWhenOtherUserArrivesSubscribers,
+} = pushNotificationController(env.DEVICE_TOKEN_DB_PATH)
 
 const pressBuzzer = async () => {
   for (const _ in [0, 1, 2, 3, 4, 5]) {
@@ -68,6 +85,7 @@ const handleError =
     try {
       res.send(await fn(req, res, next))
     } catch (error) {
+      console.error(error)
       res.send({
         success: false,
         error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
@@ -76,6 +94,7 @@ const handleError =
   }
 
 app
+  .use(express.json())
   .all("*", (req, res, next) => {
     console.log(`🌎 ${req.ip} ${req.method} ${req.url}`)
     next()
@@ -147,12 +166,10 @@ app
     const action = getCurrentDoorbellAction()
     if (action === null) {
       // if it wasn't one of us, send a notification
-      if (configuration.doorbellNtfy !== null) {
-        sendNotification("🔔 Ding! Dong!", configuration.doorbellNtfy)
-      }
+      sendPush("🔔 Ding! Dong!", getDoorbellRingSubscribers())
 
       console.log("doorbell action not armed, doing nothing")
-      res.send({ sucess: false })
+      res.send({ success: false })
       return
     }
 
@@ -169,12 +186,23 @@ app
         await handleError(() => configuration.nuki.unlatch())(req, res, next)
     }
   })
-  .post(
+  .put(
     ...authorized(
-      "/pushnotifications/register",
+      "/pushnotifications/:deviceToken",
+      handleError(async (req) => {
+        const username = splitAuthHeader(req.headers.authorization)!.username
+        const { types } = pushNotificationRegistration.parse(req.body)
+        registerDevice(username, req.params.deviceToken, types)
+        console.log([username, req.params.deviceToken, types])
+        return { success: true }
+      })
+    )
+  )
+  .delete(
+    ...authorized(
+      "/pushnotifications/:deviceToken",
       handleError(async (req, res) => {
-        const registration = pushNotificationRegistration.parse(req.body)
-        console.log(registration)
+        removeDevice(req.params.deviceToken)
         return { success: true }
       })
     )

@@ -7,6 +7,7 @@ services:
     container_name: doorbellserver
     volumes:
       - ./:/app/:ro
+      - ./db:/db
     working_dir: /app
     command: ["run", "--watch", "./src/main.ts"]
     restart: unless-stopped

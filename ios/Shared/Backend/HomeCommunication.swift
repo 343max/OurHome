@@ -62,7 +62,8 @@ struct RemoteHome: Home {
     request.httpMethod = method.rawValue
     let authorization = getAuthHeader(user: username, secret: secret, action: action.rawValue, timestamp: Date().timeIntervalSince1970)
     request.addValue(authorization, forHTTPHeaderField: "Authorization")
-    if let body = body, [Method.put, Method.post].contains(method) {
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    if let body = body, method == .post || method == .put {
       request.httpBody = try JSONEncoder().encode(body)
     }
 

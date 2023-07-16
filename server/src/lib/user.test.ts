@@ -54,7 +54,6 @@ test("findUser", () => {
   ]
 
   const user = findUser("john", fakeUsers)!
-  console.log(user)
   expect(user.username).toBe("john")
 
   expect(findUser("nobody", fakeUsers)).toBeNull()
