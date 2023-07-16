@@ -6,8 +6,12 @@ enum Destination {
 
 @main
 struct OurHomeApp: App {
+  @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+  
   let notificationProvider: NotificationProvider
   let locationChecker: LocationChecker
+  
+  private var deviceToken: String? = nil
   
   @State private var home: Home = DummyHome() {
     didSet {
@@ -15,6 +19,7 @@ struct OurHomeApp: App {
       locationChecker.home = home
     }
   }
+  
   @State private var destination: [Destination] = []
   @State private var user: User? = nil
   @State private var userState = UserState.verifying
@@ -32,16 +37,7 @@ struct OurHomeApp: App {
           ControllerView(home: $home)
             .toolbar {
               NavigationLink(value: Destination.settings) {
-                switch userState {
-                case .loggedOut:
-                  Label("Einstellungen", systemImage: "teddybear").foregroundColor(.orange)
-                case .loginFailed:
-                  Label("Einstellungen", systemImage: "person.crop.circle.badge.exclamationmark.fill").foregroundColor(.red)
-                case .loginExpired:
-                  Label("Einstellungen", systemImage: "calendar.badge.exclamationmark").foregroundColor(.red)
-                case .loggedIn, .verifying:
-                  Label("Einstellungen", systemImage: "slider.horizontal.3")
-                }
+                SettingsButtonLabel(userState: userState)
               }
             }
             .navigationViewStyle(StackNavigationViewStyle())
@@ -76,7 +72,8 @@ extension OurHomeApp {
     }
     
     userState = .verifying
-    home = RemoteHome(username: user.username, secret: user.key)
+    let home = RemoteHome(username: user.username, secret: user.key)
+    self.home = home
     Task {
       do {
         let _ = try await home.getState()
@@ -103,5 +100,14 @@ extension OurHomeApp {
     case nil:
       break
     }
+  }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
+  @Published var deviceToken: String? = nil
+  
+  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+    self.deviceToken = tokenParts.joined()
   }
 }

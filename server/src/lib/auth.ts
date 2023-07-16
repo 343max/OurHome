@@ -9,7 +9,9 @@ export const getToken = (
   unixTimeSecs: number
 ): string =>
   new Bun.CryptoHasher("sha256")
-    .update([user, secret, action, `${unixTimeSecs}`].join(":"))
+    .update(
+      [user, secret, action.replace(/^\//, ""), `${unixTimeSecs}`].join(":")
+    )
     .digest("base64")
     .toString()
 
@@ -50,18 +52,22 @@ export const verifyTimestamps = (
   timestampB: number
 ): boolean => Math.abs(timestampA - timestampB) < 5 * 60
 
-export const getPermissionsKey = (action: Action): null | keyof Permissions => {
-  const mapping: Record<Action, null | keyof Permissions> = {
-    user: null,
-    state: null,
-    buzzer: "buzzer",
-    lock: "frontdoor",
-    unlock: "frontdoor",
-    unlatch: "unlatch",
-    arrived: "arm/buzzer",
-    doorbell: null,
-    "arm/unlatch": "arm/unlatch",
-    "arm/buzzer": "arm/buzzer",
+const getPermissions = (
+  action: Action,
+  permissions: Permissions
+): null | Permission => {
+  const mapping: Record<Action, null | Permission> = {
+    "/user": null,
+    "/state": null,
+    "/buzzer": permissions["buzzer"],
+    "/lock": permissions["frontdoor"],
+    "/unlock": permissions["frontdoor"],
+    "/unlatch": permissions["unlatch"],
+    "/doorbell": null,
+    "/arrived": permissions["arm/buzzer"],
+    "/arm/unlatch": permissions["arm/unlatch"],
+    "/arm/buzzer": permissions["arm/buzzer"],
+    "/pushnotifications/register": "full",
   }
   return mapping[action]
 }
@@ -102,9 +108,10 @@ export const verifyAuth = (
     return false
   }
 
-  const permissionsKey = getPermissionsKey(action)
-  if (permissionsKey !== null) {
-    if (!accessAllowed(user.permissions[permissionsKey], userLocation)) {
+  const permission = getPermissions(action, user.permissions)
+
+  if (permission !== null) {
+    if (!accessAllowed(permission, userLocation)) {
       return false
     }
   }

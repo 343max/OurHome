@@ -83,7 +83,7 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "HOST"
-            value = "http://192.168.178.147:4278/"
+            value = "http://43v.de:4278/"
             isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable

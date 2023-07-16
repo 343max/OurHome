@@ -11,6 +11,7 @@ import {
 import { buildInfo } from "./lib/buildinfo.ts"
 import { sendNotification } from "./lib/ntfy.ts"
 import express, { RequestHandler, Response } from "express"
+import { pushNotificationRegistration } from "./lib/pushNotifications"
 
 const app = express()
 
@@ -18,11 +19,10 @@ const authorized = (
   action: Action,
   handler: RequestHandler
 ): [string, RequestHandler] => [
-  `/${action}`,
+  action,
   async (req, res, next) => {
     const authHeader = req.header("Authorization")
     const externHeader = req.header("x-forwarded-for")
-    console.log(externHeader === undefined ? "local" : "remote")
     if (
       verifyAuth(
         authHeader,
@@ -35,6 +35,7 @@ const authorized = (
     } else {
       console.log("unauthorized")
       res.status(403)
+      res.send({ success: false })
     }
   },
 ]
@@ -60,10 +61,12 @@ const pressBuzzer = async () => {
 }
 
 const handleError =
-  <R>(fn: () => Promise<R>): RequestHandler =>
-  async (req, res) => {
+  <R>(
+    fn: (...args: Parameters<RequestHandler>) => Promise<R>
+  ): RequestHandler =>
+  async (req, res, next) => {
     try {
-      res.send(await fn())
+      res.send(await fn(req, res, next))
     } catch (error) {
       res.send({
         success: false,
@@ -78,31 +81,31 @@ app
     next()
   })
   .post(
-    ...authorized("buzzer", async (req, res) => {
+    ...authorized("/buzzer", async (req, res) => {
       await pressBuzzer()
       res.send({ success: true })
     })
   )
   .post(
     ...authorized(
-      "lock",
+      "/lock",
       handleError(() => configuration.nuki.lock())
     )
   )
   .post(
     ...authorized(
-      "unlock",
+      "/unlock",
       handleError(() => configuration.nuki.unlock())
     )
   )
   .post(
     ...authorized(
-      "unlatch",
+      "/unlatch",
       handleError(() => configuration.nuki.unlatch())
     )
   )
   .get(
-    ...authorized("user", (req, res) => {
+    ...authorized("/user", (req, res) => {
       const authHeader = splitAuthHeader(req.headers.authorization)
       if (authHeader === null) {
         res.send({ sucess: false })
@@ -114,7 +117,7 @@ app
   )
   .get(
     ...authorized(
-      "state",
+      "/state",
       handleError(async () => ({
         success: true,
         doorlock: await configuration.nuki.getState(),
@@ -123,24 +126,24 @@ app
     )
   )
   .post(
-    ...authorized("arrived", (req, res) => {
+    ...authorized("/arrived", (req, res) => {
       armForDoorBellAction("buzzer", configuration.arrivalTimeout)
       res.send({ success: true })
     })
   )
   .post(
-    ...authorized("arm/buzzer", (req, res) => {
+    ...authorized("/arm/buzzer", (req, res) => {
       armForDoorBellAction("buzzer", configuration.buzzerArmTimeout)
       res.send({ success: true })
     })
   )
   .post(
-    ...authorized("arm/unlatch", (req, res) => {
+    ...authorized("/arm/unlatch", (req, res) => {
       armForDoorBellAction("unlatch", configuration.unlatchArmTimeout)
       res.send({ success: true })
     })
   )
-  .post("doorbell", async (req, res, next) => {
+  .post("/doorbell", async (req, res, next) => {
     const action = getCurrentDoorbellAction()
     if (action === null) {
       // if it wasn't one of us, send a notification
@@ -166,6 +169,16 @@ app
         await handleError(() => configuration.nuki.unlatch())(req, res, next)
     }
   })
+  .post(
+    ...authorized(
+      "/pushnotifications/register",
+      handleError(async (req, res) => {
+        const registration = pushNotificationRegistration.parse(req.body)
+        console.log(registration)
+        return { success: true }
+      })
+    )
+  )
   .get("/", (req, res) =>
     res.send({ success: true, message: "please leave me alone" })
   )

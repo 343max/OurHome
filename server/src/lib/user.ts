@@ -1,6 +1,7 @@
 import { allUsers } from "../secrets.ts"
 
-export type Permission = "full" | "local" | "none"
+const permissionTypes = ["full", "local", "none"] as const
+export type Permission = (typeof permissionTypes)[number]
 
 export type Permissions = Record<
   "buzzer" | "frontdoor" | "unlatch" | "arm/buzzer" | "arm/unlatch",
