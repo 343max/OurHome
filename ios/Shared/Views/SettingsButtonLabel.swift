@@ -16,7 +16,3 @@ struct SettingsButtonLabel: View {
     }
   }
 }
-
-#Preview {
-  SettingsButtonLabel(userState: .loggedOut)
-}
