@@ -1,6 +1,6 @@
-import { getRuntimeConfig } from "./config.ts"
-import { Action } from "./action.ts"
-import { findUser, Permission, Permissions, User } from "./user.ts"
+import { getRuntimeConfig } from "./config"
+import { Action } from "./action"
+import { findUser, Permission, Permissions, User } from "./user"
 import { createHash } from "crypto"
 
 export const getToken = (

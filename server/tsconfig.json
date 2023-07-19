@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
     "exactOptionalPropertyTypes": true,
@@ -15,8 +14,8 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "rootDir": "./src",
     "skipLibCheck": true,
-    "sourceRoot": "./src",
     "strict": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,

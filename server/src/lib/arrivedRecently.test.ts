@@ -1,4 +1,4 @@
-import { isArmedDoorbellAction } from "./arrivedRecently.ts"
+import { isArmedDoorbellAction } from "./arrivedRecently"
 
 const getTime = () => new Date().getTime() / 1000
 

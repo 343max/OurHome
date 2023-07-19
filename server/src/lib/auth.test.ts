@@ -4,7 +4,7 @@ import {
   getToken,
   splitAuthHeader,
   verifyTimestamps,
-} from "./auth.ts"
+} from "./auth"
 
 test("authHeader", () => {
   const authHeader = getAuthHeader("max", "abcdef", "/lock", 4223)

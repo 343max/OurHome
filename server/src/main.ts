@@ -1,22 +1,22 @@
-import { dumpInviteLinks, findUser } from "./lib/user.ts"
-import { getRuntimeConfig } from "./lib/config.ts"
-import { configuration } from "./secrets.ts"
-import { splitAuthHeader } from "./lib/auth.ts"
+import { dumpInviteLinks, findUser } from "./lib/user"
+import { getRuntimeConfig } from "./lib/config"
+import { configuration } from "./secrets"
+import { splitAuthHeader } from "./lib/auth"
 import {
   getCurrentDoorbellAction,
   resetDoorBellAction,
   armForDoorBellAction,
-} from "./lib/arrivedRecently.ts"
-import { buildInfo } from "./lib/buildinfo.ts"
+} from "./lib/arrivedRecently"
+import { buildInfo } from "./lib/buildinfo"
 import express from "express"
 import {
   pushNotificationRegistration,
   pushNotificationController,
 } from "./lib/pushNotifications"
-import { env } from "./lib/env.ts"
-import { authorized } from "./lib/authorized.ts"
+import { env } from "./lib/env"
+import { authorized } from "./lib/authorized"
 import { pushNotificationSender } from "./lib/pushNotificationsSender"
-import { sleep } from "./lib/sleep.ts"
+import { sleep } from "./lib/sleep"
 
 const app = express()
 
@@ -98,8 +98,9 @@ const main = async () => {
     .post(
       ...authorized("/arrived", async (req, res) => {
         const username = splitAuthHeader(req.headers.authorization)!.username
+        const { displayName } = findUser(username)!
         sendPush(
-          `👋 ${username} arrived!`,
+          `👋 ${displayName} arrived!`,
           await getWhenOtherUserArrivesSubscribers(username)
         )
         armForDoorBellAction("buzzer", configuration.arrivalTimeout)

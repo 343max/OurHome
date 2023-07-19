@@ -1,6 +1,6 @@
-import { Nuki } from "./nuki.ts"
-import { NukiSmartLockConfig, NukiSmartLockState } from "./nuki.ts"
-import { sleep } from "./sleep.ts"
+import { Nuki } from "./nuki"
+import { NukiSmartLockConfig, NukiSmartLockState } from "./nuki"
+import { sleep } from "./sleep"
 
 export const dummyNuki = (): Nuki => {
   const state: NukiSmartLockConfig = {

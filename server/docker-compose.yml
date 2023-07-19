@@ -1,7 +1,9 @@
 version: "3.9"
 services:
   doorbellserver:
-    image: oven/bun:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "4278:4278"
     container_name: doorbellserver
@@ -9,7 +11,7 @@ services:
       - ./:/home/bun/app:ro
       - ./db:/db
       - ./keys:/keys:ro
-    command: ["run", "--watch", "./src/main.ts"]
+    command: ["node", "/app/index.js"]
     restart: unless-stopped
   cloudflared:
     image: cloudflare/cloudflared:latest

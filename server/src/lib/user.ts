@@ -1,4 +1,4 @@
-import { allUsers } from "../secrets.ts"
+import { allUsers } from "../secrets"
 
 const permissionTypes = ["full", "local", "none"] as const
 export type Permission = (typeof permissionTypes)[number]

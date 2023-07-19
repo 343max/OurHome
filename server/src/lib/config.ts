@@ -1,6 +1,6 @@
-import { Buzzer } from "./buzzer.ts"
-import { env } from "./env.ts"
-import { Nuki } from "./nuki.ts"
+import { Buzzer } from "./buzzer"
+import { env } from "./env"
+import { Nuki } from "./nuki"
 
 export type NtfyshConfig = {
   username: string

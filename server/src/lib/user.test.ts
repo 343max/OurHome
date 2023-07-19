@@ -1,4 +1,4 @@
-import { findUser, User } from "./user.ts"
+import { findUser, User } from "./user"
 
 test("findUser", () => {
   const fakeUsers: User[] = [
