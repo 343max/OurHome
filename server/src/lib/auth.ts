@@ -1,6 +1,7 @@
-import { getRuntimeConfig } from "./config.ts"
-import { Action } from "./action.ts"
-import { findUser, Permission, Permissions, User } from "./user.ts"
+import { getRuntimeConfig } from "./config"
+import { Action } from "./action"
+import { findUser, Permission, Permissions, User } from "./user"
+import { createHash } from "crypto"
 
 export const getToken = (
   user: string,
@@ -8,8 +9,10 @@ export const getToken = (
   action: Action,
   unixTimeSecs: number
 ): string =>
-  new Bun.CryptoHasher("sha256")
-    .update([user, secret, action, `${unixTimeSecs}`].join(":"))
+  createHash("sha256")
+    .update(
+      [user, secret, action.replace(/^\//, ""), `${unixTimeSecs}`].join(":")
+    )
     .digest("base64")
     .toString()
 
@@ -38,10 +41,11 @@ export const splitAuthHeader = (
   authHeader: string | undefined
 ): { username: string; token: string; timestamp: number } | null => {
   const result = authHeader === undefined ? [] : authHeader.split(":")
-  if (result.length != 3) {
-    return null
-  }
+
   const [username, token, timestamp] = result
+  if (username === undefined || token === undefined || timestamp === undefined)
+    return null
+
   return { username, token, timestamp: parseInt(timestamp) }
 }
 
@@ -50,18 +54,22 @@ export const verifyTimestamps = (
   timestampB: number
 ): boolean => Math.abs(timestampA - timestampB) < 5 * 60
 
-export const getPermissionsKey = (action: Action): null | keyof Permissions => {
-  const mapping: Record<Action, null | keyof Permissions> = {
-    user: null,
-    state: null,
-    buzzer: "buzzer",
-    lock: "frontdoor",
-    unlock: "frontdoor",
-    unlatch: "unlatch",
-    arrived: "arm/buzzer",
-    doorbell: null,
-    "arm/unlatch": "arm/unlatch",
-    "arm/buzzer": "arm/buzzer",
+const getPermissions = (
+  action: Action,
+  permissions: Permissions
+): null | Permission => {
+  const mapping: Record<Action, null | Permission> = {
+    "/user": null,
+    "/state": null,
+    "/buzzer": permissions["buzzer"],
+    "/lock": permissions["frontdoor"],
+    "/unlock": permissions["frontdoor"],
+    "/unlatch": permissions["unlatch"],
+    "/doorbell": null,
+    "/arrived": permissions["arm/buzzer"],
+    "/arm/unlatch": permissions["arm/unlatch"],
+    "/arm/buzzer": permissions["arm/buzzer"],
+    "/pushnotifications": "full",
   }
   return mapping[action]
 }
@@ -102,9 +110,10 @@ export const verifyAuth = (
     return false
   }
 
-  const permissionsKey = getPermissionsKey(action)
-  if (permissionsKey !== null) {
-    if (!accessAllowed(user.permissions[permissionsKey], userLocation)) {
+  const permission = getPermissions(action, user.permissions)
+
+  if (permission !== null) {
+    if (!accessAllowed(permission, userLocation)) {
       return false
     }
   }

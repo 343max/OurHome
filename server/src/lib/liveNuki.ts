@@ -1,4 +1,4 @@
-import { Nuki, NukiSmartLockConfig } from "./nuki.ts"
+import { Nuki, NukiSmartLockConfig } from "./nuki"
 
 type LiveNukiConfiguration = {
   host: string

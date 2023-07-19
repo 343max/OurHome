@@ -1,5 +1,6 @@
-import { Buzzer } from "./buzzer.ts"
-import { Nuki } from "./nuki.ts"
+import { Buzzer } from "./buzzer"
+import { env } from "./env"
+import { Nuki } from "./nuki"
 
 export type NtfyshConfig = {
   username: string
@@ -19,5 +20,5 @@ export type Configuration = {
 type EnvOverwrites = { ignoreAuthentication: boolean }
 
 export const getRuntimeConfig = (): EnvOverwrites => ({
-  ignoreAuthentication: Bun.env["DISABLE_AUTH"] === "1",
+  ignoreAuthentication: env().DISABLE_AUTH === "1",
 })

@@ -1,8 +1,8 @@
+import Defaults
 import SwiftUI
 
 struct SettingsView: View {
   let userState: UserState
-  let settingsUrl = URL(string: UIApplication.openSettingsURLString)!
   
   var body: some View {
     List {
@@ -12,8 +12,15 @@ struct SettingsView: View {
         Text("Benutzer")
       }
       
+      if case .loggedIn(_) = userState {
+        Section("Push Notifications") {
+          Defaults.Toggle("Wenn es klingelt", key: .doorbellRingPushNotification)
+          Defaults.Toggle("Wenn jemand ankommt", key: .whenOtherUserArrivesPushNotification)
+        }
+      }
+      
       Section {
-        Link(destination: settingsUrl) {
+        Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
           Label("Systemeinstellungen öffnen", systemImage: "gear")
         }
       }

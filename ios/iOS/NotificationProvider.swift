@@ -24,7 +24,13 @@ class NotificationProvider: NSObject {
     center.delegate = self
     
     center.requestAuthorization(
-      options: [.sound, .alert, .badge]) { _, _ in }
+      options: [.sound, .alert, .badge]) { granted, _ in
+        if granted {
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+      }
     
     let buzzerAction = UNNotificationAction(identifier: ActionId.buzzer.rawValue,
                                             title: "Türöffner drücken",

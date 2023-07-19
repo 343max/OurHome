@@ -1,5 +1,4 @@
-import { expect, test } from "bun:test"
-import { findUser, User } from "./user.ts"
+import { findUser, User } from "./user"
 
 test("findUser", () => {
   const fakeUsers: User[] = [
@@ -54,7 +53,6 @@ test("findUser", () => {
   ]
 
   const user = findUser("john", fakeUsers)!
-  console.log(user)
   expect(user.username).toBe("john")
 
   expect(findUser("nobody", fakeUsers)).toBeNull()

@@ -1,4 +1,4 @@
-import { NtfyshConfig } from "./config.ts"
+import { NtfyshConfig } from "./config"
 
 export const sendNotification = async (
   message: string,

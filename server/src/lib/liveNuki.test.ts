@@ -1,5 +1,4 @@
-import { expect, test } from "bun:test"
-import { getNukiUrl } from "./liveNuki.ts"
+import { getNukiUrl } from "./liveNuki"
 
 test("generate url", () => {
   const url = getNukiUrl(

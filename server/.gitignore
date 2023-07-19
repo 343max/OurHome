@@ -1,2 +1,5 @@
 /src/secrets.ts
 /node_modules
+/db
+/keys
+.env*
