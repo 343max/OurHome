@@ -1,33 +1,32 @@
-import { expect, test } from "bun:test"
 import { pushNotificationController } from "./pushNotifications"
 
-test("pushNotifications", () => {
+test("pushNotifications", async () => {
   const { registerDevice, removeDevice, getDoorbellRingSubscribers } =
-    pushNotificationController(":memory:")
-  registerDevice("user", "token", ["doorbellRing"])
-  expect(getDoorbellRingSubscribers()).toEqual([
+    await pushNotificationController(":memory:")
+  await registerDevice("user", "token", ["doorbellRing"])
+  expect(await getDoorbellRingSubscribers()).toEqual([
     {
       deviceToken: "token",
       username: "user",
     },
   ])
   removeDevice("token")
-  expect(getDoorbellRingSubscribers()).toEqual([])
+  expect(await getDoorbellRingSubscribers()).toEqual([])
 })
 
-test("pushNotifications - register twice", () => {
-  const { registerDevice } = pushNotificationController(":memory:")
-  registerDevice("user", "token", ["doorbellRing"])
-  registerDevice("user", "token", ["doorbellRing"])
-  expect(true).toBeTrue()
+test("pushNotifications - register twice", async () => {
+  const { registerDevice } = await pushNotificationController(":memory:")
+  await registerDevice("user", "token", ["doorbellRing"])
+  await registerDevice("user", "token", ["doorbellRing"])
+  expect(true).toBeTruthy()
 })
 
-test("pushNotifications - other user arrives", () => {
+test("pushNotifications - other user arrives", async () => {
   const { registerDevice, getWhenOtherUserArrivesSubscribers } =
-    pushNotificationController(":memory:")
-  registerDevice("alice", "token1", ["whenOtherUserArrives"])
-  registerDevice("bob", "token2", ["whenOtherUserArrives"])
-  expect(getWhenOtherUserArrivesSubscribers("bob")).toEqual([
+    await pushNotificationController(":memory:")
+  await registerDevice("alice", "token1", ["whenOtherUserArrives"])
+  await registerDevice("bob", "token2", ["whenOtherUserArrives"])
+  expect(await getWhenOtherUserArrivesSubscribers("bob")).toEqual([
     {
       deviceToken: "token1",
       username: "alice",
@@ -35,8 +34,8 @@ test("pushNotifications - other user arrives", () => {
   ])
 })
 
-test("pushNotifications - already prepared", () => {
-  const { prepare } = pushNotificationController(":memory:")
-  prepare()
-  expect(true).toBeTrue()
+test("pushNotifications - already prepared", async () => {
+  const { prepare } = await pushNotificationController(":memory:")
+  await prepare()
+  expect(true).toBeTruthy()
 })

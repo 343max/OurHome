@@ -20,5 +20,5 @@ export type Configuration = {
 type EnvOverwrites = { ignoreAuthentication: boolean }
 
 export const getRuntimeConfig = (): EnvOverwrites => ({
-  ignoreAuthentication: env.DISABLE_AUTH === "1",
+  ignoreAuthentication: env().DISABLE_AUTH === "1",
 })

@@ -1,4 +1,3 @@
-import { expect, test } from "bun:test"
 import { findUser, User } from "./user.ts"
 
 test("findUser", () => {

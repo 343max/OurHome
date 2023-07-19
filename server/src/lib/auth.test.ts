@@ -1,5 +1,3 @@
-import { expect, test } from "jest"
-
 import {
   accessAllowed,
   getAuthHeader,
@@ -24,12 +22,12 @@ test("make sure different params create different headers", () => {
 })
 
 test("check actions", () => {
-  expect(accessAllowed("full", "local")).toBeTrue()
-  expect(accessAllowed("full", "remote")).toBeTrue()
-  expect(accessAllowed("local", "local")).toBeTrue()
-  expect(accessAllowed("local", "remote")).toBeFalse()
-  expect(accessAllowed("none", "local")).toBeFalse()
-  expect(accessAllowed("none", "remote")).toBeFalse()
+  expect(accessAllowed("full", "local")).toBeTruthy()
+  expect(accessAllowed("full", "remote")).toBeTruthy()
+  expect(accessAllowed("local", "local")).toBeTruthy()
+  expect(accessAllowed("local", "remote")).toBeFalsy()
+  expect(accessAllowed("none", "local")).toBeFalsy()
+  expect(accessAllowed("none", "remote")).toBeFalsy()
 })
 
 test("split auth header", () => {
@@ -45,7 +43,7 @@ test("split auth header", () => {
 })
 
 test("verify date", () => {
-  expect(verifyTimestamps(500, 510)).toBeTrue()
-  expect(verifyTimestamps(5000, 5500)).toBeFalse()
-  expect(verifyTimestamps(5000, 4500)).toBeFalse()
+  expect(verifyTimestamps(500, 510)).toBeTruthy()
+  expect(verifyTimestamps(5000, 5500)).toBeFalsy()
+  expect(verifyTimestamps(5000, 4500)).toBeFalsy()
 })
