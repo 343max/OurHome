@@ -1,27 +1,29 @@
 {
   "compilerOptions": {
-    // add Bun type definitions
-    "types": ["bun-types"],
-
-    // enable latest features
-    "lib": ["esnext"],
-    "module": "esnext",
-    "target": "esnext",
-
-    "moduleResolution": "bundler",
+    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "commonjs" /* Specify what module code is generated. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
     "allowImportingTsExtensions": true,
-    "moduleDetection": "force",
 
-    "allowJs": true, // allow importing `.js` from `.ts`
-    "esModuleInterop": true, // allow default imports for CommonJS modules
-
-    // best practices
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-
-    "noEmit": true,
-
-    "rootDir": "./src"
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "sourceRoot": "./src"
   }
 }

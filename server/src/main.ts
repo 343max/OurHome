@@ -8,13 +8,15 @@ import {
   armForDoorBellAction,
 } from "./lib/arrivedRecently.ts"
 import { buildInfo } from "./lib/buildinfo.ts"
-import express, { RequestHandler } from "express"
+import express from "express"
 import {
   pushNotificationRegistration,
   pushNotificationController,
 } from "./lib/pushNotifications"
 import { env } from "./lib/env.ts"
 import { authorized } from "./lib/authorized.ts"
+import { pushNotificationSender } from "./lib/pushNotificationsSender"
+import { sleep } from "./lib/sleep.ts"
 
 const app = express()
 
@@ -31,146 +33,124 @@ console.log(`👷 build date: ${buildInfo.date}`)
 
 dumpInviteLinks()
 
-const {
-  registerDevice,
-  removeDevice,
-  sendPush,
-  getDoorbellRingSubscribers,
-  getWhenOtherUserArrivesSubscribers,
-} = pushNotificationController(env.DEVICE_TOKEN_DB_PATH, {
-  teamId: env.APNS_TEAM_ID,
-  signingKeyId: env.APNS_SIGNING_KEY_ID,
-  signingKey: env.APNS_SIGNING_KEY,
-  topic: env.APNS_TOPIC,
-})
+const main = async () => {
+  const {
+    registerDevice,
+    removeDevice,
+    getDoorbellRingSubscribers,
+    getWhenOtherUserArrivesSubscribers,
+  } = await pushNotificationController(env.DEVICE_TOKEN_DB_PATH)
 
-sendPush("Server started", getDoorbellRingSubscribers())
+  const sendPush = pushNotificationSender({
+    teamId: env.APNS_TEAM_ID,
+    signingKeyId: env.APNS_SIGNING_KEY_ID,
+    signingKey: env.APNS_SIGNING_KEY,
+    topic: env.APNS_TOPIC,
+  })
 
-const pressBuzzer = async () => {
-  for (const _ in [0, 1, 2, 3, 4, 5]) {
-    await Bun.sleep(500)
-    await configuration.buzzer.pressBuzzer()
-  }
-}
+  sendPush("Server started", [
+    {
+      deviceToken:
+        "2d385a753e5d68b949451fe547e2b2c1df5fef1f9c1d52560a45c1e1b023f6d9",
+    },
+  ])
 
-const handleError =
-  <R>(
-    fn: (...args: Parameters<RequestHandler>) => Promise<R>
-  ): RequestHandler =>
-  async (req, res, next) => {
-    try {
-      res.send(await fn(req, res, next))
-    } catch (error) {
-      console.error(error)
-      res.send({
-        success: false,
-        error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
-      })
+  const pressBuzzer = async () => {
+    for (const _ in [0, 1, 2, 3, 4, 5]) {
+      await sleep(500)
+      await configuration.buzzer.pressBuzzer()
     }
   }
 
-app
-  .use(express.json())
-  .all("*", (req, res, next) => {
-    console.log(`🌎 ${req.ip} ${req.method} ${req.url}`)
-    next()
-  })
-  .post(
-    ...authorized("/buzzer", async (req, res) => {
-      await pressBuzzer()
-      res.send({ success: true })
+  app
+    .use(express.json())
+    .all("*", (req, _res, next) => {
+      console.log(`🌎 ${req.ip} ${req.method} ${req.url}`)
+      next()
     })
-  )
-  .post(
-    ...authorized(
-      "/lock",
-      handleError(() => configuration.nuki.lock())
+    .post(
+      ...authorized("/buzzer", async (_req, res) => {
+        await pressBuzzer()
+        res.send({ success: true })
+      })
     )
-  )
-  .post(
-    ...authorized(
-      "/unlock",
-      handleError(() => configuration.nuki.unlock())
+    .post(...authorized("/lock", () => configuration.nuki.lock()))
+    .post(...authorized("/unlock", () => configuration.nuki.unlock()))
+    .post(...authorized("/unlatch", () => configuration.nuki.unlatch()))
+    .get(
+      ...authorized("/user", (req, res) => {
+        const authHeader = splitAuthHeader(req.headers.authorization)
+        if (authHeader === null) {
+          res.send({ sucess: false })
+          return
+        }
+        const { secret: _secret, ...userInfo } = findUser(authHeader.username)!
+        res.send({ success: true, userInfo })
+      })
     )
-  )
-  .post(
-    ...authorized(
-      "/unlatch",
-      handleError(() => configuration.nuki.unlatch())
-    )
-  )
-  .get(
-    ...authorized("/user", (req, res) => {
-      const authHeader = splitAuthHeader(req.headers.authorization)
-      if (authHeader === null) {
-        res.send({ sucess: false })
-        return
-      }
-      const { secret: _secret, ...userInfo } = findUser(authHeader.username)!
-      res.send({ success: true, userInfo })
-    })
-  )
-  .get(
-    ...authorized(
-      "/state",
-      handleError(async () => ({
+    .get(
+      ...authorized("/state", async () => ({
         success: true,
         doorlock: await configuration.nuki.getState(),
         doorbellAction: getCurrentDoorbellAction(),
       }))
     )
-  )
-  .post(
-    ...authorized("/arrived", (req, res) => {
-      const username = splitAuthHeader(req.headers.authorization)!.username
-      sendPush(
-        `👋 ${username} arrived!`,
-        getWhenOtherUserArrivesSubscribers(username)
-      )
-      armForDoorBellAction("buzzer", configuration.arrivalTimeout)
-      res.send({ success: true })
-    })
-  )
-  .post(
-    ...authorized("/arm/buzzer", (req, res) => {
-      armForDoorBellAction("buzzer", configuration.buzzerArmTimeout)
-      res.send({ success: true })
-    })
-  )
-  .post(
-    ...authorized("/arm/unlatch", (req, res) => {
-      armForDoorBellAction("unlatch", configuration.unlatchArmTimeout)
-      res.send({ success: true })
-    })
-  )
-  .post("/doorbell", async (req, res, next) => {
-    const action = getCurrentDoorbellAction()
-    if (action === null) {
-      // if it wasn't one of us, send a notification
-      sendPush("🔔 Ding! Dong!", getDoorbellRingSubscribers())
-
-      console.log("doorbell action not armed, doing nothing")
-      res.send({ success: false })
-      return
-    }
-
-    switch (action.type) {
-      case "buzzer":
-        console.log("buzzer because the doorbell buzzer was armed")
-        await pressBuzzer()
-        await Bun.sleep(500)
-        resetDoorBellAction()
+    .post(
+      ...authorized("/arrived", async (req, res) => {
+        const username = splitAuthHeader(req.headers.authorization)!.username
+        sendPush(
+          `👋 ${username} arrived!`,
+          await getWhenOtherUserArrivesSubscribers(username)
+        )
+        armForDoorBellAction("buzzer", configuration.arrivalTimeout)
         res.send({ success: true })
-      case "unlatch":
-        console.log("unlatching because the doorbell buzzer was armed")
-        resetDoorBellAction()
-        await handleError(() => configuration.nuki.unlatch())(req, res, next)
-    }
-  })
-  .put(
-    ...authorized(
-      "/pushnotifications/:deviceToken",
-      handleError(async (req) => {
+      })
+    )
+    .post(
+      ...authorized("/arm/buzzer", (_req, res) => {
+        armForDoorBellAction("buzzer", configuration.buzzerArmTimeout)
+        res.send({ success: true })
+      })
+    )
+    .post(
+      ...authorized("/arm/unlatch", (_req, res) => {
+        armForDoorBellAction("unlatch", configuration.unlatchArmTimeout)
+        res.send({ success: true })
+      })
+    )
+    .post("/doorbell", async (_req, res, _next) => {
+      const action = getCurrentDoorbellAction()
+      if (action === null) {
+        // if it wasn't one of us, send a notification
+        sendPush("🔔 Ding! Dong!", await getDoorbellRingSubscribers())
+
+        console.log("doorbell action not armed, doing nothing")
+        res.send({ success: false })
+        return
+      }
+
+      switch (action.type) {
+        case "buzzer":
+          console.log("buzzer because the doorbell buzzer was armed")
+          await pressBuzzer()
+          await sleep(500)
+          resetDoorBellAction()
+          res.send({ success: true })
+          break
+        case "unlatch":
+          console.log("unlatching because the doorbell buzzer was armed")
+          resetDoorBellAction()
+          await configuration.nuki.unlatch()
+          break
+      }
+    })
+    .get(
+      ...authorized("/pushnotifications/:deviceToken", (req, res) => {
+        res.send({ deviceToken: req.params.deviceToken })
+      })
+    )
+    .put(
+      ...authorized("/pushnotifications/:deviceToken", async (req) => {
         const username = splitAuthHeader(req.headers.authorization)!.username
         const { types } = pushNotificationRegistration.parse(req.body)
         registerDevice(username, req.params.deviceToken, types)
@@ -178,20 +158,19 @@ app
         return { success: true }
       })
     )
-  )
-  .delete(
-    ...authorized(
-      "/pushnotifications/:deviceToken",
-      handleError(async (req, res) => {
+    .delete(
+      ...authorized("/pushnotifications/:deviceToken", async (req) => {
         removeDevice(req.params.deviceToken)
         return { success: true }
       })
     )
-  )
-  .get("/", (req, res) =>
-    res.send({ success: true, message: "please leave me alone" })
-  )
-  .head("/", (req, res) =>
-    res.send({ success: true, message: "please leave me alone" })
-  )
-  .listen(port)
+    .get("/", (_req, res) =>
+      res.send({ success: true, message: "please leave me alone" })
+    )
+    .head("/", (_req, res) =>
+      res.send({ success: true, message: "please leave me alone" })
+    )
+    .listen(port)
+}
+
+main()

@@ -1,6 +1,7 @@
 import { getRuntimeConfig } from "./config.ts"
 import { Action } from "./action.ts"
 import { findUser, Permission, Permissions, User } from "./user.ts"
+import { createHash } from "crypto"
 
 export const getToken = (
   user: string,
@@ -8,7 +9,7 @@ export const getToken = (
   action: Action,
   unixTimeSecs: number
 ): string =>
-  new Bun.CryptoHasher("sha256")
+  createHash("sha256")
     .update(
       [user, secret, action.replace(/^\//, ""), `${unixTimeSecs}`].join(":")
     )
@@ -40,10 +41,11 @@ export const splitAuthHeader = (
   authHeader: string | undefined
 ): { username: string; token: string; timestamp: number } | null => {
   const result = authHeader === undefined ? [] : authHeader.split(":")
-  if (result.length != 3) {
-    return null
-  }
+
   const [username, token, timestamp] = result
+  if (username === undefined || token === undefined || timestamp === undefined)
+    return null
+
   return { username, token, timestamp: parseInt(timestamp) }
 }
 

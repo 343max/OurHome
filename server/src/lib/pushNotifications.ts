@@ -1,6 +1,5 @@
 import { z } from "zod"
-import { Database } from "bun:sqlite"
-import PushNotifications from "node-pushnotifications"
+import { AsyncDatabase } from "promised-sqlite3"
 
 export const pushNotificationType = z.enum([
   "doorbellRing",
@@ -23,88 +22,61 @@ const deviceTokenRow = z.object({
 
 export type DeviceTokenRow = z.infer<typeof deviceTokenRow>
 
-export const pushNotificationController = (
-  databasePath: string,
-  {
-    teamId,
-    signingKey,
-    signingKeyId,
-    topic,
-  }: { teamId: string; signingKey: string; signingKeyId: string; topic: string }
-) => {
-  const db = new Database(databasePath, { create: true, readwrite: true })
-  const apns = new PushNotifications({
-    apn: { token: { teamId, key: signingKey, keyId: signingKeyId } },
-  })
+export const pushNotificationController = async (databasePath: string) => {
+  const db = await AsyncDatabase.open(databasePath)
 
-  const prepare = () => {
-    db.query(
+  const prepare = async () => {
+    await db.run(
       `CREATE TABLE IF NOT EXISTS "deviceTokens" (
         "deviceToken" TEXT NOT NULL,
         "username" text NOT NULL,
         "notificationTypes" text NOT NULL,
         PRIMARY KEY (deviceToken)
     );`
-    ).run()
+    )
   }
 
-  prepare()
+  await prepare()
 
   const parseRows = (rows: any[]) => z.array(deviceTokenRow).parse(rows)
 
-  const registerDevice = (
+  const registerDevice = async (
     user: string,
     token: string,
     types: PushNotificationType[]
   ) => {
-    db.prepare(
-      `INSERT OR REPLACE INTO deviceTokens (deviceToken, username, notificationTypes) VALUES (?, ?, ?)`
+    ;(
+      await db.prepare(
+        `INSERT OR REPLACE INTO deviceTokens (deviceToken, username, notificationTypes) VALUES (?, ?, ?)`
+      )
     ).run(token, user, JSON.stringify(types))
   }
 
-  const removeDevice = (token: string) => {
-    db.prepare("DELETE FROM deviceTokens WHERE deviceToken = ?").run(token)
+  const removeDevice = async (token: string) => {
+    await db.run("DELETE FROM deviceTokens WHERE deviceToken = ?", token)
   }
 
-  const getDoorbellRingSubscribers = (): DeviceTokenRow[] => {
+  const getDoorbellRingSubscribers = async (): Promise<DeviceTokenRow[]> => {
     return parseRows(
-      db
-        .query(
-          'SELECT * FROM deviceTokens WHERE notificationTypes LIKE "%doorbellRing%"'
-        )
-        .all()
+      await db.all(
+        'SELECT * FROM deviceTokens WHERE notificationTypes LIKE "%doorbellRing%"'
+      )
     )
   }
 
-  const getWhenOtherUserArrivesSubscribers = (
+  const getWhenOtherUserArrivesSubscribers = async (
     arrivingUser: string
-  ): DeviceTokenRow[] => {
+  ): Promise<DeviceTokenRow[]> => {
     return parseRows(
-      db
-        .query(
-          `SELECT * FROM 
+      await db.all(
+        `SELECT * FROM 
               deviceTokens
             WHERE
               notificationTypes LIKE "%whenOtherUserArrives%" AND
-              username != ?`
-        )
-        .all(arrivingUser)
+              username != ?`,
+        arrivingUser
+      )
     )
-  }
-
-  const sendPush = async (message: string, devices: DeviceTokenRow[]) => {
-    console.log(`Sending push notifications: ${message}`)
-    const tokens = devices.map((d) => d.deviceToken)
-
-    try {
-      await apns.send(tokens, {
-        title: "Doorbell",
-        body: message,
-        topic,
-      })
-    } catch (error) {
-      console.error(error)
-    }
   }
 
   return {
@@ -113,6 +85,5 @@ export const pushNotificationController = (
     removeDevice,
     getDoorbellRingSubscribers,
     getWhenOtherUserArrivesSubscribers,
-    sendPush,
   }
 }
