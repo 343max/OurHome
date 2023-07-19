@@ -1,5 +1,6 @@
 import { z } from "zod"
 import { Database } from "bun:sqlite"
+import PushNotifications from "node-pushnotifications"
 
 export const pushNotificationType = z.enum([
   "doorbellRing",
@@ -22,8 +23,19 @@ const deviceTokenRow = z.object({
 
 export type DeviceTokenRow = z.infer<typeof deviceTokenRow>
 
-export const pushNotificationController = (path: string) => {
-  const db = new Database(path, { create: true, readwrite: true })
+export const pushNotificationController = (
+  databasePath: string,
+  {
+    teamId,
+    signingKey,
+    signingKeyId,
+    topic,
+  }: { teamId: string; signingKey: string; signingKeyId: string; topic: string }
+) => {
+  const db = new Database(databasePath, { create: true, readwrite: true })
+  const apns = new PushNotifications({
+    apn: { token: { teamId, key: signingKey, keyId: signingKeyId } },
+  })
 
   const prepare = () => {
     db.query(
@@ -80,9 +92,18 @@ export const pushNotificationController = (path: string) => {
     )
   }
 
-  const sendPush = (message: string, devices: DeviceTokenRow[]) => {
-    for (const device of devices) {
-      console.log(`Sending push notification to ${device.username}: ${message}`)
+  const sendPush = async (message: string, devices: DeviceTokenRow[]) => {
+    console.log(`Sending push notifications: ${message}`)
+    const tokens = devices.map((d) => d.deviceToken)
+
+    try {
+      await apns.send(tokens, {
+        title: "Doorbell",
+        body: message,
+        topic,
+      })
+    } catch (error) {
+      console.error(error)
     }
   }
 

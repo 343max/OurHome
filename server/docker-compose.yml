@@ -6,9 +6,9 @@ services:
       - "4278:4278"
     container_name: doorbellserver
     volumes:
-      - ./:/app/:ro
+      - ./:/home/bun/app:ro
       - ./db:/db
-    working_dir: /app
+      - ./keys:/keys:ro
     command: ["run", "--watch", "./src/main.ts"]
     restart: unless-stopped
   cloudflared:

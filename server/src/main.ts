@@ -1,7 +1,7 @@
 import { dumpInviteLinks, findUser } from "./lib/user.ts"
 import { getRuntimeConfig } from "./lib/config.ts"
 import { configuration } from "./secrets.ts"
-import { splitAuthHeader, verifyAuth } from "./lib/auth.ts"
+import { splitAuthHeader } from "./lib/auth.ts"
 import {
   getCurrentDoorbellAction,
   resetDoorBellAction,
@@ -13,41 +13,10 @@ import {
   pushNotificationRegistration,
   pushNotificationController,
 } from "./lib/pushNotifications"
-import { actionForPath } from "./lib/action"
 import { env } from "./lib/env.ts"
+import { authorized } from "./lib/authorized.ts"
 
 const app = express()
-
-const authorized = (
-  path: string,
-  handler: RequestHandler
-): [string, RequestHandler] => {
-  const action = actionForPath(path)
-  if (action === undefined) {
-    throw new Error(`unknown action for path ${path}`)
-  }
-  return [
-    path,
-    async (req, res, next) => {
-      const authHeader = req.header("Authorization")
-      const externHeader = req.header("x-forwarded-for")
-      if (
-        verifyAuth(
-          authHeader,
-          action,
-          externHeader === undefined ? "local" : "remote"
-        )
-      ) {
-        res.contentType("application/json; charset=UTF-8")
-        await handler(req, res, next)
-      } else {
-        console.log("unauthorized")
-        res.status(403)
-        res.send({ success: false })
-      }
-    },
-  ]
-}
 
 if (getRuntimeConfig().ignoreAuthentication) {
   console.log(
@@ -68,7 +37,14 @@ const {
   sendPush,
   getDoorbellRingSubscribers,
   getWhenOtherUserArrivesSubscribers,
-} = pushNotificationController(env.DEVICE_TOKEN_DB_PATH)
+} = pushNotificationController(env.DEVICE_TOKEN_DB_PATH, {
+  teamId: env.APNS_TEAM_ID,
+  signingKeyId: env.APNS_SIGNING_KEY_ID,
+  signingKey: env.APNS_SIGNING_KEY,
+  topic: env.APNS_TOPIC,
+})
+
+sendPush("Server started", getDoorbellRingSubscribers())
 
 const pressBuzzer = async () => {
   for (const _ in [0, 1, 2, 3, 4, 5]) {
@@ -146,6 +122,11 @@ app
   )
   .post(
     ...authorized("/arrived", (req, res) => {
+      const username = splitAuthHeader(req.headers.authorization)!.username
+      sendPush(
+        `👋 ${username} arrived!`,
+        getWhenOtherUserArrivesSubscribers(username)
+      )
       armForDoorBellAction("buzzer", configuration.arrivalTimeout)
       res.send({ success: true })
     })
