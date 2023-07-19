@@ -1,4 +1,11 @@
-import { Nuki, NukiSmartLockConfig } from "./nuki"
+import {
+  Nuki,
+  NukiSmartLockConfig,
+  nukiSmartLockConfig,
+  NukiResponse,
+} from "./nuki"
+import { mergedPromises } from "./mergedPromises"
+import { nukiResponse } from "./nuki"
 
 type LiveNukiConfiguration = {
   host: string
@@ -10,7 +17,7 @@ type LiveNukiConfiguration = {
 export const getNukiUrl = (
   action: string,
   { host, port, token, deviceId }: LiveNukiConfiguration,
-  params: { [key: string]: string | number }
+  params: Record<string, string | number>
 ): string => {
   const allParams = Object.entries({ token, nukiId: deviceId, ...params })
     .map(([key, value]) => `${key}=${value}`)
@@ -21,18 +28,39 @@ export const getNukiUrl = (
 export const getNukiRequest = (
   action: string,
   config: LiveNukiConfiguration,
-  params: { [key: string]: string | number } = {}
+  params: Record<string, string | number> = {}
 ): Request => {
   return new Request(getNukiUrl(action, config, params), {
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   })
 }
 
+const mergedGetLockStateState = mergedPromises<any>()
+
+const sendNukiRequest = async (
+  ...args: Parameters<typeof getNukiRequest>
+): Promise<NukiResponse | { success: false }> => {
+  try {
+    const response = await fetch(getNukiRequest(...args))
+    return nukiResponse.parse(await response.json())
+  } catch (error) {
+    return { success: false }
+  }
+}
+
 export const liveNuki = (config: LiveNukiConfiguration): Nuki => ({
-  lock: async () => (await fetch(getNukiRequest("lock", config))).json(),
-  unlock: async () => (await fetch(getNukiRequest("unlock", config))).json(),
-  unlatch: async () =>
-    (await fetch(getNukiRequest("lockAction", config, { action: 3 }))).json(),
-  getState: async (): Promise<NukiSmartLockConfig> =>
-    (await fetch(getNukiRequest("lockState", config))).json(),
+  lock: async () => sendNukiRequest("lock", config),
+  unlock: async () => sendNukiRequest("unlock", config),
+  unlatch: async () => sendNukiRequest("lockAction", config, { action: 3 }),
+  getState: async (): Promise<NukiSmartLockConfig | null> => {
+    try {
+      return nukiSmartLockConfig.parse(
+        await mergedGetLockStateState(async () =>
+          (await fetch(getNukiRequest("lockState", config))).json()
+        )
+      )
+    } catch (error) {
+      return null
+    }
+  },
 })

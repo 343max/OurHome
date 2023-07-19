@@ -67,9 +67,21 @@ const main = async () => {
         res.send({ success: true })
       })
     )
-    .post(...authorized("/lock", () => configuration.nuki.lock()))
-    .post(...authorized("/unlock", () => configuration.nuki.unlock()))
-    .post(...authorized("/unlatch", () => configuration.nuki.unlatch()))
+    .post(
+      ...authorized("/lock", async (_req, res) =>
+        res.send(await configuration.nuki.lock())
+      )
+    )
+    .post(
+      ...authorized("/unlock", async (_req, res) =>
+        res.send(await configuration.nuki.unlock())
+      )
+    )
+    .post(
+      ...authorized("/unlatch", async (_req, res) =>
+        res.send(await configuration.nuki.unlatch())
+      )
+    )
     .get(
       ...authorized("/user", (req, res) => {
         const authHeader = splitAuthHeader(req.headers.authorization)
