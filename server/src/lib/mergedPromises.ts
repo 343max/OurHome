@@ -5,7 +5,6 @@ export const mergedPromises = <T = any>(): ((
 
   return (callback) => {
     if (current.promise !== null) {
-      console.log(current)
       return current.promise
     }
 
