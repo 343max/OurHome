@@ -39,13 +39,13 @@ const main = async () => {
     removeDevice,
     getDoorbellRingSubscribers,
     getWhenOtherUserArrivesSubscribers,
-  } = await pushNotificationController(env.DEVICE_TOKEN_DB_PATH)
+  } = await pushNotificationController(env().DEVICE_TOKEN_DB_PATH)
 
   const sendPush = pushNotificationSender({
-    teamId: env.APNS_TEAM_ID,
-    signingKeyId: env.APNS_SIGNING_KEY_ID,
-    signingKey: env.APNS_SIGNING_KEY,
-    topic: env.APNS_TOPIC,
+    teamId: env().APNS_TEAM_ID,
+    signingKeyId: env().APNS_SIGNING_KEY_ID,
+    signingKey: env().APNS_SIGNING_KEY,
+    topic: env().APNS_TOPIC,
   })
 
   sendPush("Server started", [
