@@ -6,7 +6,7 @@ struct HomeResponse: Codable {
 
 struct HomeState: Codable {
   let success: Bool
-  let doorlock: Doorlock
+  let doorlock: Doorlock?
   let doorbellAction: DoorbellAction?
 }
 

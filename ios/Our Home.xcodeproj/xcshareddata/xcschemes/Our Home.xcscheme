@@ -89,6 +89,11 @@
          <EnvironmentVariable
             key = "HOST"
             value = "https://buzzer-dev.343max.com/"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "HOST"
+            value = "http://localhost:4278/"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

@@ -24,21 +24,27 @@ struct ControllerView: View {
     Task {
       do {
         let state = try await home.getState()
-        frontDoorLockState = {
-          switch state.doorlock.state {
-          case .Locked:
-            return .locked
-          case .Unlocked:
-            return .unlocked
-          default:
-            return nil
-          }
-        }()
-        frontDoorBatteryState = BatteryState(
-          level: state.doorlock.batteryChargeState,
-          charging: state.doorlock.batteryCharging,
-          critical: state.doorlock.batteryCritical
-        )
+        
+        if let doorlock = state.doorlock {
+          frontDoorLockState = {
+            switch doorlock.state {
+            case .Locked:
+              return .locked
+            case .Unlocked:
+              return .unlocked
+            default:
+              return nil
+            }
+          }()
+          frontDoorBatteryState = BatteryState(
+            level: doorlock.batteryChargeState,
+            charging: doorlock.batteryCharging,
+            critical: doorlock.batteryCritical
+          )
+        } else {
+          frontDoorLockState = .unreachable
+          frontDoorBatteryState = nil
+        }
         doorbellAction = state.doorbellAction
       } catch {
         frontDoorLockState = .unreachable
