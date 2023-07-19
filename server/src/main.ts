@@ -82,11 +82,13 @@ const main = async () => {
       })
     )
     .get(
-      ...authorized("/state", async () => ({
-        success: true,
-        doorlock: await configuration.nuki.getState(),
-        doorbellAction: getCurrentDoorbellAction(),
-      }))
+      ...authorized("/state", async (_req, res) =>
+        res.send({
+          success: true,
+          doorlock: await configuration.nuki.getState(),
+          doorbellAction: getCurrentDoorbellAction(),
+        })
+      )
     )
     .post(
       ...authorized("/arrived", async (req, res) => {
@@ -159,7 +161,6 @@ const main = async () => {
         const username = splitAuthHeader(req.headers.authorization)!.username
         const { types } = pushNotificationRegistration.parse(req.body)
         registerDevice(username, req.params.deviceToken, types)
-        console.log([username, req.params.deviceToken, types])
         return { success: true }
       })
     )

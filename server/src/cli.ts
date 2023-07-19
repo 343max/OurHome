@@ -34,7 +34,7 @@ const sendRequest = async (
   }
 }
 
-const command = z.enum(["doorbell", "arrived"])
+const command = z.enum(["doorbell", "arrived", "get-state"])
 type Command = z.infer<typeof command>
 
 const main = async (command: Command) => {
@@ -44,6 +44,9 @@ const main = async (command: Command) => {
       break
     case "arrived":
       await sendRequest("POST", "/arrived")
+      break
+    case "get-state":
+      console.log(await sendRequest("GET", "/state"))
       break
   }
 }

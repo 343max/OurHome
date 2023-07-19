@@ -1,5 +1,5 @@
-import { DeviceTokenRow } from "./pushNotifications"
 import PushNotifications from "node-pushnotifications"
+import { DeviceTokenRow } from "./pushNotifications"
 
 export const pushNotificationSender = ({
   teamId,

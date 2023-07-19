@@ -6,6 +6,7 @@
     "tsc": "tsc ./src",
     "simulate:arrival": "ts-node ./src/cli.ts arrived",
     "simulate:doorbell-press": "ts-node ./src/cli.ts doorbell",
+    "simulate:get-state": "ts-node ./src/cli.ts get-state",
     "build": "tsc -p ."
   },
   "dependencies": {
