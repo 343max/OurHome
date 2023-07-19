@@ -48,13 +48,6 @@ const main = async () => {
     topic: env().APNS_TOPIC,
   })
 
-  sendPush("Server started", [
-    {
-      deviceToken:
-        "2d385a753e5d68b949451fe547e2b2c1df5fef1f9c1d52560a45c1e1b023f6d9",
-    },
-  ])
-
   const pressBuzzer = async () => {
     for (const _ in [0, 1, 2, 3, 4, 5]) {
       await sleep(500)
