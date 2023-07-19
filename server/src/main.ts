@@ -93,7 +93,11 @@ const main = async () => {
         const username = splitAuthHeader(req.headers.authorization)!.username
         const { displayName } = findUser(username)!
         sendPush(
-          `👋 ${displayName} arrived!`,
+          {
+            title: "Our Home",
+            body: `👋 ${displayName} arrived!`,
+            category: "buzzer",
+          },
           await getWhenOtherUserArrivesSubscribers(username)
         )
         armForDoorBellAction("buzzer", configuration.arrivalTimeout)
@@ -116,7 +120,14 @@ const main = async () => {
       const action = getCurrentDoorbellAction()
       if (action === null) {
         // if it wasn't one of us, send a notification
-        sendPush("🔔 Ding! Dong!", await getDoorbellRingSubscribers())
+        sendPush(
+          {
+            title: "Our Home",
+            body: "🔔 Ding! Dong!",
+            category: "buzzer",
+          },
+          await getDoorbellRingSubscribers()
+        )
 
         console.log("doorbell action not armed, doing nothing")
         res.send({ success: false })

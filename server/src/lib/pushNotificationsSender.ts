@@ -17,16 +17,15 @@ export const pushNotificationSender = ({
   })
 
   return async (
-    message: string,
+    data: { title: string; body: string; category: string },
     devices: Pick<DeviceTokenRow, "deviceToken">[]
   ) => {
-    console.log(`Sending push notifications: ${message}`)
+    console.log(`Sending push notifications: ${data.title}: ${data.body}`)
     const tokens = devices.map((d) => d.deviceToken)
 
     try {
       await apns.send(tokens, {
-        title: "Doorbell",
-        body: message,
+        ...data,
         topic,
       })
     } catch (error) {
