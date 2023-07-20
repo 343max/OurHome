@@ -110,7 +110,7 @@ const main = async () => {
         sendPush(
           {
             title: "Our Home",
-            body: `👋 ${displayName} arrived!`,
+            body: `👋 ${displayName} ist da!`,
             category: "buzzer",
           },
           await getWhenOtherUserArrivesSubscribers(username)
