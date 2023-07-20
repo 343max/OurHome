@@ -49,11 +49,6 @@ const main = async () => {
     production: env().APNS_PRODUCTION === "1",
   })
 
-  await sendPush(
-    { title: "Our Home", body: "🌳 Server started", category: "buzzer" },
-    await getDoorbellRingSubscribers()
-  )
-
   const pressBuzzer = async () => {
     for (const _ in [0, 1, 2, 3, 4, 5]) {
       await sleep(500)
