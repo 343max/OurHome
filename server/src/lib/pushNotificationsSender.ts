@@ -6,14 +6,19 @@ export const pushNotificationSender = ({
   signingKey,
   signingKeyId,
   topic,
+  production,
 }: {
   teamId: string
   signingKey: string
   signingKeyId: string
   topic: string
+  production: boolean
 }) => {
   const apns = new PushNotifications({
-    apn: { token: { teamId, key: signingKey, keyId: signingKeyId } },
+    apn: {
+      token: { teamId, key: signingKey, keyId: signingKeyId },
+      production,
+    },
   })
 
   return async (
