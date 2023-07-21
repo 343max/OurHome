@@ -59,7 +59,9 @@ const main = async () => {
   app
     .use(express.json())
     .all("*", (req, _res, next) => {
-      console.log(`🌎 ${req.ip} ${req.method} ${req.url}`)
+      if (!["HEAD /"].includes(`${req.method} ${req.url}`)) {
+        console.log(`🌎 ${req.ip} ${req.method} ${req.url}`)
+      }
       next()
     })
     .post(
@@ -188,6 +190,18 @@ const main = async () => {
     )
     .head("/", (_req, res) =>
       res.send({ success: true, message: "please leave me alone" })
+    )
+    .get("/.well-known/apple-app-site-association", (_req, res) =>
+      res.send({
+        applinks: {
+          details: [
+            {
+              appID: "ATMW4AU45H.de.343max.ourhome.Our-Home",
+              paths: ["/*"],
+            },
+          ],
+        },
+      })
     )
     .listen(port)
 }

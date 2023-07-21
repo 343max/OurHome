@@ -4,5 +4,10 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:buzzer.343max.com</string>
+		<string>applinks:buzzer-dev.343max.com</string>
+	</array>
 </dict>
 </plist>
