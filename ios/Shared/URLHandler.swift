@@ -15,8 +15,10 @@ func getAction(url: URL) -> URLAction? {
   guard let components = components else {
     return nil
   }
+  
+  let action = components.scheme == "de.343max.ourhome" ? components.host : String(components.path.dropFirst())
 
-  switch components.host {
+  switch action {
   case "login":
     let username = components.queryItems?.first(where: { $0.name == "user" })?.value
     let key = components.queryItems?.first(where: { $0.name == "key" })?.value
