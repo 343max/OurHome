@@ -9,11 +9,11 @@ struct ActionButton: View {
   }
   
   var exclamationMark: Bool {
-    
+    appState.lastFailedHomeAction == action
   }
   
   var body: some View {
-    SpinningButton(spinning: spinning, exclamationMark: appState.lastFailedHomeAction == action) {
+    SpinningButton(spinning: spinning, exclamationMark: exclamationMark) {
       Task {
         do {
           _ = try await appState.home(action: action)
@@ -22,7 +22,7 @@ struct ActionButton: View {
         }
       }
     } label: {
-      Label("Wohnungstür aufschließen", systemImage: "lock.open")
-    }.disabled(!appState.internalReachable)
+      ActionLabel(action: action)
+    }.disabled(spinning || !actionReachable(action, appState: appState))
   }
 }

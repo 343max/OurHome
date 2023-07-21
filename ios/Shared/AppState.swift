@@ -94,7 +94,9 @@ extension AppState {
   }
   
   func homeStateNeedsRefresh() {
-    print("needs refresh!")
+    Task {
+      await refreshHomeState()
+    }
   }
   
   func home(action: HomeAction) async throws {

@@ -9,7 +9,7 @@ struct BatteryState: Identifiable {
 }
 
 struct BatteryIcon: View {
-  @Binding var state: BatteryState
+  let state: BatteryState
 
   #if os(watchOS)
     let showPercentage = false
@@ -50,14 +50,14 @@ struct BatteryIcon: View {
 struct BatteryIcon_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      BatteryIcon(state: .constant(BatteryState(level: 95, charging: false, critical: false))).padding()
-      BatteryIcon(state: .constant(BatteryState(level: 85, charging: false, critical: false))).padding()
-      BatteryIcon(state: .constant(BatteryState(level: 55, charging: false, critical: false))).padding()
-      BatteryIcon(state: .constant(BatteryState(level: 44, charging: false, critical: false))).padding()
-      BatteryIcon(state: .constant(BatteryState(level: 28, charging: false, critical: false))).padding()
-      BatteryIcon(state: .constant(BatteryState(level: 8, charging: false, critical: true))).padding()
-      BatteryIcon(state: .constant(BatteryState(level: 8, charging: true, critical: true))).padding()
-      BatteryIcon(state: .constant(BatteryState(level: 96, charging: true, critical: false))).padding()
+      BatteryIcon(state: BatteryState(level: 95, charging: false, critical: false)).padding()
+      BatteryIcon(state: BatteryState(level: 85, charging: false, critical: false)).padding()
+      BatteryIcon(state: BatteryState(level: 55, charging: false, critical: false)).padding()
+      BatteryIcon(state: BatteryState(level: 44, charging: false, critical: false)).padding()
+      BatteryIcon(state: BatteryState(level: 28, charging: false, critical: false)).padding()
+      BatteryIcon(state: BatteryState(level: 8, charging: false, critical: true)).padding()
+      BatteryIcon(state: BatteryState(level: 8, charging: true, critical: true)).padding()
+      BatteryIcon(state: BatteryState(level: 96, charging: true, critical: false)).padding()
     }
   }
 }
