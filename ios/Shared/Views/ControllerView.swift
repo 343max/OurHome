@@ -1,84 +1,40 @@
 import SwiftUI
 
 struct ControllerView: View {
-  @Binding var home: Home
+  @EnvironmentObject var appState: AppState
   
   @State private var frontDoorLockState: LockState? = nil
   @State private var frontDoorBatteryState: BatteryState? = nil
   @State private var doorbellAction: DoorbellAction? = nil
   
-  @ObservedObject var nearbyReachability: Reachability
-  @ObservedObject var remoteReachabiliy: Reachability
-  
-  init(home: Binding<Home>, frontDoorLockState: LockState? = nil, frontDoorBatteryState: BatteryState? = nil, doorbellAction: DoorbellAction? = nil) {
-    self.nearbyReachability = Reachability(distance: .Nearby, home: home.wrappedValue)
-    self.remoteReachabiliy = Reachability(distance: .Remote, home: home.wrappedValue)
-
-    self._home = home
+  init(frontDoorLockState: LockState? = nil, frontDoorBatteryState: BatteryState? = nil, doorbellAction: DoorbellAction? = nil) {
     self.frontDoorLockState = frontDoorLockState
     self.frontDoorBatteryState = frontDoorBatteryState
     self.doorbellAction = doorbellAction
   }
   
-  func loadState() {
-    Task {
-      do {
-        let state = try await home.getState()
-        
-        if let doorlock = state.doorlock {
-          frontDoorLockState = {
-            switch doorlock.state {
-            case .Locked:
-              return .locked
-            case .Unlocked:
-              return .unlocked
-            default:
-              return nil
-            }
-          }()
-          frontDoorBatteryState = BatteryState(
-            level: doorlock.batteryChargeState,
-            charging: doorlock.batteryCharging,
-            critical: doorlock.batteryCritical
-          )
-        } else {
-          frontDoorLockState = .unreachable
-          frontDoorBatteryState = nil
-        }
-        doorbellAction = state.doorbellAction
-      } catch {
-        frontDoorLockState = .unreachable
-        frontDoorBatteryState = nil
-        doorbellAction = nil
-      }
-    }
-  }
-  
   var body: some View {
     List {
       Section("Haustür") {
-        BuzzerButton(home: home)
-          .disabled(!remoteReachabiliy.reachable)
+        BuzzerButton()
+          .disabled(!appState.externalReachable)
       }
       
       Section {
-        UnlatchDoorButton(home: home,
-                          refresh: loadState)
-        .disabled(!nearbyReachability.reachable)
+        UnlatchDoorButton()
+        .disabled(!appState.internalReachable)
       } header: {
         DoorHeader(lockState: $frontDoorLockState, batteryState: $frontDoorBatteryState)
       }
       
       Section {
-        UnlockDoorButton(home: home, refresh: loadState)
-          .disabled(!nearbyReachability.reachable)
-        LockDoorButton(home: home, refresh: loadState)
-          .disabled(!nearbyReachability.reachable)
+        UnlockDoorButton()
+        LockDoorButton()
       }
 
       Section {
-        ArmDoorbellButton(action: .buzzer, armedAction: doorbellAction, home: home, refresh: loadState)
-        ArmDoorbellButton(action: .unlatch, armedAction: doorbellAction, home: home, refresh: loadState)
+        ArmDoorbellButton(action: .buzzer, armedAction: doorbellAction)
+        ArmDoorbellButton(action: .unlatch, armedAction: doorbellAction)
       } header: {
         Label("Klingeln zum Öffnen…", systemImage: "bell")
       } footer: {
@@ -92,18 +48,53 @@ struct ControllerView: View {
         }
       }
     }
-    .onAppear(perform: {
-      self.loadState()
-    })
     .navigationTitle("Our Home")
     .refreshable {
-      self.loadState()
+      await appState.refreshHomeState()
     }
+  }
+}
+
+extension ControllerView {
+  func apply(homeState: HomeState?) {
+    let (lockState, batteryState, doorbellAction) = from(homeState: homeState)
+    self.frontDoorLockState = lockState
+    self.frontDoorBatteryState = batteryState
+    self.doorbellAction = doorbellAction
+  }
+  
+  func from(homeState: HomeState?) -> (LockState?, BatteryState?, DoorbellAction?) {
+    guard let homeState else {
+      return (.unreachable, nil, nil)
+    }
+    
+    guard let doorlock = homeState.doorlock else {
+      return (.unreachable, nil, homeState.doorbellAction)
+    }
+    
+    let frontDoorLockState: LockState? = {
+      switch doorlock.state {
+      case .Locked:
+        return .locked
+      case .Unlocked:
+        return .unlocked
+      default:
+        return nil
+      }
+    }()
+    
+    let frontDoorBatteryState = BatteryState(
+      level: doorlock.batteryChargeState,
+      charging: doorlock.batteryCharging,
+      critical: doorlock.batteryCritical
+    )
+    
+    return (frontDoorLockState, frontDoorBatteryState, homeState.doorbellAction)
   }
 }
 
 struct ControllerView_Previews: PreviewProvider {
   static var previews: some View {
-    ControllerView(home: .constant(DummyHome()))
+    ControllerView()
   }
 }

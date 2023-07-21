@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct BuzzerButton: View {
-  let home: Home
+  @EnvironmentObject var appState: AppState
+
   @State var spinning = false
   @State var exclamationMark = false
 
@@ -11,7 +12,7 @@ struct BuzzerButton: View {
         spinning = true
         do {
           exclamationMark = false
-          _ = try await home.pressBuzzer()
+          _ = try await appState.home(action: .pressBuzzer)
           try await Task.sleep(seconds: 0.2)
         } catch {
           exclamationMark = true
@@ -21,11 +22,5 @@ struct BuzzerButton: View {
     } label: {
       Label("Haustüröffner drücken", systemImage: "figure.walk")
     }.disabled(spinning)
-  }
-}
-
-struct BuzzerButton_Previews: PreviewProvider {
-  static var previews: some View {
-    BuzzerButton(home: DummyHome())
   }
 }

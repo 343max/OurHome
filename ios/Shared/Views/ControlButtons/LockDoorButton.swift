@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct LockDoorButton: View {
-  let home: Home
-  let refresh: (() -> Void)?
-  
+  @EnvironmentObject var appState: AppState
+
   @State var spinning = false
   @State var exclamationMark = false
 
@@ -13,9 +12,9 @@ struct LockDoorButton: View {
         spinning = true
         do {
           exclamationMark = false
-          _ = try await home.lockDoor()
+          _ = try await appState.home(action: .lockDoor)
           try await Task.sleep(seconds: 0.2)
-          refresh?()
+          appState.homeStateNeedsRefresh()
         } catch {
           exclamationMark = true
         }
@@ -23,12 +22,6 @@ struct LockDoorButton: View {
       }
     } label: {
       Label("Wohnungstür abschließen", systemImage: "lock")
-    }.disabled(spinning)
-  }
-}
-
-struct LockDoorButton_Previews: PreviewProvider {
-  static var previews: some View {
-    LockDoorButton(home: DummyHome(), refresh: nil)
+    }.disabled(spinning || !appState.internalReachable)
   }
 }

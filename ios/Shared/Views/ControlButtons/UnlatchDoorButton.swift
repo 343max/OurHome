@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct UnlatchDoorButton: View {
-  let home: Home
+  @EnvironmentObject var appState: AppState
+  
   @State var spinning = false
   @State var exclamationMark = false
-  let refresh: (() -> Void)?
   @Environment(\.isEnabled) private var isEnabled
 
   var body: some View {
@@ -13,9 +13,9 @@ struct UnlatchDoorButton: View {
         spinning = true
         do {
           exclamationMark = false
-          _ = try await home.unlatchDoor()
+          _ = try await appState.home.action(.unlatchDoor)
           try await Task.sleep(seconds: 0.2)
-          refresh?()
+          appState.homeStateNeedsRefresh()
         } catch {
           exclamationMark = true
         }
@@ -24,11 +24,5 @@ struct UnlatchDoorButton: View {
     } label: {
       Label("Wohnungstür öffnen", systemImage: "door.left.hand.closed").foregroundColor(.red.opacity(isEnabled ? 1 : 0.5))
     }.disabled(spinning)
-  }
-}
-
-struct UnlatchDoorButton_Previews: PreviewProvider {
-  static var previews: some View {
-    UnlatchDoorButton(home: DummyHome(), refresh: nil)
   }
 }

@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct SpinningButton<Content: View>: View {
-  @Binding var spinning: Bool
-  @Binding var exclamationMark: Bool
+  let spinning: Bool
+  let exclamationMark: Bool
   let action: () -> Void
   var label: () -> Content
 
@@ -25,12 +25,12 @@ struct SpinningButton<Content: View>: View {
 struct SpinningButton_Previews: PreviewProvider {
   static var previews: some View {
     List {
-      SpinningButton(spinning: .constant(true), exclamationMark: .constant(false)) {
+      SpinningButton(spinning: true, exclamationMark: false) {
         print("click!")
       } label: {
         Label("Haustür öffnen", systemImage: "figure.walk")
       }
-      SpinningButton(spinning: .constant(false), exclamationMark: .constant(true)) {
+      SpinningButton(spinning: false, exclamationMark: true) {
         print("click!")
       } label: {
         Label("Charge Battery", systemImage: "battery.100.bolt")

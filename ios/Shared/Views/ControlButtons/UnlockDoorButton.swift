@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct UnlockDoorButton: View {
-  let home: Home
-  let refresh: (() -> Void)?
-
+  @EnvironmentObject var appState: AppState
+  
   @State var spinning = false
   @State var exclamationMark = false
 
@@ -13,9 +12,9 @@ struct UnlockDoorButton: View {
         spinning = true
         do {
           exclamationMark = false
-          _ = try await home.unlockDoor()
+          _ = try await appState.home(action: .unlockDoor)
           try await Task.sleep(seconds: 0.2)
-          refresh?()
+          appState.homeStateNeedsRefresh()
         } catch {
           exclamationMark = true
         }
@@ -23,12 +22,6 @@ struct UnlockDoorButton: View {
       }
     } label: {
       Label("Wohnungstür aufschließen", systemImage: "lock.open")
-    }.disabled(spinning)
-  }
-}
-
-struct UnlockDoorButton_Previews: PreviewProvider {
-  static var previews: some View {
-    UnlockDoorButton(home: DummyHome(), refresh: nil)
+    }.disabled(spinning || !appState.internalReachable)
   }
 }
