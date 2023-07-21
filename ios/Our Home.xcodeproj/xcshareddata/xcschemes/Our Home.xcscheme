@@ -94,7 +94,7 @@
          <EnvironmentVariable
             key = "HOST"
             value = "http://localhost:4278/"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>

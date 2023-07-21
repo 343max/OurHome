@@ -55,6 +55,12 @@ struct OurHomeApp: App {
         .onOpenURL(perform: { url in
           handle(url: url)
         })
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: { activity in
+          guard let url = activity.webpageURL else {
+            return
+          }
+          handle(url: url)
+        })
         .environmentObject(appState)
     }
   }
