@@ -62,7 +62,17 @@ struct OurHomeApp: App {
 
 extension OurHomeApp {
   func handle(url: URL) {
-    switch (getAction(url: url)) {
+    func trigger(action: HomeAction) {
+      Task {
+        try? await appState.home(action: action)
+      }
+    }
+    
+    guard let action = getAction(url: url) else {
+      return
+    }
+    
+    switch (action) {
     case .login(let username, let key):
       User.store(user: User(username: username, key: key))
       appState.loadUser()
@@ -71,8 +81,14 @@ extension OurHomeApp {
     case .logout:
       try? User.remove()
       appState.loadUser()
-    case nil:
-      break
+    case .lockDoor:
+      trigger(action: .lockDoor)
+    case .pressBuzzer:
+      trigger(action: .pressBuzzer)
+    case .unlockDoor:
+      trigger(action: .unlockDoor)
+    case .unlatchDoor:
+      trigger(action: .unlatchDoor)
     }
   }
 }

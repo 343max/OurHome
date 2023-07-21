@@ -3,10 +3,10 @@ import Foundation
 enum URLAction: Equatable {
   case login(username: String, key: String)
   case logout
-//  case lock
-//  case buzzer
-//  case unlock
-//  case unlatch
+  case lockDoor
+  case pressBuzzer
+  case unlockDoor
+  case unlatchDoor
 }
 
 func getAction(url: URL) -> URLAction? {
@@ -29,14 +29,14 @@ func getAction(url: URL) -> URLAction? {
 
   case "logout":
     return .logout
-//  case "lock":
-//    return .lock
-//  case "buzzer":
-//    return .buzzer
-//  case "unlock":
-//    return .unlock
-//  case "unlatch":
-//    return .unlatch
+  case "lockDoor":
+    return .lockDoor
+  case "pressBuzzer":
+    return .pressBuzzer
+  case "unlockDoor":
+    return .unlockDoor
+  case "unlatchDoor":
+    return .unlatchDoor
 
   default:
     return nil
