@@ -59,7 +59,7 @@ const main = async () => {
   app
     .use(express.json())
     .all("*", (req, _res, next) => {
-      if (!["HEAD /"].includes(`${req.method} ${req.url}`)) {
+      if (!["HEAD /", "GET /"].includes(`${req.method} ${req.url}`)) {
         console.log(`🌎 ${req.ip} ${req.method} ${req.url}`)
       }
       next()
