@@ -81,9 +81,9 @@ extension NotificationProvider: UNUserNotificationCenterDelegate {
     Task { @MainActor in
       switch response.actionIdentifier {
       case ActionId.buzzer.rawValue:
-        let _ = try? await home.pressBuzzer()
+        let _ = try? await home.action(.pressBuzzer)
       case ActionId.unlatchDoor.rawValue:
-        let _ = try? await home.unlatchDoor()
+        let _ = try? await home.action(.unlatchDoor)
       default:
         break
       }

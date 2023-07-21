@@ -17,4 +17,10 @@ final class URLHandlerTests: XCTestCase {
     let action = getAction(url: URL(string: "de.343max.ourhome://logout")!)
     XCTAssertEqual(action, .logout)
   }
+  
+  func testAssociatedDomain() {
+    let action = getAction(url: URL(string: "https://buzzer.343max.com/login?user=max&key=xyz")!)
+    XCTAssertEqual(action, .login(username: "max", key: "xyz"))
+
+  }
 }
