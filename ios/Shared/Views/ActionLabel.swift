@@ -9,7 +9,7 @@ struct ActionLabel: View {
     case .armBuzzer:
       Label("…der Haustür", systemImage: "figure.walk")
     case .armUnlatch:
-      Label("…der Haustür", systemImage: "figure.walk")
+      Label("…der Wohnungstür", systemImage: "door.left.hand.closed")
     case .arrived:
       Text("Arrived")
     case .lockDoor:
