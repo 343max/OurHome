@@ -1,6 +1,6 @@
-export const mergedPromises = <T = any>(): ((
-  call: () => Promise<T>
-) => Promise<T>) => {
+export const mergedPromises = <T = any>(
+  defaultResult: T
+): ((call: () => Promise<T>) => Promise<T>) => {
   const current: { promise: Promise<T> | null } = { promise: null }
 
   return (callback) => {
@@ -8,10 +8,16 @@ export const mergedPromises = <T = any>(): ((
       return current.promise
     }
 
-    current.promise = callback().then((result) => {
-      current.promise = null
-      return result
-    })
+    current.promise = callback()
+      .then((result) => {
+        current.promise = null
+        return result
+      })
+      .catch((error) => {
+        console.error(error)
+        current.promise = null
+        return defaultResult
+      })
 
     return current.promise
   }

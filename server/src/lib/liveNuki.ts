@@ -35,7 +35,7 @@ export const getNukiRequest = (
   })
 }
 
-const mergedGetLockStateState = mergedPromises<any>()
+const mergedGetLockStateState = mergedPromises<any>(null)
 
 const sendNukiRequest = async (
   ...args: Parameters<typeof getNukiRequest>
@@ -60,6 +60,7 @@ export const liveNuki = (config: LiveNukiConfiguration): Nuki => ({
         )
       )
     } catch (error) {
+      console.error(error)
       return null
     }
   },

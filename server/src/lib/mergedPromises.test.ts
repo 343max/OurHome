@@ -2,17 +2,17 @@ import { mergedPromises } from "./mergedPromises"
 
 const mockedPromises = (): {
   result: { timesCalled: number; resolved: boolean }
-  fn: () => Promise<void>
-  resolve: () => void
-  promise: Promise<void>
+  fn: () => Promise<undefined>
+  resolve: () => undefined
+  promise: Promise<undefined>
 } => {
   const result = { timesCalled: 0, resolved: false, started: false }
-  let resolve: () => void = () => {}
+  let resolve: () => undefined = () => {}
 
-  const promise = new Promise<void>((resolver) => {
+  const promise = new Promise<undefined>((resolver) => {
     resolve = () => {
       if (result.started) {
-        resolver()
+        resolver(undefined)
         result.resolved = true
       }
     }
@@ -28,7 +28,7 @@ const mockedPromises = (): {
 }
 
 test("mergedPromises-one-request", async () => {
-  const merge = mergedPromises()
+  const merge = mergedPromises(undefined)
   const callA = mockedPromises()
   merge(callA.fn)
   callA.resolve()
@@ -38,7 +38,7 @@ test("mergedPromises-one-request", async () => {
 })
 
 test("mergedPromises-serial", async () => {
-  const merge = mergedPromises()
+  const merge = mergedPromises(undefined)
   const callA = mockedPromises()
   const callB = mockedPromises()
   merge(callA.fn)
@@ -54,7 +54,7 @@ test("mergedPromises-serial", async () => {
 })
 
 test("mergedPromises-parallel", async () => {
-  const merge = mergedPromises()
+  const merge = mergedPromises(undefined)
   const callA = mockedPromises()
   const callB = mockedPromises()
   merge(callA.fn)
