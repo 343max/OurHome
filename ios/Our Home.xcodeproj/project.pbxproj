@@ -55,6 +55,7 @@
 		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
 		5086826D28BFDEF300EF6EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5059217F28BBC5FA005A4E3A /* Assets.xcassets */; };
 		5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
+		509A72B52A953AF30072F58F /* HomeStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509A72B42A953AF30072F58F /* HomeStateTests.swift */; };
 		50A480A42A6A8A0D0082960C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A32A6A8A0D0082960C /* ActionButton.swift */; };
 		50A480A52A6A8A0D0082960C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A32A6A8A0D0082960C /* ActionButton.swift */; };
 		50A480A72A6A8A260082960C /* ActionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A62A6A8A260082960C /* ActionLabel.swift */; };
@@ -64,11 +65,7 @@
 		50DAFAC32922D679008CC486 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
 		50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
 		50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
-		50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9108E28BBC9A3001C10D2 /* Reachability.swift */; };
-		50E9109028BBC9A3001C10D2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9108E28BBC9A3001C10D2 /* Reachability.swift */; };
-		50E9109128BBCE27001C10D2 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFAF28511F25001F1006 /* NetworkReachability.swift */; };
 		50E9109228BBCE35001C10D2 /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
-		50E9109628BBCFE6001C10D2 /* GeoReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9109528BBCFE6001C10D2 /* GeoReachability.swift */; };
 		50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
 		50E9109A28BBD11D001C10D2 /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23227A6BC57007D1BBA /* Task+Sleep.swift */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
@@ -120,14 +117,12 @@
 		5059217F28BBC5FA005A4E3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505C1B8F27B1630A00C1D268 /* LoggingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInView.swift; sourceTree = "<group>"; };
 		5088888C285357B4006B8808 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
+		509A72B42A953AF30072F58F /* HomeStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStateTests.swift; sourceTree = "<group>"; };
 		50A480A32A6A8A0D0082960C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		50A480A62A6A8A260082960C /* ActionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLabel.swift; sourceTree = "<group>"; };
-		50BBFFAF28511F25001F1006 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
 		50DAFAC12922D679008CC486 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		50DAFAC42922D68F008CC486 /* DummyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyHome.swift; sourceTree = "<group>"; };
-		50E9108E28BBC9A3001C10D2 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		50E9109528BBCFE6001C10D2 /* GeoReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoReachability.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
 		50F4E98427A5BEF200ECD03F /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Our-Home-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -187,10 +182,7 @@
 				5039126A2A69CBFC0044B4A9 /* Lib */,
 				5037F2AB27A80DA6007D1BBA /* Configuration.swift */,
 				50DAFAC42922D68F008CC486 /* DummyHome.swift */,
-				50E9109528BBCFE6001C10D2 /* GeoReachability.swift */,
 				50DAFAC12922D679008CC486 /* Home.swift */,
-				50BBFFAF28511F25001F1006 /* NetworkReachability.swift */,
-				50E9108E28BBC9A3001C10D2 /* Reachability.swift */,
 				5037F23227A6BC57007D1BBA /* Task+Sleep.swift */,
 				505121C82944C9B700F78E5E /* URLHandler.swift */,
 				5051220F2944D34000F78E5E /* User.swift */,
@@ -273,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				5051220D2944CAAC00F78E5E /* URLHandlerTests.swift */,
+				509A72B42A953AF30072F58F /* HomeStateTests.swift */,
 			);
 			path = "Our Home Tests";
 			sourceTree = "<group>";
@@ -470,7 +463,6 @@
 				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
 				5039126C2A69CF020044B4A9 /* Pinger.swift in Sources */,
 				505121C62943E58F00F78E5E /* CountdownView.swift in Sources */,
-				50E9108F28BBC9A3001C10D2 /* Reachability.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
 				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
@@ -486,7 +478,6 @@
 				502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */,
 				5057C76B2A6427DB00AE6E1E /* SettingsButtonLabel.swift in Sources */,
 				505122172944D5B300F78E5E /* UserView.swift in Sources */,
-				50E9109128BBCE27001C10D2 /* NetworkReachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				509A72B52A953AF30072F58F /* HomeStateTests.swift in Sources */,
 				5051220E2944CAAC00F78E5E /* URLHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,7 +507,6 @@
 				5019DD162A62F74C00B21D2E /* Defaults.swift in Sources */,
 				5057C76C2A6427DB00AE6E1E /* SettingsButtonLabel.swift in Sources */,
 				50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */,
-				50E9109628BBCFE6001C10D2 /* GeoReachability.swift in Sources */,
 				50DAFAC32922D679008CC486 /* Home.swift in Sources */,
 				5039126D2A69CF020044B4A9 /* Pinger.swift in Sources */,
 				505122112944D34000F78E5E /* User.swift in Sources */,
@@ -524,7 +515,6 @@
 				50E9109228BBCE35001C10D2 /* HomeState.swift in Sources */,
 				5059217C28BBC5FA005A4E3A /* OurHomeApp.swift in Sources */,
 				50A480A82A6A8A260082960C /* ActionLabel.swift in Sources */,
-				50E9109028BBC9A3001C10D2 /* Reachability.swift in Sources */,
 				5059218B28BBC6A9005A4E3A /* ControllerView.swift in Sources */,
 				50E9109A28BBD11D001C10D2 /* Task+Sleep.swift in Sources */,
 			);

@@ -40,5 +40,10 @@ struct ControllerView: View {
     .refreshable {
       await appState.refreshHomeState()
     }
+    .onAppear {
+      Task {
+        await appState.refreshHomeState()
+      }
+    }
   }
 }
