@@ -199,6 +199,10 @@ const main = async () => {
               appID: "ATMW4AU45H.de.343max.ourhome.Our-Home",
               paths: ["/*"],
             },
+            {
+              appID: "ATMW4AU45H.de.343max.OurHome.OHWatch.watchkitapp",
+              paths: ["/*"],
+            },
           ],
         },
       })
