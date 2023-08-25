@@ -31,11 +31,15 @@ struct OurHomeApp: App {
     WindowGroup {
         NavigationStack(path: $destination) {
           ControllerView()
+#if !os(watchOS)
             .toolbar {
-              NavigationLink(value: Destination.settings) {
-                SettingsButtonLabel(userState: appState.userState)
+              ToolbarItemGroup(placement: .topBarTrailing) {
+                NavigationLink(value: Destination.settings) {
+                  SettingsButtonLabel(userState: appState.userState)
+                }
               }
             }
+#endif
             .navigationViewStyle(StackNavigationViewStyle())
             .navigationDestination(for: Destination.self) { destination in
               switch destination {

@@ -65,8 +65,17 @@ struct ControllerView: View {
           Text("Klingle jetzt, um die Wohunungstür zu öffnen").frame(maxWidth: .infinity)
         }
       }
+#if os(watchOS)
+      Section {
+        NavigationLink(value: Destination.settings) {
+          SettingsButtonLabel(userState: appState.userState)
+        }
+      }
+#endif
     }
+#if !os(watchOS)
     .navigationTitle("Our Home")
+#endif
     .refreshable {
       await appState.refreshHomeState()
     }
