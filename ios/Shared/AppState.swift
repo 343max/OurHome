@@ -30,7 +30,7 @@ class AppState: ObservableObject {
   }
   
   @Published
-  private(set) var homeState: HomeState? = nil
+  private(set) var homeState: Result<HomeState, Error>? = nil
   
   @Published
   var user: User? = nil
@@ -90,7 +90,11 @@ extension AppState {
   }
   
   func refreshHomeState() async {
-    homeState = try? await home.getState()
+    do {
+      homeState = .success(try await home.getState())
+    } catch {
+      homeState = .failure(error)
+    }
   }
   
   func homeStateNeedsRefresh() {

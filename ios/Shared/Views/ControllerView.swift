@@ -2,6 +2,36 @@ import SwiftUI
 
 struct ControllerView: View {
   @EnvironmentObject var appState: AppState
+  
+  var doorlock: LockResult {
+    guard let homeState = appState.homeState else {
+      return .unknown
+    }
+    
+    switch homeState {
+    case .success(let success):
+      if let doorlock = success.doorlock {
+        return .result(lock: doorlock)
+      } else {
+        return .unreachable
+      }
+    case .failure(_):
+      return .unreachable
+    }
+  }
+  
+  var homeState: HomeState? {
+    guard let homeState = appState.homeState else {
+      return nil
+    }
+    
+    switch homeState {
+    case .success(let state):
+      return state
+    case .failure(_):
+      return nil
+    }
+  }
     
   var body: some View {
     List {
@@ -12,7 +42,7 @@ struct ControllerView: View {
       Section {
         ActionButton(action: .unlatchDoor)
       } header: {
-        DoorHeader(doorlock: appState.homeState?.doorlock)
+        DoorHeader(doorlock: doorlock)
       }
       
       Section {
@@ -26,7 +56,7 @@ struct ControllerView: View {
       } header: {
         Label("Klingeln zum Öffnen…", systemImage: "bell")
       } footer: {
-        switch(DoorbellAction.getActiveType(appState.homeState?.doorbellAction)) {
+        switch(DoorbellAction.getActiveType(homeState?.doorbellAction)) {
         case nil:
           EmptyView()
         case .buzzer:
