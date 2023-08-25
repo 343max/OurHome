@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5059217528BBC5FA005A4E3A"
-               BuildableName = "Our Home Watch App.app"
-               BlueprintName = "Our Home Watch App"
-               ReferencedContainer = "container:Our Home.xcodeproj">
+               BlueprintIdentifier = "Authentication"
+               BuildableName = "Authentication"
+               BlueprintName = "Authentication"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,18 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AuthenticationTests"
+               BuildableName = "AuthenticationTests"
+               BlueprintName = "AuthenticationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -39,16 +51,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5059217528BBC5FA005A4E3A"
-            BuildableName = "Our Home Watch App.app"
-            BlueprintName = "Our Home Watch App"
-            ReferencedContainer = "container:Our Home.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -56,16 +58,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5059217528BBC5FA005A4E3A"
-            BuildableName = "Our Home Watch App.app"
-            BlueprintName = "Our Home Watch App"
-            ReferencedContainer = "container:Our Home.xcodeproj">
+            BlueprintIdentifier = "Authentication"
+            BuildableName = "Authentication"
+            BlueprintName = "Authentication"
+            ReferencedContainer = "container:">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
