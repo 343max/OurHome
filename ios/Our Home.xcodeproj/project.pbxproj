@@ -11,7 +11,7 @@
 		5019DD152A62F74C00B21D2E /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD142A62F74C00B21D2E /* Defaults.swift */; };
 		5019DD1A2A62F89900B21D2E /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD192A62F89900B21D2E /* PushNotifications.swift */; };
 		501F33512A98DF42006F957B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F33502A98DF42006F957B /* AppDelegate.swift */; };
-		501F335E2A98E94C006F957B /* Our Home.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 501F335D2A98E94C006F957B /* Our Home.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		501F335E2A98E94C006F957B /* Our Home Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 501F335D2A98E94C006F957B /* Our Home Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		501F33722A98E975006F957B /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		501F33732A98E988006F957B /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
 		501F33742A98E988006F957B /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
@@ -100,7 +100,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				501F335E2A98E94C006F957B /* Our Home.app in Embed Watch Content */,
+				501F335E2A98E94C006F957B /* Our Home Watch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +112,7 @@
 		5019DD192A62F89900B21D2E /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		501F33502A98DF42006F957B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		501F33582A98E94C006F957B /* OHWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		501F335D2A98E94C006F957B /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		501F335D2A98E94C006F957B /* Our Home Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "OHWatch Watch App.entitlements"; path = "OHWatch Watch App/OHWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				503D1DB727A14EAB00FC8355 /* Our Home.app */,
 				505122042944CA7C00F78E5E /* Our Home Tests.xctest */,
 				501F33582A98E94C006F957B /* OHWatch.app */,
-				501F335D2A98E94C006F957B /* Our Home.app */,
+				501F335D2A98E94C006F957B /* Our Home Watch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 				501F33922A98EA57006F957B /* KeychainAccess */,
 			);
 			productName = "OHWatch Watch App";
-			productReference = 501F335D2A98E94C006F957B /* Our Home.app */;
+			productReference = 501F335D2A98E94C006F957B /* Our Home Watch.app */;
 			productType = "com.apple.product-type.application";
 		};
 		503D1DB627A14EAB00FC8355 /* Our Home */ = {
@@ -605,6 +605,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -614,7 +615,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch.watchkitapp;
-				PRODUCT_NAME = "Our Home";
+				PRODUCT_NAME = "Our Home Watch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -640,6 +641,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -649,7 +651,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch.watchkitapp;
-				PRODUCT_NAME = "Our Home";
+				PRODUCT_NAME = "Our Home Watch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
