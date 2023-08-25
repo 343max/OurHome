@@ -39,6 +39,7 @@ struct ControllerView: View {
         ActionButton(action: .pressBuzzer)
       }
       
+      #if !os(watchOS)
       Section {
         ActionButton(action: .unlatchDoor)
       } header: {
@@ -49,10 +50,11 @@ struct ControllerView: View {
         ActionButton(action: .unlockDoor)
         ActionButton(action: .lockDoor)
       }
+      #endif
 
       Section {
-        ActionButton(action: .armBuzzer)
         ActionButton(action: .armUnlatch)
+        ActionButton(action: .armBuzzer)
       } header: {
         Label("Klingeln zum Öffnen…", systemImage: "bell")
       } footer: {
