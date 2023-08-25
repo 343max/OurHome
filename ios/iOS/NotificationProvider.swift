@@ -1,7 +1,10 @@
 import Foundation
 import UserNotifications
-import UIKit
+#if os(watchOS)
 import WatchKit
+#else
+import UIKit
+#endif
 
 
 enum NotificationId: String {
@@ -28,11 +31,7 @@ class NotificationProvider: NSObject {
       options: [.sound, .alert, .badge]) { granted, _ in
         if granted {
           DispatchQueue.main.async {
-#if os(watchOS)
-            WKApplication.shared().registerForRemoteNotifications()
-#else
-            UIApplication.shared.registerForRemoteNotifications()
-#endif
+            NotificationProvider.registerForRemoteNotifications()
           }
         }
       }
@@ -77,6 +76,16 @@ class NotificationProvider: NSObject {
     Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false) { Timer in
       center.removeDeliveredNotifications(withIdentifiers: [NotificationId.arrived.rawValue])
     }
+#endif
+  }
+}
+
+extension NotificationProvider {
+  static func registerForRemoteNotifications() {
+#if os(watchOS)
+            WKApplication.shared().registerForRemoteNotifications()
+#else
+            UIApplication.shared.registerForRemoteNotifications()
 #endif
   }
 }
