@@ -113,6 +113,7 @@
 		501F33502A98DF42006F957B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		501F33582A98E94C006F957B /* OHWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		501F335D2A98E94C006F957B /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "OHWatch Watch App.entitlements"; path = "OHWatch Watch App/OHWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
 		502C730D27A56FDF006D0132 /* DoorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorHeader.swift; sourceTree = "<group>"; };
@@ -248,6 +249,7 @@
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
+				501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */,
 				5037F2B427AAA929007D1BBA /* Shared */,
 				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* iOS */,
@@ -595,6 +597,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "OHWatch Watch App/OHWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ATMW4AU45H;
@@ -629,6 +632,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "OHWatch Watch App/OHWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ATMW4AU45H;
