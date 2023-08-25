@@ -2,10 +2,13 @@ import SwiftUI
 
 @main
 struct Our_Home_Watch_AppApp: App {
-  let home = DummyHome()
+  @StateObject
+  var appState = AppState()
+    
   var body: some Scene {
     WindowGroup {
-      ControllerView(home: .constant(home))
+      ControllerView()
     }
+    .environmentObject(appState)
   }
 }

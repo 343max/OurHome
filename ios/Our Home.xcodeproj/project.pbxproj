@@ -61,6 +61,7 @@
 		50A480A72A6A8A260082960C /* ActionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A62A6A8A260082960C /* ActionLabel.swift */; };
 		50A480A82A6A8A260082960C /* ActionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A62A6A8A260082960C /* ActionLabel.swift */; };
 		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
+		50CDB93A2A98A66C00C80C4D /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
 		50DAFAC22922D679008CC486 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
 		50DAFAC32922D679008CC486 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
 		50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
@@ -509,6 +510,7 @@
 				50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */,
 				50DAFAC32922D679008CC486 /* Home.swift in Sources */,
 				5039126D2A69CF020044B4A9 /* Pinger.swift in Sources */,
+				50CDB93A2A98A66C00C80C4D /* NotificationProvider.swift in Sources */,
 				505122112944D34000F78E5E /* User.swift in Sources */,
 				50A480A52A6A8A0D0082960C /* ActionButton.swift in Sources */,
 				5059218D28BBC7CF005A4E3A /* BatteryIcon.swift in Sources */,
@@ -771,20 +773,21 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "de.343max.ourhome.Our-Home";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.ourhome.Our-Home.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -803,20 +806,21 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "de.343max.ourhome.Our-Home";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.ourhome.Our-Home.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
