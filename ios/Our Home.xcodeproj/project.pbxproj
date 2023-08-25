@@ -9,10 +9,40 @@
 /* Begin PBXBuildFile section */
 		5019DD132A62F73000B21D2E /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5019DD122A62F73000B21D2E /* Defaults */; };
 		5019DD152A62F74C00B21D2E /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD142A62F74C00B21D2E /* Defaults.swift */; };
-		5019DD162A62F74C00B21D2E /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD142A62F74C00B21D2E /* Defaults.swift */; };
-		5019DD182A62F82A00B21D2E /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5019DD172A62F82A00B21D2E /* Defaults */; };
 		5019DD1A2A62F89900B21D2E /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD192A62F89900B21D2E /* PushNotifications.swift */; };
-		5019DD1B2A62F89900B21D2E /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD192A62F89900B21D2E /* PushNotifications.swift */; };
+		501F33512A98DF42006F957B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F33502A98DF42006F957B /* AppDelegate.swift */; };
+		501F335E2A98E94C006F957B /* Our Home.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 501F335D2A98E94C006F957B /* Our Home.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		501F33722A98E975006F957B /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
+		501F33732A98E988006F957B /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
+		501F33742A98E988006F957B /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
+		501F33752A98E988006F957B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AB27A80DA6007D1BBA /* Configuration.swift */; };
+		501F33762A98E988006F957B /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C82944C9B700F78E5E /* URLHandler.swift */; };
+		501F33772A98E988006F957B /* Pinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039126B2A69CC060044B4A9 /* Pinger.swift */; };
+		501F33782A98E988006F957B /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23227A6BC57007D1BBA /* Task+Sleep.swift */; };
+		501F33792A98E988006F957B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
+		501F337A2A98E988006F957B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
+		501F337B2A98E98E006F957B /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
+		501F337C2A98E98E006F957B /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
+		501F337D2A98E98E006F957B /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD192A62F89900B21D2E /* PushNotifications.swift */; };
+		501F337E2A98E98E006F957B /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
+		501F337F2A98E9A0006F957B /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
+		501F33802A98E9A0006F957B /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
+		501F33812A98E9A0006F957B /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
+		501F33822A98E9A0006F957B /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
+		501F33832A98E9A0006F957B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122122944D37E00F78E5E /* UserView.swift */; };
+		501F33842A98E9A0006F957B /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A32A6A8A0D0082960C /* ActionButton.swift */; };
+		501F33852A98E9A0006F957B /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
+		501F33862A98E9A5006F957B /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AF27A80E13007D1BBA /* AppVersion.swift */; };
+		501F33872A98E9A5006F957B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730F27A5B658006D0132 /* SettingsView.swift */; };
+		501F33882A98E9A5006F957B /* ActionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A62A6A8A260082960C /* ActionLabel.swift */; };
+		501F33892A98E9A5006F957B /* SettingsButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057C76A2A6427DB00AE6E1E /* SettingsButtonLabel.swift */; };
+		501F338A2A98E9A5006F957B /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD142A62F74C00B21D2E /* Defaults.swift */; };
+		501F338B2A98E9A5006F957B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039124A2A6993BF0044B4A9 /* AppState.swift */; };
+		501F338C2A98E9D7006F957B /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
+		501F338D2A98EA13006F957B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5059217F28BBC5FA005A4E3A /* Assets.xcassets */; };
+		501F338F2A98EA46006F957B /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 501F338E2A98EA46006F957B /* Authentication */; };
+		501F33912A98EA4F006F957B /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 501F33902A98EA4F006F957B /* Defaults */; };
+		501F33932A98EA57006F957B /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 501F33922A98EA57006F957B /* KeychainAccess */; };
 		50292D77293B9CA800530CEB /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 50292D76293B9CA800530CEB /* KeychainAccess */; };
 		502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
 		502C730C27A56A4A006D0132 /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
@@ -23,56 +53,37 @@
 		5037F26627A70387007D1BBA /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
 		5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AB27A80DA6007D1BBA /* Configuration.swift */; };
 		5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AF27A80E13007D1BBA /* AppVersion.swift */; };
-		5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */; };
 		5039124B2A6993BF0044B4A9 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039124A2A6993BF0044B4A9 /* AppState.swift */; };
-		5039124C2A6993BF0044B4A9 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039124A2A6993BF0044B4A9 /* AppState.swift */; };
 		5039126C2A69CF020044B4A9 /* Pinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039126B2A69CC060044B4A9 /* Pinger.swift */; };
-		5039126D2A69CF020044B4A9 /* Pinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039126B2A69CC060044B4A9 /* Pinger.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
-		505121C12943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
 		505121C62943E58F00F78E5E /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
-		505121C72943E58F00F78E5E /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
 		505121C92944C9B700F78E5E /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C82944C9B700F78E5E /* URLHandler.swift */; };
 		5051220E2944CAAC00F78E5E /* URLHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220D2944CAAC00F78E5E /* URLHandlerTests.swift */; };
 		505122102944D34000F78E5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
-		505122112944D34000F78E5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
 		505122172944D5B300F78E5E /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122122944D37E00F78E5E /* UserView.swift */; };
-		505122182944D5B400F78E5E /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122122944D37E00F78E5E /* UserView.swift */; };
 		5051221A2944ECCD00F78E5E /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
-		5051221B2944ECCD00F78E5E /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
-		5051221D2944EDF700F78E5E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5051221C2944EDF700F78E5E /* KeychainAccess */; };
 		5057C76B2A6427DB00AE6E1E /* SettingsButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057C76A2A6427DB00AE6E1E /* SettingsButtonLabel.swift */; };
-		5057C76C2A6427DB00AE6E1E /* SettingsButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057C76A2A6427DB00AE6E1E /* SettingsButtonLabel.swift */; };
-		5059217C28BBC5FA005A4E3A /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */; };
-		5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059217D28BBC5FA005A4E3A /* ContentView.swift */; };
-		5059218B28BBC6A9005A4E3A /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBC27A14EAB00FC8355 /* ControllerView.swift */; };
-		5059218C28BBC7C9005A4E3A /* DoorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730D27A56FDF006D0132 /* DoorHeader.swift */; };
-		5059218D28BBC7CF005A4E3A /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
-		5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
-		5059219228BBC84B005A4E3A /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 5059219128BBC84B005A4E3A /* Authentication */; };
-		505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C1B8F27B1630A00C1D268 /* LoggingInView.swift */; };
-		5086826D28BFDEF300EF6EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5059217F28BBC5FA005A4E3A /* Assets.xcassets */; };
 		5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
 		509A72B52A953AF30072F58F /* HomeStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509A72B42A953AF30072F58F /* HomeStateTests.swift */; };
 		50A480A42A6A8A0D0082960C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A32A6A8A0D0082960C /* ActionButton.swift */; };
-		50A480A52A6A8A0D0082960C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A32A6A8A0D0082960C /* ActionButton.swift */; };
 		50A480A72A6A8A260082960C /* ActionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A62A6A8A260082960C /* ActionLabel.swift */; };
-		50A480A82A6A8A260082960C /* ActionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A62A6A8A260082960C /* ActionLabel.swift */; };
 		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
 		50DAFAC22922D679008CC486 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
-		50DAFAC32922D679008CC486 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
 		50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
-		50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
-		50E9109228BBCE35001C10D2 /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
-		50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730927A47DBB006D0132 /* SpinningButton.swift */; };
-		50E9109A28BBD11D001C10D2 /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23227A6BC57007D1BBA /* Task+Sleep.swift */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
 		50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		501F335F2A98E94C006F957B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503D1DAF27A14EAB00FC8355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 501F335C2A98E94C006F957B;
+			remoteInfo = "OHWatch Watch App";
+		};
 		505122082944CA7C00F78E5E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 503D1DAF27A14EAB00FC8355 /* Project object */;
@@ -82,9 +93,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		501F336E2A98E94E006F957B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				501F335E2A98E94C006F957B /* Our Home.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5019DD142A62F74C00B21D2E /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		5019DD192A62F89900B21D2E /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
+		501F33502A98DF42006F957B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		501F33582A98E94C006F957B /* OHWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		501F335D2A98E94C006F957B /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "OHWatch Watch App.entitlements"; path = "OHWatch Watch App/OHWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
 		502C730D27A56FDF006D0132 /* DoorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorHeader.swift; sourceTree = "<group>"; };
@@ -95,7 +124,6 @@
 		5037F2AB27A80DA6007D1BBA /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		5037F2AF27A80E13007D1BBA /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		5037F2B127A83C7D007D1BBA /* Our Home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Our Home.entitlements"; sourceTree = "<group>"; };
-		5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
 		5039124A2A6993BF0044B4A9 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5039126B2A69CC060044B4A9 /* Pinger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pinger.swift; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,11 +139,7 @@
 		505122122944D37E00F78E5E /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		505122192944ECCD00F78E5E /* UserKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeychain.swift; sourceTree = "<group>"; };
 		5057C76A2A6427DB00AE6E1E /* SettingsButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonLabel.swift; sourceTree = "<group>"; };
-		5059217628BBC5FA005A4E3A /* Our Home Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
-		5059217D28BBC5FA005A4E3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5059217F28BBC5FA005A4E3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		505C1B8F27B1630A00C1D268 /* LoggingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInView.swift; sourceTree = "<group>"; };
 		5088888C285357B4006B8808 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
 		509A72B42A953AF30072F58F /* HomeStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStateTests.swift; sourceTree = "<group>"; };
 		50A480A32A6A8A0D0082960C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
@@ -129,6 +153,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		501F335A2A98E94C006F957B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				501F33912A98EA4F006F957B /* Defaults in Frameworks */,
+				501F338F2A98EA46006F957B /* Authentication in Frameworks */,
+				501F33932A98EA57006F957B /* KeychainAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503D1DB427A14EAB00FC8355 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,16 +177,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5059217328BBC5FA005A4E3A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5019DD182A62F82A00B21D2E /* Defaults in Frameworks */,
-				5051221D2944EDF700F78E5E /* KeychainAccess in Frameworks */,
-				5059219228BBC84B005A4E3A /* Authentication in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +214,7 @@
 				50F4E98227A5BED100ECD03F /* Backend */,
 				5037F2B527AAA961007D1BBA /* Views */,
 				5019DD142A62F74C00B21D2E /* Defaults.swift */,
+				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
 				5039124A2A6993BF0044B4A9 /* AppState.swift */,
 			);
 			path = Shared;
@@ -215,6 +240,7 @@
 		5039126A2A69CBFC0044B4A9 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				5088888C285357B4006B8808 /* NotificationProvider.swift */,
 				5039126B2A69CC060044B4A9 /* Pinger.swift */,
 			);
 			path = Lib;
@@ -223,6 +249,7 @@
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
+				501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */,
 				5037F2B427AAA929007D1BBA /* Shared */,
 				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* iOS */,
@@ -240,8 +267,9 @@
 			isa = PBXGroup;
 			children = (
 				503D1DB727A14EAB00FC8355 /* Our Home.app */,
-				5059217628BBC5FA005A4E3A /* Our Home Watch App.app */,
 				505122042944CA7C00F78E5E /* Our Home Tests.xctest */,
+				501F33582A98E94C006F957B /* OHWatch.app */,
+				501F335D2A98E94C006F957B /* Our Home.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,11 +280,8 @@
 				503D1DBE27A14EAB00FC8355 /* Assets.xcassets */,
 				5037F2B127A83C7D007D1BBA /* Our Home.entitlements */,
 				50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */,
-				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
-				5037F2B927ABF39E007D1BBA /* LoggedOutView.swift */,
-				505C1B8F27B1630A00C1D268 /* LoggingInView.swift */,
 				50BBFFB128512E6B001F1006 /* LocationChecker.swift */,
-				5088888C285357B4006B8808 /* NotificationProvider.swift */,
+				501F33502A98DF42006F957B /* AppDelegate.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -273,8 +298,6 @@
 		5059217A28BBC5FA005A4E3A /* Watch */ = {
 			isa = PBXGroup;
 			children = (
-				5059217B28BBC5FA005A4E3A /* OurHomeApp.swift */,
-				5059217D28BBC5FA005A4E3A /* ContentView.swift */,
 				5059217F28BBC5FA005A4E3A /* Assets.xcassets */,
 			);
 			path = Watch;
@@ -309,6 +332,45 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		501F33572A98E94C006F957B /* OHWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 501F336F2A98E94E006F957B /* Build configuration list for PBXNativeTarget "OHWatch" */;
+			buildPhases = (
+				501F33562A98E94C006F957B /* Resources */,
+				501F336E2A98E94E006F957B /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				501F33602A98E94C006F957B /* PBXTargetDependency */,
+			);
+			name = OHWatch;
+			productName = OHWatch;
+			productReference = 501F33582A98E94C006F957B /* OHWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		501F335C2A98E94C006F957B /* OHWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 501F336B2A98E94E006F957B /* Build configuration list for PBXNativeTarget "OHWatch Watch App" */;
+			buildPhases = (
+				501F33592A98E94C006F957B /* Sources */,
+				501F335A2A98E94C006F957B /* Frameworks */,
+				501F335B2A98E94C006F957B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OHWatch Watch App";
+			packageProductDependencies = (
+				501F338E2A98EA46006F957B /* Authentication */,
+				501F33902A98EA4F006F957B /* Defaults */,
+				501F33922A98EA57006F957B /* KeychainAccess */,
+			);
+			productName = "OHWatch Watch App";
+			productReference = 501F335D2A98E94C006F957B /* Our Home.app */;
+			productType = "com.apple.product-type.application";
+		};
 		503D1DB627A14EAB00FC8355 /* Our Home */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 503D1DC527A14EAB00FC8355 /* Build configuration list for PBXNativeTarget "Our Home" */;
@@ -349,28 +411,6 @@
 			productReference = 505122042944CA7C00F78E5E /* Our Home Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5059217528BBC5FA005A4E3A /* Our Home Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5059218428BBC5FA005A4E3A /* Build configuration list for PBXNativeTarget "Our Home Watch App" */;
-			buildPhases = (
-				5059217228BBC5FA005A4E3A /* Sources */,
-				5059217328BBC5FA005A4E3A /* Frameworks */,
-				5059217428BBC5FA005A4E3A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Our Home Watch App";
-			packageProductDependencies = (
-				5059219128BBC84B005A4E3A /* Authentication */,
-				5051221C2944EDF700F78E5E /* KeychainAccess */,
-				5019DD172A62F82A00B21D2E /* Defaults */,
-			);
-			productName = "Our Home Watch App";
-			productReference = 5059217628BBC5FA005A4E3A /* Our Home Watch App.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -378,18 +418,21 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					501F33572A98E94C006F957B = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					501F335C2A98E94C006F957B = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					503D1DB627A14EAB00FC8355 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					505122032944CA7C00F78E5E = {
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = 503D1DB627A14EAB00FC8355;
-					};
-					5059217528BBC5FA005A4E3A = {
-						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
@@ -411,13 +454,29 @@
 			projectRoot = "";
 			targets = (
 				503D1DB627A14EAB00FC8355 /* Our Home */,
-				5059217528BBC5FA005A4E3A /* Our Home Watch App */,
 				505122032944CA7C00F78E5E /* Our Home Tests */,
+				501F33572A98E94C006F957B /* OHWatch */,
+				501F335C2A98E94C006F957B /* OHWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		501F33562A98E94C006F957B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		501F335B2A98E94C006F957B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				501F338D2A98EA13006F957B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503D1DB527A14EAB00FC8355 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -433,17 +492,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5059217428BBC5FA005A4E3A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5086826D28BFDEF300EF6EB7 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		501F33592A98E94C006F957B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				501F33772A98E988006F957B /* Pinger.swift in Sources */,
+				501F33812A98E9A0006F957B /* SpinningButton.swift in Sources */,
+				501F337C2A98E98E006F957B /* HomeCommunication.swift in Sources */,
+				501F33722A98E975006F957B /* OurHomeApp.swift in Sources */,
+				501F33732A98E988006F957B /* DummyHome.swift in Sources */,
+				501F33752A98E988006F957B /* Configuration.swift in Sources */,
+				501F33862A98E9A5006F957B /* AppVersion.swift in Sources */,
+				501F33762A98E988006F957B /* URLHandler.swift in Sources */,
+				501F33832A98E9A0006F957B /* UserView.swift in Sources */,
+				501F338C2A98E9D7006F957B /* NotificationProvider.swift in Sources */,
+				501F33822A98E9A0006F957B /* DoorHeader.swift in Sources */,
+				501F337A2A98E988006F957B /* User.swift in Sources */,
+				501F33882A98E9A5006F957B /* ActionLabel.swift in Sources */,
+				501F338A2A98E9A5006F957B /* Defaults.swift in Sources */,
+				501F33842A98E9A0006F957B /* ActionButton.swift in Sources */,
+				501F33802A98E9A0006F957B /* BatteryIcon.swift in Sources */,
+				501F337B2A98E98E006F957B /* HomeState.swift in Sources */,
+				501F337D2A98E98E006F957B /* PushNotifications.swift in Sources */,
+				501F33852A98E9A0006F957B /* ControllerView.swift in Sources */,
+				501F33892A98E9A5006F957B /* SettingsButtonLabel.swift in Sources */,
+				501F337E2A98E98E006F957B /* DoorbellAction.swift in Sources */,
+				501F337F2A98E9A0006F957B /* CountdownView.swift in Sources */,
+				501F33742A98E988006F957B /* UserKeychain.swift in Sources */,
+				501F33792A98E988006F957B /* Home.swift in Sources */,
+				501F338B2A98E9A5006F957B /* AppState.swift in Sources */,
+				501F33782A98E988006F957B /* Task+Sleep.swift in Sources */,
+				501F33872A98E9A5006F957B /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503D1DB327A14EAB00FC8355 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,7 +538,6 @@
 				505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */,
 				5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */,
 				5019DD152A62F74C00B21D2E /* Defaults.swift in Sources */,
-				505C1B9027B1630A00C1D268 /* LoggingInView.swift in Sources */,
 				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
 				505122102944D34000F78E5E /* User.swift in Sources */,
 				5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */,
@@ -465,11 +549,11 @@
 				505121C62943E58F00F78E5E /* CountdownView.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,
-				5037F2BA27ABF39E007D1BBA /* LoggedOutView.swift in Sources */,
 				50A480A42A6A8A0D0082960C /* ActionButton.swift in Sources */,
 				502C730A27A47DBB006D0132 /* SpinningButton.swift in Sources */,
 				5039124B2A6993BF0044B4A9 /* AppState.swift in Sources */,
 				5088888D285357B4006B8808 /* NotificationProvider.swift in Sources */,
+				501F33512A98DF42006F957B /* AppDelegate.swift in Sources */,
 				5051221A2944ECCD00F78E5E /* UserKeychain.swift in Sources */,
 				505121C92944C9B700F78E5E /* URLHandler.swift in Sources */,
 				50A480A72A6A8A260082960C /* ActionLabel.swift in Sources */,
@@ -490,39 +574,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5059217228BBC5FA005A4E3A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5059218C28BBC7C9005A4E3A /* DoorHeader.swift in Sources */,
-				5059217E28BBC5FA005A4E3A /* ContentView.swift in Sources */,
-				5039124C2A6993BF0044B4A9 /* AppState.swift in Sources */,
-				505121C72943E58F00F78E5E /* CountdownView.swift in Sources */,
-				505122182944D5B400F78E5E /* UserView.swift in Sources */,
-				50E9109828BBD0C3001C10D2 /* SpinningButton.swift in Sources */,
-				505121C12943DDFD00F78E5E /* DoorbellAction.swift in Sources */,
-				5059218F28BBC7E4005A4E3A /* HomeCommunication.swift in Sources */,
-				5051221B2944ECCD00F78E5E /* UserKeychain.swift in Sources */,
-				5019DD1B2A62F89900B21D2E /* PushNotifications.swift in Sources */,
-				5019DD162A62F74C00B21D2E /* Defaults.swift in Sources */,
-				5057C76C2A6427DB00AE6E1E /* SettingsButtonLabel.swift in Sources */,
-				50DAFAC62922D68F008CC486 /* DummyHome.swift in Sources */,
-				50DAFAC32922D679008CC486 /* Home.swift in Sources */,
-				5039126D2A69CF020044B4A9 /* Pinger.swift in Sources */,
-				505122112944D34000F78E5E /* User.swift in Sources */,
-				50A480A52A6A8A0D0082960C /* ActionButton.swift in Sources */,
-				5059218D28BBC7CF005A4E3A /* BatteryIcon.swift in Sources */,
-				50E9109228BBCE35001C10D2 /* HomeState.swift in Sources */,
-				5059217C28BBC5FA005A4E3A /* OurHomeApp.swift in Sources */,
-				50A480A82A6A8A260082960C /* ActionLabel.swift in Sources */,
-				5059218B28BBC6A9005A4E3A /* ControllerView.swift in Sources */,
-				50E9109A28BBD11D001C10D2 /* Task+Sleep.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		501F33602A98E94C006F957B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 501F335C2A98E94C006F957B /* OHWatch Watch App */;
+			targetProxy = 501F335F2A98E94C006F957B /* PBXContainerItemProxy */;
+		};
 		505122092944CA7C00F78E5E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 503D1DB627A14EAB00FC8355 /* Our Home */;
@@ -531,6 +590,116 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		501F336C2A98E94E006F957B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "OHWatch Watch App/OHWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch.watchkitapp;
+				PRODUCT_NAME = "Our Home";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		501F336D2A98E94E006F957B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "OHWatch Watch App/OHWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch.watchkitapp;
+				PRODUCT_NAME = "Our Home";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		501F33702A98E94E006F957B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				INFOPLIST_KEY_CFBundleDisplayName = OHWatch;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		501F33712A98E94E006F957B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				INFOPLIST_KEY_CFBundleDisplayName = OHWatch;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		503D1DC327A14EAB00FC8355 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -756,73 +925,27 @@
 			};
 			name = Release;
 		};
-		5059218528BBC5FA005A4E3A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = ATMW4AU45H;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "de.343max.ourhome.Our-Home";
-				INFOPLIST_KEY_WKWatchOnly = NO;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		5059218628BBC5FA005A4E3A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = ATMW4AU45H;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "de.343max.ourhome.Our-Home";
-				INFOPLIST_KEY_WKWatchOnly = NO;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.Our-Home.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		501F336B2A98E94E006F957B /* Build configuration list for PBXNativeTarget "OHWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				501F336C2A98E94E006F957B /* Debug */,
+				501F336D2A98E94E006F957B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		501F336F2A98E94E006F957B /* Build configuration list for PBXNativeTarget "OHWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				501F33702A98E94E006F957B /* Debug */,
+				501F33712A98E94E006F957B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		503D1DB227A14EAB00FC8355 /* Build configuration list for PBXProject "Our Home" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -846,15 +969,6 @@
 			buildConfigurations = (
 				5051220B2944CA7C00F78E5E /* Debug */,
 				5051220C2944CA7C00F78E5E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5059218428BBC5FA005A4E3A /* Build configuration list for PBXNativeTarget "Our Home Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5059218528BBC5FA005A4E3A /* Debug */,
-				5059218628BBC5FA005A4E3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -886,10 +1000,19 @@
 			package = 5019DD112A62F73000B21D2E /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
 		};
-		5019DD172A62F82A00B21D2E /* Defaults */ = {
+		501F338E2A98EA46006F957B /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Authentication;
+		};
+		501F33902A98EA4F006F957B /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5019DD112A62F73000B21D2E /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
+		};
+		501F33922A98EA57006F957B /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 		50292D76293B9CA800530CEB /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -897,15 +1020,6 @@
 			productName = KeychainAccess;
 		};
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Authentication;
-		};
-		5051221C2944EDF700F78E5E /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
-		5059219128BBC84B005A4E3A /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
 		};

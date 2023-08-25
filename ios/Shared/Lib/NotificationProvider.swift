@@ -1,6 +1,10 @@
 import Foundation
 import UserNotifications
+#if os(watchOS)
+import WatchKit
+#else
 import UIKit
+#endif
 
 
 enum NotificationId: String {
@@ -26,9 +30,9 @@ class NotificationProvider: NSObject {
     center.requestAuthorization(
       options: [.sound, .alert, .badge]) { granted, _ in
         if granted {
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
+          DispatchQueue.main.async {
+            NotificationProvider.registerForRemoteNotifications()
+          }
         }
       }
     
@@ -61,11 +65,28 @@ class NotificationProvider: NSObject {
                                      content: content,
                                      trigger: trigger))
     
+#if os(watchOS)
+    WKApplication.shared().scheduleBackgroundRefresh(withPreferredDate: Date(timeIntervalSinceNow: 5 * 60),
+                                                     userInfo: nil) { _ in
+      center.removeAllDeliveredNotifications()
+    }
+#else
     UIApplication.shared.beginBackgroundTask ()
     
     Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false) { Timer in
       center.removeDeliveredNotifications(withIdentifiers: [NotificationId.arrived.rawValue])
     }
+#endif
+  }
+}
+
+extension NotificationProvider {
+  static func registerForRemoteNotifications() {
+#if os(watchOS)
+            WKApplication.shared().registerForRemoteNotifications()
+#else
+            UIApplication.shared.registerForRemoteNotifications()
+#endif
   }
 }
 

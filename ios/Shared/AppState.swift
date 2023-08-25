@@ -6,7 +6,9 @@ class AppState: ObservableObject {
   private(set) var home: Home {
     didSet {
       notificationProvider.home = home
+      #if !os(watchOS)
       locationChecker.home = home
+      #endif
       pushNotificationSync.home = home as? RemoteHome
       
       if let home = home as? RemoteHome {
@@ -30,7 +32,7 @@ class AppState: ObservableObject {
   }
   
   @Published
-  private(set) var homeState: HomeState? = nil
+  private(set) var homeState: Result<HomeState, Error>? = nil
   
   @Published
   var user: User? = nil
@@ -51,16 +53,21 @@ class AppState: ObservableObject {
   var lastFailedHomeAction: HomeAction? = nil
   
   let notificationProvider: NotificationProvider
-  let locationChecker: LocationChecker
   let pushNotificationSync = PushNotificationSync()
   
   var internalPinger: Pinger? = nil
   var externalPinger: Pinger? = nil
 
+  #if !os(watchOS)
+  let locationChecker: LocationChecker
+  #endif
+
   init() {
     let home = DummyHome()
     notificationProvider = NotificationProvider(home: home)
+    #if !os(watchOS)
     locationChecker = LocationChecker(home: home, notificationProvider: self.notificationProvider)
+    #endif
     self.home = home
     loadUser()
   }
@@ -90,7 +97,11 @@ extension AppState {
   }
   
   func refreshHomeState() async {
-    homeState = try? await home.getState()
+    do {
+      homeState = .success(try await home.getState())
+    } catch {
+      homeState = .failure(error)
+    }
   }
   
   func homeStateNeedsRefresh() {

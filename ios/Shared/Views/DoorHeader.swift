@@ -4,13 +4,20 @@ enum LockState {
   case locked
   case unlocked
   case unreachable
+  case unknown
+}
+
+enum LockResult {
+  case result(lock: Doorlock)
+  case unreachable
+  case unknown
 }
 
 struct DoorHeader: View {
-  let doorlock: Doorlock?
+  let doorlock: LockResult
   
   var batteryState: BatteryState? {
-    guard let doorlock else {
+    guard case let .result(doorlock) = doorlock else {
       return nil
     }
     
@@ -21,25 +28,25 @@ struct DoorHeader: View {
     )
   }
   
-  var lockState: LockState? {
-    guard let doorlock else {
-      return nil
-    }
-
-    switch doorlock.state {
-    case .Locked:
-      return .locked
-    case .Unlocked:
-      return .unlocked
-    default:
-      return nil
+  var lockState: LockState {
+    switch doorlock {
+    case .result(let lock):
+      switch lock.state {
+      case .Locked:
+        return .locked
+      case .Unlocked:
+        return .unlocked
+      default:
+        return .unknown
+      }
+    case .unreachable:
+      return .unreachable
+    case .unknown:
+      return .unknown
     }
   }
 
   var lockImage: String {
-    guard let lockState = lockState else {
-      return "hourglass"
-    }
     switch lockState {
     case .unlocked:
       return "lock.open.fill"
@@ -47,6 +54,8 @@ struct DoorHeader: View {
       return "lock.fill"
     case .unreachable:
       return "lock.slash"
+    case .unknown:
+      return "hourglass"
     }
   }
 
@@ -68,40 +77,40 @@ struct DoorHeader_Previews: PreviewProvider {
         Text("unlocked")
       } header: {
         DoorHeader(
-          doorlock: Doorlock(
+          doorlock: .result(lock: Doorlock(
             state: .Unlocked,
             batteryCritical: false,
             batteryCharging: true,
             batteryChargeState: 95,
             success: true
-          )
+          ))
         )
       }
       Section {
         Text("locked")
       } header: {
         DoorHeader(
-          doorlock: Doorlock(
+          doorlock: .result(lock: Doorlock(
             state: .Locked,
             batteryCritical: false,
             batteryCharging: true,
             batteryChargeState: 95,
             success: true
           )
-        )
+        ))
       }
       Section {
         Text("unreachable")
       } header: {
         DoorHeader(
-          doorlock: nil
+          doorlock: .unreachable
         )
       }
       Section {
         Text("waiting")
       } header: {
         DoorHeader(
-          doorlock: nil
+          doorlock: .unknown
         )
       }
     }

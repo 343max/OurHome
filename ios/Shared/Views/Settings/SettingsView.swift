@@ -19,11 +19,13 @@ struct SettingsView: View {
         }
       }
       
+#if !os(watchOS)
       Section {
         Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
           Label("Systemeinstellungen öffnen", systemImage: "gear")
         }
       }
+#endif
 
       Section {
         Text("Version \(appVersion())").foregroundColor(.secondary)

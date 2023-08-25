@@ -17,9 +17,11 @@ extension EnvironmentValues {
 
 @main
 struct OurHomeApp: App {
+#if !os(watchOS)
   @UIApplicationDelegateAdaptor
   private var appDelegate: AppDelegate
-  
+#endif
+
   @StateObject
   var appState = AppState()
     
@@ -29,11 +31,15 @@ struct OurHomeApp: App {
     WindowGroup {
         NavigationStack(path: $destination) {
           ControllerView()
+#if !os(watchOS)
             .toolbar {
-              NavigationLink(value: Destination.settings) {
-                SettingsButtonLabel(userState: appState.userState)
+              ToolbarItemGroup(placement: .topBarTrailing) {
+                NavigationLink(value: Destination.settings) {
+                  SettingsButtonLabel(userState: appState.userState)
+                }
               }
             }
+#endif
             .navigationViewStyle(StackNavigationViewStyle())
             .navigationDestination(for: Destination.self) { destination in
               switch destination {
@@ -43,10 +49,12 @@ struct OurHomeApp: App {
             }
         }
         .onAppear() {
+#if !os(watchOS)
           self.appDelegate.pushNotificationSync = appState.pushNotificationSync
+#endif
           appState.loadUser()
           
-          UIApplication.shared.registerForRemoteNotifications()
+          NotificationProvider.registerForRemoteNotifications()
           
           if ProcessInfo.processInfo.environment["FAKE_PUSH"] == "1" {
             appState.notificationProvider.showBuzzerNotification(delayed: true)
@@ -96,14 +104,5 @@ extension OurHomeApp {
     case .unlatchDoor:
       trigger(action: .unlatchDoor)
     }
-  }
-}
-
-class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
-  weak var pushNotificationSync: PushNotificationSync?
-  
-  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-    self.pushNotificationSync?.deviceToken = tokenParts.joined()
   }
 }
