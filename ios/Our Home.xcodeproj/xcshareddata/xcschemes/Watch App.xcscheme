@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "501F335C2A98E94C006F957B"
-               BuildableName = "Our Home.app"
+               BuildableName = "Our Home Watch.app"
                BlueprintName = "OHWatch Watch App"
                ReferencedContainer = "container:Our Home.xcodeproj">
             </BuildableReference>
