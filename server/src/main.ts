@@ -39,6 +39,7 @@ const main = async () => {
     removeDevice,
     getDoorbellRingSubscribers,
     getWhenOtherUserArrivesSubscribers,
+    getUserTokens,
   } = await pushNotificationController(env().DEVICE_TOKEN_DB_PATH)
 
   const sendPush = pushNotificationSender({
@@ -117,19 +118,33 @@ const main = async () => {
           },
           await getWhenOtherUserArrivesSubscribers(username)
         )
-        armForDoorBellAction("buzzer", configuration.arrivalTimeout)
+        armForDoorBellAction({
+          type: "buzzer",
+          timeout: configuration.arrivalTimeout,
+          armedBy: username,
+        })
         res.send({ success: true })
       })
     )
     .post(
-      ...authorized("/arm/buzzer", (_req, res) => {
-        armForDoorBellAction("buzzer", configuration.buzzerArmTimeout)
+      ...authorized("/arm/buzzer", (req, res) => {
+        const username = splitAuthHeader(req.headers.authorization)!.username
+        armForDoorBellAction({
+          type: "buzzer",
+          timeout: configuration.buzzerArmTimeout,
+          armedBy: username,
+        })
         res.send({ success: true })
       })
     )
     .post(
-      ...authorized("/arm/unlatch", (_req, res) => {
-        armForDoorBellAction("unlatch", configuration.unlatchArmTimeout)
+      ...authorized("/arm/unlatch", (req, res) => {
+        const username = splitAuthHeader(req.headers.authorization)!.username
+        armForDoorBellAction({
+          type: "unlatch",
+          timeout: configuration.unlatchArmTimeout,
+          armedBy: username,
+        })
         res.send({ success: true })
       })
     )
@@ -154,6 +169,14 @@ const main = async () => {
       switch (action.type) {
         case "buzzer":
           console.log("buzzer because the doorbell buzzer was armed")
+          sendPush(
+            {
+              title: "Our Home",
+              body: "Buzzer wird gedrückt.",
+              category: "buzzer",
+            },
+            await getUserTokens(action.armedBy)
+          )
           await pressBuzzer()
           await sleep(500)
           resetDoorBellAction()

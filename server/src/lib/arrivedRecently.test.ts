@@ -7,12 +7,20 @@ test("isArmedDoorbellAction - null", () => {
 })
 test("isArmedDoorbellAction - past", () => {
   expect(
-    isArmedDoorbellAction({ type: "buzzer", timeout: getTime() - 10 })
+    isArmedDoorbellAction({
+      type: "buzzer",
+      timeout: getTime() - 10,
+      armedBy: "max",
+    })
   ).toBeFalsy()
 })
 
 test("isArmedDoorbellAction - future", () => {
   expect(
-    isArmedDoorbellAction({ type: "buzzer", timeout: getTime() + 10 })
+    isArmedDoorbellAction({
+      type: "buzzer",
+      timeout: getTime() + 10,
+      armedBy: "max",
+    })
   ).toBeTruthy()
 })

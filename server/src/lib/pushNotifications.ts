@@ -79,11 +79,24 @@ export const pushNotificationController = async (databasePath: string) => {
     )
   }
 
+  const getUserTokens = async (username: string): Promise<DeviceTokenRow[]> => {
+    return parseRows(
+      await db.all(
+        `SELECT * FROM 
+              deviceTokens
+            WHERE
+              username == ?`,
+        username
+      )
+    )
+  }
+
   return {
     prepare,
     registerDevice,
     removeDevice,
     getDoorbellRingSubscribers,
     getWhenOtherUserArrivesSubscribers,
+    getUserTokens,
   }
 }

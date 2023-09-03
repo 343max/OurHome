@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "start": "./bun.sh run src/main.ts",
     "dev": "env $(cat .env.dev) node-dev src/main.ts",
     "test": "jest",
     "tsc": "tsc ./src",
