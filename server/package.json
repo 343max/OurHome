@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "env $(cat .env.dev) node-dev src/main.ts",
     "test": "jest",
-    "tsc": "tsc ./src",
+    "tsc": "tsc --noEmit",
     "simulate:arrival": "ts-node ./src/cli.ts arrived",
     "simulate:doorbell-press": "ts-node ./src/cli.ts doorbell",
     "simulate:get-state": "ts-node ./src/cli.ts get-state",

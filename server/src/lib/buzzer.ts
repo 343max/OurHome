@@ -17,7 +17,7 @@ export const serialBuzzer = (serialPort: string): Buzzer => {
   const parser = port.pipe(new ReadlineParser({ delimiter: "\r\n" }))
 
   parser.on("data", (data) => {
-    console.log(data)
+    console.log(`[buzzer] ${data}`)
     if (data === "ring") {
       doorbellHandler?.()
     }
