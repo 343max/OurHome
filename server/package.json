@@ -2,26 +2,28 @@
   "scripts": {
     "dev": "env $(cat .env.dev) node-dev src/main.ts",
     "test": "jest",
-    "tsc": "tsc ./src",
+    "tsc": "tsc --noEmit",
     "simulate:arrival": "ts-node ./src/cli.ts arrived",
     "simulate:doorbell-press": "ts-node ./src/cli.ts doorbell",
     "simulate:get-state": "ts-node ./src/cli.ts get-state",
     "build": "tsc -p ."
   },
   "dependencies": {
+    "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.3",
+    "@types/node-pushnotifications": "^1.0.4",
     "apn": "^2.2.0",
     "express": "^4.18.2",
     "node-pushnotifications": "^2.1.0",
     "promised-sqlite3": "^2.1.0",
+    "serialport": "^12.0.0",
     "sqlite3": "^5.1.6",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
-    "zod": "^3.21.4",
-    "@types/express": "^4.17.17",
-    "@types/jest": "^29.5.3",
-    "@types/node-pushnotifications": "^1.0.4"
+    "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/serialport": "^8.0.5",
     "jest": "^29.6.1",
     "node-dev": "^8.0.0",
     "ts-jest": "^29.1.1"

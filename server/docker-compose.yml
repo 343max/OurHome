@@ -17,6 +17,9 @@ services:
       - .env
     labels:
       - com.centurylinklabs.watchtower.enable=false
+    devices:
+      - /dev/ttyUSB0:/dev/buzzer
+    stop_grace_period: 2s
   cloudflared:
     image: cloudflare/cloudflared:latest
     restart: always
