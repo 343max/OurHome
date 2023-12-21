@@ -18,7 +18,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.enable=false
     devices:
-      - /dev/ttyUSB0:/dev/buzzer
+      - /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/buzzer
     stop_grace_period: 2s
   cloudflared:
     image: cloudflare/cloudflared:latest
