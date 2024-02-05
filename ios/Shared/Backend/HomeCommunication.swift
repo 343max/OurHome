@@ -42,7 +42,7 @@ struct RemoteHome: Home {
       localNetworkHost = url
       externalHost = url
     } else {
-      localNetworkHost = URL(string: "http://lol.fritz.box:4278/")!
+      localNetworkHost = URL(string: "http://43v.de:4278/")!
       externalHost = URL(string: "https://buzzer.343max.com/")!
     }
   }
