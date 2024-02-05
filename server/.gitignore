@@ -3,3 +3,4 @@
 /db
 /keys
 .env*
+/dist
