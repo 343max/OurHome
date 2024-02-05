@@ -13,7 +13,7 @@ class Pinger {
   }
   
   private func checkReachability() {
-    var request = URLRequest(url: url, timeoutInterval: 0.5)
+    var request = URLRequest(url: url, timeoutInterval: 1.0)
     request.httpMethod = "HEAD"
     
     URLSession.shared.dataTask(with: request) { (_, response, error) in
