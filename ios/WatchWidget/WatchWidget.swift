@@ -1,58 +1,53 @@
-//
-
 import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+        SimpleEntry()
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+        let entry = SimpleEntry()
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: [SimpleEntry()], policy: .atEnd)
         completion(timeline)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let emoji: String
+  var date: Date = Date()
 }
 
 struct WatchWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            HStack {
-                Text("Time:")
-                Text(entry.date, style: .time)
-            }
-
-            Text("Emoji:")
-            Text(entry.emoji)
+      HStack(alignment: .center) {
+        Button(action: {
+          print("öffne Haustür")
+        }, label: {
+          Image(systemName: "house")
+        })
+        .tint(.orange)
+        .aspectRatio(0.8, contentMode: .fit)
+        Spacer()
+        Button {
+          print("klingle um die Wohnungstür zu öffnen")
+        } label: {
+          Image(systemName: "door.left.hand.open")
         }
+        .tint(.teal)
+        .aspectRatio(0.8, contentMode: .fit)
+      }
     }
 }
 
 @main
 struct WatchWidget: Widget {
-    let kind: String = "WatchWidget"
+    let kind: String = "watchWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
@@ -65,14 +60,13 @@ struct WatchWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Our Home")
+        .description("Tür auf, Tür zu")
     }
 }
 
 #Preview(as: .accessoryRectangular) {
     WatchWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    SimpleEntry()
 }
