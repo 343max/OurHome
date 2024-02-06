@@ -71,6 +71,11 @@
 		50A480A72A6A8A260082960C /* ActionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A62A6A8A260082960C /* ActionLabel.swift */; };
 		50BBFFB228512E6B001F1006 /* LocationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BBFFB128512E6B001F1006 /* LocationChecker.swift */; };
 		50C2F1092B7260D900806C8D /* OHWatch-AppStore-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50C2F1082B7260D900806C8D /* OHWatch-AppStore-App-Info.plist */; };
+		50C2F1432B72837F00806C8D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C2F1422B72837F00806C8D /* WidgetKit.framework */; };
+		50C2F1452B72837F00806C8D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C2F1442B72837F00806C8D /* SwiftUI.framework */; };
+		50C2F1482B72837F00806C8D /* WatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2F1472B72837F00806C8D /* WatchWidget.swift */; };
+		50C2F14A2B72838000806C8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C2F1492B72838000806C8D /* Assets.xcassets */; };
+		50C2F14E2B72838000806C8D /* WatchWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50C2F1412B72837F00806C8D /* WatchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50DAFAC22922D679008CC486 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
 		50DAFAC52922D68F008CC486 /* DummyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC42922D68F008CC486 /* DummyHome.swift */; };
 		50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
@@ -92,6 +97,13 @@
 			remoteGlobalIDString = 503D1DB627A14EAB00FC8355;
 			remoteInfo = "Our Home";
 		};
+		50C2F14C2B72838000806C8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503D1DAF27A14EAB00FC8355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50C2F1402B72837F00806C8D;
+			remoteInfo = WatchWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -104,6 +116,17 @@
 				501F335E2A98E94C006F957B /* Our Home Watch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C2F14F2B72838000806C8D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				50C2F14E2B72838000806C8D /* WatchWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -148,6 +171,12 @@
 		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
 		50C2F1072B72585200806C8D /* OHWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OHWatch-Watch-App-Info.plist"; sourceTree = "<group>"; };
 		50C2F1082B7260D900806C8D /* OHWatch-AppStore-App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OHWatch-AppStore-App-Info.plist"; sourceTree = "<group>"; };
+		50C2F1412B72837F00806C8D /* WatchWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C2F1422B72837F00806C8D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		50C2F1442B72837F00806C8D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		50C2F1472B72837F00806C8D /* WatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidget.swift; sourceTree = "<group>"; };
+		50C2F1492B72838000806C8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50C2F14B2B72838000806C8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50DAFAC12922D679008CC486 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		50DAFAC42922D68F008CC486 /* DummyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyHome.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
@@ -180,6 +209,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C2F13E2B72837F00806C8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C2F1452B72837F00806C8D /* SwiftUI.framework in Frameworks */,
+				50C2F1432B72837F00806C8D /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +295,7 @@
 				503D1DB927A14EAB00FC8355 /* iOS */,
 				5059217A28BBC5FA005A4E3A /* Watch */,
 				505122052944CA7C00F78E5E /* Our Home Tests */,
+				50C2F1462B72837F00806C8D /* WatchWidget */,
 				503D1DB827A14EAB00FC8355 /* Products */,
 				5059219028BBC84B005A4E3A /* Frameworks */,
 				5037F27627A7EE5A007D1BBA /* Config.xcconfig */,
@@ -272,6 +311,7 @@
 				505122042944CA7C00F78E5E /* Our Home Tests.xctest */,
 				501F33582A98E94C006F957B /* Our Home Watch.app */,
 				501F335D2A98E94C006F957B /* Our Home Watch.app */,
+				50C2F1412B72837F00806C8D /* WatchWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -311,8 +351,20 @@
 		5059219028BBC84B005A4E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50C2F1422B72837F00806C8D /* WidgetKit.framework */,
+				50C2F1442B72837F00806C8D /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50C2F1462B72837F00806C8D /* WatchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				50C2F1472B72837F00806C8D /* WatchWidget.swift */,
+				50C2F1492B72838000806C8D /* Assets.xcassets */,
+				50C2F14B2B72838000806C8D /* Info.plist */,
+			);
+			path = WatchWidget;
 			sourceTree = "<group>";
 		};
 		50F4E98227A5BED100ECD03F /* Backend */ = {
@@ -361,10 +413,12 @@
 				501F33592A98E94C006F957B /* Sources */,
 				501F335A2A98E94C006F957B /* Frameworks */,
 				501F335B2A98E94C006F957B /* Resources */,
+				50C2F14F2B72838000806C8D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				50C2F14D2B72838000806C8D /* PBXTargetDependency */,
 			);
 			name = "OHWatch Watch App";
 			packageProductDependencies = (
@@ -416,6 +470,23 @@
 			productReference = 505122042944CA7C00F78E5E /* Our Home Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		50C2F1402B72837F00806C8D /* WatchWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C2F1522B72838000806C8D /* Build configuration list for PBXNativeTarget "WatchWidgetExtension" */;
+			buildPhases = (
+				50C2F13D2B72837F00806C8D /* Sources */,
+				50C2F13E2B72837F00806C8D /* Frameworks */,
+				50C2F13F2B72837F00806C8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WatchWidgetExtension;
+			productName = WatchWidgetExtension;
+			productReference = 50C2F1412B72837F00806C8D /* WatchWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -423,7 +494,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					501F33572A98E94C006F957B = {
@@ -438,6 +509,9 @@
 					505122032944CA7C00F78E5E = {
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = 503D1DB627A14EAB00FC8355;
+					};
+					50C2F1402B72837F00806C8D = {
+						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
@@ -462,6 +536,7 @@
 				505122032944CA7C00F78E5E /* Our Home Tests */,
 				501F33572A98E94C006F957B /* OHWatch */,
 				501F335C2A98E94C006F957B /* OHWatch Watch App */,
+				50C2F1402B72837F00806C8D /* WatchWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -495,6 +570,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C2F13F2B72837F00806C8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C2F14A2B72838000806C8D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +663,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50C2F13D2B72837F00806C8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C2F1482B72837F00806C8D /* WatchWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -593,12 +684,18 @@
 			target = 503D1DB627A14EAB00FC8355 /* Our Home */;
 			targetProxy = 505122082944CA7C00F78E5E /* PBXContainerItemProxy */;
 		};
+		50C2F14D2B72838000806C8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50C2F1402B72837F00806C8D /* WatchWidgetExtension */;
+			targetProxy = 50C2F14C2B72838000806C8D /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		501F336C2A98E94E006F957B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -636,6 +733,7 @@
 		501F336D2A98E94E006F957B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -937,6 +1035,77 @@
 			};
 			name = Release;
 		};
+		50C2F1502B72838000806C8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch.watchkitapp.WatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		50C2F1512B72838000806C8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch.watchkitapp.WatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -981,6 +1150,15 @@
 			buildConfigurations = (
 				5051220B2944CA7C00F78E5E /* Debug */,
 				5051220C2944CA7C00F78E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C2F1522B72838000806C8D /* Build configuration list for PBXNativeTarget "WatchWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C2F1502B72838000806C8D /* Debug */,
+				50C2F1512B72838000806C8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
