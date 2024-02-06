@@ -113,7 +113,7 @@
 		501F33502A98DF42006F957B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		501F33582A98E94C006F957B /* OHWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		501F335D2A98E94C006F957B /* Our Home Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "OHWatch Watch App.entitlements"; path = "OHWatch Watch App/OHWatch Watch App.entitlements"; sourceTree = "<group>"; };
+		501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OHWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		502C730927A47DBB006D0132 /* SpinningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningButton.swift; sourceTree = "<group>"; };
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
 		502C730D27A56FDF006D0132 /* DoorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorHeader.swift; sourceTree = "<group>"; };
@@ -145,6 +145,7 @@
 		50A480A32A6A8A0D0082960C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		50A480A62A6A8A260082960C /* ActionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLabel.swift; sourceTree = "<group>"; };
 		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
+		50C2F1072B72585200806C8D /* OHWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OHWatch-Watch-App-Info.plist"; sourceTree = "<group>"; };
 		50DAFAC12922D679008CC486 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		50DAFAC42922D68F008CC486 /* DummyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyHome.swift; sourceTree = "<group>"; };
 		50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunication.swift; sourceTree = "<group>"; };
@@ -249,7 +250,6 @@
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
-				501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */,
 				5037F2B427AAA929007D1BBA /* Shared */,
 				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* iOS */,
@@ -298,6 +298,8 @@
 		5059217A28BBC5FA005A4E3A /* Watch */ = {
 			isa = PBXGroup;
 			children = (
+				50C2F1072B72585200806C8D /* OHWatch-Watch-App-Info.plist */,
+				501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */,
 				5059217F28BBC5FA005A4E3A /* Assets.xcassets */,
 			);
 			path = Watch;
@@ -597,7 +599,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "OHWatch Watch App/OHWatch Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Watch/OHWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ATMW4AU45H;
@@ -605,6 +607,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Watch/OHWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -633,7 +636,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "OHWatch Watch App/OHWatch Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Watch/OHWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ATMW4AU45H;
@@ -641,6 +644,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Watch/OHWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
