@@ -51,14 +51,8 @@ struct WatchWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(watchOS 10.0, *) {
-                WatchWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                WatchWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+          WatchWidgetEntryView(entry: entry)
+            .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("Our Home")
         .description("Tür auf, Tür zu")
