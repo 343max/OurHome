@@ -2,23 +2,23 @@ import CommonCrypto
 import Foundation
 
 extension Data {
-  public func sha256() -> String {
-    return digest(input: self as NSData).base64EncodedString()
-  }
+    public func sha256() -> String {
+        digest(input: self as NSData).base64EncodedString()
+    }
 
-  private func digest(input: NSData) -> NSData {
-    let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
-    var hash = [UInt8](repeating: 0, count: digestLength)
-    CC_SHA256(input.bytes, UInt32(input.length), &hash)
-    return NSData(bytes: hash, length: digestLength)
-  }
+    private func digest(input: NSData) -> NSData {
+        let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
+        var hash = [UInt8](repeating: 0, count: digestLength)
+        CC_SHA256(input.bytes, UInt32(input.length), &hash)
+        return NSData(bytes: hash, length: digestLength)
+    }
 }
 
 public extension String {
-  func sha256() -> String {
-    if let stringData = data(using: String.Encoding.utf8) {
-      return stringData.sha256()
+    func sha256() -> String {
+        if let stringData = data(using: String.Encoding.utf8) {
+            return stringData.sha256()
+        }
+        return ""
     }
-    return ""
-  }
 }
