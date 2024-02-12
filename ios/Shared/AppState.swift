@@ -12,12 +12,12 @@ class AppState: ObservableObject {
       pushNotificationSync.home = home as? RemoteHome
       
       if let home = home as? RemoteHome {
-        internalPinger = Pinger(url: home.localNetworkHost, update: { reachable in
+        internalPinger = Pinger(url: home.localNetworkHost, initialReachability: false, update: { reachable in
           Task {
             self.internalReachable = reachable
           }
         })
-        externalPinger = Pinger(url: home.externalHost, update: { reachable in
+        externalPinger = Pinger(url: home.externalHost, initialReachability: false, update: { reachable in
           Task {
             self.externalReachable = reachable
           }
