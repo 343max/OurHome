@@ -18,36 +18,25 @@ struct Provider: TimelineProvider {
 }
 
 struct SimpleEntry: TimelineEntry {
-  var date: Date = Date()
+  let date: Date = Date()
 }
 
 struct WatchWidgetEntryView : View {
   var entry: Provider.Entry
   
+  let roundAspectRatio = 0.9
+  
   var body: some View {
-    HStack(alignment: .center) {
-      Button(action: {
-        print("öffne Haustür")
-      }, label: {
-        Image(systemName: "house")
-      })
-      .tint(.orange)
-      .aspectRatio(0.8, contentMode: .fit)
-      Spacer()
-      Button {
-        print("klingle um die Wohnungstür zu öffnen")
-      } label: {
-        Image(systemName: "door.left.hand.open")
+    Image(systemName: "key.fill")
+      .containerBackground(for: .widget) {
+        Color.orange
       }
-      .tint(.teal)
-      .aspectRatio(0.8, contentMode: .fit)
-    }
   }
 }
 
 @main
 struct WatchWidget: Widget {
-  let kind: String = "watchWidget"
+  let kind: String = "WatchWidget"
   
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in
@@ -56,10 +45,11 @@ struct WatchWidget: Widget {
     }
     .configurationDisplayName("Our Home")
     .description("Tür auf, Tür zu")
+    .supportedFamilies([.accessoryCircular])
   }
 }
 
-#Preview(as: .accessoryRectangular) {
+#Preview(as: .accessoryCircular) {
   WatchWidget()
 } timeline: {
   SimpleEntry()
