@@ -800,7 +800,6 @@
 				INFOPLIST_FILE = "Watch/OHWatch-AppStore-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home Watch";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch;
 				PRODUCT_NAME = "Our Home Watch";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -822,7 +821,6 @@
 				INFOPLIST_FILE = "Watch/OHWatch-AppStore-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Our Home Watch";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch;
 				PRODUCT_NAME = "Our Home Watch";
 				SWIFT_VERSION = 5.0;
@@ -831,6 +829,7 @@
 		};
 		503D1DC327A14EAB00FC8355 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5037F27627A7EE5A007D1BBA /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
