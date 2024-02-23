@@ -81,7 +81,7 @@ struct RemoteHome: Home {
     private func url(_ route: Route, _ action: Action, _ path: String? = nil) -> URL {
         let url = (route == .external ? externalHost : localNetworkHost).appendingPathComponent(action.rawValue)
         if let path {
-            return url.appendingPathComponent(path)
+            return url.appendingPathComponent("\(path)")
         } else {
             return url
         }
