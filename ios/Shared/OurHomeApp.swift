@@ -1,3 +1,4 @@
+import ActivityKit
 import SwiftUI
 
 enum Destination {
@@ -26,6 +27,18 @@ struct OurHomeApp: App {
     var appState = AppState()
 
     @State private var destination: [Destination] = []
+
+    func startActivity() {
+        #if !os(watchOS)
+            _ = try? Activity.request(
+                attributes: LiveActivityAttributes(name: "Our Home"),
+                content: ActivityContent(
+                    state: LiveActivityAttributes.ContentState(emoji: "🥸"),
+                    staleDate: nil
+                )
+            )
+        #endif
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -59,6 +72,10 @@ struct OurHomeApp: App {
                 if ProcessInfo.processInfo.environment["FAKE_PUSH"] == "1" {
                     appState.notificationProvider.showBuzzerNotification(delayed: true)
                 }
+
+                #if !os(watchOS)
+                    startActivity()
+                #endif
             }
             .onOpenURL(perform: { url in
                 handle(url: url)

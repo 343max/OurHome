@@ -62,6 +62,8 @@
 		50391BA12B88B68000D6137B /* WidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50391BA02B88B68000D6137B /* WidgetExtension.swift */; };
 		50391BA32B88B68100D6137B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50391BA22B88B68100D6137B /* Assets.xcassets */; };
 		50391BA72B88B68100D6137B /* WidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50391B982B88B68000D6137B /* WidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50391BAD2B89037C00D6137B /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50391BAC2B89037C00D6137B /* LiveActivityAttributes.swift */; };
+		50391BAF2B89039200D6137B /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50391BAC2B89037C00D6137B /* LiveActivityAttributes.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
@@ -181,6 +183,7 @@
 		50391BA02B88B68000D6137B /* WidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtension.swift; sourceTree = "<group>"; };
 		50391BA22B88B68100D6137B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50391BA42B88B68100D6137B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50391BAC2B89037C00D6137B /* LiveActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityAttributes.swift; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
@@ -297,6 +300,7 @@
 				5019DD142A62F74C00B21D2E /* Defaults.swift */,
 				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
 				5039124A2A6993BF0044B4A9 /* AppState.swift */,
+				50391BAC2B89037C00D6137B /* LiveActivityAttributes.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -733,6 +737,7 @@
 				50391B9F2B88B68000D6137B /* WidgetExtensionLiveActivity.swift in Sources */,
 				50391B9D2B88B68000D6137B /* WidgetExtensionBundle.swift in Sources */,
 				50391BA12B88B68000D6137B /* WidgetExtension.swift in Sources */,
+				50391BAF2B89039200D6137B /* LiveActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +750,7 @@
 				505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */,
 				5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */,
 				5019DD152A62F74C00B21D2E /* Defaults.swift in Sources */,
+				50391BAD2B89037C00D6137B /* LiveActivityAttributes.swift in Sources */,
 				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
 				505122102944D34000F78E5E /* User.swift in Sources */,
 				5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */,
@@ -1137,6 +1143,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1168,6 +1175,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,5 +1,3 @@
-//
-
 import SwiftUI
 import WidgetKit
 
@@ -7,6 +5,6 @@ import WidgetKit
 struct WidgetExtensionBundle: WidgetBundle {
     var body: some Widget {
         WidgetExtension()
-        WidgetExtensionLiveActivity()
+        LiveActivity()
     }
 }

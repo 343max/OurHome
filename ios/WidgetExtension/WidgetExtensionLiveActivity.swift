@@ -4,19 +4,9 @@ import ActivityKit
 import SwiftUI
 import WidgetKit
 
-struct WidgetExtensionAttributes: ActivityAttributes {
-    public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var emoji: String
-    }
-
-    // Fixed non-changing properties about your activity go here!
-    var name: String
-}
-
-struct WidgetExtensionLiveActivity: Widget {
+struct LiveActivity: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: WidgetExtensionAttributes.self) { context in
+        ActivityConfiguration(for: LiveActivityAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
                 Text("Hello \(context.state.emoji)")
@@ -51,25 +41,25 @@ struct WidgetExtensionLiveActivity: Widget {
     }
 }
 
-private extension WidgetExtensionAttributes {
-    static var preview: WidgetExtensionAttributes {
-        WidgetExtensionAttributes(name: "World")
+private extension LiveActivityAttributes {
+    static var preview: LiveActivityAttributes {
+        LiveActivityAttributes(name: "World")
     }
 }
 
-private extension WidgetExtensionAttributes.ContentState {
-    static var smiley: WidgetExtensionAttributes.ContentState {
-        WidgetExtensionAttributes.ContentState(emoji: "😀")
+private extension LiveActivityAttributes.ContentState {
+    static var smiley: LiveActivityAttributes.ContentState {
+        LiveActivityAttributes.ContentState(emoji: "😀")
     }
 
-    static var starEyes: WidgetExtensionAttributes.ContentState {
-        WidgetExtensionAttributes.ContentState(emoji: "🤩")
+    static var starEyes: LiveActivityAttributes.ContentState {
+        LiveActivityAttributes.ContentState(emoji: "🤩")
     }
 }
 
-#Preview("Notification", as: .content, using: WidgetExtensionAttributes.preview) {
-    WidgetExtensionLiveActivity()
+#Preview("Notification", as: .content, using: LiveActivityAttributes.preview) {
+    LiveActivity()
 } contentStates: {
-    WidgetExtensionAttributes.ContentState.smiley
-    WidgetExtensionAttributes.ContentState.starEyes
+    LiveActivityAttributes.ContentState.smiley
+    LiveActivityAttributes.ContentState.starEyes
 }
