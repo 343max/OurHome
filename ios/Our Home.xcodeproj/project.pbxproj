@@ -55,6 +55,13 @@
 		5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AF27A80E13007D1BBA /* AppVersion.swift */; };
 		5039124B2A6993BF0044B4A9 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039124A2A6993BF0044B4A9 /* AppState.swift */; };
 		5039126C2A69CF020044B4A9 /* Pinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039126B2A69CC060044B4A9 /* Pinger.swift */; };
+		50391B992B88B68000D6137B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C2F1422B72837F00806C8D /* WidgetKit.framework */; };
+		50391B9A2B88B68000D6137B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C2F1442B72837F00806C8D /* SwiftUI.framework */; };
+		50391B9D2B88B68000D6137B /* WidgetExtensionBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50391B9C2B88B68000D6137B /* WidgetExtensionBundle.swift */; };
+		50391B9F2B88B68000D6137B /* WidgetExtensionLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50391B9E2B88B68000D6137B /* WidgetExtensionLiveActivity.swift */; };
+		50391BA12B88B68000D6137B /* WidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50391BA02B88B68000D6137B /* WidgetExtension.swift */; };
+		50391BA32B88B68100D6137B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50391BA22B88B68100D6137B /* Assets.xcassets */; };
+		50391BA72B88B68100D6137B /* WidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50391B982B88B68000D6137B /* WidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
@@ -90,6 +97,13 @@
 			remoteGlobalIDString = 501F335C2A98E94C006F957B;
 			remoteInfo = "OHWatch Watch App";
 		};
+		50391BA52B88B68100D6137B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503D1DAF27A14EAB00FC8355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50391B972B88B68000D6137B;
+			remoteInfo = WidgetExtensionExtension;
+		};
 		505122082944CA7C00F78E5E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 503D1DAF27A14EAB00FC8355 /* Project object */;
@@ -116,6 +130,17 @@
 				501F335E2A98E94C006F957B /* Our Home Watch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50391BA82B88B68100D6137B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				50391BA72B88B68100D6137B /* WidgetExtensionExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		50C2F14F2B72838000806C8D /* Embed Foundation Extensions */ = {
@@ -150,6 +175,12 @@
 		5037F2B127A83C7D007D1BBA /* Our Home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Our Home.entitlements"; sourceTree = "<group>"; };
 		5039124A2A6993BF0044B4A9 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5039126B2A69CC060044B4A9 /* Pinger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pinger.swift; sourceTree = "<group>"; };
+		50391B982B88B68000D6137B /* WidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		50391B9C2B88B68000D6137B /* WidgetExtensionBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtensionBundle.swift; sourceTree = "<group>"; };
+		50391B9E2B88B68000D6137B /* WidgetExtensionLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtensionLiveActivity.swift; sourceTree = "<group>"; };
+		50391BA02B88B68000D6137B /* WidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtension.swift; sourceTree = "<group>"; };
+		50391BA22B88B68100D6137B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50391BA42B88B68100D6137B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
@@ -192,6 +223,15 @@
 				501F33912A98EA4F006F957B /* Defaults in Frameworks */,
 				501F338F2A98EA46006F957B /* Authentication in Frameworks */,
 				501F33932A98EA57006F957B /* KeychainAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50391B952B88B68000D6137B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50391B9A2B88B68000D6137B /* SwiftUI.framework in Frameworks */,
+				50391B992B88B68000D6137B /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +327,18 @@
 			path = Lib;
 			sourceTree = "<group>";
 		};
+		50391B9B2B88B68000D6137B /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				50391B9C2B88B68000D6137B /* WidgetExtensionBundle.swift */,
+				50391B9E2B88B68000D6137B /* WidgetExtensionLiveActivity.swift */,
+				50391BA02B88B68000D6137B /* WidgetExtension.swift */,
+				50391BA22B88B68100D6137B /* Assets.xcassets */,
+				50391BA42B88B68100D6137B /* Info.plist */,
+			);
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +348,7 @@
 				5059217A28BBC5FA005A4E3A /* Watch */,
 				505122052944CA7C00F78E5E /* Our Home Tests */,
 				50C2F1462B72837F00806C8D /* WatchWidget */,
+				50391B9B2B88B68000D6137B /* WidgetExtension */,
 				503D1DB827A14EAB00FC8355 /* Products */,
 				5059219028BBC84B005A4E3A /* Frameworks */,
 				5037F27627A7EE5A007D1BBA /* Config.xcconfig */,
@@ -312,6 +365,7 @@
 				501F33582A98E94C006F957B /* Our Home Watch.app */,
 				501F335D2A98E94C006F957B /* Our Home Watch.app */,
 				50C2F1412B72837F00806C8D /* WatchWidgetExtension.appex */,
+				50391B982B88B68000D6137B /* WidgetExtensionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,6 +484,23 @@
 			productReference = 501F335D2A98E94C006F957B /* Our Home Watch.app */;
 			productType = "com.apple.product-type.application";
 		};
+		50391B972B88B68000D6137B /* WidgetExtensionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50391BAB2B88B68100D6137B /* Build configuration list for PBXNativeTarget "WidgetExtensionExtension" */;
+			buildPhases = (
+				50391B942B88B68000D6137B /* Sources */,
+				50391B952B88B68000D6137B /* Frameworks */,
+				50391B962B88B68000D6137B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetExtensionExtension;
+			productName = WidgetExtensionExtension;
+			productReference = 50391B982B88B68000D6137B /* WidgetExtensionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		503D1DB627A14EAB00FC8355 /* Our Home */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 503D1DC527A14EAB00FC8355 /* Build configuration list for PBXNativeTarget "Our Home" */;
@@ -438,10 +509,12 @@
 				503D1DB427A14EAB00FC8355 /* Frameworks */,
 				503D1DB527A14EAB00FC8355 /* Resources */,
 				50C3CBB32B7A258100CA3E55 /* Swift Format */,
+				50391BA82B88B68100D6137B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				50391BA62B88B68100D6137B /* PBXTargetDependency */,
 			);
 			name = "Our Home";
 			packageProductDependencies = (
@@ -504,6 +577,9 @@
 					501F335C2A98E94C006F957B = {
 						CreatedOnToolsVersion = 15.0;
 					};
+					50391B972B88B68000D6137B = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					503D1DB627A14EAB00FC8355 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -538,6 +614,7 @@
 				501F33572A98E94C006F957B /* OHWatch */,
 				501F335C2A98E94C006F957B /* OHWatch Watch App */,
 				50C2F1402B72837F00806C8D /* WatchWidgetExtension */,
+				50391B972B88B68000D6137B /* WidgetExtensionExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -555,6 +632,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				501F338D2A98EA13006F957B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50391B962B88B68000D6137B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50391BA32B88B68100D6137B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +726,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50391B942B88B68000D6137B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50391B9F2B88B68000D6137B /* WidgetExtensionLiveActivity.swift in Sources */,
+				50391B9D2B88B68000D6137B /* WidgetExtensionBundle.swift in Sources */,
+				50391BA12B88B68000D6137B /* WidgetExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503D1DB327A14EAB00FC8355 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -701,6 +796,11 @@
 			isa = PBXTargetDependency;
 			target = 501F335C2A98E94C006F957B /* OHWatch Watch App */;
 			targetProxy = 501F335F2A98E94C006F957B /* PBXContainerItemProxy */;
+		};
+		50391BA62B88B68100D6137B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50391B972B88B68000D6137B /* WidgetExtensionExtension */;
+			targetProxy = 50391BA52B88B68100D6137B /* PBXContainerItemProxy */;
 		};
 		505122092944CA7C00F78E5E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -822,6 +922,71 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.343max.OurHome.OHWatch;
 				PRODUCT_NAME = "Our Home Watch";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		50391BA92B88B68100D6137B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.ourhome.Our-Home.WidgetExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		50391BAA2B88B68100D6137B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ATMW4AU45H;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.343max.ourhome.Our-Home.WidgetExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -956,6 +1121,7 @@
 		503D1DC627A14EAB00FC8355 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iOS/Our Home.entitlements";
@@ -966,6 +1132,7 @@
 				INFOPLIST_FILE = "Our-Home-Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -985,6 +1152,7 @@
 		503D1DC727A14EAB00FC8355 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iOS/Our Home.entitlements";
@@ -995,6 +1163,7 @@
 				INFOPLIST_FILE = "Our-Home-Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Um eine Türöffner-Notification anzeigen zu können sobald du dich deinem zuhause näherst wird deine aktuelle Position benötigt.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1135,6 +1304,15 @@
 			buildConfigurations = (
 				501F33702A98E94E006F957B /* Debug */,
 				501F33712A98E94E006F957B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50391BAB2B88B68100D6137B /* Build configuration list for PBXNativeTarget "WidgetExtensionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50391BA92B88B68100D6137B /* Debug */,
+				50391BAA2B88B68100D6137B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
