@@ -1182,16 +1182,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMinorVersion;
+				minimumVersion = 8.2.0;
 			};
 		};
 		50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
