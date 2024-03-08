@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5019DD152A62F74C00B21D2E /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD142A62F74C00B21D2E /* AppStorageKeys.swift */; };
-		5019DD1A2A62F89900B21D2E /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD192A62F89900B21D2E /* PushNotifications.swift */; };
 		501F33512A98DF42006F957B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F33502A98DF42006F957B /* AppDelegate.swift */; };
 		501F335E2A98E94C006F957B /* Our Home Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 501F335D2A98E94C006F957B /* Our Home Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		501F33722A98E975006F957B /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
@@ -22,7 +20,6 @@
 		501F337A2A98E988006F957B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
 		501F337B2A98E98E006F957B /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98427A5BEF200ECD03F /* HomeState.swift */; };
 		501F337C2A98E98E006F957B /* HomeCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4E98027A5BC4700ECD03F /* HomeCommunication.swift */; };
-		501F337D2A98E98E006F957B /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD192A62F89900B21D2E /* PushNotifications.swift */; };
 		501F337E2A98E98E006F957B /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
 		501F337F2A98E9A0006F957B /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C52943E58F00F78E5E /* CountdownView.swift */; };
 		501F33802A98E9A0006F957B /* BatteryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730B27A56A4A006D0132 /* BatteryIcon.swift */; };
@@ -35,7 +32,6 @@
 		501F33872A98E9A5006F957B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C730F27A5B658006D0132 /* SettingsView.swift */; };
 		501F33882A98E9A5006F957B /* ActionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A480A62A6A8A260082960C /* ActionLabel.swift */; };
 		501F33892A98E9A5006F957B /* SettingsButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057C76A2A6427DB00AE6E1E /* SettingsButtonLabel.swift */; };
-		501F338A2A98E9A5006F957B /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019DD142A62F74C00B21D2E /* AppStorageKeys.swift */; };
 		501F338B2A98E9A5006F957B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039124A2A6993BF0044B4A9 /* AppState.swift */; };
 		501F338C2A98E9D7006F957B /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088888C285357B4006B8808 /* NotificationProvider.swift */; };
 		501F338D2A98EA13006F957B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5059217F28BBC5FA005A4E3A /* Assets.xcassets */; };
@@ -130,8 +126,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5019DD142A62F74C00B21D2E /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
-		5019DD192A62F89900B21D2E /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		501F33502A98DF42006F957B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		501F33582A98E94C006F957B /* Our Home Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		501F335D2A98E94C006F957B /* Our Home Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,7 +244,6 @@
 				505122192944ECCD00F78E5E /* UserKeychain.swift */,
 				50F4E98227A5BED100ECD03F /* Backend */,
 				5037F2B527AAA961007D1BBA /* Views */,
-				5019DD142A62F74C00B21D2E /* AppStorageKeys.swift */,
 				503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */,
 				5039124A2A6993BF0044B4A9 /* AppState.swift */,
 			);
@@ -377,7 +370,6 @@
 			children = (
 				50F4E98427A5BEF200ECD03F /* HomeState.swift */,
 				505121BF2943DDFD00F78E5E /* DoorbellAction.swift */,
-				5019DD192A62F89900B21D2E /* PushNotifications.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -617,11 +609,9 @@
 				501F33822A98E9A0006F957B /* DoorHeader.swift in Sources */,
 				501F337A2A98E988006F957B /* User.swift in Sources */,
 				501F33882A98E9A5006F957B /* ActionLabel.swift in Sources */,
-				501F338A2A98E9A5006F957B /* AppStorageKeys.swift in Sources */,
 				501F33842A98E9A0006F957B /* ActionButton.swift in Sources */,
 				501F33802A98E9A0006F957B /* BatteryIcon.swift in Sources */,
 				501F337B2A98E98E006F957B /* HomeState.swift in Sources */,
-				501F337D2A98E98E006F957B /* PushNotifications.swift in Sources */,
 				501F33852A98E9A0006F957B /* ControllerView.swift in Sources */,
 				501F33892A98E9A5006F957B /* SettingsButtonLabel.swift in Sources */,
 				501F337E2A98E98E006F957B /* DoorbellAction.swift in Sources */,
@@ -642,12 +632,10 @@
 				5037F26627A70387007D1BBA /* ControllerView.swift in Sources */,
 				505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */,
 				5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */,
-				5019DD152A62F74C00B21D2E /* AppStorageKeys.swift in Sources */,
 				502C731027A5B658006D0132 /* SettingsView.swift in Sources */,
 				505122102944D34000F78E5E /* User.swift in Sources */,
 				5037F23327A6BC57007D1BBA /* Task+Sleep.swift in Sources */,
 				502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */,
-				5019DD1A2A62F89900B21D2E /* PushNotifications.swift in Sources */,
 				5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */,
 				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
 				5039126C2A69CF020044B4A9 /* Pinger.swift in Sources */,
@@ -963,6 +951,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -992,6 +981,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -3,11 +3,10 @@ import SwiftUI
 struct SettingsView: View {
     let userState: UserState
 
-    @AppStorage(AppStorageKeys.doorbellRingPushNotification.rawValue)
-    var doorbellRingPushNotification = false
+    @EnvironmentObject var appState: AppState
 
-    @AppStorage(AppStorageKeys.whenOtherUserArrivesPushNotification.rawValue)
-    var whenOtherUserArrivesPushNotification = false
+    @State var doorbellRingPushNotification = false
+    @State var whenOtherUserArrivesPushNotification = false
 
     var body: some View {
         List {
@@ -35,7 +34,18 @@ struct SettingsView: View {
             Section {
                 Text("Version \(appVersion())").foregroundColor(.secondary)
             }
-        }.navigationTitle("Einstellungen")
+        }
+        .navigationTitle("Einstellungen")
+        .onAppear {
+            doorbellRingPushNotification = appState.doorbellRingPushNotification
+            whenOtherUserArrivesPushNotification = appState.whenOtherUserArrivesPushNotification
+        }
+        .onChange(of: doorbellRingPushNotification) { newValue in
+            appState.doorbellRingPushNotification = newValue
+        }
+        .onChange(of: whenOtherUserArrivesPushNotification) { newValue in
+            appState.whenOtherUserArrivesPushNotification = newValue
+        }
     }
 }
 

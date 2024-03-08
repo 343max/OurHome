@@ -66,6 +66,10 @@ struct RemoteHome: Home {
         }
     }
 
+    struct PushNotification: Encodable {
+        let types: [PushNotificationType]
+    }
+
     func registerPush(deviceToken: String, notifications: [PushNotificationType]) async throws -> HomeResponse {
         let body = PushNotification(
             types: notifications

@@ -1,15 +1,20 @@
 import Foundation
+import SwiftUI
 
 @MainActor
 class AppState: ObservableObject {
     @Published
     private(set) var home: Home {
+        willSet {
+            deletePushNotificationRegistration()
+        }
         didSet {
             notificationProvider.home = home
             #if !os(watchOS)
                 locationChecker.home = home
             #endif
-            pushNotificationSync.home = home as? RemoteHome
+
+            updatePushNotificationRegistration()
 
             if let home = home as? RemoteHome {
                 internalPinger = Pinger(url: home.localNetworkHost, update: { reachable in
@@ -53,7 +58,6 @@ class AppState: ObservableObject {
     var lastFailedHomeAction: HomeAction? = nil
 
     let notificationProvider: NotificationProvider
-    let pushNotificationSync = PushNotificationSync()
 
     var internalPinger: Pinger? = nil
     var externalPinger: Pinger? = nil
@@ -70,6 +74,36 @@ class AppState: ObservableObject {
         #endif
         self.home = home
         loadUser()
+    }
+
+    var doorbellRingPushNotification = UserDefaults.standard.bool(forKey: "doorbellRingPushNotification") {
+        didSet {
+            if doorbellRingPushNotification != oldValue {
+                UserDefaults.standard.setValue(doorbellRingPushNotification, forKey: "doorbellRingPushNotification")
+                updatePushNotificationRegistration()
+            }
+        }
+    }
+
+    @AppStorage("whenOtherUserArrivesPushNotification")
+    var whenOtherUserArrivesPushNotification = UserDefaults.standard.bool(forKey: "whenOtherUserArrivesPushNotification") {
+        didSet {
+            if whenOtherUserArrivesPushNotification != oldValue {
+                UserDefaults.standard.setValue(doorbellRingPushNotification, forKey: "whenOtherUserArrivesPushNotification")
+                updatePushNotificationRegistration()
+            }
+        }
+    }
+
+    var deviceToken: String? {
+        willSet {
+            if let deviceToken, deviceToken != newValue {
+                deletePushNotificationRegistration()
+            }
+        }
+        didSet {
+            updatePushNotificationRegistration()
+        }
     }
 }
 
@@ -123,5 +157,41 @@ extension AppState {
 
         homeActionInProgress = nil
         lastFailedHomeAction = nil
+    }
+}
+
+enum PushNotificationType: String, Encodable {
+    case doorbellRing
+    case whenOtherUserArrives
+}
+
+extension AppState {
+    func updatePushNotificationRegistration() {
+        Task {
+            guard let deviceToken, let home = home as? RemoteHome else {
+                return
+            }
+
+            let types: [PushNotificationType] = Array([
+                .doorbellRing: doorbellRingPushNotification,
+                .whenOtherUserArrives: whenOtherUserArrivesPushNotification,
+            ].filter(\.value).keys)
+
+            do {
+                let _ = try await home.registerPush(deviceToken: deviceToken, notifications: types)
+            }
+        }
+    }
+
+    func deletePushNotificationRegistration() {
+        Task {
+            guard let deviceToken, let home = home as? RemoteHome else {
+                return
+            }
+
+            do {
+                let _ = try await home.unregisterPush(deviceToken: deviceToken)
+            }
+        }
     }
 }
