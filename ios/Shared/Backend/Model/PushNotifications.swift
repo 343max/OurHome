@@ -1,5 +1,5 @@
-import Defaults
 import Foundation
+import SwiftUI
 
 enum PushNotificationType: String, Encodable {
     case doorbellRing
@@ -11,7 +11,19 @@ struct PushNotification: Encodable {
 }
 
 class PushNotificationSync {
-    var observer: Defaults.Observation?
+    @AppStorage(AppStorageKeys.doorbellRingPushNotification.rawValue)
+    var doorbellRingPushNotification = false {
+        didSet {
+            updatePushNotificationRegistration()
+        }
+    }
+
+    @AppStorage(AppStorageKeys.whenOtherUserArrivesPushNotification.rawValue)
+    var whenOtherUserArrivesPushNotification = false {
+        didSet {
+            updatePushNotificationRegistration()
+        }
+    }
 
     var home: RemoteHome? {
         willSet {
@@ -35,12 +47,6 @@ class PushNotificationSync {
         }
     }
 
-    init() {
-        observer = Defaults.observe(keys: .doorbellRingPushNotification, .whenOtherUserArrivesPushNotification, options: [], handler: { [weak self] in
-            self?.updatePushNotificationRegistration()
-        })
-    }
-
     func updatePushNotificationRegistration() {
         Task {
             guard let deviceToken, let home else {
@@ -48,8 +54,8 @@ class PushNotificationSync {
             }
 
             let types: [PushNotificationType] = Array([
-                .doorbellRing: Defaults[.doorbellRingPushNotification],
-                .whenOtherUserArrives: Defaults[.whenOtherUserArrivesPushNotification],
+                .doorbellRing: doorbellRingPushNotification,
+                .whenOtherUserArrives: whenOtherUserArrivesPushNotification,
             ].filter(\.value).keys)
 
             do {

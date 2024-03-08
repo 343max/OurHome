@@ -1,8 +1,13 @@
-import Defaults
 import SwiftUI
 
 struct SettingsView: View {
     let userState: UserState
+
+    @AppStorage(AppStorageKeys.doorbellRingPushNotification.rawValue)
+    var doorbellRingPushNotification = false
+
+    @AppStorage(AppStorageKeys.whenOtherUserArrivesPushNotification.rawValue)
+    var whenOtherUserArrivesPushNotification = false
 
     var body: some View {
         List {
@@ -14,8 +19,8 @@ struct SettingsView: View {
 
             if case .loggedIn = userState {
                 Section("Push Notifications") {
-                    Defaults.Toggle("Wenn es klingelt", key: .doorbellRingPushNotification)
-                    Defaults.Toggle("Wenn jemand ankommt", key: .whenOtherUserArrivesPushNotification)
+                    Toggle("Wenn es klingelt", isOn: $doorbellRingPushNotification)
+                    Toggle("Wenn jemand ankommt", isOn: $whenOtherUserArrivesPushNotification)
                 }
             }
 
