@@ -50,7 +50,7 @@ struct OurHomeApp: App {
             }
             .onAppear {
                 #if !os(watchOS)
-                    appDelegate.pushNotificationSync = appState.pushNotificationSync
+                    appDelegate.appState = appState
                 #endif
                 appState.loadUser()
 
