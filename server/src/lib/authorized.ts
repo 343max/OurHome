@@ -14,10 +14,7 @@ export const authorized = <
 >(
   path: Path,
   handler: RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
-): [
-  string,
-  RequestHandler<P, ResBody | { success: false }, ReqBody, ReqQuery, LocalsObj>
-] => {
+): [string, RequestHandler<P, ResBody | { success: false }, ReqBody, ReqQuery, LocalsObj>] => {
   const action = actionForPath(path)
   if (action === undefined) {
     throw new Error(`unknown action for path ${path}`)
@@ -26,14 +23,7 @@ export const authorized = <
     path,
     async (req, res, next) => {
       const authHeader = req.header("Authorization")
-      const externHeader = req.header("x-forwarded-for")
-      if (
-        verifyAuth(
-          authHeader,
-          action,
-          externHeader === undefined ? "local" : "remote"
-        )
-      ) {
+      if (verifyAuth(authHeader, action)) {
         res.contentType("application/json; charset=UTF-8")
         await handler(req, res, next)
       } else {

@@ -1,8 +1,7 @@
 import { pushNotificationController } from "./pushNotifications"
 
 test("pushNotifications", async () => {
-  const { registerDevice, removeDevice, getDoorbellRingSubscribers } =
-    await pushNotificationController(":memory:")
+  const { registerDevice, removeDevice, getDoorbellRingSubscribers } = await pushNotificationController(":memory:")
   await registerDevice("user", "token", ["doorbellRing"])
   expect(await getDoorbellRingSubscribers()).toEqual([
     {
@@ -22,8 +21,7 @@ test("pushNotifications - register twice", async () => {
 })
 
 test("pushNotifications - other user arrives", async () => {
-  const { registerDevice, getWhenOtherUserArrivesSubscribers } =
-    await pushNotificationController(":memory:")
+  const { registerDevice, getWhenOtherUserArrivesSubscribers } = await pushNotificationController(":memory:")
   await registerDevice("alice", "token1", ["whenOtherUserArrives"])
   await registerDevice("bob", "token2", ["whenOtherUserArrives"])
   expect(await getWhenOtherUserArrivesSubscribers("bob")).toEqual([
