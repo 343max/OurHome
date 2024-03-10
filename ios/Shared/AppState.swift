@@ -15,24 +15,6 @@ class AppState: ObservableObject {
             #endif
 
             updatePushNotificationRegistration()
-
-            if let home = home as? RemoteHome {
-                internalPinger = Pinger(url: home.localNetworkHost, update: { reachable in
-                    Task {
-                        self.internalReachable = reachable
-                    }
-                })
-                externalPinger = Pinger(url: home.externalHost, update: { reachable in
-                    Task {
-                        self.externalReachable = reachable
-                    }
-                })
-            } else {
-                internalPinger = nil
-                externalPinger = nil
-                internalReachable = true
-                externalReachable = true
-            }
         }
     }
 
@@ -46,10 +28,7 @@ class AppState: ObservableObject {
     var userState = UserState.verifying
 
     @Published
-    var internalReachable = false
-
-    @Published
-    var externalReachable = true
+    var nearby = false
 
     @Published
     var homeActionInProgress: HomeAction? = nil
@@ -59,9 +38,6 @@ class AppState: ObservableObject {
 
     let notificationProvider: NotificationProvider
 
-    var internalPinger: Pinger? = nil
-    var externalPinger: Pinger? = nil
-
     #if !os(watchOS)
         let locationChecker: LocationChecker
     #endif
@@ -69,10 +45,11 @@ class AppState: ObservableObject {
     init() {
         let home = DummyHome()
         notificationProvider = NotificationProvider(home: home)
+        self.home = home
         #if !os(watchOS)
             locationChecker = LocationChecker(home: home, notificationProvider: notificationProvider)
+            locationChecker.setNearby = { self.nearby = $0 }
         #endif
-        self.home = home
         loadUser()
     }
 

@@ -11,8 +11,7 @@ enum HomeAction {
 }
 
 protocol Home {
-    var localNetworkHost: URL { get }
-    var externalHost: URL { get }
+    var host: URL { get }
 
     func getState() async throws -> HomeState
 
@@ -23,8 +22,8 @@ protocol Home {
 func actionReachable(_ action: HomeAction, appState: AppState) -> Bool {
     switch action {
     case .armBuzzer, .armUnlatch, .pressBuzzer, .arrived:
-        appState.externalReachable
+        true
     case .lockDoor, .unlockDoor, .unlatchDoor:
-        appState.internalReachable
+        appState.nearby
     }
 }

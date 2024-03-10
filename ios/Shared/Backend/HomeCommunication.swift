@@ -22,28 +22,19 @@ enum Method: String {
     case delete = "DELETE"
 }
 
-enum Route {
-    case lan
-    case external
-}
-
 struct RemoteHome: Home {
     let username: String
     let secret: String
 
-    let localNetworkHost: URL
-    let externalHost: URL
+    let host: URL
 
     init(username: String, secret: String) {
         self.username = username
         self.secret = secret
         if let host = ProcessInfo.processInfo.environment["HOST"], host.hasPrefix("http") {
-            let url = URL(string: host)!
-            localNetworkHost = url
-            externalHost = url
+            self.host = URL(string: host)!
         } else {
-            localNetworkHost = URL(string: "http://43v.de:4278/")!
-            externalHost = URL(string: "https://buzzer.343max.com/")!
+            host = URL(string: "https://buzzer.343max.com/")!
         }
     }
 
@@ -75,15 +66,15 @@ struct RemoteHome: Home {
             types: notifications
         )
 
-        return try await send(HomeResponse.self, .external, .put, action: .pushNotification, deviceToken, body)
+        return try await send(HomeResponse.self, .put, action: .pushNotification, deviceToken, body)
     }
 
     func unregisterPush(deviceToken: String) async throws -> HomeResponse {
-        try await send(HomeResponse.self, .external, .delete, action: .pushNotification, deviceToken)
+        try await send(HomeResponse.self, .delete, action: .pushNotification, deviceToken)
     }
 
-    private func url(_ route: Route, _ action: Action, _ path: String? = nil) -> URL {
-        let url = (route == .external ? externalHost : localNetworkHost).appendingPathComponent(action.rawValue)
+    private func url(_ action: Action, _ path: String? = nil) -> URL {
+        let url = host.appendingPathComponent(action.rawValue)
         if let path {
             return url.appendingPathComponent("\(path)")
         } else {
@@ -91,8 +82,8 @@ struct RemoteHome: Home {
         }
     }
 
-    private func send<T>(_ type: T.Type, _ route: Route, _ method: Method, action: Action, _ path: String? = nil, _ body: Encodable? = nil) async throws -> T where T: Decodable {
-        let url = url(route, action, path)
+    private func send<T>(_ type: T.Type, _ method: Method, action: Action, _ path: String? = nil, _ body: Encodable? = nil) async throws -> T where T: Decodable {
+        let url = url(action, path)
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
         request.httpMethod = method.rawValue
         let authorization = getAuthHeader(user: username, secret: secret, action: action.rawValue, timestamp: Date().timeIntervalSince1970)
@@ -109,34 +100,34 @@ struct RemoteHome: Home {
     }
 
     func getState() async throws -> HomeState {
-        try await send(HomeState.self, .external, .get, action: .state)
+        try await send(HomeState.self, .get, action: .state)
     }
 
     private func pressBuzzer() async throws -> HomeResponse {
-        try await send(HomeResponse.self, .external, .post, action: .buzzer)
+        try await send(HomeResponse.self, .post, action: .buzzer)
     }
 
     private func unlatchDoor() async throws -> HomeResponse {
-        try await send(HomeResponse.self, .lan, .post, action: .unlatch)
+        try await send(HomeResponse.self, .post, action: .unlatch)
     }
 
     private func lockDoor() async throws -> HomeResponse {
-        try await send(HomeResponse.self, .lan, .post, action: .lock)
+        try await send(HomeResponse.self, .post, action: .lock)
     }
 
     private func unlockDoor() async throws -> HomeResponse {
-        try await send(HomeResponse.self, .lan, .post, action: .unlock)
+        try await send(HomeResponse.self, .post, action: .unlock)
     }
 
     private func armBuzzer() async throws -> HomeResponse {
-        try await send(HomeResponse.self, .external, .post, action: .armBuzzer)
+        try await send(HomeResponse.self, .post, action: .armBuzzer)
     }
 
     private func armUnlatch() async throws -> HomeResponse {
-        try await send(HomeResponse.self, .external, .post, action: .armUnlatch)
+        try await send(HomeResponse.self, .post, action: .armUnlatch)
     }
 
     private func arrived() async throws -> HomeResponse {
-        try await send(HomeResponse.self, .external, .post, action: .arrived)
+        try await send(HomeResponse.self, .post, action: .arrived)
     }
 }

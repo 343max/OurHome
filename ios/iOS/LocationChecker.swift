@@ -9,6 +9,9 @@ class LocationChecker: NSObject {
                                       radius: 50, // m
                                       identifier: "home")
 
+    var setNearby: ((_ nearby: Bool) -> Void)?
+    var nearby = false
+
     weak var notificationProvider: NotificationProvider?
 
     init(home: Home, notificationProvider: NotificationProvider) {
@@ -37,9 +40,17 @@ extension LocationChecker: CLLocationManagerDelegate {
     func locationManager(_: CLLocationManager, didEnterRegion _: CLRegion) {
         notificationProvider?.showBuzzerNotification()
 
+        setNearby?(true)
+        nearby = true
+
         Task {
             let _ = try? await home.action(.arrived)
         }
+    }
+
+    func locationManager(_: CLLocationManager, didExitRegion _: CLRegion) {
+        setNearby?(false)
+        nearby = false
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
