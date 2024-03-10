@@ -53,6 +53,12 @@ extension LocationChecker: CLLocationManagerDelegate {
         nearby = false
     }
 
+    func locationManager(_: CLLocationManager, didDetermineState state: CLRegionState, for _: CLRegion) {
+        let nearby = state == .inside
+        setNearby?(nearby)
+        self.nearby = nearby
+    }
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .notDetermined:
