@@ -14,7 +14,6 @@
 		501F33742A98E988006F957B /* UserKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505122192944ECCD00F78E5E /* UserKeychain.swift */; };
 		501F33752A98E988006F957B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AB27A80DA6007D1BBA /* Configuration.swift */; };
 		501F33762A98E988006F957B /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121C82944C9B700F78E5E /* URLHandler.swift */; };
-		501F33772A98E988006F957B /* Pinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039126B2A69CC060044B4A9 /* Pinger.swift */; };
 		501F33782A98E988006F957B /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F23227A6BC57007D1BBA /* Task+Sleep.swift */; };
 		501F33792A98E988006F957B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFAC12922D679008CC486 /* Home.swift */; };
 		501F337A2A98E988006F957B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220F2944D34000F78E5E /* User.swift */; };
@@ -48,7 +47,6 @@
 		5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AB27A80DA6007D1BBA /* Configuration.swift */; };
 		5037F2B027A80E13007D1BBA /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037F2AF27A80E13007D1BBA /* AppVersion.swift */; };
 		5039124B2A6993BF0044B4A9 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039124A2A6993BF0044B4A9 /* AppState.swift */; };
-		5039126C2A69CF020044B4A9 /* Pinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039126B2A69CC060044B4A9 /* Pinger.swift */; };
 		503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		505121C02943DDFD00F78E5E /* DoorbellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505121BF2943DDFD00F78E5E /* DoorbellAction.swift */; };
@@ -141,7 +139,6 @@
 		5037F2AF27A80E13007D1BBA /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		5037F2B127A83C7D007D1BBA /* Our Home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Our Home.entitlements"; sourceTree = "<group>"; };
 		5039124A2A6993BF0044B4A9 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		5039126B2A69CC060044B4A9 /* Pinger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pinger.swift; sourceTree = "<group>"; };
 		503D1DB727A14EAB00FC8355 /* Our Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Our Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D1DBA27A14EAB00FC8355 /* OurHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurHomeApp.swift; sourceTree = "<group>"; };
 		503D1DBC27A14EAB00FC8355 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
@@ -160,6 +157,8 @@
 		509A72B42A953AF30072F58F /* HomeStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStateTests.swift; sourceTree = "<group>"; };
 		50A480A32A6A8A0D0082960C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		50A480A62A6A8A260082960C /* ActionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLabel.swift; sourceTree = "<group>"; };
+		50B4C8252B9E17AF00ECE0D4 /* locations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = locations.gpx; sourceTree = "<group>"; };
+		50B4C8262B9E17CD00ECE0D4 /* Our Home.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Our Home.gpx"; sourceTree = "<group>"; };
 		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
 		50C2F1072B72585200806C8D /* OHWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OHWatch-Watch-App-Info.plist"; sourceTree = "<group>"; };
 		50C2F1082B7260D900806C8D /* OHWatch-AppStore-App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OHWatch-AppStore-App-Info.plist"; sourceTree = "<group>"; };
@@ -271,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				5088888C285357B4006B8808 /* NotificationProvider.swift */,
-				5039126B2A69CC060044B4A9 /* Pinger.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -279,6 +277,8 @@
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
+				50B4C8262B9E17CD00ECE0D4 /* Our Home.gpx */,
+				50B4C8252B9E17AF00ECE0D4 /* locations.gpx */,
 				5037F2B427AAA929007D1BBA /* Shared */,
 				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* iOS */,
@@ -596,7 +596,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				501F33772A98E988006F957B /* Pinger.swift in Sources */,
 				501F33812A98E9A0006F957B /* SpinningButton.swift in Sources */,
 				501F337C2A98E98E006F957B /* HomeCommunication.swift in Sources */,
 				501F33722A98E975006F957B /* OurHomeApp.swift in Sources */,
@@ -638,7 +637,6 @@
 				502C730E27A56FDF006D0132 /* DoorHeader.swift in Sources */,
 				5037F2AC27A80DA6007D1BBA /* Configuration.swift in Sources */,
 				50F4E98527A5BEF200ECD03F /* HomeState.swift in Sources */,
-				5039126C2A69CF020044B4A9 /* Pinger.swift in Sources */,
 				505121C62943E58F00F78E5E /* CountdownView.swift in Sources */,
 				50F4E98127A5BC4700ECD03F /* HomeCommunication.swift in Sources */,
 				503D1DBB27A14EAB00FC8355 /* OurHomeApp.swift in Sources */,

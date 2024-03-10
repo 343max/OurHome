@@ -1,8 +1,7 @@
 import Foundation
 
 class DummyHome: Home {
-    let localNetworkHost = URL(string: "https://google.com/")!
-    let externalHost = URL(string: "https://google.com/")!
+    let host = URL(string: "https://google.com/")!
 
     func getState() async throws -> HomeState {
         HomeState(success: true,
