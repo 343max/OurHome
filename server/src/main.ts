@@ -26,6 +26,7 @@ console.log(`👷 build date: ${buildInfo.date}`)
 dumpInviteLinks()
 
 const main = async () => {
+  const buzzer = configuration.buzzer()
   const {
     registerDevice,
     removeDevice,
@@ -37,7 +38,7 @@ const main = async () => {
   const pressBuzzer = async () => {
     for (const _ in [0, 1, 2, 3, 4, 5]) {
       await sleep(500)
-      await configuration.buzzer.pressBuzzer()
+      await buzzer.pressBuzzer()
     }
   }
 
@@ -50,7 +51,7 @@ const main = async () => {
     },
   })
 
-  configuration.buzzer.registerDoorbellHandler(handleDoorbellPress)
+  buzzer.registerDoorbellHandler(handleDoorbellPress)
 
   app
     .use(express.json())

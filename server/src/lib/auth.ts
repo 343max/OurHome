@@ -3,38 +3,19 @@ import { Action } from "./action"
 import { findUser, Permission, Permissions, User } from "./user"
 import { createHash } from "crypto"
 
-export const getToken = (
-  user: string,
-  secret: string,
-  action: Action,
-  unixTimeSecs: number
-): string =>
+export const getToken = (user: string, secret: string, action: Action, unixTimeSecs: number): string =>
   createHash("sha256")
-    .update(
-      [user, secret, action.replace(/^\//, ""), `${unixTimeSecs}`].join(":")
-    )
+    .update([user, secret, action.replace(/^\//, ""), `${unixTimeSecs}`].join(":"))
     .digest("base64")
     .toString()
 
-export const getAuthHeader = (
-  user: string,
-  secret: string,
-  action: Action,
-  unixTimeSecs: number
-): string => {
+export const getAuthHeader = (user: string, secret: string, action: Action, unixTimeSecs: number): string => {
   const token = getToken(user, secret, action, unixTimeSecs)
   return [user, token, `${unixTimeSecs}`].join(":")
 }
 
-type UserLocation = "local" | "remote"
-
-export const accessAllowed = (
-  userAccess: Permission,
-  userLocation: UserLocation
-): boolean => {
-  const allowedLevel = ["none", "local", "full"].indexOf(userAccess)
-  const requestedLevel = ["", "local", "remote"].indexOf(userLocation)
-  return allowedLevel >= requestedLevel
+export const accessAllowed = (userAccess: Permission): boolean => {
+  return userAccess === "full" || userAccess === "local"
 }
 
 export const splitAuthHeader = (
@@ -43,21 +24,15 @@ export const splitAuthHeader = (
   const result = authHeader === undefined ? [] : authHeader.split(":")
 
   const [username, token, timestamp] = result
-  if (username === undefined || token === undefined || timestamp === undefined)
-    return null
+  if (username === undefined || token === undefined || timestamp === undefined) return null
 
   return { username, token, timestamp: parseInt(timestamp) }
 }
 
-export const verifyTimestamps = (
-  timestampA: number,
-  timestampB: number
-): boolean => Math.abs(timestampA - timestampB) < 5 * 60
+export const verifyTimestamps = (timestampA: number, timestampB: number): boolean =>
+  Math.abs(timestampA - timestampB) < 5 * 60
 
-const getPermissions = (
-  action: Action,
-  permissions: Permissions
-): null | Permission => {
+const getPermissions = (action: Action, permissions: Permissions): null | Permission => {
   const mapping: Record<Action, null | Permission> = {
     "/user": null,
     "/state": null,
@@ -77,7 +52,6 @@ const getPermissions = (
 export const verifyAuth = (
   header: string | undefined,
   action: Action,
-  userLocation: UserLocation,
   now: number = new Date().getTime() / 1000,
   users?: User[]
 ): boolean => {
@@ -103,17 +77,14 @@ export const verifyAuth = (
     return false
   }
 
-  if (
-    !skipAuth &&
-    getToken(user.username, user.secret, action, timestamp) !== token
-  ) {
+  if (!skipAuth && getToken(user.username, user.secret, action, timestamp) !== token) {
     return false
   }
 
   const permission = getPermissions(action, user.permissions)
 
   if (permission !== null) {
-    if (!accessAllowed(permission, userLocation)) {
+    if (!accessAllowed(permission)) {
       return false
     }
   }
