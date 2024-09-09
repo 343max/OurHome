@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "dev": "env $(cat .env.dev) node-dev src/main.ts",
+        "dev": "node-dev src/main.ts",
         "test": "jest",
         "tsc": "tsc --noEmit",
         "simulate:arrival": "ts-node ./src/cli.ts arrived",
