@@ -1,7 +1,7 @@
-import { actionForPath } from "./action"
+import { actionForPath } from "./action";
 
 test("actions", () => {
-  expect(actionForPath("/pushnotifications/:deviceid")).toBe(
-    "/pushnotifications"
-  )
-})
+    expect(actionForPath("/pushnotifications/:deviceid")).toBe(
+        "/pushnotifications",
+    );
+});

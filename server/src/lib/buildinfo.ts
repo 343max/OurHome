@@ -1,1 +1,1 @@
-export const buildInfo = { date: "dev" }
+export const buildInfo = { date: "dev" };
