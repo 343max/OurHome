@@ -1,27 +1,27 @@
-const getTime = () => new Date().getTime() / 1000
+const getTime = () => new Date().getTime() / 1000;
 
-type DoorBellActionType = "buzzer" | "unlatch"
+type DoorBellActionType = "buzzer" | "unlatch";
 type DoorBellAction = {
-  armedBy: string
-  timeout: number
-  type: DoorBellActionType
-}
+    armedBy: string;
+    timeout: number;
+    type: DoorBellActionType;
+};
 
-let doorBellAction: null | DoorBellAction = null
+let doorBellAction: null | DoorBellAction = null;
 
 export const armForDoorBellAction = ({
-  timeout,
-  ...action
+    timeout,
+    ...action
 }: DoorBellAction) => {
-  doorBellAction = { timeout: getTime() + timeout, ...action }
-}
+    doorBellAction = { timeout: getTime() + timeout, ...action };
+};
 
 export const isArmedDoorbellAction = (action: DoorBellAction | null): boolean =>
-  action !== null && getTime() < action.timeout
+    action !== null && getTime() < action.timeout;
 
 export const getCurrentDoorbellAction = (): DoorBellAction | null =>
-  isArmedDoorbellAction(doorBellAction) ? doorBellAction : null
+    isArmedDoorbellAction(doorBellAction) ? doorBellAction : null;
 
 export const resetDoorBellAction = () => {
-  doorBellAction = null
-}
+    doorBellAction = null;
+};
