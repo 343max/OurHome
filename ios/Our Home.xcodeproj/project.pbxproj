@@ -157,7 +157,6 @@
 		509A72B42A953AF30072F58F /* HomeStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStateTests.swift; sourceTree = "<group>"; };
 		50A480A32A6A8A0D0082960C /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		50A480A62A6A8A260082960C /* ActionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLabel.swift; sourceTree = "<group>"; };
-		50B4C8252B9E17AF00ECE0D4 /* locations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = locations.gpx; sourceTree = "<group>"; };
 		50B4C8262B9E17CD00ECE0D4 /* Our Home.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Our Home.gpx"; sourceTree = "<group>"; };
 		50BBFFB128512E6B001F1006 /* LocationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChecker.swift; sourceTree = "<group>"; };
 		50C2F1072B72585200806C8D /* OHWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OHWatch-Watch-App-Info.plist"; sourceTree = "<group>"; };
@@ -278,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				50B4C8262B9E17CD00ECE0D4 /* Our Home.gpx */,
-				50B4C8252B9E17AF00ECE0D4 /* locations.gpx */,
 				5037F2B427AAA929007D1BBA /* Shared */,
 				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* iOS */,
