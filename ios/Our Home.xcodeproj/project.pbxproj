@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -132,7 +132,6 @@
 		502C730B27A56A4A006D0132 /* BatteryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIcon.swift; sourceTree = "<group>"; };
 		502C730D27A56FDF006D0132 /* DoorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorHeader.swift; sourceTree = "<group>"; };
 		502C730F27A5B658006D0132 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		5037F22927A5F18D007D1BBA /* Authentication */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Authentication; path = Packages/Authentication; sourceTree = "<group>"; };
 		5037F23227A6BC57007D1BBA /* Task+Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Sleep.swift"; sourceTree = "<group>"; };
 		5037F27627A7EE5A007D1BBA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5037F2AB27A80DA6007D1BBA /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -174,6 +173,10 @@
 		50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Our-Home-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		50FE65E92CA18A5900F0E55F /* Packages */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Packages; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		501F335A2A98E94C006F957B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -212,14 +215,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5037F22827A5F18D007D1BBA /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				5037F22927A5F18D007D1BBA /* Authentication */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		5037F2AE27A80DEE007D1BBA /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,9 +271,9 @@
 		503D1DAE27A14EAB00FC8355 = {
 			isa = PBXGroup;
 			children = (
+				50FE65E92CA18A5900F0E55F /* Packages */,
 				50B4C8262B9E17CD00ECE0D4 /* Our Home.gpx */,
 				5037F2B427AAA929007D1BBA /* Shared */,
-				5037F22827A5F18D007D1BBA /* Packages */,
 				503D1DB927A14EAB00FC8355 /* iOS */,
 				5059217A28BBC5FA005A4E3A /* Watch */,
 				505122052944CA7C00F78E5E /* Our Home Tests */,
