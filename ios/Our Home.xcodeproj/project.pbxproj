@@ -23,6 +23,8 @@
 		50C2F1482B72837F00806C8D /* WatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2F1472B72837F00806C8D /* WatchWidget.swift */; };
 		50C2F14A2B72838000806C8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C2F1492B72838000806C8D /* Assets.xcassets */; };
 		50C2F14E2B72838000806C8D /* WatchWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50C2F1412B72837F00806C8D /* WatchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50D6E02D2CA1B5C800FEF029 /* SharedApp in Frameworks */ = {isa = PBXBuildFile; productRef = 50D6E02C2CA1B5C800FEF029 /* SharedApp */; };
+		50D6E02F2CA1B66100FEF029 /* WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6E02E2CA1B65C00FEF029 /* WatchApp.swift */; };
 		50FE662A2CA18C7E00F0E55F /* SharedApp in Frameworks */ = {isa = PBXBuildFile; productRef = 50FE66292CA18C7E00F0E55F /* SharedApp */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,7 @@
 		50C2F1472B72837F00806C8D /* WatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidget.swift; sourceTree = "<group>"; };
 		50C2F1492B72838000806C8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50C2F14B2B72838000806C8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50D6E02E2CA1B65C00FEF029 /* WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchApp.swift; sourceTree = "<group>"; };
 		50F4E98627A5ECD700ECD03F /* Our-Home-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Our-Home-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -111,6 +114,7 @@
 			files = (
 				501F338F2A98EA46006F957B /* Authentication in Frameworks */,
 				501F33932A98EA57006F957B /* KeychainAccess in Frameworks */,
+				50D6E02D2CA1B5C800FEF029 /* SharedApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +199,7 @@
 		5059217A28BBC5FA005A4E3A /* Watch */ = {
 			isa = PBXGroup;
 			children = (
+				50D6E02E2CA1B65C00FEF029 /* WatchApp.swift */,
 				50C2F1082B7260D900806C8D /* OHWatch-AppStore-App-Info.plist */,
 				50C2F1072B72585200806C8D /* OHWatch-Watch-App-Info.plist */,
 				501F33942A98ED86006F957B /* OHWatch Watch App.entitlements */,
@@ -260,6 +265,7 @@
 			packageProductDependencies = (
 				501F338E2A98EA46006F957B /* Authentication */,
 				501F33922A98EA57006F957B /* KeychainAccess */,
+				50D6E02C2CA1B5C800FEF029 /* SharedApp */,
 			);
 			productName = "OHWatch Watch App";
 			productReference = 501F335D2A98E94C006F957B /* Our Home Watch.app */;
@@ -338,6 +344,7 @@
 					};
 					501F335C2A98E94C006F957B = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1600;
 					};
 					503D1DB627A14EAB00FC8355 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -446,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D6E02F2CA1B66100FEF029 /* WatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +510,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Watch/OHWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ATMW4AU45H;
@@ -524,6 +533,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 10.2;
@@ -537,6 +547,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Watch/OHWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ATMW4AU45H;
@@ -993,6 +1004,10 @@
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
+		};
+		50D6E02C2CA1B5C800FEF029 /* SharedApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedApp;
 		};
 		50FE66292CA18C7E00F0E55F /* SharedApp */ = {
 			isa = XCSwiftPackageProductDependency;

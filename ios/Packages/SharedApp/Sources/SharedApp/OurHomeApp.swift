@@ -16,7 +16,7 @@ extension EnvironmentValues {
 }
 
 @main
-struct OurHomeApp: App {
+public struct OurHomeApp: App {
     #if !os(watchOS)
         @UIApplicationDelegateAdaptor
         private var appDelegate: SharedAppDelegate
@@ -27,7 +27,9 @@ struct OurHomeApp: App {
 
     @State private var destination: [Destination] = []
 
-    var body: some Scene {
+    public init() {}
+
+    public var body: some Scene {
         WindowGroup {
             NavigationStack(path: $destination) {
                 ControllerView()

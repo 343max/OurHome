@@ -1,72 +1,76 @@
 import CoreLocation
 import UserNotifications
 
-class LocationChecker: NSObject {
-    var home: Home
+#if !os(watchOS)
 
-    let locationManager = CLLocationManager()
-    let homeRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 52.53826033352572, longitude: 13.425414271771368),
-                                      radius: 50, // m
-                                      identifier: "home")
+    class LocationChecker: NSObject {
+        var home: Home
 
-    var setNearby: ((_ nearby: Bool) -> Void)?
-    var nearby = false
+        let locationManager = CLLocationManager()
+        let homeRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 52.53826033352572, longitude: 13.425414271771368),
+                                          radius: 50, // m
+                                          identifier: "home")
 
-    weak var notificationProvider: NotificationProvider?
+        var setNearby: ((_ nearby: Bool) -> Void)?
+        var nearby = false
 
-    init(home: Home, notificationProvider: NotificationProvider) {
-        self.home = home
-        super.init()
-        locationManager.delegate = self
-        locationManager.allowsBackgroundLocationUpdates = true
+        weak var notificationProvider: NotificationProvider?
 
-        self.notificationProvider = notificationProvider
-    }
+        init(home: Home, notificationProvider: NotificationProvider) {
+            self.home = home
+            super.init()
+            locationManager.delegate = self
+            locationManager.allowsBackgroundLocationUpdates = true
 
-    func startMonitoring() {
-        guard CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) else {
-            return
+            self.notificationProvider = notificationProvider
         }
 
-        locationManager.startMonitoring(for: homeRegion)
-    }
+        func startMonitoring() {
+            guard CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) else {
+                return
+            }
 
-    func stopMonitoring() {
-        locationManager.stopMonitoring(for: homeRegion)
-    }
-}
+            locationManager.startMonitoring(for: homeRegion)
+        }
 
-extension LocationChecker: CLLocationManagerDelegate {
-    func locationManager(_: CLLocationManager, didEnterRegion _: CLRegion) {
-        notificationProvider?.showBuzzerNotification()
-
-        setNearby?(true)
-        nearby = true
-
-        Task {
-            let _ = try? await home.action(.arrived)
+        func stopMonitoring() {
+            locationManager.stopMonitoring(for: homeRegion)
         }
     }
 
-    func locationManager(_: CLLocationManager, didExitRegion _: CLRegion) {
-        setNearby?(false)
-        nearby = false
-    }
+    extension LocationChecker: CLLocationManagerDelegate {
+        func locationManager(_: CLLocationManager, didEnterRegion _: CLRegion) {
+            notificationProvider?.showBuzzerNotification()
 
-    func locationManager(_: CLLocationManager, didDetermineState state: CLRegionState, for _: CLRegion) {
-        let nearby = state == .inside
-        setNearby?(nearby)
-        self.nearby = nearby
-    }
+            setNearby?(true)
+            nearby = true
 
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .notDetermined:
-            locationManager.requestAlwaysAuthorization()
-        case .authorizedAlways:
-            startMonitoring()
-        default:
-            break
+            Task {
+                let _ = try? await home.action(.arrived)
+            }
+        }
+
+        func locationManager(_: CLLocationManager, didExitRegion _: CLRegion) {
+            setNearby?(false)
+            nearby = false
+        }
+
+        func locationManager(_: CLLocationManager, didDetermineState state: CLRegionState, for _: CLRegion) {
+            let nearby = state == .inside
+            setNearby?(nearby)
+            self.nearby = nearby
+        }
+
+        func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+            switch manager.authorizationStatus {
+            case .notDetermined:
+                locationManager.requestAlwaysAuthorization()
+            case .authorizedAlways:
+                startMonitoring()
+            default:
+                break
+            }
         }
     }
-}
+
+#endif
