@@ -52,7 +52,7 @@ struct WatchWidget: Widget {
         .configurationDisplayName("Our Home")
         .description("Tür auf, Tür zu")
         .supportedFamilies([
-            .accessoryCircular, .accessoryCorner, .accessoryInline, .accessoryRectangular
+            .accessoryCircular, .accessoryCorner, .accessoryInline, .accessoryRectangular,
         ])
     }
 }
