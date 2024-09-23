@@ -40,10 +40,10 @@ struct SettingsView: View {
             doorbellRingPushNotification = appState.doorbellRingPushNotification
             whenOtherUserArrivesPushNotification = appState.whenOtherUserArrivesPushNotification
         }
-        .onChange(of: doorbellRingPushNotification) { newValue in
+        .onChange(of: doorbellRingPushNotification, initial: true) { _, newValue in
             appState.doorbellRingPushNotification = newValue
         }
-        .onChange(of: whenOtherUserArrivesPushNotification) { newValue in
+        .onChange(of: whenOtherUserArrivesPushNotification, initial: true) { _, newValue in
             appState.whenOtherUserArrivesPushNotification = newValue
         }
     }
