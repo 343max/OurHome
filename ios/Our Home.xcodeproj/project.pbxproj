@@ -11,8 +11,6 @@
 		501F335E2A98E94C006F957B /* Our Home Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 501F335D2A98E94C006F957B /* Our Home Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		501F338D2A98EA13006F957B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5059217F28BBC5FA005A4E3A /* Assets.xcassets */; };
 		501F338F2A98EA46006F957B /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 501F338E2A98EA46006F957B /* Authentication */; };
-		501F33932A98EA57006F957B /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 501F33922A98EA57006F957B /* KeychainAccess */; };
-		50292D77293B9CA800530CEB /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 50292D76293B9CA800530CEB /* KeychainAccess */; };
 		5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 5037F22B27A5F19C007D1BBA /* Authentication */; };
 		503D1DBF27A14EAB00FC8355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503D1DBE27A14EAB00FC8355 /* Assets.xcassets */; };
 		5051220E2944CAAC00F78E5E /* URLHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051220D2944CAAC00F78E5E /* URLHandlerTests.swift */; };
@@ -113,7 +111,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				501F338F2A98EA46006F957B /* Authentication in Frameworks */,
-				501F33932A98EA57006F957B /* KeychainAccess in Frameworks */,
 				50D6E02D2CA1B5C800FEF029 /* SharedApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,7 +119,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50292D77293B9CA800530CEB /* KeychainAccess in Frameworks */,
 				5037F22C27A5F19C007D1BBA /* Authentication in Frameworks */,
 				50FE662A2CA18C7E00F0E55F /* SharedApp in Frameworks */,
 			);
@@ -264,7 +260,6 @@
 			name = "OHWatch Watch App";
 			packageProductDependencies = (
 				501F338E2A98EA46006F957B /* Authentication */,
-				501F33922A98EA57006F957B /* KeychainAccess */,
 				50D6E02C2CA1B5C800FEF029 /* SharedApp */,
 			);
 			productName = "OHWatch Watch App";
@@ -287,7 +282,6 @@
 			name = "Our Home";
 			packageProductDependencies = (
 				5037F22B27A5F19C007D1BBA /* Authentication */,
-				50292D76293B9CA800530CEB /* KeychainAccess */,
 				50FE66292CA18C7E00F0E55F /* SharedApp */,
 			);
 			productName = "Our Home";
@@ -368,8 +362,6 @@
 			);
 			mainGroup = 503D1DAE27A14EAB00FC8355;
 			packageReferences = (
-				50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				50FE66282CA18C7E00F0E55F /* XCLocalSwiftPackageReference "Packages/SharedApp" */,
 			);
 			productRefGroup = 503D1DB827A14EAB00FC8355 /* Products */;
 			projectDirPath = "";
@@ -968,38 +960,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		50FE66282CA18C7E00F0E55F /* XCLocalSwiftPackageReference "Packages/SharedApp" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/SharedApp;
-		};
-/* End XCLocalSwiftPackageReference section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 4.2.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		501F338E2A98EA46006F957B /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
-		};
-		501F33922A98EA57006F957B /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
-		50292D76293B9CA800530CEB /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50292D75293B9CA800530CEB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
 		};
 		5037F22B27A5F19C007D1BBA /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
