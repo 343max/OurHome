@@ -2,23 +2,24 @@ import SwiftUI
 import WidgetKit
 
 struct Provider: TimelineProvider {
-    func placeholder(in _: Context) -> SimpleEntry {
-        SimpleEntry()
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(family: context.family)
     }
 
-    func getSnapshot(in _: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry()
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+        let entry = SimpleEntry(family: context.family)
         completion(entry)
     }
 
-    func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-        let timeline = Timeline(entries: [SimpleEntry()], policy: .atEnd)
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+        let timeline = Timeline(entries: [SimpleEntry(family: context.family)], policy: .atEnd)
         completion(timeline)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date = .init()
+    let family: WidgetFamily
 }
 
 struct WatchWidgetEntryView: View {
@@ -27,10 +28,15 @@ struct WatchWidgetEntryView: View {
     let roundAspectRatio = 0.9
 
     var body: some View {
-        Image(systemName: "key.fill")
-            .containerBackground(for: .widget) {
-                Color.orange
+        HStack {
+            if entry.family == .accessoryInline {
+                Text("Our Home")
             }
+            Image(systemName: "key.fill")
+                .containerBackground(for: .widget) {
+                    Color.orange
+                }
+        }
     }
 }
 
@@ -45,12 +51,32 @@ struct WatchWidget: Widget {
         }
         .configurationDisplayName("Our Home")
         .description("Tür auf, Tür zu")
-        .supportedFamilies([.accessoryCircular])
+        .supportedFamilies([
+            .accessoryCircular, .accessoryCorner, .accessoryInline, .accessoryRectangular
+        ])
     }
 }
 
-#Preview(as: .accessoryCircular) {
+#Preview("Circular", as: .accessoryCircular) {
     WatchWidget()
 } timeline: {
-    SimpleEntry()
+    SimpleEntry(family: .accessoryCircular)
+}
+
+#Preview("Corner", as: .accessoryCorner) {
+    WatchWidget()
+} timeline: {
+    SimpleEntry(family: .accessoryCorner)
+}
+
+#Preview("Inline", as: .accessoryInline) {
+    WatchWidget()
+} timeline: {
+    SimpleEntry(family: .accessoryInline)
+}
+
+#Preview("Rectangular", as: .accessoryRectangular) {
+    WatchWidget()
+} timeline: {
+    SimpleEntry(family: .accessoryRectangular)
 }
