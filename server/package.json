@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "dev": "node-dev src/main.ts",
+        "dev": "node-dev --notify=false src/main.ts",
         "test": "jest",
         "tsc": "tsc --noEmit",
         "simulate:arrival": "ts-node ./src/cli.ts arrived",
@@ -26,6 +26,7 @@
     "devDependencies": {
         "@biomejs/biome": "1.8.3",
         "@types/serialport": "^8.0.5",
+        "@types/ws": "^8.5.12",
         "jest": "^29.7.0",
         "node-dev": "^8.0.0",
         "ts-jest": "^29.1.2"

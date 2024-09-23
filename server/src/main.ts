@@ -1,4 +1,5 @@
 import express from "express";
+import { WebSocketServer } from "ws";
 import {
     armForDoorBellAction,
     getCurrentDoorbellAction,
@@ -15,7 +16,6 @@ import { pushNotificationSender } from "./lib/pushNotificationsSender";
 import { sleep } from "./lib/sleep";
 import { dumpInviteLinks, findUser } from "./lib/user";
 import { configuration } from "./secrets";
-
 const app = express();
 
 const sendPush = pushNotificationSender(configuration.applePushNotifications);
@@ -63,6 +63,15 @@ const main = async () => {
     });
 
     buzzer.registerDoorbellHandler(handleDoorbellPress);
+
+    const wss = new WebSocketServer({ noServer: true });
+
+    wss.on("connection", (ws) => {
+        console.log("connected");
+        ws.on("message", (message) => {
+            console.log("received: %s", message);
+        });
+    });
 
     app.use(express.json())
         .all("*", (req, _res, next) => {
@@ -211,7 +220,14 @@ const main = async () => {
                 },
             }),
         )
-        .listen(port);
+        .listen(port)
+        .on("upgrade", (req, socket, head) => {
+            if (req.url === "/ws") {
+                wss.handleUpgrade(req, socket, head, (ws) => {
+                    wss.emit("connection", ws, req);
+                });
+            }
+        });
 };
 
 main();
