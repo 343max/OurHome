@@ -1,19 +1,27 @@
 import { allUsers } from "../secrets";
 
-const permissionTypes = ["full", "local", "none"] as const;
-export type Permission = (typeof permissionTypes)[number];
+import { z } from "zod";
 
-export type Permissions = Record<
-    "buzzer" | "frontdoor" | "unlatch" | "arm/buzzer" | "arm/unlatch",
-    Permission
->;
+const PermissionSchema = z.enum(["full", "local", "none"]);
 
-export type User = {
-    username: string;
-    displayName: string;
-    secret: string;
-    permissions: Permissions;
-};
+const PermissionsSchema = z.object({
+    buzzer: PermissionSchema,
+    frontdoor: PermissionSchema,
+    unlatch: PermissionSchema,
+    "arm/buzzer": PermissionSchema,
+    "arm/unlatch": PermissionSchema,
+});
+
+const UserSchema = z.object({
+    username: z.string(),
+    displayName: z.string(),
+    secret: z.string(),
+    permissions: PermissionsSchema,
+});
+
+export type Permission = z.infer<typeof PermissionSchema>;
+export type Permissions = z.infer<typeof PermissionsSchema>;
+export type User = z.infer<typeof UserSchema>;
 
 export const findUser = (
     username: string,
