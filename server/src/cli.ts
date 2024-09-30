@@ -2,7 +2,7 @@ import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import type { Action } from "./lib/action";
 import { getAuthHeader } from "./lib/auth";
-import { configurationSchema } from "./lib/config";
+import { configurationJsonSchema } from "./lib/config";
 import { findUser } from "./lib/user";
 
 const port = 4278;
@@ -59,7 +59,7 @@ const main = async (command: Command) => {
             console.log(
                 JSON.stringify(
                     zodToJsonSchema(
-                        configurationSchema,
+                        configurationJsonSchema,
                         "de.343max.our-home.config",
                     ),
                     null,
