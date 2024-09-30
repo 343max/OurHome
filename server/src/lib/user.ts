@@ -1,4 +1,4 @@
-import { allUsers } from "../secrets";
+import { configuration } from "../secrets";
 
 import { z } from "zod";
 
@@ -12,7 +12,7 @@ const PermissionsSchema = z.object({
     "arm/unlatch": PermissionSchema,
 });
 
-const UserSchema = z.object({
+export const UserSchema = z.object({
     username: z.string(),
     displayName: z.string(),
     secret: z.string(),
@@ -25,11 +25,11 @@ export type User = z.infer<typeof UserSchema>;
 
 export const findUser = (
     username: string,
-    users: User[] = allUsers,
+    users: User[] = configuration.users,
 ): User | null => users.find((user) => user.username === username) ?? null;
 
 export const dumpInviteLinks = () => {
-    const inviteLinks = allUsers.map(
+    const inviteLinks = configuration.users.map(
         ({ username, secret }) =>
             `https://buzzer.343max.com/login?user=${username}&key=${secret}`,
     );

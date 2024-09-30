@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { Buzzer } from "./buzzer";
 import type { Nuki } from "./nuki";
+import { UserSchema } from "./user";
 
 const BuzzerSchema = z.discriminatedUnion("type", [
     z.object({
@@ -41,6 +42,7 @@ const configurationSchema = z.object({
     }),
     disableAuth: z.boolean().optional(),
     httpPort: z.number(),
+    users: z.array(UserSchema),
 });
 
 export type Configuration = Omit<
