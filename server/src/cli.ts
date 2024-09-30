@@ -1,6 +1,8 @@
 import { z } from "zod";
+import { zodToJsonSchema } from "zod-to-json-schema";
 import type { Action } from "./lib/action";
 import { getAuthHeader } from "./lib/auth";
+import { configurationSchema } from "./lib/config";
 import { findUser } from "./lib/user";
 
 const port = 4278;
@@ -34,7 +36,12 @@ const sendRequest = async (
     }
 };
 
-const command = z.enum(["doorbell", "arrived", "get-state"]);
+const command = z.enum([
+    "doorbell",
+    "arrived",
+    "get-state",
+    "generate-json-schema",
+]);
 type Command = z.infer<typeof command>;
 
 const main = async (command: Command) => {
@@ -47,6 +54,18 @@ const main = async (command: Command) => {
             break;
         case "get-state":
             console.log(await sendRequest("GET", "/state"));
+            break;
+        case "generate-json-schema":
+            console.log(
+                JSON.stringify(
+                    zodToJsonSchema(
+                        configurationSchema,
+                        "de.343max.our-home.config",
+                    ),
+                    null,
+                    2,
+                ),
+            );
             break;
     }
 };

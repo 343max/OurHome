@@ -26,7 +26,7 @@ const NukiSchema = z.discriminatedUnion("type", [
     }),
 ]);
 
-const configurationSchema = z.object({
+export const configurationSchema = z.object({
     buzzer: BuzzerSchema,
     nuki: NukiSchema,
     buzzerArmTimeout: z.number(),
