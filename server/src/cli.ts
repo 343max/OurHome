@@ -1,4 +1,4 @@
-import { string, z } from "zod";
+import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import type { Action } from "./lib/action";
 import { getAuthHeader } from "./lib/auth";
