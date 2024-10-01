@@ -13,4 +13,5 @@ RUN echo "export const buildInfo = { date: '$(date)' }" > ./src/lib/buildinfo.ts
 
 ENV NODE_PATH=/app
 RUN npm run build
-RUN find /app
+
+CMD [ "node", "/app/dist/main.js", "/config/config.json" ]
