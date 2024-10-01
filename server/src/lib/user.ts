@@ -1,27 +1,31 @@
-import { allUsers } from "../secrets";
+import { z } from "zod";
 
-const permissionTypes = ["full", "local", "none"] as const;
-export type Permission = (typeof permissionTypes)[number];
+const PermissionSchema = z.enum(["full", "local", "none"]);
 
-export type Permissions = Record<
-    "buzzer" | "frontdoor" | "unlatch" | "arm/buzzer" | "arm/unlatch",
-    Permission
->;
+const PermissionsSchema = z.object({
+    buzzer: PermissionSchema,
+    frontdoor: PermissionSchema,
+    unlatch: PermissionSchema,
+    "arm/buzzer": PermissionSchema,
+    "arm/unlatch": PermissionSchema,
+});
 
-export type User = {
-    username: string;
-    displayName: string;
-    secret: string;
-    permissions: Permissions;
-};
+export const UserSchema = z.object({
+    username: z.string(),
+    displayName: z.string(),
+    secret: z.string(),
+    permissions: PermissionsSchema,
+});
 
-export const findUser = (
-    username: string,
-    users: User[] = allUsers,
-): User | null => users.find((user) => user.username === username) ?? null;
+export type Permission = z.infer<typeof PermissionSchema>;
+export type Permissions = z.infer<typeof PermissionsSchema>;
+export type User = z.infer<typeof UserSchema>;
 
-export const dumpInviteLinks = () => {
-    const inviteLinks = allUsers.map(
+export const findUser = (username: string, users: User[]): User | null =>
+    users.find((user) => user.username === username) ?? null;
+
+export const dumpInviteLinks = (users: User[]) => {
+    const inviteLinks = users.map(
         ({ username, secret }) =>
             `https://buzzer.343max.com/login?user=${username}&key=${secret}`,
     );

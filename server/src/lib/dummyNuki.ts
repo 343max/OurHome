@@ -1,5 +1,5 @@
-import { Nuki } from "./nuki";
-import { NukiSmartLockConfig, NukiSmartLockState } from "./nuki";
+import type { Nuki } from "./nuki";
+import { type NukiSmartLockConfig, NukiSmartLockState } from "./nuki";
 import { sleep } from "./sleep";
 
 export const dummyNuki = (): Nuki => {

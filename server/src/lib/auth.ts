@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
-import { configuration } from "../secrets";
 import type { Action } from "./action";
-import { type Permission, type Permissions, type User, findUser } from "./user";
+import type { Configuration } from "./config";
+import { type Permission, type Permissions, findUser } from "./user";
 
 export const getToken = (
     user: string,
@@ -75,9 +75,9 @@ const getPermissions = (
 
 export const verifyAuth = (
     header: string | undefined,
+    configuration: Configuration,
     action: Action,
     now: number = new Date().getTime() / 1000,
-    users?: User[],
 ): boolean => {
     const skipAuth = configuration.disableAuth ?? false;
 
@@ -96,7 +96,7 @@ export const verifyAuth = (
         return false;
     }
 
-    const user = findUser(username, users);
+    const user = findUser(username, configuration.users);
     if (user === null) {
         return false;
     }

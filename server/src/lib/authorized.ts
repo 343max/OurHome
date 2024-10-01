@@ -3,6 +3,7 @@ import type { RouteParameters } from "express-serve-static-core";
 import type { ParsedQs } from "qs";
 import { actionForPath } from "./action";
 import { verifyAuth } from "./auth";
+import type { Configuration } from "./config";
 
 export const authorized = <
     Path extends string,
@@ -13,6 +14,7 @@ export const authorized = <
     LocalsObj extends Record<string, any> = Record<string, any>,
 >(
     path: Path,
+    configuration: Configuration,
     handler: RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>,
 ): [
     string,
@@ -32,7 +34,7 @@ export const authorized = <
         path,
         async (req, res, next) => {
             const authHeader = req.header("Authorization");
-            if (verifyAuth(authHeader, action)) {
+            if (verifyAuth(authHeader, configuration, action)) {
                 res.contentType("application/json; charset=UTF-8");
                 await handler(req, res, next);
             } else {
