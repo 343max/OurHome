@@ -22,3 +22,11 @@ jobs:
       - name: Run tests
         working-directory: ./server
         run: npm test
+
+      - name: Run biome
+        working-directory: ./server
+        run: npx biome ci
+
+      - name: Run tsc
+        working-directory: ./server
+        run: npx tsc
