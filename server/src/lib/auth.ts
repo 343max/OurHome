@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import type { Action } from "./action";
 import type { Configuration } from "./config";
-import { type Permission, type Permissions, type User, findUser } from "./user";
+import { type Permission, type Permissions, findUser } from "./user";
 
 export const getToken = (
     user: string,
