@@ -1,8 +1,8 @@
-import { z } from "zod";
+import { string, z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import type { Action } from "./lib/action";
 import { getAuthHeader } from "./lib/auth";
-import { configurationJsonSchema } from "./lib/config";
+import { configurationJsonSchema, loadConfiguration } from "./lib/config";
 import { findUser } from "./lib/user";
 
 const port = 4278;
@@ -10,8 +10,11 @@ const port = 4278;
 const sendRequest = async (
     method: "GET" | "POST",
     action: Action,
+    configPath: string,
+    username: string,
 ): Promise<unknown> => {
-    const max = findUser("max");
+    const config = loadConfiguration(configPath);
+    const max = findUser(username, config.users);
     if (max === null) throw new Error("user not found");
 
     const url = `http://localhost:${port}${action}`;
@@ -36,24 +39,23 @@ const sendRequest = async (
     }
 };
 
-const command = z.enum([
-    "doorbell",
-    "arrived",
-    "get-state",
-    "generate-json-schema",
+const command = z.union([
+    z.tuple([z.literal("doorbell"), z.string(), z.string()]),
+    z.tuple([z.literal("arrived"), z.string(), z.string()]),
+    z.tuple([z.literal("get-state"), z.string(), z.string()]),
+    z.tuple([z.literal("generate-json-schema")]),
 ]);
-type Command = z.infer<typeof command>;
 
-const main = async (command: Command) => {
-    switch (command) {
+const main = async (args: z.infer<typeof command>) => {
+    switch (args[0]) {
         case "doorbell":
-            await sendRequest("POST", "/doorbell");
+            await sendRequest("POST", "/doorbell", args[1], args[2]);
             break;
         case "arrived":
-            await sendRequest("POST", "/arrived");
+            await sendRequest("POST", "/arrived", args[1], args[2]);
             break;
         case "get-state":
-            console.log(await sendRequest("GET", "/state"));
+            console.log(await sendRequest("GET", "/state", args[1], args[2]));
             break;
         case "generate-json-schema":
             console.log(
@@ -70,4 +72,4 @@ const main = async (command: Command) => {
     }
 };
 
-main(command.parse(process.argv[2]));
+main(command.parse(process.argv.slice(2)));
