@@ -3,7 +3,7 @@ import { zodToJsonSchema } from "zod-to-json-schema";
 import type { Action } from "./lib/action";
 import { getAuthHeader } from "./lib/auth";
 import { configurationJsonSchema, loadConfiguration } from "./lib/config";
-import { findUser, User } from "./lib/user";
+import { User, findUser } from "./lib/user";
 
 const port = 4278;
 

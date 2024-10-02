@@ -28,6 +28,7 @@ test("check actions", () => {
 });
 
 test("split auth header", () => {
+    // biome-ignore lint/style/noNonNullAssertion: testing
     const { username, token, timestamp } = splitAuthHeader(
         "max:n4CSFJIbs31PLthxBjdIGJE0pRMI0dAyIFOfhFr4804=:4223",
     )!;
