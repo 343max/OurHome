@@ -1,5 +1,5 @@
-import { z } from "zod";
 import { AsyncDatabase } from "promised-sqlite3";
+import { z } from "zod";
 
 export const pushNotificationType = z.enum([
     "doorbellRing",
@@ -47,7 +47,7 @@ export const pushNotificationController = async (databasePath: string) => {
     ) => {
         (
             await db.prepare(
-                `INSERT OR REPLACE INTO deviceTokens (deviceToken, username, notificationTypes) VALUES (?, ?, ?)`,
+                "INSERT OR REPLACE INTO deviceTokens (deviceToken, username, notificationTypes) VALUES (?, ?, ?)",
             )
         ).run(token, user, JSON.stringify(types));
     };
