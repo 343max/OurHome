@@ -1,5 +1,9 @@
 import express from "express";
 import {
+    APNTokenDBController,
+    pushNotificationRegistration,
+} from "./lib/APNTokenDb";
+import {
     armForDoorBellAction,
     getCurrentDoorbellAction,
 } from "./lib/arrivedRecently";
@@ -8,10 +12,6 @@ import { authorized } from "./lib/authorized";
 import { buildInfo } from "./lib/buildinfo";
 import { loadConfiguration } from "./lib/config";
 import { createHandleDoorbellPress } from "./lib/handleDoorbellPress";
-import {
-    pushNotificationController,
-    pushNotificationRegistration,
-} from "./lib/pushNotifications";
 import { pushNotificationSender } from "./lib/pushNotificationsSender";
 import { sleep } from "./lib/sleep";
 import { dumpInviteLinks, findUser } from "./lib/user";
@@ -49,7 +49,7 @@ const main = async () => {
         getDoorbellRingSubscribers,
         getWhenOtherUserArrivesSubscribers,
         getUserTokens,
-    } = await pushNotificationController(
+    } = await APNTokenDBController(
         configuration.applePushNotifications.deviceTokenDBPath,
     );
 

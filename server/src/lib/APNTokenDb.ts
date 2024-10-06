@@ -22,17 +22,17 @@ const deviceTokenRow = z.object({
 
 export type DeviceTokenRow = z.infer<typeof deviceTokenRow>;
 
-export const pushNotificationController = async (databasePath: string) => {
+export const APNTokenDBController = async (databasePath: string) => {
     const db = await AsyncDatabase.open(databasePath);
 
     const prepare = async () => {
         await db.run(
             `CREATE TABLE IF NOT EXISTS "deviceTokens" (
-        "deviceToken" TEXT NOT NULL,
-        "username" text NOT NULL,
-        "notificationTypes" text NOT NULL,
-        PRIMARY KEY (deviceToken)
-    );`,
+                "deviceToken" TEXT NOT NULL,
+                "username" text NOT NULL,
+                "notificationTypes" text NOT NULL,
+                PRIMARY KEY (deviceToken)
+            );`,
         );
     };
 
