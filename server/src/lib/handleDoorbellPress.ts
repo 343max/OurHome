@@ -1,13 +1,13 @@
+import type { APNTokenDBController } from "./APNTokenDb";
 import {
     getCurrentDoorbellAction,
     resetDoorBellAction,
 } from "./arrivedRecently";
-import type { pushNotificationController } from "./pushNotifications";
 import type { PushNotificationSender } from "./pushNotificationsSender";
 import { sleep } from "./sleep";
 
 type Options = Pick<
-    Awaited<ReturnType<typeof pushNotificationController>>,
+    Awaited<ReturnType<typeof APNTokenDBController>>,
     "getDoorbellRingSubscribers" | "getUserTokens"
 > & {
     pressBuzzer: () => Promise<void>;

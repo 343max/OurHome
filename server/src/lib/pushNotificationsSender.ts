@@ -1,5 +1,5 @@
 import PushNotifications from "node-pushnotifications";
-import type { DeviceTokenRow } from "./pushNotifications";
+import type { DeviceTokenRow } from "./APNTokenDb";
 
 export type PushNotificationSender = (
     data: { title: string; body: string; category: string },
