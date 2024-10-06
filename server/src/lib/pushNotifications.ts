@@ -45,11 +45,11 @@ export const pushNotificationController = async (databasePath: string) => {
         token: string,
         types: PushNotificationType[],
     ) => {
-        (
-            await db.prepare(
-                "INSERT OR REPLACE INTO deviceTokens (deviceToken, username, notificationTypes) VALUES (?, ?, ?)",
-            )
-        ).run(token, user, JSON.stringify(types));
+        await db.run("DELETE FROM deviceTokens WHERE deviceToken = ?", token);
+        await db.run(
+            "INSERT OR REPLACE INTO deviceTokens (deviceToken, username, notificationTypes) VALUES (?, ?, ?)",
+            [token, user, JSON.stringify(types)],
+        );
     };
 
     const removeDevice = async (token: string) => {

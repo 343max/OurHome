@@ -15,10 +15,19 @@ test("pushNotifications", async () => {
 });
 
 test("pushNotifications - register twice", async () => {
-    const { registerDevice } = await pushNotificationController(":memory:");
-    await registerDevice("user", "token", ["doorbellRing"]);
-    await registerDevice("user", "token", ["doorbellRing"]);
-    expect(true).toBeTruthy();
+    const { registerDevice, getUserTokens } =
+        await pushNotificationController(":memory:");
+    await registerDevice("user", "token1", ["doorbellRing"]);
+    await registerDevice("user", "token1", [
+        "doorbellRing",
+        "whenOtherUserArrives",
+    ]);
+    expect(await getUserTokens("user")).toEqual([
+        {
+            deviceToken: "token1",
+            username: "user",
+        },
+    ]);
 });
 
 test("pushNotifications - other user arrives", async () => {
