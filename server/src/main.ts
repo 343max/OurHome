@@ -141,6 +141,7 @@ const main = async () => {
                         body: `👋 ${displayName} ist da!`,
                         category: "buzzer",
                     },
+                    undefined,
                     await getWhenOtherUserArrivesSubscribers(username),
                 );
                 armForDoorBellAction({

@@ -32,6 +32,7 @@ export const createHandleDoorbellPress = ({
                     body: "🔔 Ding! Dong!",
                     category: "buzzer",
                 },
+                undefined,
                 await getDoorbellRingSubscribers(),
             );
 
@@ -48,6 +49,7 @@ export const createHandleDoorbellPress = ({
                         body: "Buzzer wird gedrückt.",
                         category: "buzzer",
                     },
+                    undefined,
                     await getUserTokens(action.armedBy),
                 );
                 await pressBuzzer();
