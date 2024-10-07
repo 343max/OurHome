@@ -3,6 +3,7 @@ import { zodToJsonSchema } from "zod-to-json-schema";
 import type { Action } from "./lib/action";
 import { getAuthHeader } from "./lib/auth";
 import { configurationJsonSchema, loadConfiguration } from "./lib/config";
+import { pushNotificationSender } from "./lib/pushNotificationsSender";
 import { findUser } from "./lib/user";
 
 const port = 4278;
@@ -44,6 +45,7 @@ const command = z.union([
     z.tuple([z.literal("arrived"), z.string(), z.string()]),
     z.tuple([z.literal("get-state"), z.string(), z.string()]),
     z.tuple([z.literal("generate-json-schema")]),
+    z.tuple([z.literal("push-notification"), z.string(), z.string()]),
 ]);
 
 const main = async (args: z.infer<typeof command>) => {
@@ -69,6 +71,27 @@ const main = async (args: z.infer<typeof command>) => {
                 ),
             );
             break;
+        case "push-notification": {
+            const config = loadConfiguration(args[1]);
+            const sendPush = pushNotificationSender(
+                config.applePushNotifications,
+            );
+
+            await sendPush(
+                {
+                    title: "Test",
+                    body: "This is a test",
+                    category: "test",
+                },
+                undefined,
+                [
+                    {
+                        deviceToken: args[2],
+                    },
+                ],
+            );
+            break;
+        }
     }
 };
 
