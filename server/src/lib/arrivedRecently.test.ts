@@ -5,6 +5,7 @@ const getTime = () => new Date().getTime() / 1000;
 test("isArmedDoorbellAction - null", () => {
     expect(isArmedDoorbellAction(null)).toBeFalsy();
 });
+
 test("isArmedDoorbellAction - past", () => {
     expect(
         isArmedDoorbellAction({
