@@ -8,10 +8,7 @@ import { authorized } from "./lib/authorized";
 import { buildInfo } from "./lib/buildinfo";
 import { loadConfiguration } from "./lib/config";
 import { createHandleDoorbellPress } from "./lib/handleDoorbellPress";
-import {
-    armForDoorBellAction,
-    getCurrentDoorbellAction,
-} from "./lib/plannedActions";
+import { defaultPlannedActions } from "./lib/plannedActions";
 import { pushNotificationSender } from "./lib/pushNotificationsSender";
 import { sleep } from "./lib/sleep";
 import { dumpInviteLinks, findUser } from "./lib/user";
@@ -120,7 +117,8 @@ const main = async () => {
                 res.send({
                     success: true,
                     doorlock: await configuration.nuki.getState(),
-                    doorbellAction: getCurrentDoorbellAction(),
+                    doorbellAction:
+                        defaultPlannedActions.getCurrentDoorbellAction(),
                 }),
             ),
         )
@@ -144,7 +142,7 @@ const main = async () => {
                     undefined,
                     await getWhenOtherUserArrivesSubscribers(username),
                 );
-                armForDoorBellAction({
+                defaultPlannedActions.armForPlannedAction({
                     type: "buzzer",
                     timeout: configuration.arrivalTimeout,
                     armedBy: username,
@@ -158,7 +156,7 @@ const main = async () => {
                 const username = splitAuthHeader(
                     req.headers.authorization,
                 )!.username;
-                armForDoorBellAction({
+                defaultPlannedActions.armForPlannedAction({
                     type: "buzzer",
                     timeout: configuration.buzzerArmTimeout,
                     armedBy: username,
@@ -172,7 +170,7 @@ const main = async () => {
                 const username = splitAuthHeader(
                     req.headers.authorization,
                 )!.username;
-                armForDoorBellAction({
+                defaultPlannedActions.armForPlannedAction({
                     type: "unlatch",
                     timeout: configuration.unlatchArmTimeout,
                     armedBy: username,

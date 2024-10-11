@@ -1,5 +1,3 @@
-const getTime = () => new Date().getTime() / 1000;
-
 type DoorBellActionType = "buzzer" | "unlatch";
 type DoorBellAction = {
     armedBy: string;
@@ -7,21 +5,25 @@ type DoorBellAction = {
     type: DoorBellActionType;
 };
 
-let doorBellAction: null | DoorBellAction = null;
+export const plannedActions = (
+    getTimeFn: () => number = () => new Date().getTime() / 1000,
+) => {
+    let doorBellAction: null | DoorBellAction = null;
 
-export const armForDoorBellAction = ({
-    timeout,
-    ...action
-}: DoorBellAction) => {
-    doorBellAction = { timeout: getTime() + timeout, ...action };
+    const isArmedDoorbellAction = (action: DoorBellAction | null): boolean =>
+        action !== null && getTimeFn() < action.timeout;
+
+    return {
+        armForPlannedAction: ({ timeout, ...action }: DoorBellAction) => {
+            doorBellAction = { timeout: getTimeFn() + timeout, ...action };
+        },
+        isArmedDoorbellAction,
+        getCurrentDoorbellAction: (): DoorBellAction | null =>
+            isArmedDoorbellAction(doorBellAction) ? doorBellAction : null,
+        resetDoorBellAction: () => {
+            doorBellAction = null;
+        },
+    };
 };
 
-export const isArmedDoorbellAction = (action: DoorBellAction | null): boolean =>
-    action !== null && getTime() < action.timeout;
-
-export const getCurrentDoorbellAction = (): DoorBellAction | null =>
-    isArmedDoorbellAction(doorBellAction) ? doorBellAction : null;
-
-export const resetDoorBellAction = () => {
-    doorBellAction = null;
-};
+export const defaultPlannedActions = plannedActions();

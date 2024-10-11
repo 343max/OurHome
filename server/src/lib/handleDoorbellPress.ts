@@ -1,8 +1,5 @@
 import type { APNTokenDBController } from "./APNTokenDb";
-import {
-    getCurrentDoorbellAction,
-    resetDoorBellAction,
-} from "./plannedActions";
+import { defaultPlannedActions } from "./plannedActions";
 import type { PushNotificationSender } from "./pushNotificationsSender";
 import { sleep } from "./sleep";
 
@@ -23,7 +20,7 @@ export const createHandleDoorbellPress = ({
     sendPush,
 }: Options) => {
     return async (): Promise<"success" | "failure"> => {
-        const action = getCurrentDoorbellAction();
+        const action = defaultPlannedActions.getCurrentDoorbellAction();
         if (action === null) {
             // if it wasn't one of us, send a notification
             sendPush(
@@ -54,11 +51,11 @@ export const createHandleDoorbellPress = ({
                 );
                 await pressBuzzer();
                 await sleep(500);
-                resetDoorBellAction();
+                defaultPlannedActions.resetDoorBellAction();
                 return "success";
             case "unlatch":
                 console.log("unlatching because the doorbell buzzer was armed");
-                resetDoorBellAction();
+                defaultPlannedActions.resetDoorBellAction();
                 await unlatchDoor();
                 return "success";
         }
