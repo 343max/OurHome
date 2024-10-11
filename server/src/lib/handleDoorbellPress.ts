@@ -20,7 +20,7 @@ export const createHandleDoorbellPress = ({
     sendPush,
 }: Options) => {
     return async (): Promise<"success" | "failure"> => {
-        const action = defaultPlannedActions.getCurrentDoorbellAction();
+        const action = defaultPlannedActions.getCurrentPlannedAction();
         if (action === null) {
             // if it wasn't one of us, send a notification
             sendPush(
@@ -51,11 +51,11 @@ export const createHandleDoorbellPress = ({
                 );
                 await pressBuzzer();
                 await sleep(500);
-                defaultPlannedActions.resetDoorBellAction();
+                defaultPlannedActions.resetDoorPlannedAction();
                 return "success";
             case "unlatch":
                 console.log("unlatching because the doorbell buzzer was armed");
-                defaultPlannedActions.resetDoorBellAction();
+                defaultPlannedActions.resetDoorPlannedAction();
                 await unlatchDoor();
                 return "success";
         }

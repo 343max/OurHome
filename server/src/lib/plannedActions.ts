@@ -10,17 +10,17 @@ export const plannedActions = (
 ) => {
     let doorBellAction: null | DoorBellAction = null;
 
-    const isArmedDoorbellAction = (action: DoorBellAction | null): boolean =>
+    const isArmedAction = (action: DoorBellAction | null): boolean =>
         action !== null && getTimeFn() < action.timeout;
 
     return {
         armForPlannedAction: ({ timeout, ...action }: DoorBellAction) => {
             doorBellAction = { timeout: getTimeFn() + timeout, ...action };
         },
-        isArmedDoorbellAction,
-        getCurrentDoorbellAction: (): DoorBellAction | null =>
-            isArmedDoorbellAction(doorBellAction) ? doorBellAction : null,
-        resetDoorBellAction: () => {
+        isArmedAction: isArmedAction,
+        getCurrentPlannedAction: (): DoorBellAction | null =>
+            isArmedAction(doorBellAction) ? doorBellAction : null,
+        resetDoorPlannedAction: () => {
             doorBellAction = null;
         },
     };

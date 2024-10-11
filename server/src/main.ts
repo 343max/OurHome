@@ -118,7 +118,7 @@ const main = async () => {
                     success: true,
                     doorlock: await configuration.nuki.getState(),
                     doorbellAction:
-                        defaultPlannedActions.getCurrentDoorbellAction(),
+                        defaultPlannedActions.getCurrentPlannedAction(),
                 }),
             ),
         )
