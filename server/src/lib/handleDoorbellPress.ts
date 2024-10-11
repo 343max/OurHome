@@ -2,7 +2,7 @@ import type { APNTokenDBController } from "./APNTokenDb";
 import {
     getCurrentDoorbellAction,
     resetDoorBellAction,
-} from "./arrivedRecently";
+} from "./plannedActions";
 import type { PushNotificationSender } from "./pushNotificationsSender";
 import { sleep } from "./sleep";
 
