@@ -102,3 +102,7 @@ export const APNTokenDBController = async (databasePath: string) => {
         getUserTokens,
     };
 };
+
+export type APNTokenDBControllerFunctions = Awaited<
+    ReturnType<typeof APNTokenDBController>
+>;

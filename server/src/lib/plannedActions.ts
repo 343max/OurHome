@@ -27,3 +27,5 @@ export const plannedActions = (
 };
 
 export const defaultPlannedActions = plannedActions();
+
+export type PlannedActions = ReturnType<typeof plannedActions>;

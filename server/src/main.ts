@@ -7,10 +7,9 @@ import { splitAuthHeader } from "./lib/auth";
 import { authorized } from "./lib/authorized";
 import { buildInfo } from "./lib/buildinfo";
 import { loadConfiguration } from "./lib/config";
-import { createHandleDoorbellPress } from "./lib/handleDoorbellPress";
+import { setupDoorLockController } from "./lib/doorLockController";
 import { defaultPlannedActions } from "./lib/plannedActions";
 import { pushNotificationSender } from "./lib/pushNotificationsSender";
-import { sleep } from "./lib/sleep";
 import { dumpInviteLinks, findUser } from "./lib/user";
 
 const configurationPath = process.argv[2];
@@ -39,7 +38,6 @@ console.log(`👷 build date: ${buildInfo.date}`);
 dumpInviteLinks(configuration.users);
 
 const main = async () => {
-    const buzzer = configuration.buzzer();
     const {
         registerDevice,
         removeDevice,
@@ -50,24 +48,16 @@ const main = async () => {
         configuration.applePushNotifications.deviceTokenDBPath,
     );
 
-    const pressBuzzer = async () => {
-        for (const _ in [0, 1, 2, 3, 4, 5]) {
-            await sleep(500);
-            await buzzer.pressBuzzer();
-        }
-    };
-
-    const handleDoorbellPress = createHandleDoorbellPress({
-        getDoorbellRingSubscribers,
-        getUserTokens,
-        pressBuzzer,
-        unlatchDoor: async () => {
-            configuration.nuki.unlatch();
-        },
+    const doorLockController = setupDoorLockController(
+        defaultPlannedActions,
+        configuration,
         sendPush,
-    });
-
-    buzzer.registerDoorbellHandler(handleDoorbellPress);
+        {
+            getDoorbellRingSubscribers,
+            getUserTokens,
+            getWhenOtherUserArrivesSubscribers,
+        },
+    );
 
     app.use(express.json())
         .all("*", (req, _res, next) => {
@@ -78,23 +68,23 @@ const main = async () => {
         })
         .post(
             ...authorized("/buzzer", configuration, async (_req, res) => {
-                await pressBuzzer();
+                await doorLockController.pressBuzzer();
                 res.send({ success: true });
             }),
         )
         .post(
             ...authorized("/lock", configuration, async (_req, res) =>
-                res.send(await configuration.nuki.lock()),
+                res.send(await doorLockController.lockDoor()),
             ),
         )
         .post(
             ...authorized("/unlock", configuration, async (_req, res) =>
-                res.send(await configuration.nuki.unlock()),
+                res.send(await doorLockController.unlockDoor()),
             ),
         )
         .post(
             ...authorized("/unlatch", configuration, async (_req, res) =>
-                res.send(await configuration.nuki.unlatch()),
+                res.send(await doorLockController.unlatchDoor()),
             ),
         )
         .get(
@@ -116,7 +106,7 @@ const main = async () => {
             ...authorized("/state", configuration, async (_req, res) =>
                 res.send({
                     success: true,
-                    doorlock: await configuration.nuki.getState(),
+                    doorlock: await doorLockController.getNukiState(),
                     doorbellAction:
                         defaultPlannedActions.getCurrentPlannedAction(),
                 }),
@@ -128,25 +118,9 @@ const main = async () => {
                 const username = splitAuthHeader(
                     req.headers.authorization,
                 )!.username;
-                // biome-ignore lint/style/noNonNullAssertion: <explanation>
-                const { displayName } = findUser(
-                    username,
-                    configuration.users,
-                )!;
-                sendPush(
-                    {
-                        title: "Our Home",
-                        body: `👋 ${displayName} ist da!`,
-                        category: "buzzer",
-                    },
-                    undefined,
-                    await getWhenOtherUserArrivesSubscribers(username),
-                );
-                defaultPlannedActions.armForPlannedAction({
-                    type: "buzzer",
-                    timeout: configuration.arrivalTimeout,
-                    armedBy: username,
-                });
+
+                await doorLockController.userArrived(username);
+
                 res.send({ success: true });
             }),
         )
@@ -156,11 +130,7 @@ const main = async () => {
                 const username = splitAuthHeader(
                     req.headers.authorization,
                 )!.username;
-                defaultPlannedActions.armForPlannedAction({
-                    type: "buzzer",
-                    timeout: configuration.buzzerArmTimeout,
-                    armedBy: username,
-                });
+                doorLockController.armBuzzer(username);
                 res.send({ success: true });
             }),
         )
@@ -170,11 +140,7 @@ const main = async () => {
                 const username = splitAuthHeader(
                     req.headers.authorization,
                 )!.username;
-                defaultPlannedActions.armForPlannedAction({
-                    type: "unlatch",
-                    timeout: configuration.unlatchArmTimeout,
-                    armedBy: username,
-                });
+                doorLockController.armUnlatch(username);
                 res.send({ success: true });
             }),
         )
