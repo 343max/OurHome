@@ -5,27 +5,32 @@ type DoorBellAction = {
     type: DoorBellActionType;
 };
 
-export const plannedActions = (
-    getTimeFn: () => number = () => new Date().getTime() / 1000,
+type GetTimeFn = () => number;
+
+export const isArmedAction = (
+    action: DoorBellAction | null,
+    getTimeFn: GetTimeFn,
+): boolean => action !== null && getTimeFn() < action.timeout;
+
+export const setupPlannedActions = (
+    getTimeFn: GetTimeFn = () => new Date().getTime() / 1000,
 ) => {
     let doorBellAction: null | DoorBellAction = null;
-
-    const isArmedAction = (action: DoorBellAction | null): boolean =>
-        action !== null && getTimeFn() < action.timeout;
 
     return {
         armForPlannedAction: ({ timeout, ...action }: DoorBellAction) => {
             doorBellAction = { timeout: getTimeFn() + timeout, ...action };
         },
-        isArmedAction: isArmedAction,
+
         getCurrentPlannedAction: (): DoorBellAction | null =>
-            isArmedAction(doorBellAction) ? doorBellAction : null,
+            isArmedAction(doorBellAction, getTimeFn) ? doorBellAction : null,
+
         resetDoorPlannedAction: () => {
             doorBellAction = null;
         },
     };
 };
 
-export const defaultPlannedActions = plannedActions();
+export const defaultPlannedActions = setupPlannedActions();
 
-export type PlannedActions = ReturnType<typeof plannedActions>;
+export type PlannedActions = ReturnType<typeof setupPlannedActions>;

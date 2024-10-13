@@ -1,30 +1,66 @@
-import { plannedActions } from "./plannedActions";
+import { isArmedAction, setupPlannedActions } from "./plannedActions";
 
 const getTime = () => new Date().getTime() / 1000;
 
-test("isArmedDoorbellAction - null", () => {
-    const { isArmedAction: isArmedDoorbellAction } = plannedActions();
-    expect(isArmedDoorbellAction(null)).toBeFalsy();
+describe("isArmedAction", () => {
+    test("null", () => {
+        expect(isArmedAction(null, getTime)).toBeFalsy();
+    });
+
+    test("past", () => {
+        expect(
+            isArmedAction(
+                {
+                    type: "buzzer",
+                    timeout: getTime() - 10,
+                    armedBy: "max",
+                },
+                getTime,
+            ),
+        ).toBeFalsy();
+    });
+
+    test("future", () => {
+        expect(
+            isArmedAction(
+                {
+                    type: "buzzer",
+                    timeout: getTime() + 10,
+                    armedBy: "max",
+                },
+                getTime,
+            ),
+        ).toBeTruthy();
+    });
 });
 
-test("isArmedDoorbellAction - past", () => {
-    const { isArmedAction: isArmedDoorbellAction } = plannedActions();
-    expect(
-        isArmedDoorbellAction({
-            type: "buzzer",
-            timeout: getTime() - 10,
-            armedBy: "max",
-        }),
-    ).toBeFalsy();
-});
+describe("plannedActions", () => {
+    const getTimeMock = jest.fn();
+    const plannedActions = setupPlannedActions(getTimeMock);
 
-test("isArmedDoorbellAction - future", () => {
-    const { isArmedAction: isArmedDoorbellAction } = plannedActions();
-    expect(
-        isArmedDoorbellAction({
+    it("should still be armed during the timeout", () => {
+        getTimeMock.mockReturnValue(0);
+        plannedActions.armForPlannedAction({
             type: "buzzer",
-            timeout: getTime() + 10,
+            timeout: 10,
             armedBy: "max",
-        }),
-    ).toBeTruthy();
+        });
+        getTimeMock.mockReturnValue(5);
+        expect(plannedActions.getCurrentPlannedAction()).toEqual({
+            type: "buzzer",
+            timeout: 10,
+            armedBy: "max",
+        });
+    });
+
+    it("should not be armed after the timeout", () => {
+        getTimeMock.mockReturnValue(0);
+        plannedActions.armForPlannedAction({
+            type: "buzzer",
+            timeout: 10,
+            armedBy: "max",
+        });
+        getTimeMock.mockReturnValue(15);
+        expect(plannedActions.getCurrentPlannedAction()).toBeNull();
+    });
 });
