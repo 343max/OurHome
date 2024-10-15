@@ -38,6 +38,8 @@ console.log(`👷 build date: ${buildInfo.date}`);
 dumpInviteLinks(configuration.users);
 
 const main = async () => {
+    const plannedActions = defaultPlannedActions;
+
     const {
         registerDevice,
         removeDevice,
@@ -49,13 +51,56 @@ const main = async () => {
     );
 
     const doorLockController = setupDoorLockController(
-        defaultPlannedActions,
-        configuration,
-        sendPush,
+        plannedActions,
+        { ...configuration, buzzer: configuration.buzzer() },
         {
-            getDoorbellRingSubscribers,
-            getUserTokens,
-            getWhenOtherUserArrivesSubscribers,
+            handleAnonymousDoorbellPress: async () =>
+                await sendPush(
+                    {
+                        title: "Our Home",
+                        body: "🔔 Ding! Dong!",
+                        category: "buzzer",
+                    },
+                    undefined,
+                    await getDoorbellRingSubscribers(),
+                ),
+            handleUnlatchingDoorBecauseOfRing: async (armedBy) =>
+                await sendPush(
+                    {
+                        title: "Our Home",
+                        body: "Buzzer wird gedrückt.",
+                        category: "buzzer",
+                    },
+                    undefined,
+                    await getUserTokens(armedBy),
+                ),
+            handleUserArrived: async (username) => {
+                const { displayName } = findUser(
+                    username,
+                    configuration.users,
+                ) ?? {
+                    displayName: undefined,
+                };
+
+                const whenOtherUserArrivesSubscribers =
+                    await getWhenOtherUserArrivesSubscribers(username);
+
+                sendPush(
+                    {
+                        title: "Our Home",
+                        body: `👋 ${displayName} ist da!`,
+                        category: "buzzer",
+                    },
+                    undefined,
+                    whenOtherUserArrivesSubscribers,
+                );
+
+                plannedActions.armForPlannedAction({
+                    type: "buzzer",
+                    timeout: configuration.arrivalTimeout,
+                    armedBy: username,
+                });
+            },
         },
     );
 

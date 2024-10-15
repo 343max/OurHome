@@ -1,10 +1,7 @@
-import type { APNTokenDBControllerFunctions } from "./APNTokenDb";
 import type { Buzzer } from "./buzzer";
 import type { Configuration } from "./config";
 import type { PlannedActions } from "./plannedActions";
-import type { pushNotificationSender } from "./pushNotificationsSender";
 import { sleep } from "./sleep";
-import { findUser } from "./user";
 
 export const setupDoorLockController = (
     plannedActions: PlannedActions,
@@ -20,17 +17,15 @@ export const setupDoorLockController = (
         | "unlatchArmTimeout"
         | "arrivalTimeout"
     > & { buzzer: ReturnType<Buzzer> },
-    sendPush: ReturnType<typeof pushNotificationSender>,
     {
-        getDoorbellRingSubscribers,
-        getUserTokens,
-        getWhenOtherUserArrivesSubscribers,
-    }: Pick<
-        APNTokenDBControllerFunctions,
-        | "getDoorbellRingSubscribers"
-        | "getUserTokens"
-        | "getWhenOtherUserArrivesSubscribers"
-    >,
+        handleAnonymousDoorbellPress,
+        handleUnlatchingDoorBecauseOfRing,
+        handleUserArrived,
+    }: {
+        handleAnonymousDoorbellPress: () => Promise<void>;
+        handleUnlatchingDoorBecauseOfRing: (armedBy: string) => Promise<void>;
+        handleUserArrived: (username: string) => Promise<void>;
+    },
 ) => {
     const pressBuzzer = async () => {
         for (const _ in [0, 1, 2, 3, 4, 5]) {
@@ -43,15 +38,7 @@ export const setupDoorLockController = (
         const action = plannedActions.getCurrentPlannedAction();
         if (action === null) {
             // if it wasn't one of us, send a notification
-            sendPush(
-                {
-                    title: "Our Home",
-                    body: "🔔 Ding! Dong!",
-                    category: "buzzer",
-                },
-                undefined,
-                await getDoorbellRingSubscribers(),
-            );
+            await handleAnonymousDoorbellPress();
 
             console.log("doorbell action not armed, doing nothing");
             return "failure";
@@ -60,15 +47,9 @@ export const setupDoorLockController = (
         switch (action.type) {
             case "buzzer":
                 console.log("buzzer because the doorbell buzzer was armed");
-                sendPush(
-                    {
-                        title: "Our Home",
-                        body: "Buzzer wird gedrückt.",
-                        category: "buzzer",
-                    },
-                    undefined,
-                    await getUserTokens(action.armedBy),
-                );
+
+                await handleUnlatchingDoorBecauseOfRing(action.armedBy);
+
                 await pressBuzzer();
                 await sleep(500);
                 plannedActions.resetDoorPlannedAction();
@@ -98,22 +79,7 @@ export const setupDoorLockController = (
             return nuki.getState();
         },
         userArrived: async (username: string) => {
-            const { displayName } = findUser(username, configuration.users) ?? {
-                displayName: undefined,
-            };
-
-            const whenOtherUserArrivesSubscribers =
-                await getWhenOtherUserArrivesSubscribers(username);
-
-            sendPush(
-                {
-                    title: "Our Home",
-                    body: `👋 ${displayName} ist da!`,
-                    category: "buzzer",
-                },
-                undefined,
-                whenOtherUserArrivesSubscribers,
-            );
+            handleUserArrived(username);
 
             plannedActions.armForPlannedAction({
                 type: "buzzer",
