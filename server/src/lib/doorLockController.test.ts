@@ -124,4 +124,27 @@ describe("doorLockController", () => {
         expect(handleUnlatchingDoorBecauseOfRing).toHaveBeenCalled();
         expect(handleUserArrived).toHaveBeenCalled();
     });
+
+    test("unlatching the door should unlatch the door", async () => {
+        const { doorLockController, mockNuki } = setup();
+        await doorLockController.unlatchDoor();
+        expect(mockNuki.unlatch).toHaveBeenCalled();
+    });
+
+    test("ringing after arm the buzzer should buzz the door", async () => {
+        const {
+            doorLockController,
+            mockBuzzer,
+            simulateDoorbellPress,
+            handleAnonymousDoorbellPress,
+            handleUnlatchingDoorBecauseOfRing,
+            handleUserArrived,
+        } = setup();
+        await doorLockController.armBuzzer("max");
+        await simulateDoorbellPress();
+        expect(mockBuzzer.pressBuzzer).toHaveBeenCalled();
+        expect(handleAnonymousDoorbellPress).not.toHaveBeenCalled();
+        expect(handleUnlatchingDoorBecauseOfRing).toHaveBeenCalled();
+        expect(handleUserArrived).not.toHaveBeenCalled();
+    });
 });
