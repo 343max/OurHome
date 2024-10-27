@@ -81,7 +81,7 @@ const main = async (args: z.infer<typeof command>) => {
                 {
                     title: "Test",
                     body: "This is a test",
-                    category: "test",
+                    category: "buzzer",
                 },
                 undefined,
                 [

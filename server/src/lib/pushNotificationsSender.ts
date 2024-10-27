@@ -29,7 +29,10 @@ export const pushNotificationSender = ({
     });
 
     return async (
-        alert: { title: string; body: string; category: string },
+        {
+            category,
+            ...alert
+        }: { title: string; body: string; category: string },
         data: Record<string, unknown> | undefined,
         devices: Pick<DeviceTokenRow, "deviceToken">[],
     ) => {
@@ -42,6 +45,7 @@ export const pushNotificationSender = ({
                 await apns.send(
                     new Notification(device.deviceToken, {
                         alert,
+                        category,
                         ...(data === undefined ? {} : data),
                     }),
                 );
