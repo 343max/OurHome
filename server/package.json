@@ -1,7 +1,7 @@
 {
     "scripts": {
         "build": "tsc -p .",
-        "dev": "node-dev src/main.ts ./dev-config.json",
+        "dev": "node-dev src/main.ts ./config-dev.json",
         "generate:json-schema": "ts-node ./src/cli.ts generate-json-schema",
         "simulate:arrival": "ts-node ./src/cli.ts arrived",
         "simulate:doorbell-press": "ts-node ./src/cli.ts doorbell",
