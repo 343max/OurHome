@@ -32,7 +32,7 @@ const main = async () => {
     (await apiServer(configuration, sendPush)).listen(port);
 
     const mqttConfig = configuration.mqttServer;
-    if (mqttConfig.enabled) {
+    if (mqttConfig?.enabled) {
         const mqttServer = await setupMqttServer(
             mqttConfig,
             configuration.nuki.unlatch,

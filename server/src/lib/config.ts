@@ -58,7 +58,7 @@ export const configurationJsonSchema = z.object({
     disableAuth: z.boolean().optional(),
     httpPort: z.number(),
     users: z.array(UserSchema),
-    mqttServer: mqttServerSchema.optional().default({ enabled: false }),
+    mqttServer: mqttServerSchema.optional(),
     $schema: z.string().optional(), // to allow the schema to be set in the config.json
 });
 
