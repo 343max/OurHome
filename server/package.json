@@ -3,6 +3,7 @@
         "build": "tsc -p .",
         "dev": "node-dev src/main.ts ./config-dev.json",
         "generate:json-schema": "ts-node ./src/cli.ts generate-json-schema > config-schema.json && biome format --write ./config-schema.json",
+        "generate:json-schema:no-formatter": "ts-node ./src/cli.ts generate-json-schema > config-schema.json",
         "simulate:arrival": "ts-node ./src/cli.ts arrived",
         "simulate:doorbell-press": "ts-node ./src/cli.ts doorbell",
         "simulate:get-state": "ts-node ./src/cli.ts get-state",
