@@ -29,6 +29,17 @@ const NukiSchema = z.discriminatedUnion("type", [
     }),
 ]);
 
+const mqttServerSchema = z.object({
+    enabled: z.boolean().default(false),
+    host: z.string().optional(),
+    port: z.number().default(1883),
+    username: z.string().optional(),
+    password: z.string().optional(),
+    homeKeyAuthTopic: z.string().default("ESP32_285A44/homekey/auth"),
+});
+
+export type MqttServerConfiguration = z.infer<typeof mqttServerSchema>;
+
 export const configurationJsonSchema = z.object({
     buzzer: BuzzerSchema,
     nuki: NukiSchema,
@@ -46,11 +57,16 @@ export const configurationJsonSchema = z.object({
     disableAuth: z.boolean().optional(),
     httpPort: z.number(),
     users: z.array(UserSchema),
+    mqttServer: mqttServerSchema.optional().default({ enabled: false }),
+    $schema: z.string().optional(), // to allow the schema to be set in the config.json
 });
 
 type ConfigurationJson = z.infer<typeof configurationJsonSchema>;
 
-export type Configuration = Omit<ConfigurationJson, "buzzer" | "nuki"> & {
+export type Configuration = Omit<
+    ConfigurationJson,
+    "buzzer" | "nuki" | "$schema"
+> & {
     buzzer: Buzzer;
     nuki: Nuki;
 };

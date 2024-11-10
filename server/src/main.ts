@@ -3,6 +3,7 @@ import { buildInfo } from "./lib/buildinfo";
 import { loadConfiguration } from "./lib/config";
 import { pushNotificationSender } from "./lib/pushNotificationsSender";
 import { dumpInviteLinks } from "./lib/user";
+import { setupMqttServer } from "./mqttServer";
 
 const configurationPath = process.argv[2];
 
@@ -29,6 +30,14 @@ dumpInviteLinks(configuration.users);
 
 const main = async () => {
     (await apiServer(configuration, sendPush)).listen(port);
+
+    const mqttConfig = configuration.mqttServer;
+    if (mqttConfig.enabled) {
+        const mqttServer = await setupMqttServer(mqttConfig);
+        mqttServer.listen(mqttConfig.port, mqttConfig.host, () => {
+            console.log(`🌳 mqtt server running at ${mqttConfig.port} 🌳`);
+        });
+    }
 };
 
 main();

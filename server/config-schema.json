@@ -1,195 +1,233 @@
 {
-    "$ref": "#/definitions/de.343max.our-home.config",
-    "definitions": {
-        "de.343max.our-home.config": {
+  "$ref": "#/definitions/de.343max.our-home.config",
+  "definitions": {
+    "de.343max.our-home.config": {
+      "type": "object",
+      "properties": {
+        "buzzer": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "dummy"
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "serial"
+                },
+                "path": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "path"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "nuki": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "dummy"
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "live"
+                },
+                "host": {
+                  "type": "string"
+                },
+                "port": {
+                  "type": "number"
+                },
+                "token": {
+                  "type": "string"
+                },
+                "deviceId": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type",
+                "host",
+                "port",
+                "token",
+                "deviceId"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "buzzerArmTimeout": {
+          "type": "number"
+        },
+        "unlatchArmTimeout": {
+          "type": "number"
+        },
+        "arrivalTimeout": {
+          "type": "number"
+        },
+        "applePushNotifications": {
+          "type": "object",
+          "properties": {
+            "deviceTokenDBPath": {
+              "type": "string"
+            },
+            "teamId": {
+              "type": "string"
+            },
+            "signingKeyId": {
+              "type": "string"
+            },
+            "signingKey": {
+              "type": "string"
+            },
+            "topic": {
+              "type": "string"
+            },
+            "production": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "deviceTokenDBPath",
+            "teamId",
+            "signingKeyId",
+            "signingKey",
+            "topic",
+            "production"
+          ],
+          "additionalProperties": false
+        },
+        "disableAuth": {
+          "type": "boolean"
+        },
+        "httpPort": {
+          "type": "number"
+        },
+        "users": {
+          "type": "array",
+          "items": {
             "type": "object",
             "properties": {
-                "buzzer": {
-                    "anyOf": [
-                        {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "const": "dummy"
-                                }
-                            },
-                            "required": ["type"],
-                            "additionalProperties": false
-                        },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "const": "serial"
-                                },
-                                "path": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": ["type", "path"],
-                            "additionalProperties": false
-                        }
+              "username": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "secret": {
+                "type": "string"
+              },
+              "permissions": {
+                "type": "object",
+                "properties": {
+                  "buzzer": {
+                    "type": "string",
+                    "enum": [
+                      "full",
+                      "local",
+                      "none"
                     ]
+                  },
+                  "frontdoor": {
+                    "$ref": "#/definitions/de.343max.our-home.config/properties/users/items/properties/permissions/properties/buzzer"
+                  },
+                  "unlatch": {
+                    "$ref": "#/definitions/de.343max.our-home.config/properties/users/items/properties/permissions/properties/buzzer"
+                  },
+                  "arm/buzzer": {
+                    "$ref": "#/definitions/de.343max.our-home.config/properties/users/items/properties/permissions/properties/buzzer"
+                  },
+                  "arm/unlatch": {
+                    "$ref": "#/definitions/de.343max.our-home.config/properties/users/items/properties/permissions/properties/buzzer"
+                  }
                 },
-                "nuki": {
-                    "anyOf": [
-                        {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "const": "dummy"
-                                }
-                            },
-                            "required": ["type"],
-                            "additionalProperties": false
-                        },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "const": "live"
-                                },
-                                "host": {
-                                    "type": "string"
-                                },
-                                "port": {
-                                    "type": "number"
-                                },
-                                "token": {
-                                    "type": "string"
-                                },
-                                "deviceId": {
-                                    "type": "number"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "host",
-                                "port",
-                                "token",
-                                "deviceId"
-                            ],
-                            "additionalProperties": false
-                        }
-                    ]
-                },
-                "buzzerArmTimeout": {
-                    "type": "number"
-                },
-                "unlatchArmTimeout": {
-                    "type": "number"
-                },
-                "arrivalTimeout": {
-                    "type": "number"
-                },
-                "applePushNotifications": {
-                    "type": "object",
-                    "properties": {
-                        "deviceTokenDBPath": {
-                            "type": "string"
-                        },
-                        "teamId": {
-                            "type": "string"
-                        },
-                        "signingKeyId": {
-                            "type": "string"
-                        },
-                        "signingKey": {
-                            "type": "string"
-                        },
-                        "topic": {
-                            "type": "string"
-                        },
-                        "production": {
-                            "type": "boolean"
-                        }
-                    },
-                    "required": [
-                        "deviceTokenDBPath",
-                        "teamId",
-                        "signingKeyId",
-                        "signingKey",
-                        "topic",
-                        "production"
-                    ],
-                    "additionalProperties": false
-                },
-                "disableAuth": {
-                    "type": "boolean"
-                },
-                "httpPort": {
-                    "type": "number"
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "username": {
-                                "type": "string"
-                            },
-                            "displayName": {
-                                "type": "string"
-                            },
-                            "secret": {
-                                "type": "string"
-                            },
-                            "permissions": {
-                                "type": "object",
-                                "properties": {
-                                    "buzzer": {
-                                        "type": "string",
-                                        "enum": ["full", "local", "none"]
-                                    },
-                                    "frontdoor": {
-                                        "$ref": "#/definitions/de.343max.our-home.config/properties/users/items/properties/permissions/properties/buzzer"
-                                    },
-                                    "unlatch": {
-                                        "$ref": "#/definitions/de.343max.our-home.config/properties/users/items/properties/permissions/properties/buzzer"
-                                    },
-                                    "arm/buzzer": {
-                                        "$ref": "#/definitions/de.343max.our-home.config/properties/users/items/properties/permissions/properties/buzzer"
-                                    },
-                                    "arm/unlatch": {
-                                        "$ref": "#/definitions/de.343max.our-home.config/properties/users/items/properties/permissions/properties/buzzer"
-                                    }
-                                },
-                                "required": [
-                                    "buzzer",
-                                    "frontdoor",
-                                    "unlatch",
-                                    "arm/buzzer",
-                                    "arm/unlatch"
-                                ],
-                                "additionalProperties": false
-                            }
-                        },
-                        "required": [
-                            "username",
-                            "displayName",
-                            "secret",
-                            "permissions"
-                        ],
-                        "additionalProperties": false
-                    }
-                }
+                "required": [
+                  "buzzer",
+                  "frontdoor",
+                  "unlatch",
+                  "arm/buzzer",
+                  "arm/unlatch"
+                ],
+                "additionalProperties": false
+              }
             },
             "required": [
-                "buzzer",
-                "nuki",
-                "buzzerArmTimeout",
-                "unlatchArmTimeout",
-                "arrivalTimeout",
-                "applePushNotifications",
-                "httpPort",
-                "users"
+              "username",
+              "displayName",
+              "secret",
+              "permissions"
             ],
             "additionalProperties": false
+          }
+        },
+        "mqttServer": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": false
+            },
+            "host": {
+              "type": "string",
+              "default": "localhost"
+            },
+            "port": {
+              "type": "number",
+              "default": 1883
+            },
+            "username": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "$schema": {
+          "type": "string"
         }
-    },
-    "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "required": [
+        "buzzer",
+        "nuki",
+        "buzzerArmTimeout",
+        "unlatchArmTimeout",
+        "arrivalTimeout",
+        "applePushNotifications",
+        "httpPort",
+        "users"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }
