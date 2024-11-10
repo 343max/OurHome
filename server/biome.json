@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
     "linter": { "rules": { "suspicious": { "noExplicitAny": "off" } } },
-    "files": { "ignore": ["./dist"] },
+    "files": { "ignore": ["./dist/**", "./node_modules/**"] },
     "formatter": { "indentStyle": "space", "indentWidth": 4 },
     "javascript": { "formatter": { "semicolons": "always" } }
 }

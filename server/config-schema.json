@@ -176,6 +176,40 @@
                         ],
                         "additionalProperties": false
                     }
+                },
+                "mqttServer": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "host": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "number",
+                            "default": 1883
+                        },
+                        "authentication": {
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "username": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        },
+                        "homeKeyAuthTopic": {
+                            "type": "string",
+                            "default": "ESP32_285A44/homekey/auth"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "$schema": {
+                    "type": "string"
                 }
             },
             "required": [
