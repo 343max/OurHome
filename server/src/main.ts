@@ -33,7 +33,10 @@ const main = async () => {
 
     const mqttConfig = configuration.mqttServer;
     if (mqttConfig.enabled) {
-        const mqttServer = await setupMqttServer(mqttConfig);
+        const mqttServer = await setupMqttServer(
+            mqttConfig,
+            configuration.nuki.unlatch,
+        );
         mqttServer.listen(mqttConfig.port, mqttConfig.host, () => {
             console.log(`🌳 mqtt server running at ${mqttConfig.port} 🌳`);
         });

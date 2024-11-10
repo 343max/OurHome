@@ -196,21 +196,31 @@
               "default": false
             },
             "host": {
-              "type": "string",
-              "default": "localhost"
+              "type": "string"
             },
             "port": {
               "type": "number",
               "default": 1883
+            },
+            "authentication": {
+              "type": "boolean",
+              "default": true
             },
             "username": {
               "type": "string"
             },
             "password": {
               "type": "string"
+            },
+            "homeKeyAuthTopic": {
+              "type": "string",
+              "default": "ESP32_285A44/homekey/auth"
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "default": {
+            "enabled": false
+          }
         },
         "$schema": {
           "type": "string"

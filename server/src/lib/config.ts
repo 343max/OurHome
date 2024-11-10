@@ -33,6 +33,7 @@ const mqttServerSchema = z.object({
     enabled: z.boolean().default(false),
     host: z.string().optional(),
     port: z.number().default(1883),
+    authentication: z.boolean().default(true),
     username: z.string().optional(),
     password: z.string().optional(),
     homeKeyAuthTopic: z.string().default("ESP32_285A44/homekey/auth"),
