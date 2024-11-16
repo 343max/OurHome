@@ -37,10 +37,13 @@ export const setupMqttServer = (
     aedes.on("publish", (event) => {
         if (event.topic === config.homeKeyAuthTopic) {
             try {
-                // parsing as a sanity check
-                JSON.parse(event.payload.toString());
+                const payload = JSON.parse(event.payload.toString());
 
-                authAction();
+                if (payload.homekey === true) {
+                    authAction();
+                } else {
+                    console.log("ignoring nfc card", payload);
+                }
             } catch (e) {
                 console.log("could not parse auth payload");
             }
